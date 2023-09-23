@@ -106,7 +106,7 @@ namespace EgsLib.ConfigFiles
                 return null;
 
             // remove end of line comments
-            var parts = output.Split(comments, StringSplitOptions.None);
+            var parts = output.Split(new[] { "#", "@", "//" }, StringSplitOptions.None);
             
             return !string.IsNullOrWhiteSpace(parts[0]) ? parts[0] : null;
         }
@@ -151,40 +151,12 @@ namespace EgsLib.ConfigFiles
 
         private static IEnumerable<KeyValuePair<string, string>> ReadFields(string text)
         {
-            var entries = SplitField(text);
+            var entries = text.SplitWithQuotes(',');
             foreach (var entry in entries)
             {
                 if (SplitEntry(entry, out string key, out string value))
                     yield return new KeyValuePair<string, string>(key, value);
             }
-        }
-
-        private static IEnumerable<string> SplitField(string text)
-        {
-            var part = "";
-            var inQuotes = false;
-
-            for (var i = 0; i < text.Length; i++)
-            {
-                switch (text[i])
-                {
-                    case '"':
-                        inQuotes = !inQuotes;
-                        break;
-                    case ',':
-                        if (!inQuotes)
-                        {
-                            yield return part;
-                            part = "";
-                        }
-                        break;
-                    default:
-                        part += text[i];
-                        break;
-                }
-            }
-
-            yield return part;
         }
 
         private static bool SplitEntry(string text, out string key, out string value)
