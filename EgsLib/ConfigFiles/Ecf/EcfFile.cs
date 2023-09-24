@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace EgsLib.ConfigFiles
+namespace EgsLib.ConfigFiles.Ecf
 {
     public interface IEcfChild
     {
@@ -22,7 +22,7 @@ namespace EgsLib.ConfigFiles
         /// <summary>
         /// Fields that describe the object, found on the same line as object Type
         /// </summary>
-        IReadOnlyDictionary<string,string> Fields { get; }
+        IReadOnlyDictionary<string, string> Fields { get; }
 
         /// <summary>
         /// Properties of the object
@@ -67,8 +67,8 @@ namespace EgsLib.ConfigFiles
 
                     continue;
                 }
-                
-                if(ReadProperty(line))
+
+                if (ReadProperty(line))
                     continue;
 
                 throw new FormatException("Failed to parse line");
@@ -107,7 +107,7 @@ namespace EgsLib.ConfigFiles
 
             // remove end of line comments
             var parts = output.Split(new[] { "#", "@", "//" }, StringSplitOptions.None);
-            
+
             return !string.IsNullOrWhiteSpace(parts[0]) ? parts[0] : null;
         }
 
@@ -121,16 +121,16 @@ namespace EgsLib.ConfigFiles
                 return false;
 
             // Break up `{ Type Prop1: Value, Prop2: Value`
+            // Or `{  StatusEffect Name: LowFood`
             // Or `{ Child Unit2`
-            var parts = line.Split(' ', '\t');
-
-            if (parts.Length < 3)
+            var parts = line.TrimStart('{', ' ', '\t').Split(' ');
+            if (parts.Length < 2)
                 throw new FormatException("Start of object is invalid");
 
-            var type = parts[1];
-            var extra = string.Join(" ", parts.Skip(2));
+            var type = parts[0];
+            var extra = string.Join(" ", parts.Skip(1));
 
-            if(type == "Child")
+            if (type == "Child")
             {
                 if (_currentChild != null)
                     throw new FormatException("Can't start new child, one is already being processed");
@@ -187,10 +187,10 @@ namespace EgsLib.ConfigFiles
                 return false;
             }
 
-            if(_currentObject == null)
+            if (_currentObject == null)
                 throw new FormatException("Found end of object before start");
 
-            if(_currentChild != null)
+            if (_currentChild != null)
             {
                 _currentObject.AddChild(_currentChild);
                 _currentChild = null;
@@ -217,7 +217,7 @@ namespace EgsLib.ConfigFiles
                 _currentChild.AddProperty(key, value);
             else
                 _currentObject.AddProperty(key, value);
-            
+
             return true;
         }
 

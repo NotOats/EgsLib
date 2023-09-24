@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using EgsLib.ConfigFiles.Ecf;
 
 namespace EgsLib.ConfigFiles
 {
@@ -25,7 +27,7 @@ namespace EgsLib.ConfigFiles
         /// <summary>
         /// Discount applied to the trader
         /// </summary>
-        public float Discount { get; }
+        public float? Discount { get; }
 
         /// <summary>
         /// Items the trader buys and sells
@@ -42,20 +44,43 @@ namespace EgsLib.ConfigFiles
         /// </summary>
         public IEnumerable<TraderItem> Sells => Items.Where(i => i.SellAmount != Range<int>.Default);
 
-        internal Trader(string name, string sellingText, string sellingGoods, string discount, List<TraderItem> items)
+        public Trader(IEcfObject obj)
         {
             // Required
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            Items = items ?? throw new ArgumentNullException(nameof(items));
+            if (obj.Type != "Trader")
+                throw new FormatException("IEcfObject is not a Trader");
+
+            if (!obj.ReadField("Name", out string name))
+                throw new FormatException("Trader has no name");
+
+            Name = name;
 
             // Optional
-            SellingText = sellingText;
-            SellingGoods = sellingGoods;
-            
-            if(!string.IsNullOrWhiteSpace(discount) && float.TryParse(discount, out float val))
-                Discount = val;
-            else
-                Discount = 0;
+            if (obj.ReadProperty("SellingText", out string sellingText))
+                SellingText = sellingText;
+
+            if (obj.ReadProperty("SellingGoods", out string sellingGoods))
+                SellingGoods = sellingGoods;
+
+            if (obj.ReadProperty("Discount", out float discount))
+                Discount = discount;
+
+            Items = obj.Properties
+                .Where(kvp => kvp.Key.StartsWith("Item"))
+                .Select(kvp => new TraderItem(kvp.Value.Trim(' ', '"')))
+                .ToList();
+        }
+
+        public static IEnumerable<Trader> ReadFile(string filePath)
+        {
+            if (string.IsNullOrWhiteSpace(filePath))
+                throw new ArgumentNullException(nameof(filePath));
+
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException("ECF file not found", filePath);
+
+            var ecf = new EcfFile(filePath);
+            return ecf.ParseObjects().Select(obj => new Trader(obj));
         }
     }
 }

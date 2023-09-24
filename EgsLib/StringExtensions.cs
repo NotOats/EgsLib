@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EgsLib
@@ -7,6 +8,9 @@ namespace EgsLib
     {
         public static IEnumerable<string> SplitWithQuotes(this string str, params char[] separators)
         {
+            if (separators.Contains('"'))
+                throw new ArgumentException("double quotes can't be a separator", nameof(separators));
+
             var part = "";
             var inQuotes = str.StartsWith("\"");
 
