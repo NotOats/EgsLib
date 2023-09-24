@@ -46,7 +46,7 @@ namespace EgsLib.ConfigFiles
                 Description = description;
 
             if (obj.ReadProperty("MarketPrice", out string marketPrice) && !string.IsNullOrWhiteSpace(marketPrice))
-                MarketPrice = new PropertyDectoractor<int>(marketPrice, int.Parse);
+                MarketPrice = new PropertyDectoractor<int>(marketPrice);
         }
 
         public static IEnumerable<Token> ReadFile(string filePath)

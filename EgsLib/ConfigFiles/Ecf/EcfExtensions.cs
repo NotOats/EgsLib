@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Xml.Linq;
 
 namespace EgsLib.ConfigFiles.Ecf
@@ -20,9 +21,6 @@ namespace EgsLib.ConfigFiles.Ecf
 
         public static bool ReadField(this IEcfObject obj, string name, out object value, Type type)
         {
-            if (type.GetInterface("IConvertible") == null)
-                throw new ArgumentException("Property type isn't IConvertible");
-
             value = default;
 
             if (!obj.Fields.TryGetValue(name, out string str) || str == null)
@@ -49,9 +47,6 @@ namespace EgsLib.ConfigFiles.Ecf
 
         public static bool ReadProperty(this IEcfObject obj, string name, out object value, Type type)
         {
-            if (type.GetInterface("IConvertible") == null)
-                throw new ArgumentException("Property type isn't IConvertible");
-
             value = default;
 
             if (!obj.Properties.TryGetValue(name, out string str) || str == null)
@@ -81,9 +76,6 @@ namespace EgsLib.ConfigFiles.Ecf
 
         public static bool ReadProperty(this IEcfChild obj, string name, out object value, Type type)
         {
-            if (type.GetInterface("IConvertible") == null)
-                throw new ArgumentException("Property type isn't IConvertible");
-
             value = default;
 
             if (!obj.Properties.TryGetValue(name, out string str) || str == null)
@@ -97,21 +89,23 @@ namespace EgsLib.ConfigFiles.Ecf
         }
         #endregion
 
+        private static Type FindType(Type input)
+        {
+            var u = Nullable.GetUnderlyingType(input);
+            return u ?? input;
+        }
+
         private static bool ConvertValue(string input, out object output, Type type)
         {
             // Sometimes properties have encapsulating quotes
             input = input.Trim(' ', '"');
             output = default;
 
-            try
-            {
-                output = Convert.ChangeType(input, type);
-            }
-            catch (Exception)
-            {
+            var converter = TypeDescriptor.GetConverter(type);
+            if (!converter.CanConvertFrom(typeof(string)))
                 return false;
-            }
 
+            output = converter.ConvertFromString(input);
             return true;
         }
     }

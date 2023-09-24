@@ -9,9 +9,9 @@ namespace EgsLib.ConfigFiles
     public class StatusEffectModifier
     {
         public string Stat { get; }
-        public int? Amount { get; }
-        public int? Rate { get; }
-        public int? ModifyMaxValue { get; }
+        public float? Amount { get; }
+        public float? Rate { get; }
+        public float? ModifyMaxValue { get; }
         public string NumberOperationType { get; }
         public float? SetValue { get; }
         public string ModifierType { get; }
@@ -21,13 +21,13 @@ namespace EgsLib.ConfigFiles
             if(child.ReadProperty("Stat", out string stat))
                 Stat = stat;
 
-            if (child.ReadProperty("Amount", out int amount))
+            if (child.ReadProperty("Amount", out float amount))
                 Amount = amount;
 
-            if (child.ReadProperty("Rate", out int rate))
+            if (child.ReadProperty("Rate", out float rate))
                 Rate = rate;
 
-            if (child.ReadProperty("ModifyMaxValue", out int modifyMaxValue))
+            if (child.ReadProperty("ModifyMaxValue", out float modifyMaxValue))
                 ModifyMaxValue = modifyMaxValue;
 
             if (child.ReadProperty("SetValue", out float setValue))
@@ -42,7 +42,7 @@ namespace EgsLib.ConfigFiles
     {
         public string Name { get; }
 
-        public int? Duration { get; }
+        public float? Duration { get; }
         public string Actions { get; }
         public string OnExpired { get; }
         public bool? NextIsWorse { get; }
@@ -70,7 +70,7 @@ namespace EgsLib.ConfigFiles
             Name = name;
 
             // Optional
-            if (obj.ReadProperty("Duration", out int duration))
+            if (obj.ReadProperty("Duration", out float duration))
                 Duration = duration;
 
             if (obj.ReadProperty("Actions", out string actions))
@@ -131,6 +131,24 @@ namespace EgsLib.ConfigFiles
 
             var ecf = new EcfFile(filePath);
             return ecf.ParseObjects().Select(obj => new StatusEffect(obj));
+        }
+
+
+        private class PropertyAttribute : Attribute
+        {
+            public string Name { get; set; }
+
+            public Func<string, object> ValueConverter { get; set; }
+
+
+        }
+
+        // List which properties parsed out, remove them from properties list & make "IReadonlyDictionary<string, string> Remaining"
+        // Use static converter for weird types, use IConvertable for other stuff. Check property attached to attribute for type.
+
+        private object ParseSpecificPropertyViaAttribute(string value)
+        {
+            return int.Parse(value);
         }
     }
 }

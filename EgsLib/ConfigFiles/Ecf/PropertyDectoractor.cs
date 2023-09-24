@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace EgsLib.ConfigFiles.Ecf
 {
+    [TypeConverter(typeof(PropertyDectoractorTypeConverter))]
     public readonly struct PropertyDectoractor<T> : IEquatable<PropertyDectoractor<T>>
     {
         // Default (empty) value
@@ -25,7 +27,7 @@ namespace EgsLib.ConfigFiles.Ecf
             Formatter = formatter;
         }
 
-        internal PropertyDectoractor(string ecfValue, Func<string, T> converter)
+        internal PropertyDectoractor(string ecfValue)
         {
             Value = default;
             Display = null;
@@ -36,7 +38,7 @@ namespace EgsLib.ConfigFiles.Ecf
                 return;
 
             var parts = ecfValue.SplitWithQuotes(',').Select(s => s.Trim()).ToArray();
-            Value = converter(parts[0]);
+            Value = ConvertFromString(parts[0]);
 
             foreach (var part in parts.Skip(1))
             {
@@ -51,6 +53,15 @@ namespace EgsLib.ConfigFiles.Ecf
                     case "formatter": Formatter = entry[1]; break;
                 }
             }
+        }
+
+        private static T ConvertFromString(string input)
+        {
+            var typeConverter = TypeDescriptor.GetConverter(typeof(T));
+            if (!typeConverter.CanConvertFrom(typeof(string)))
+                throw new InvalidCastException($"No converter specified for string -> {typeof(T)}");
+
+            return (T)typeConverter.ConvertFromString(input);
         }
 
         public override string ToString()
