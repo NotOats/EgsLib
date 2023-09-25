@@ -3,50 +3,37 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using EgsLib.ConfigFiles.Ecf;
+using EgsLib.ConfigFiles.Ecf.Attributes;
 
 namespace EgsLib.ConfigFiles
 {
-    public class Token
+    [EcfObject("Token")]
+    public class Token : BaseConfig
     {
-        public int Id { get; }
-        public string Name { get; }
+        [EcfField("Id")]
+        public int Id { get; private set; }
 
-        public string CustomIcon { get; }
-        public bool? DropOnDeath { get; }
-        public bool? RemoveOnUse { get; }
-        public string Description { get; }
-        public PropertyDecorator<int>? MarketPrice { get; }
+        [EcfField("Name")]
+        public string Name { get; private set; }
 
-        public Token(IEcfObject obj)
+
+        [EcfProperty("CustomIcon")]
+        public string CustomIcon { get; private set; }
+
+        [EcfProperty("DropOnDeath")]
+        public bool? DropOnDeath { get; private set; }
+
+        [EcfProperty("RemoveOnUse")]
+        public bool? RemoveOnUse { get; private set; }
+
+        [EcfProperty("Description")]
+        public string Description { get; private set; }
+
+        [EcfProperty("MarketPrice")]
+        public PropertyDecorator<int>? MarketPrice { get; private set; }
+
+        public Token(IEcfObject obj) : base(obj)
         {
-            // Required
-            if (obj.Type != "Token")
-                throw new FormatException("IEcfObject is not a Token");
-
-            if (!obj.ReadField("Id", out int id))
-                throw new FormatException("Token has no id");
-
-            if (!obj.ReadField("Name", out string name))
-                throw new FormatException("Token has no name");
-
-            Id = id;
-            Name = name;
-
-            // Optional
-            if (obj.ReadProperty("CustomIcon", out string customIcon))
-                CustomIcon = customIcon;
-
-            if (obj.ReadProperty("DropOnDeath", out string dropOnDeath))
-                DropOnDeath = dropOnDeath == "true";
-
-            if (obj.ReadProperty("RemoveOnUse", out string removeOnUse))
-                RemoveOnUse = removeOnUse == "true";
-
-            if (obj.ReadProperty("Description", out string description))
-                Description = description;
-
-            if (obj.ReadProperty("MarketPrice", out string marketPrice) && !string.IsNullOrWhiteSpace(marketPrice))
-                MarketPrice = new PropertyDecorator<int>(marketPrice);
         }
 
         public static IEnumerable<Token> ReadFile(string filePath)

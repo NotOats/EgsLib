@@ -1,4 +1,5 @@
 ﻿using EgsLib.ConfigFiles.Ecf;
+using EgsLib.ConfigFiles.Ecf.Attributes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,84 +39,71 @@ namespace EgsLib.ConfigFiles
         }
     }
 
-    public class StatusEffect
+    [EcfObject("StatusEffect")]
+    public class StatusEffect : BaseConfig
     {
-        public string Name { get; }
+        [EcfField("Name")]
+        public string Name { get; private set; }
 
-        public float? Duration { get; }
-        public string Actions { get; }
-        public string OnExpired { get; }
-        public bool? NextIsWorse { get; }
-        public string Evolves { get; }
-        public string CastSound { get; }
-        public string DebuffSound { get; }
-        public string ExpiredSound { get; }
-        public string EffectType { get; }
-        public bool? RequiresAll { get; }
-        public IReadOnlyCollection<string> Requires { get; }
-        public string Stack { get; }
-        public string Description { get; }
-        public string Icon { get; }
+
+        [EcfProperty("Duration")]
+        public float? Duration { get; private set; }
+
+        [EcfProperty("BuffIf")]
+        public string BuffIf { get; private set; }
+
+        [EcfProperty("DebuffIf")]
+        public string DebuffIf { get; private set; }
+
+        [EcfProperty("Mutex")]
+        public string Mutex { get; private set; }
+
+        [EcfProperty("DebuffActions")]
+        public string DebuffActions { get; private set; }
+
+        [EcfProperty("Actions")]
+        public string Actions { get; private set; }
+
+        [EcfProperty("OnExpired")]
+        public string OnExpired { get; private set; }
+
+        [EcfProperty("NextIsWorse")]
+        public bool? NextIsWorse { get; private set; }
+
+        [EcfProperty("Evolves")]
+        public string Evolves { get; private set; }
+
+        [EcfProperty("CastSound")]
+        public string CastSound { get; private set; }
+
+        [EcfProperty("OnDebuffSound")]
+        public string DebuffSound { get; private set; }
+
+        [EcfProperty("OnExpiredSound")]
+        public string ExpiredSound { get; private set; }
+
+        [EcfProperty("Type")]
+        public string EffectType { get; private set; }
+
+        [EcfProperty("RequiresAll")]
+        public bool? RequiresAll { get; private set; }
+
+        [EcfProperty("Requires", typeof(StatusEffect), "ParseRequires")]
+        public IReadOnlyCollection<string> Requires { get; private set; }
+
+        [EcfProperty("Stack")]
+        public string Stack { get; private set; }
+
+        [EcfProperty("Description")]
+        public string Description { get; private set; }
+
+        [EcfProperty("Icon")]
+        public string Icon { get; private set; }
+
         public IReadOnlyList<StatusEffectModifier> Modifiers { get; }
 
-        public StatusEffect(IEcfObject obj)
+        public StatusEffect(IEcfObject obj) : base(obj)
         {
-            // Required
-            if (obj.Type != "StatusEffect")
-                throw new FormatException("IEcfObject is not a StatusEffect");
-
-            if (!obj.ReadField("Name", out string name))
-                throw new FormatException("StatusEffect has no name");
-
-            Name = name;
-
-            // Optional
-            if (obj.ReadProperty("Duration", out float duration))
-                Duration = duration;
-
-            if (obj.ReadProperty("Actions", out string actions))
-                Actions = actions;
-
-            if (obj.ReadProperty("OnExpired", out string onExpired))
-                OnExpired = onExpired;
-
-            if (obj.ReadProperty("NextIsWorse", out string nextIsWorse))
-                NextIsWorse = nextIsWorse == "true";
-
-            if (obj.ReadProperty("Evolves", out string evolves))
-                Evolves = evolves;
-
-            if (obj.ReadProperty("CastSound", out string castSound))
-                CastSound = castSound;
-
-            if (obj.ReadProperty("DebuffSound", out string debuffSound))
-                DebuffSound = debuffSound;
-
-            if (obj.ReadProperty("ExpiredSound", out string expiredSound))
-                ExpiredSound = expiredSound;
-
-            if (obj.ReadProperty("Type", out string type))
-                EffectType = type;
-
-            if (obj.ReadProperty("RequiresAll", out string requiresAll))
-                RequiresAll = requiresAll == "false";
-
-            if (obj.ReadProperty("Stack", out string stack))
-                Stack = stack;
-
-            if (obj.ReadProperty("Description", out string description))
-                Description = description;
-
-            if (obj.ReadProperty("Icon", out string icon))
-                Icon = icon;
-
-
-            if (obj.ReadProperty("Requires", out string requires))
-                Requires = requires.Split(',');
-            else
-                Requires = Array.Empty<string>();
-
-
             Modifiers = obj.Children
                 .Select(child => new StatusEffectModifier(child))
                 .ToArray();
@@ -133,22 +121,14 @@ namespace EgsLib.ConfigFiles
             return ecf.ParseObjects().Select(obj => new StatusEffect(obj));
         }
 
-
-        private class PropertyAttribute : Attribute
+        private static bool ParseRequires(string input, out object output, Type type)
         {
-            public string Name { get; set; }
+            if (!string.IsNullOrWhiteSpace(input))
+                output = input.Split(',');
+            else
+                output = Array.Empty<string>();
 
-            public Func<string, object> ValueConverter { get; set; }
-
-
-        }
-
-        // List which properties parsed out, remove them from properties list & make "IReadonlyDictionary<string, string> Remaining"
-        // Use static converter for weird types, use IConvertable for other stuff. Check property attached to attribute for type.
-
-        private object ParseSpecificPropertyViaAttribute(string value)
-        {
-            return int.Parse(value);
+            return true;
         }
     }
 }

@@ -1,13 +1,14 @@
 ﻿using EgsLib.ConfigFiles.Ecf;
+using EgsLib.ConfigFiles.Ecf.Attributes;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace EgsLib.ConfigFiles
 {
-    public  class Template
+    [EcfObject("Template", "+Template")]
+    public class Template : BaseConfig
     {
         [Flags]
         public enum Constructors
@@ -31,82 +32,31 @@ namespace EgsLib.ConfigFiles
             Stop
         }
 
-        public string Name { get; }
+        [EcfField("Name")]
+        public string Name { get; private set; }
 
 
-        public bool? BaseItem { get; }
-        public DeconstructorOverride DeconOverride { get; }
-        public int? OutputCount { get; }
-        public int? CraftTime { get; }
-        public Constructors Target { get; }
+        [EcfProperty("BaseItem")]
+        public bool? BaseItem { get; private set; }
+
+        [EcfProperty("DeconOverride", typeof(Template), "ParseDeconOverride")]
+        public DeconstructorOverride DeconOverride { get; private set; }
+
+        [EcfProperty("OutputCount")]
+        public int? OutputCount { get; private set; }
+
+        [EcfProperty("CraftTime")]
+        public int? CraftTime { get; private set; }
+
+        [EcfProperty("Target", typeof(Template), "ParseTarget")]
+        public Constructors Target { get; private set; }
+
         public IReadOnlyDictionary<string, int> Inputs { get; }
 
-        public Template(IEcfObject obj)
+        public Template(IEcfObject obj) : base(obj)
         {
-            // Required
-            if (obj.Type != "Template" && obj.Type != "+Template")
-                throw new FormatException("IEcfObject is not a Template");
-
-            if (!obj.ReadField("Name", out string name))
-                throw new FormatException("Template has no name");
-
-            Name = name;
-
-            // Optional
-            if (obj.ReadProperty("BaseItem", out string baseItem))
-                BaseItem = baseItem == "true";
-
-            if (obj.ReadProperty("OutputCount", out int outputCount))
-                OutputCount = outputCount;
-
-            if (obj.ReadProperty("CraftTime", out int craftTime))
-                CraftTime = craftTime;
-
-            if (obj.ReadProperty("DeconOverride", out string deconOverride))
-                DeconOverride = DeconOverrideFromString(deconOverride);
-
-            if (obj.ReadProperty("Target", out string target))
-                Target = ConstructorsFromString(target);
-
-            Inputs = obj.Children.FirstOrDefault(x => x.Name == "Inputs")?.Properties?
+            Inputs = UnparsedChildren.FirstOrDefault(x => x.Name == "Inputs")?.Properties?
                 .ToDictionary(x => x.Key, x => int.Parse(x.Value)) ?? new Dictionary<string, int>();
-        }
-
-        private static DeconstructorOverride DeconOverrideFromString(string str)
-        {
-            switch (str)
-            {
-                case "Continue": 
-                    return DeconstructorOverride.Continue;
-                case "Stop": 
-                    return DeconstructorOverride.Stop;
-                default: 
-                    return DeconstructorOverride.None;
-            }
-        }
-
-        private static Constructors ConstructorsFromString(string str)
-        {
-            var output = Constructors.None;
-
-            var parts = str.SplitWithQuotes(',');
-            foreach (var part in parts)
-            {
-                switch (part)
-                {
-                    case "SuitC": output &= Constructors.Suit; break;
-                    case "SurvC": output &= Constructors.Survival; break;
-                    case "SmallC": output &= Constructors.SmallSv; break;
-                    case "HoverC": output &= Constructors.HoverHv; break;
-                    case "BaseC": output &= Constructors.Base; break;
-                    case "LargeC": output &= Constructors.Large; break;
-                    case "AdvC": output &= Constructors.Advanced; break;
-                    case "FoodP": output &= Constructors.Food; break;
-                    case "Furn": output &= Constructors.Furnace; break;
-                }
-            }
-
-            return output;
         }
 
         public static IEnumerable<Template> ReadFile(string filePath)
@@ -119,6 +69,47 @@ namespace EgsLib.ConfigFiles
 
             var ecf = new EcfFile(filePath);
             return ecf.ParseObjects().Select(obj => new Template(obj));
+        }
+
+        private static bool ParseDeconOverride(string input, out object output, Type type)
+        {
+            switch (input)
+            {
+                case "Continue":
+                    output = DeconstructorOverride.Continue;
+                    return true;
+                case "Stop":
+                    output = DeconstructorOverride.Stop;
+                    return true;
+                default:
+                    output = DeconstructorOverride.None;
+                    return true;
+            }
+        }
+
+        private static bool ParseTarget(string input, out object output, Type type)
+        {
+            var constructors = Constructors.None;
+            var parts = input.SplitWithQuotes(',');
+
+            foreach (var part in parts)
+            {
+                switch (part)
+                {
+                    case "SuitC": constructors &= Constructors.Suit; break;
+                    case "SurvC": constructors &= Constructors.Survival; break;
+                    case "SmallC": constructors &= Constructors.SmallSv; break;
+                    case "HoverC": constructors &= Constructors.HoverHv; break;
+                    case "BaseC": constructors &= Constructors.Base; break;
+                    case "LargeC": constructors &= Constructors.Large; break;
+                    case "AdvC": constructors &= Constructors.Advanced; break;
+                    case "FoodP": constructors &= Constructors.Food; break;
+                    case "Furn": constructors &= Constructors.Furnace; break;
+                }
+            }
+
+            output = constructors;
+            return true;
         }
     }
 }

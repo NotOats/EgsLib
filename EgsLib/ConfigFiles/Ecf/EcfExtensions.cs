@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Xml.Linq;
 
@@ -89,19 +91,28 @@ namespace EgsLib.ConfigFiles.Ecf
         }
         #endregion
 
-        private static Type FindType(Type input)
-        {
-            var u = Nullable.GetUnderlyingType(input);
-            return u ?? input;
-        }
 
+        private static readonly ConcurrentDictionary<Type, TypeConverter> ConverterCache = new ConcurrentDictionary<Type, TypeConverter>();
         private static bool ConvertValue(string input, out object output, Type type)
         {
             // Sometimes properties have encapsulating quotes
             input = input.Trim(' ', '"');
             output = default;
 
-            var converter = TypeDescriptor.GetConverter(type);
+            // No conversion needed
+            if (type == typeof(string))
+            {
+                output = input;
+                return true;
+            }
+
+            // Convert as needed via TypeConverters
+            if(!ConverterCache.TryGetValue(type, out TypeConverter converter))
+            {
+                converter = TypeDescriptor.GetConverter(type);
+                ConverterCache.TryAdd(type, converter);
+            }
+
             if (!converter.CanConvertFrom(typeof(string)))
                 return false;
 

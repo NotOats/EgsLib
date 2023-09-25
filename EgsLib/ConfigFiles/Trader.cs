@@ -3,31 +3,37 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using EgsLib.ConfigFiles.Ecf;
+using EgsLib.ConfigFiles.Ecf.Attributes;
 
 namespace EgsLib.ConfigFiles
 {
-    public class Trader
+    [EcfObject("Trader")]
+    public class Trader : BaseConfig
     {
         /// <summary>
         /// The trader's internal name, this must be localized
         /// </summary>
-        public string Name { get; }
+        [EcfField("Name")]
+        public string Name { get; private set; }
 
         /// <summary>
         /// The trader's sell text.
         /// </summary>
-        public string SellingText { get; }
+        [EcfProperty("SellingText")]
+        public string SellingText { get; private set; }
 
         // TODO: Figure out what SellingGoods is exactly
         /// <summary>
         /// The trader's goods group?
         /// </summary>
-        public string SellingGoods { get; }
+        [EcfProperty("SellingGoods")]
+        public string SellingGoods { get; private set; }
 
         /// <summary>
         /// Discount applied to the trader
         /// </summary>
-        public float? Discount { get; }
+        [EcfProperty("Discount")]
+        public float? Discount { get; private set; }
 
         /// <summary>
         /// Items the trader buys and sells
@@ -44,27 +50,8 @@ namespace EgsLib.ConfigFiles
         /// </summary>
         public IEnumerable<TraderItem> Sells => Items.Where(i => i.SellAmount != Range<int>.Default);
 
-        public Trader(IEcfObject obj)
+        public Trader(IEcfObject obj) : base(obj)
         {
-            // Required
-            if (obj.Type != "Trader")
-                throw new FormatException("IEcfObject is not a Trader");
-
-            if (!obj.ReadField("Name", out string name))
-                throw new FormatException("Trader has no name");
-
-            Name = name;
-
-            // Optional
-            if (obj.ReadProperty("SellingText", out string sellingText))
-                SellingText = sellingText;
-
-            if (obj.ReadProperty("SellingGoods", out string sellingGoods))
-                SellingGoods = sellingGoods;
-
-            if (obj.ReadProperty("Discount", out float discount))
-                Discount = discount;
-
             Items = obj.Properties
                 .Where(kvp => kvp.Key.StartsWith("Item"))
                 .Select(kvp => new TraderItem(kvp.Value.Trim(' ', '"')))

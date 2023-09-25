@@ -22,12 +22,15 @@ namespace EgsLib.ConfigFiles.Ecf
 
         private static object CreateDecorator(string str)
         {
-            var match = TypeMatch.Match(str);
-            if (!match.Success || match.Groups.Count != 2)
-                throw new FormatException("ECF property line does not have a type");
+            // TODO: Figure out what the default really is for this
+            var type = "int";
 
-            var typeString = match.Groups[1].Value;
-            switch (typeString)
+            // Attempt to override with type in str
+            var match = TypeMatch.Match(str);
+            if (match.Success && match.Groups.Count == 2)
+                type = match.Groups[1].Value;
+
+            switch (type)
             {
                 case "int":
                     return new PropertyDecorator<int>(str);
@@ -36,9 +39,9 @@ namespace EgsLib.ConfigFiles.Ecf
             }
 
 #if DEBUG
-            Console.WriteLine($"ECF property line has invalid type '{typeString}'");
+            Console.WriteLine($"ECF property line has invalid type '{type}'");
 #endif
-            throw new FormatException($"ECF property line has invalid type '{typeString}'");
+            throw new FormatException($"ECF property line has invalid type '{type}'");
         }
     }
 }
