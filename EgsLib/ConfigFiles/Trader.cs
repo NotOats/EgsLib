@@ -52,10 +52,10 @@ namespace EgsLib.ConfigFiles
 
         public Trader(IEcfObject obj) : base(obj)
         {
-            Items = obj.Properties
+            Items = UnparsedProperties
                 .Where(kvp => kvp.Key.StartsWith("Item"))
                 .Select(kvp => new TraderItem(kvp.Value.Trim(' ', '"')))
-                .ToList();
+                .ToArray();
         }
 
         public static IEnumerable<Trader> ReadFile(string filePath)

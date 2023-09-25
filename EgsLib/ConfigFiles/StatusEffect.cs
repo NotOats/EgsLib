@@ -104,7 +104,7 @@ namespace EgsLib.ConfigFiles
 
         public StatusEffect(IEcfObject obj) : base(obj)
         {
-            Modifiers = obj.Children
+            Modifiers = UnparsedChildren
                 .Select(child => new StatusEffectModifier(child))
                 .ToArray();
         }
