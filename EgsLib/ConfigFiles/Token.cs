@@ -15,7 +15,7 @@ namespace EgsLib.ConfigFiles
         public bool? DropOnDeath { get; }
         public bool? RemoveOnUse { get; }
         public string Description { get; }
-        public PropertyDectoractor<int>? MarketPrice { get; }
+        public PropertyDecorator<int>? MarketPrice { get; }
 
         public Token(IEcfObject obj)
         {
@@ -46,7 +46,7 @@ namespace EgsLib.ConfigFiles
                 Description = description;
 
             if (obj.ReadProperty("MarketPrice", out string marketPrice) && !string.IsNullOrWhiteSpace(marketPrice))
-                MarketPrice = new PropertyDectoractor<int>(marketPrice);
+                MarketPrice = new PropertyDecorator<int>(marketPrice);
         }
 
         public static IEnumerable<Token> ReadFile(string filePath)

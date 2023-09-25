@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace EgsLib.ConfigFiles.Ecf
 {
-    internal class PropertyDectoractorTypeConverter : TypeConverter
+    internal class PropertyDecoratorTypeConverter : TypeConverter
     {
         private readonly static Regex TypeMatch = new Regex(@"type: ([^,|^\n]+)", RegexOptions.Compiled);
 
@@ -17,20 +17,10 @@ namespace EgsLib.ConfigFiles.Ecf
         public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
         {
             var str = value as string;
-            var genericType = ReadType(str);
-            var propDecType = typeof(PropertyDectoractor<>).MakeGenericType(genericType);
-
-            var obj = Activator.CreateInstance(
-                propDecType, 
-                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic, 
-                null, 
-                new object[] { str }, 
-                null);
-
-            return obj;
+            return CreateDecorator(str);
         }
 
-        private static Type ReadType(string str)
+        private static object CreateDecorator(string str)
         {
             var match = TypeMatch.Match(str);
             if (!match.Success || match.Groups.Count != 2)
@@ -40,11 +30,14 @@ namespace EgsLib.ConfigFiles.Ecf
             switch (typeString)
             {
                 case "int":
-                    return typeof(int);
+                    return new PropertyDecorator<int>(str);
                 case "float":
-                    return typeof(float);
+                    return new PropertyDecorator<float>(str);
             }
 
+#if DEBUG
+            Console.WriteLine($"ECF property line has invalid type '{typeString}'");
+#endif
             throw new FormatException($"ECF property line has invalid type '{typeString}'");
         }
     }

@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace EgsLib.ConfigFiles.Ecf
 {
-    [TypeConverter(typeof(PropertyDectoractorTypeConverter))]
-    public readonly struct PropertyDectoractor<T> : IEquatable<PropertyDectoractor<T>>
+    [TypeConverter(typeof(PropertyDecoratorTypeConverter))]
+    public readonly struct PropertyDecorator<T> : IEquatable<PropertyDecorator<T>>
     {
         // Default (empty) value
-        public readonly static PropertyDectoractor<T> Default = new PropertyDectoractor<T>(default, null, null, null);
+        public readonly static PropertyDecorator<T> Default = new PropertyDecorator<T>(default, null, null, null);
 
         // Value
         public T Value { get; }
@@ -19,7 +19,7 @@ namespace EgsLib.ConfigFiles.Ecf
         public string Type { get; }
         public string Formatter { get; }
 
-        internal PropertyDectoractor(T value, bool? display, string type, string formatter)
+        internal PropertyDecorator(T value, bool? display, string type, string formatter)
         {
             Value = value;
             Display = display;
@@ -27,7 +27,7 @@ namespace EgsLib.ConfigFiles.Ecf
             Formatter = formatter;
         }
 
-        internal PropertyDectoractor(string ecfValue)
+        internal PropertyDecorator(string ecfValue)
         {
             Value = default;
             Display = null;
@@ -82,10 +82,10 @@ namespace EgsLib.ConfigFiles.Ecf
 
         public override bool Equals(object obj)
         {
-            return obj is PropertyDectoractor<T> value && Equals(value);
+            return obj is PropertyDecorator<T> value && Equals(value);
         }
 
-        public bool Equals(PropertyDectoractor<T> other)
+        public bool Equals(PropertyDecorator<T> other)
         {
             return EqualityComparer<T>.Default.Equals(Value, other.Value) &&
                    Display == other.Display &&
@@ -103,12 +103,12 @@ namespace EgsLib.ConfigFiles.Ecf
             return hashCode;
         }
 
-        public static bool operator ==(PropertyDectoractor<T> left, PropertyDectoractor<T> right)
+        public static bool operator ==(PropertyDecorator<T> left, PropertyDecorator<T> right)
         {
             return left.Equals(right);
         }
 
-        public static bool operator !=(PropertyDectoractor<T> left, PropertyDectoractor<T> right)
+        public static bool operator !=(PropertyDecorator<T> left, PropertyDecorator<T> right)
         {
             return !(left == right);
         }
