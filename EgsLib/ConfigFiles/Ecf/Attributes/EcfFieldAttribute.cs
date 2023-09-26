@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace EgsLib.ConfigFiles.Ecf.Attributes
 {
@@ -7,7 +8,7 @@ namespace EgsLib.ConfigFiles.Ecf.Attributes
     {
         public string Name { get; }
 
-        public EcfFieldAttribute(string name, Type converterType = null, string converterFunction = null)
+        public EcfFieldAttribute([CallerMemberName] string name = null, Type converterType = null, string converterFunction = null)
             : base(converterType, converterFunction)
         {
             Name = name ?? throw new ArgumentNullException(nameof(name));

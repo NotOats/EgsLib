@@ -32,20 +32,20 @@ namespace EgsLib.ConfigFiles
             Stop
         }
 
-        [EcfField("Name")]
+        [EcfField]
         public string Name { get; private set; }
 
 
-        [EcfProperty("BaseItem")]
+        [EcfProperty]
         public bool? BaseItem { get; private set; }
 
         [EcfProperty("DeconOverride", typeof(Template), "ParseDeconOverride")]
         public DeconstructorOverride DeconOverride { get; private set; }
 
-        [EcfProperty("OutputCount")]
+        [EcfProperty]
         public int? OutputCount { get; private set; }
 
-        [EcfProperty("CraftTime")]
+        [EcfProperty]
         public int? CraftTime { get; private set; }
 
         [EcfProperty("Target", typeof(Template), "ParseTarget")]

@@ -10,7 +10,7 @@ namespace EgsLib.ConfigFiles
     [EcfObject("Material")]
     public class Material : BaseConfig
     {
-        [EcfField("Name")]
+        [EcfField]
         public string Name { get; private set; }
 
 
@@ -44,16 +44,16 @@ namespace EgsLib.ConfigFiles
         [EcfProperty("stability_glue")]
         public int? StabilityGlue { get; private set; }
 
-        [EcfProperty("Mass")]
+        [EcfProperty]
         public PropertyDecorator<float>? Mass { get; private set; }
 
-        [EcfProperty("Hardness")]
+        [EcfProperty]
         public PropertyDecorator<float>? Hardness { get; private set; }
 
-        [EcfProperty("ExplosionHardness")]
+        [EcfProperty]
         public int? ExplosionHardness {  get; private set; }
 
-        [EcfProperty("HitPoints")]
+        [EcfProperty]
         public PropertyDecorator<int>? HitPoints {  get; private set; }
 
         [EcfProperty("O2Content")]

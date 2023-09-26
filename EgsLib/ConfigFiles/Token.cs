@@ -10,26 +10,26 @@ namespace EgsLib.ConfigFiles
     [EcfObject("Token")]
     public class Token : BaseConfig
     {
-        [EcfField("Id")]
+        [EcfField]
         public int Id { get; private set; }
 
-        [EcfField("Name")]
+        [EcfField]
         public string Name { get; private set; }
 
 
-        [EcfProperty("CustomIcon")]
+        [EcfProperty]
         public string CustomIcon { get; private set; }
 
-        [EcfProperty("DropOnDeath")]
+        [EcfProperty]
         public bool? DropOnDeath { get; private set; }
 
-        [EcfProperty("RemoveOnUse")]
+        [EcfProperty]
         public bool? RemoveOnUse { get; private set; }
 
-        [EcfProperty("Description")]
+        [EcfProperty]
         public string Description { get; private set; }
 
-        [EcfProperty("MarketPrice")]
+        [EcfProperty]
         public PropertyDecorator<int>? MarketPrice { get; private set; }
 
         public Token(IEcfObject obj) : base(obj)

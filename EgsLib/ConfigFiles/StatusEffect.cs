@@ -42,38 +42,38 @@ namespace EgsLib.ConfigFiles
     [EcfObject("StatusEffect")]
     public class StatusEffect : BaseConfig
     {
-        [EcfField("Name")]
+        [EcfField]
         public string Name { get; private set; }
 
 
-        [EcfProperty("Duration")]
+        [EcfProperty]
         public float? Duration { get; private set; }
 
-        [EcfProperty("BuffIf")]
+        [EcfProperty]
         public string BuffIf { get; private set; }
 
-        [EcfProperty("DebuffIf")]
+        [EcfProperty]
         public string DebuffIf { get; private set; }
 
-        [EcfProperty("Mutex")]
+        [EcfProperty]
         public string Mutex { get; private set; }
 
-        [EcfProperty("DebuffActions")]
+        [EcfProperty]
         public string DebuffActions { get; private set; }
 
-        [EcfProperty("Actions")]
+        [EcfProperty]
         public string Actions { get; private set; }
 
-        [EcfProperty("OnExpired")]
+        [EcfProperty]
         public string OnExpired { get; private set; }
 
-        [EcfProperty("NextIsWorse")]
+        [EcfProperty]
         public bool? NextIsWorse { get; private set; }
 
-        [EcfProperty("Evolves")]
+        [EcfProperty]
         public string Evolves { get; private set; }
 
-        [EcfProperty("CastSound")]
+        [EcfProperty]
         public string CastSound { get; private set; }
 
         [EcfProperty("OnDebuffSound")]
@@ -85,19 +85,19 @@ namespace EgsLib.ConfigFiles
         [EcfProperty("Type")]
         public string EffectType { get; private set; }
 
-        [EcfProperty("RequiresAll")]
+        [EcfProperty]
         public bool? RequiresAll { get; private set; }
 
         [EcfProperty("Requires", typeof(StatusEffect), "ParseRequires")]
         public IReadOnlyCollection<string> Requires { get; private set; }
 
-        [EcfProperty("Stack")]
+        [EcfProperty]
         public string Stack { get; private set; }
 
-        [EcfProperty("Description")]
+        [EcfProperty]
         public string Description { get; private set; }
 
-        [EcfProperty("Icon")]
+        [EcfProperty]
         public string Icon { get; private set; }
 
         public IReadOnlyList<StatusEffectModifier> Modifiers { get; }

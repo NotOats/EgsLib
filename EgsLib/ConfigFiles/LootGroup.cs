@@ -10,11 +10,11 @@ namespace EgsLib.ConfigFiles
     [EcfObject("LootGroup", "+LootGroup")]
     public class LootGroup : BaseConfig
     {
-        [EcfField("Name")]
+        [EcfField]
         public string Name { get; private set; }
 
 
-        [EcfProperty("Count")]
+        [EcfProperty]
         public string Count { get; private set; }
 
         public IReadOnlyList<LootItem> Items { get; }
