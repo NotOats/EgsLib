@@ -1,16 +1,18 @@
 ﻿using EgsLib.ConfigFiles;
 using EgsLib.ConfigFiles.Ecf;
 using System.Diagnostics;
+using System.Text.Json;
 
-
+ReadFile(@"D:\Games\SteamLibrary\steamapps\workshop\content\383120\2550354956\Content\Configuration\ItemsConfig.ecf", Item.ReadFile);
+ReadFile(@"D:\Games\SteamLibrary\steamapps\workshop\content\383120\2550354956\Content\Configuration\LootGroups.ecf", LootGroup.ReadFile, new[] { "Item_" });
 ReadFile(@"D:\Games\SteamLibrary\steamapps\workshop\content\383120\2550354956\Content\Configuration\MaterialConfig.ecf", Material.ReadFile);
-ReadFile(@"D:\Games\SteamLibrary\steamapps\workshop\content\383120\2550354956\Content\Configuration\StatusEffects.ecf", StatusEffect.ReadFile, new[] { "Name" } );
+ReadFile(@"D:\Games\SteamLibrary\steamapps\workshop\content\383120\2550354956\Content\Configuration\StatusEffects.ecf", StatusEffect.ReadFile, new[] { "Name" });
 ReadFile(@"D:\Games\SteamLibrary\steamapps\workshop\content\383120\2550354956\Content\Configuration\Templates.ecf", Template.ReadFile);
 ReadFile(@"D:\Games\SteamLibrary\steamapps\workshop\content\383120\2550354956\Content\Configuration\TokenConfig.ecf", Token.ReadFile);
 ReadFile(@"D:\Games\SteamLibrary\steamapps\workshop\content\383120\2550354956\Content\Configuration\TraderNPCConfig.ecf", Trader.ReadFile, new[] { "Item" });
 Console.WriteLine();
 
-static T[] ReadFile<T>(string filePath, Func<string, IEnumerable<T>> read, IEnumerable<string>? ignoreMissing = null) where T : BaseConfig
+static T[] ReadFile<T>(string filePath, Func<string, IEnumerable<T>> read, IEnumerable<string>? ignoreMissing = null) where T : BaseConfig<T>
 {
     T[] entries;
 
@@ -57,6 +59,9 @@ foreach (var file in files)
     Console.WriteLine($"{name,-25} {objCount,-10} {propCount,-12} {childCount,-14} {elapsed,-4} elapsed");
 
     parsed.Add(ecf.FileName, objects);
+
+    var contents = JsonSerializer.Serialize(objects);
+    File.WriteAllText($"./output/{Path.GetFileNameWithoutExtension(ecf.FileName)}.json", contents);
 }
 
 Console.WriteLine("Finished!");
