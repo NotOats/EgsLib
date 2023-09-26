@@ -7,8 +7,21 @@ using System.Reflection;
 
 namespace EgsLib.ConfigFiles
 {
-    public abstract class BaseConfig
+    public abstract class BaseConfig<TDerived> where TDerived : BaseConfig<TDerived> 
     {
+        private static readonly IReadOnlyDictionary<PropertyInfo, EcfFieldAttribute> EcfFieldCache;
+        private static readonly IReadOnlyDictionary<PropertyInfo, EcfPropertyAttribute> EcfPropertyCache;
+        private static readonly EcfObjectAttribute EcfObjAttribute;
+
+        static BaseConfig()
+        {
+            EcfObjAttribute = typeof(TDerived).GetCustomAttribute<EcfObjectAttribute>()
+                ?? throw new Exception("EcfObjectAttribute must be defined when inheriting BaseConfig");
+
+            EcfFieldCache = EcfFieldAttribute.ReadFields<TDerived>();
+            EcfPropertyCache = EcfPropertyAttribute.ReadProperties<TDerived>();
+        }
+
         public IReadOnlyDictionary<string, string> UnparsedProperties { get; }
 
         public IReadOnlyCollection<IEcfChild> UnparsedChildren { get; }
@@ -16,50 +29,22 @@ namespace EgsLib.ConfigFiles
         protected BaseConfig(IEcfObject obj)
         {
             // Validate type
-            var attribute = GetType().GetCustomAttribute<EcfObjectAttribute>()
-                ?? throw new Exception("EcfObjectAttribute must be defined when inheriting BaseConfig");
+            if (!EcfObjAttribute.Types.Contains(obj.Type))
+                throw new ArgumentException($"IEcfObject is not of type {string.Join(", ", EcfObjAttribute.Types)}", nameof(obj));
 
-            if (!attribute.Types.Contains(obj.Type))
-                throw new ArgumentException($"IEcfObject is not of type {string.Join(", ", attribute.Types)}", nameof(obj));
-
-            // Read fields & properties
-            var fields = ReadProperties<EcfFieldAttribute>();
-            SetFields(obj, fields);
-            ThrowIfUnusedFields(obj, fields);
-
-            var properties = ReadProperties<EcfPropertyAttribute>();
-            SetProperties(obj, properties);
-
-            UnparsedProperties = FindUnusedProperties(obj, properties);
+            SetFields(obj);
+            UnparsedProperties = SetProperties(obj);
 
             // TODO: Figure out child object parsing
             // For now let the inheriting class figure it out
             UnparsedChildren = obj.Children;
         }
 
-        private Dictionary<PropertyInfo, TEcfAttribute> ReadProperties<TEcfAttribute>() where TEcfAttribute : ConverterAttribute
+        private void SetFields(IEcfObject obj)
         {
-            var result = new Dictionary<PropertyInfo, TEcfAttribute>();
+            var unparsed = obj.Fields.Select(x => x.Key).ToList();
 
-            foreach(var property in GetType().GetProperties())
-            {
-                var attr = property.GetCustomAttribute<TEcfAttribute>();
-                if (attr == null)
-                    continue;
-
-                if (!property.CanWrite)
-                    throw new Exception("Ecf Field/Property does not have a setter");
-
-                result.Add(property, attr);
-            }
-
-            return result;
-        }
-
-        private void SetFields(IEcfObject obj, 
-            IReadOnlyDictionary<PropertyInfo, EcfFieldAttribute> fields)
-        {
-            foreach(var kvp in fields)
+            foreach (var kvp in EcfFieldCache)
             {
                 var prop = kvp.Key;
                 var attr = kvp.Value;
@@ -73,18 +58,24 @@ namespace EgsLib.ConfigFiles
                         continue;
 
                     prop.SetValue(this, output);
+                    unparsed.Remove(attr.Name);
                 }
                 else if(obj.ReadField(attr.Name, out object output, prop.PropertyType))
                 {
                     prop.SetValue(this, output);
+                    unparsed.Remove(attr.Name);
                 }
             }
+
+            if (unparsed.Count != 0)
+                throw new Exception($"IEcfObject contains unused fields: {string.Join(", ", unparsed)}");
         }
 
-        private void SetProperties(IEcfObject obj, 
-            IReadOnlyDictionary<PropertyInfo, EcfPropertyAttribute> properties)
+        private IReadOnlyDictionary<string, string> SetProperties(IEcfObject obj)
         {
-            foreach (var kvp in properties)
+            var unparsed = obj.Properties.ToDictionary(x => x.Key, x => x.Value);
+
+            foreach (var kvp in EcfPropertyCache)
             {
                 var prop = kvp.Key;
                 var attr = kvp.Value;
@@ -98,41 +89,16 @@ namespace EgsLib.ConfigFiles
                         continue;
 
                     prop.SetValue(this, output);
+                    unparsed.Remove(attr.Name);
                 }
                 else if (obj.ReadProperty(attr.Name, out object output, prop.PropertyType))
                 {
                     prop.SetValue(this, output);
+                    unparsed.Remove(attr.Name);
                 }
             }
-        }
 
-        private static void ThrowIfUnusedFields(IEcfObject obj, IReadOnlyDictionary<PropertyInfo, EcfFieldAttribute> fields)
-        {
-            bool IsInParsedFields(string name)
-            {
-                return fields.Any(kvp => kvp.Value.Name == name);
-            }
-
-            var unusedFields = obj.Fields
-                .Where(field => !IsInParsedFields(field.Key))
-                .Select(field => field.Key)
-                .ToList();
-
-            if (unusedFields.Count != 0)
-                throw new Exception($"IEcfObject contains unused fields: {string.Join(", ", unusedFields)}");
-        }
-
-        private static IReadOnlyDictionary<string, string> FindUnusedProperties(
-            IEcfObject obj, IReadOnlyDictionary<PropertyInfo, EcfPropertyAttribute> properties)
-        {
-            bool IsInParsedProperties(string name)
-            {
-                return properties.Any(kvp => kvp.Value.Name == name);
-            }
-
-            return obj.Properties
-                .Where(prop => !IsInParsedProperties(prop.Key))
-                .ToDictionary(x => x.Key, x => x.Value);
+            return unparsed;
         }
     }
 }

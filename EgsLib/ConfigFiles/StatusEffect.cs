@@ -19,7 +19,7 @@ namespace EgsLib.ConfigFiles
 
         internal StatusEffectModifier(IEcfChild child)
         {
-            if(child.ReadProperty("Stat", out string stat))
+            if (child.ReadProperty("Stat", out string stat))
                 Stat = stat;
 
             if (child.ReadProperty("Amount", out float amount))
@@ -40,41 +40,29 @@ namespace EgsLib.ConfigFiles
     }
 
     [EcfObject("StatusEffect")]
-    public class StatusEffect : BaseConfig
+    public class StatusEffect : BaseConfig<StatusEffect>
     {
-        [EcfField("Name")]
-        public string Name { get; private set; }
+        [EcfField] public string Name { get; private set; }
 
+        [EcfProperty] public float? Duration { get; private set; }
 
-        [EcfProperty("Duration")]
-        public float? Duration { get; private set; }
+        [EcfProperty] public string BuffIf { get; private set; }
 
-        [EcfProperty("BuffIf")]
-        public string BuffIf { get; private set; }
+        [EcfProperty] public string DebuffIf { get; private set; }
 
-        [EcfProperty("DebuffIf")]
-        public string DebuffIf { get; private set; }
+        [EcfProperty] public string Mutex { get; private set; }
 
-        [EcfProperty("Mutex")]
-        public string Mutex { get; private set; }
+        [EcfProperty] public string DebuffActions { get; private set; }
 
-        [EcfProperty("DebuffActions")]
-        public string DebuffActions { get; private set; }
+        [EcfProperty] public string Actions { get; private set; }
 
-        [EcfProperty("Actions")]
-        public string Actions { get; private set; }
+        [EcfProperty] public string OnExpired { get; private set; }
 
-        [EcfProperty("OnExpired")]
-        public string OnExpired { get; private set; }
+        [EcfProperty] public bool? NextIsWorse { get; private set; }
 
-        [EcfProperty("NextIsWorse")]
-        public bool? NextIsWorse { get; private set; }
+        [EcfProperty] public string Evolves { get; private set; }
 
-        [EcfProperty("Evolves")]
-        public string Evolves { get; private set; }
-
-        [EcfProperty("CastSound")]
-        public string CastSound { get; private set; }
+        [EcfProperty] public string CastSound { get; private set; }
 
         [EcfProperty("OnDebuffSound")]
         public string DebuffSound { get; private set; }
@@ -85,20 +73,16 @@ namespace EgsLib.ConfigFiles
         [EcfProperty("Type")]
         public string EffectType { get; private set; }
 
-        [EcfProperty("RequiresAll")]
-        public bool? RequiresAll { get; private set; }
+        [EcfProperty] public bool? RequiresAll { get; private set; }
 
         [EcfProperty("Requires", typeof(StatusEffect), "ParseRequires")]
         public IReadOnlyCollection<string> Requires { get; private set; }
 
-        [EcfProperty("Stack")]
-        public string Stack { get; private set; }
+        [EcfProperty] public string Stack { get; private set; }
 
-        [EcfProperty("Description")]
-        public string Description { get; private set; }
+        [EcfProperty] public string Description { get; private set; }
 
-        [EcfProperty("Icon")]
-        public string Icon { get; private set; }
+        [EcfProperty] public string Icon { get; private set; }
 
         public IReadOnlyList<StatusEffectModifier> Modifiers { get; }
 

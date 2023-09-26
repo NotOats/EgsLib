@@ -9,6 +9,22 @@ namespace EgsLib.ConfigFiles.Ecf
     {
         private readonly static Regex TypeMatch = new Regex(@"type: ([^,|^\n]+)", RegexOptions.Compiled);
 
+        private readonly string _innerType;
+
+        public PropertyDecoratorTypeConverter(Type type)
+        {
+            if(type.IsGenericType
+                && type.GetGenericTypeDefinition() == typeof(PropertyDecorator<>)
+                && type.GetGenericArguments().Length == 1)
+            {
+                _innerType = type.GetGenericArguments()[0].Name;
+            }
+            else
+            {
+                throw new ArgumentException("Incompatible type", nameof(type));
+            }
+        }
+
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
             return sourceType == typeof(string);
@@ -20,21 +36,25 @@ namespace EgsLib.ConfigFiles.Ecf
             return CreateDecorator(str);
         }
 
-        private static object CreateDecorator(string str)
+        private object CreateDecorator(string str)
         {
-            // TODO: Figure out what the default really is for this
-            var type = "int";
+            // Default to generic type in PropertyDecorator
+            var type = _innerType;
 
             // Attempt to override with type in str
             var match = TypeMatch.Match(str);
             if (match.Success && match.Groups.Count == 2)
                 type = match.Groups[1].Value;
 
+
             switch (type)
             {
-                case "int":
+                case "int":     // Pulled from ecf string
+                case "Int32":   // Pulled from ctor
                     return new PropertyDecorator<int>(str);
-                case "float":
+
+                case "float":   // Pulled from ecf string
+                case "Single":  // Pulled from ctor
                     return new PropertyDecorator<float>(str);
             }
 

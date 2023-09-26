@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 namespace EgsLib.ConfigFiles.Ecf.Attributes
@@ -24,6 +25,25 @@ namespace EgsLib.ConfigFiles.Ecf.Attributes
                 ?? throw new ArgumentException("converter must be a ConverterDelegate", nameof(functionName));
 
             Converter = (ConverterDelegate)del;
+        }
+
+        protected static IReadOnlyDictionary<PropertyInfo, TAttribute> ReadProperties<TObject, TAttribute>() where TAttribute : ConverterAttribute
+        {
+            var result = new Dictionary<PropertyInfo, TAttribute>();
+
+            foreach (var property in typeof(TObject).GetProperties())
+            {
+                var attr = property.GetCustomAttribute<TAttribute>();
+                if (attr == null)
+                    continue;
+
+                if (!property.CanWrite)
+                    throw new Exception($"{typeof(TAttribute).Name} does not have a setter");
+
+                result.Add(property, attr);
+            }
+
+            return result;
         }
     }
 }

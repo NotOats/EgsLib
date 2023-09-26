@@ -8,7 +8,7 @@ using System.Linq;
 namespace EgsLib.ConfigFiles
 {
     [EcfObject("Template", "+Template")]
-    public class Template : BaseConfig
+    public class Template : BaseConfig<Template>
     {
         [Flags]
         public enum Constructors
@@ -32,21 +32,16 @@ namespace EgsLib.ConfigFiles
             Stop
         }
 
-        [EcfField("Name")]
-        public string Name { get; private set; }
+        [EcfField] public string Name { get; private set; }
 
-
-        [EcfProperty("BaseItem")]
-        public bool? BaseItem { get; private set; }
+        [EcfProperty] public bool? BaseItem { get; private set; }
 
         [EcfProperty("DeconOverride", typeof(Template), "ParseDeconOverride")]
         public DeconstructorOverride DeconOverride { get; private set; }
 
-        [EcfProperty("OutputCount")]
-        public int? OutputCount { get; private set; }
+        [EcfProperty] public int? OutputCount { get; private set; }
 
-        [EcfProperty("CraftTime")]
-        public int? CraftTime { get; private set; }
+        [EcfProperty] public int? CraftTime { get; private set; }
 
         [EcfProperty("Target", typeof(Template), "ParseTarget")]
         public Constructors Target { get; private set; }

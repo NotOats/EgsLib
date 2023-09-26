@@ -8,29 +8,21 @@ using EgsLib.ConfigFiles.Ecf.Attributes;
 namespace EgsLib.ConfigFiles
 {
     [EcfObject("Token")]
-    public class Token : BaseConfig
+    public class Token : BaseConfig<Token>
     {
-        [EcfField("Id")]
-        public int Id { get; private set; }
+        [EcfField] public int Id { get; private set; }
 
-        [EcfField("Name")]
-        public string Name { get; private set; }
+        [EcfField] public string Name { get; private set; }
 
+        [EcfProperty] public string CustomIcon { get; private set; }
 
-        [EcfProperty("CustomIcon")]
-        public string CustomIcon { get; private set; }
+        [EcfProperty] public bool? DropOnDeath { get; private set; }
 
-        [EcfProperty("DropOnDeath")]
-        public bool? DropOnDeath { get; private set; }
+        [EcfProperty] public bool? RemoveOnUse { get; private set; }
 
-        [EcfProperty("RemoveOnUse")]
-        public bool? RemoveOnUse { get; private set; }
+        [EcfProperty] public string Description { get; private set; }
 
-        [EcfProperty("Description")]
-        public string Description { get; private set; }
-
-        [EcfProperty("MarketPrice")]
-        public PropertyDecorator<int>? MarketPrice { get; private set; }
+        [EcfProperty] public PropertyDecorator<int>? MarketPrice { get; private set; }
 
         public Token(IEcfObject obj) : base(obj)
         {

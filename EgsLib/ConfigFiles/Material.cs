@@ -8,11 +8,9 @@ using System.Linq;
 namespace EgsLib.ConfigFiles
 {
     [EcfObject("Material")]
-    public class Material : BaseConfig
+    public class Material : BaseConfig<Material>
     {
-        [EcfField("Name")]
-        public string Name { get; private set; }
-
+        [EcfField] public string Name { get; private set; }
 
         [EcfProperty("damage_category")]
         public string DamageCategory { get; private set; }
@@ -44,17 +42,13 @@ namespace EgsLib.ConfigFiles
         [EcfProperty("stability_glue")]
         public int? StabilityGlue { get; private set; }
 
-        [EcfProperty("Mass")]
-        public PropertyDecorator<float>? Mass { get; private set; }
+        [EcfProperty] public PropertyDecorator<float>? Mass { get; private set; }
 
-        [EcfProperty("Hardness")]
-        public PropertyDecorator<float>? Hardness { get; private set; }
+        [EcfProperty] public PropertyDecorator<float>? Hardness { get; private set; }
 
-        [EcfProperty("ExplosionHardness")]
-        public int? ExplosionHardness {  get; private set; }
+        [EcfProperty] public int? ExplosionHardness { get; private set; }
 
-        [EcfProperty("HitPoints")]
-        public PropertyDecorator<int>? HitPoints {  get; private set; }
+        [EcfProperty] public PropertyDecorator<int>? HitPoints { get; private set; }
 
         [EcfProperty("O2Content")]
         public PropertyDecorator<int>? OxygenContent { get; private set; }

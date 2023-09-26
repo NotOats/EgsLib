@@ -8,14 +8,11 @@ using System.Linq;
 namespace EgsLib.ConfigFiles
 {
     [EcfObject("LootGroup", "+LootGroup")]
-    public class LootGroup : BaseConfig
+    public class LootGroup : BaseConfig<LootGroup>
     {
-        [EcfField("Name")]
-        public string Name { get; private set; }
+        [EcfField] public string Name { get; private set; }
 
-
-        [EcfProperty("Count")]
-        public string Count { get; private set; }
+        [EcfProperty] public string Count { get; private set; }
 
         public IReadOnlyList<LootItem> Items { get; }
 
@@ -64,7 +61,7 @@ namespace EgsLib.ConfigFiles
             private static string SplitParam(string param)
             {
                 var parts = param.SplitWithQuotes(':').ToArray();
-                if(parts.Length != 2)
+                if (parts.Length != 2)
                     throw new FormatException("Invalid item param format in LootGroup");
 
                 return parts[1].Trim();
@@ -74,7 +71,7 @@ namespace EgsLib.ConfigFiles
             {
                 var parts = new List<string> { Name };
 
-                if(!string.IsNullOrWhiteSpace(Param1))
+                if (!string.IsNullOrWhiteSpace(Param1))
                     parts.Add($"param1: {Param1}");
 
                 if (!string.IsNullOrWhiteSpace(Param2))
