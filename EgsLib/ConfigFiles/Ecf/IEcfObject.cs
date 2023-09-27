@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime;
 
 namespace EgsLib.ConfigFiles.Ecf
 {
@@ -76,14 +78,29 @@ namespace EgsLib.ConfigFiles.Ecf
             if (!obj.Properties.TryGetValue(name, out string str) || str == null)
                 return false;
 
-            // Sometimes properties have encapsulating quotes
-            str = str.Trim(' ', '"');
+            // Only remove quotes if the underlying type isn't a PropertyDecorator which requires quotes in place
+            if (CheckUnderlyingType(type, typeof(PropertyDecorator<>)))
+                str = str.Trim();
+            else
+                str = str.Trim(' ', '"');
 
             if (!str.ConvertType(type, out object output))
                 return false;
 
             value = output;
             return true;
+        }
+
+        private static bool CheckUnderlyingType(Type objType, Type underlyingType)
+        {
+            // Compare names due to possible generics
+            if (objType.Name == underlyingType.Name)
+                return true;
+
+            if(objType.IsGenericType && objType.GenericTypeArguments.Any(t => CheckUnderlyingType(t, underlyingType)))
+                return true;
+
+            return false;
         }
     }
 }

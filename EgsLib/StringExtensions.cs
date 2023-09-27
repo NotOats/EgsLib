@@ -43,7 +43,7 @@ namespace EgsLib
                 throw new ArgumentException("double quotes can't be a separator", nameof(separators));
 
             var part = "";
-            var inQuotes = str[0] == '"';
+            var inQuotes = false;
 
             for (var i = 0; i < str.Length; i++)
             {

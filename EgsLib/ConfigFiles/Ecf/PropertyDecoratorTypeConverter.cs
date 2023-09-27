@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -9,7 +10,15 @@ namespace EgsLib.ConfigFiles.Ecf
     {
         private readonly static Regex TypeMatch = new Regex(@"type: ([^,|^\n]+)", RegexOptions.Compiled);
 
-        private readonly string _innerType;
+        private readonly static IReadOnlyDictionary<Type, string> TypeMap = new Dictionary<Type, string>
+        {
+            {typeof(int), "int"},
+            {typeof(float), "float"},
+            {typeof(bool), "bool"},
+            {typeof(string), "string"}
+        };
+
+        private readonly string _innerTypeName;
 
         public PropertyDecoratorTypeConverter(Type type)
         {
@@ -17,7 +26,11 @@ namespace EgsLib.ConfigFiles.Ecf
                 && type.GetGenericTypeDefinition() == typeof(PropertyDecorator<>)
                 && type.GetGenericArguments().Length == 1)
             {
-                _innerType = type.GetGenericArguments()[0].Name;
+                var innerType = type.GetGenericArguments()[0];
+                if (!TypeMap.TryGetValue(innerType, out string value))
+                    throw new NotSupportedException($"{type.Name} is not supported in PropertyDecorator<T>");
+
+                _innerTypeName = value;
             }
             else
             {
@@ -39,27 +52,26 @@ namespace EgsLib.ConfigFiles.Ecf
         private object CreateDecorator(string str)
         {
             // Default to generic type in PropertyDecorator
-            var type = _innerType;
+            var type = _innerTypeName;
 
             // Attempt to override with type in str
             var match = TypeMatch.Match(str);
             if (match.Success && match.Groups.Count == 2)
                 type = match.Groups[1].Value;
 
-
             switch (type)
             {
-                case "int":     // Pulled from ecf string
-                case "Int32":   // Pulled from ctor
+                case "int":
                     return new PropertyDecorator<int>(str);
 
-                case "float":   // Pulled from ecf string
-                case "Single":  // Pulled from ctor
+                case "float":
                     return new PropertyDecorator<float>(str);
 
-                case "bool":    // Pulled from ecf string
-                case "Boolean": // Pulled from ctor
+                case "bool":
                     return new PropertyDecorator<bool>(str);
+
+                case "string":
+                    return new PropertyDecorator<string>(str);
             }
 
 #if DEBUG
