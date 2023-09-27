@@ -56,6 +56,10 @@ namespace EgsLib.ConfigFiles.Ecf
                 case "float":   // Pulled from ecf string
                 case "Single":  // Pulled from ctor
                     return new PropertyDecorator<float>(str);
+
+                case "bool":    // Pulled from ecf string
+                case "Boolean": // Pulled from ctor
+                    return new PropertyDecorator<bool>(str);
             }
 
 #if DEBUG

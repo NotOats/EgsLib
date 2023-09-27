@@ -55,7 +55,7 @@ namespace EgsLib.ConfigFiles.Ecf
         {
             var lines = ReadFile(FilePath);
 
-            foreach (var line in lines.Select(CleanLine).Where(l => l != null))
+            foreach (var line in lines.Select(CleanLine).Where(l => !string.IsNullOrWhiteSpace(l)))
             {
                 if (ReadStart(line))
                     continue;
@@ -90,7 +90,7 @@ namespace EgsLib.ConfigFiles.Ecf
                 "",
                 RegexOptions.Multiline | RegexOptions.Compiled);
 
-            return contents.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+            return contents.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.RemoveEmptyEntries);
         }
 
         /// <summary>
@@ -98,17 +98,17 @@ namespace EgsLib.ConfigFiles.Ecf
         /// </summary>
         private static string CleanLine(string input)
         {
-            var output = input.Trim();
+            input = input.Trim();
 
             // ignore comments
             var comments = new[] { "#", "@", "=", "/*", "//" };
-            if (comments.Any(x => output.StartsWith(x)))
+            if (comments.Any(x => input.StartsWith(x, StringComparison.Ordinal)))
                 return null;
 
             // remove end of line comments
-            var parts = output.Split(new[] { "#", "@", "//" }, StringSplitOptions.None);
+            var parts = input.Split(new[] { "#", "@", "//" }, StringSplitOptions.None);
 
-            return !string.IsNullOrWhiteSpace(parts[0]) ? parts[0] : null;
+            return parts[0];
         }
 
         /// <summary>
@@ -142,32 +142,42 @@ namespace EgsLib.ConfigFiles.Ecf
                 if (_currentObject != null)
                     throw new FormatException("Can't start new object, one is already being processed");
 
-                var fields = ReadFields(extra).ToDictionary(x => x.Key, x => x.Value);
+                if (!ReadFields(extra, out Dictionary<string, string> fields))
+                    throw new FormatException("Failed to read ecf object fields");
+
                 _currentObject = new EcfObject(type, fields);
             }
 
             return true;
         }
 
-        private static IEnumerable<KeyValuePair<string, string>> ReadFields(string text)
+        private static bool ReadFields(string text, out Dictionary<string, string> fields)
         {
+            fields = new Dictionary<string, string>();
+
             var entries = text.SplitWithQuotes(',');
             foreach (var entry in entries)
             {
-                if (SplitEntry(entry, out string key, out string value))
-                    yield return new KeyValuePair<string, string>(key, value);
+                if (!SplitEntry(entry, out string key, out string value))
+                    return false;
+
+                fields.Add(key, value);
             }
+
+            return true;
         }
 
         private static bool SplitEntry(string text, out string key, out string value)
         {
-            var parts = text.Split(':');
+            key = null;
+            value = null;
 
-            if (parts.Length < 2)
-                throw new FormatException("Object entry is invalid");
+            var index = text.IndexOf(':');
+            if (index == -1)
+                return false;
 
-            key = parts[0].Trim();
-            value = string.Join(":", parts.Skip(1)).Trim();
+            key = text.Substring(0, index).Trim();
+            value = text.Substring(index + 1).Trim();
 
             return true;
         }
@@ -183,9 +193,7 @@ namespace EgsLib.ConfigFiles.Ecf
             obj = null;
 
             if (line[0] != '}')
-            {
                 return false;
-            }
 
             if (_currentObject == null)
                 throw new FormatException("Found end of object before start");
@@ -210,7 +218,7 @@ namespace EgsLib.ConfigFiles.Ecf
         /// <exception cref="FormatException">Thrown when the line is invalid</exception>
         private bool ReadProperty(string line)
         {
-            if (!SplitEntry(line, out string key, out string value))
+            if(!SplitEntry(line, out string key, out string value))
                 return false;
 
             if (_currentChild != null)

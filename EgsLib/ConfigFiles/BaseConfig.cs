@@ -82,13 +82,19 @@ namespace EgsLib.ConfigFiles
 
                 if (attr.Converter != null)
                 {
+                    // Read value
                     if (!obj.Properties.TryGetValue(attr.Name, out string value))
                         continue;
 
-                    if (!attr.Converter(value, out object output, prop.PropertyType))
-                        continue;
+                    // Process if not blank
+                    if(!string.IsNullOrWhiteSpace(value))
+                    {
+                        if (!attr.Converter(value, out object output, prop.PropertyType))
+                            continue;
 
-                    prop.SetValue(this, output);
+                        prop.SetValue(this, output);
+                    }
+
                     unparsed.Remove(attr.Name);
                 }
                 else if (obj.ReadProperty(attr.Name, out object output, prop.PropertyType))

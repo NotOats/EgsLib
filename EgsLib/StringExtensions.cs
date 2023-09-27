@@ -8,11 +8,14 @@ namespace EgsLib
     {
         public static IEnumerable<string> SplitWithQuotes(this string str, params char[] separators)
         {
+            if(string.IsNullOrEmpty(str))
+                throw new ArgumentNullException(nameof(str));
+
             if (separators.Contains('"'))
                 throw new ArgumentException("double quotes can't be a separator", nameof(separators));
 
             var part = "";
-            var inQuotes = str.StartsWith("\"");
+            var inQuotes = str[0] == '"';
 
             for (var i = 0; i < str.Length; i++)
             {
