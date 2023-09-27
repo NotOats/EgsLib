@@ -57,11 +57,10 @@ namespace EgsLib.ConfigFiles.Ecf
 
         private static T ConvertFromString(string input)
         {
-            var typeConverter = TypeDescriptor.GetConverter(typeof(T));
-            if (!typeConverter.CanConvertFrom(typeof(string)))
+            if(!input.ConvertType(typeof(T), out object output))
                 throw new InvalidCastException($"No converter specified for string -> {typeof(T)}");
 
-            return (T)typeConverter.ConvertFromString(input);
+            return (T)output;
         }
 
         public override string ToString()

@@ -6,35 +6,6 @@ using System.Text.RegularExpressions;
 
 namespace EgsLib.ConfigFiles.Ecf
 {
-    public interface IEcfChild
-    {
-        string Name { get; }
-        IReadOnlyDictionary<string, string> Properties { get; }
-    }
-
-    public interface IEcfObject
-    {
-        /// <summary>
-        /// The object's type
-        /// </summary>
-        string Type { get; }
-
-        /// <summary>
-        /// Fields that describe the object, found on the same line as object Type
-        /// </summary>
-        IReadOnlyDictionary<string, string> Fields { get; }
-
-        /// <summary>
-        /// Properties of the object
-        /// </summary>
-        IReadOnlyDictionary<string, string> Properties { get; }
-
-        /// <summary>
-        /// Child objects
-        /// </summary>
-        IReadOnlyCollection<IEcfChild> Children { get; }
-    }
-
     public class EcfFile
     {
         private EcfObject _currentObject = null;
