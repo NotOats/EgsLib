@@ -22,7 +22,9 @@ namespace EgsLib.ConfigFiles
             EcfPropertyCache = EcfPropertyAttribute.ReadProperties<TDerived>();
         }
 
-        public IReadOnlyDictionary<string, string> UnparsedProperties { get; }
+        private readonly Dictionary<string, string> _unparsed = new Dictionary<string, string>();
+
+        public IReadOnlyDictionary<string, string> UnparsedProperties => _unparsed;
 
         public IReadOnlyCollection<IEcfChild> UnparsedChildren { get; }
 
@@ -33,11 +35,16 @@ namespace EgsLib.ConfigFiles
                 throw new ArgumentException($"IEcfObject is not of type {string.Join(", ", EcfObjAttribute.Types)}", nameof(obj));
 
             SetFields(obj);
-            UnparsedProperties = SetProperties(obj);
+            _unparsed = SetProperties(obj);
 
             // TODO: Figure out child object parsing
             // For now let the inheriting class figure it out
             UnparsedChildren = obj.Children;
+        }
+
+        protected bool MarkAsParsed(string name)
+        {
+            return _unparsed.Remove(name);
         }
 
         private void SetFields(IEcfObject obj)
@@ -71,7 +78,7 @@ namespace EgsLib.ConfigFiles
                 throw new Exception($"IEcfObject contains unused fields: {string.Join(", ", unparsed)}");
         }
 
-        private IReadOnlyDictionary<string, string> SetProperties(IEcfObject obj)
+        private Dictionary<string, string> SetProperties(IEcfObject obj)
         {
             var unparsed = obj.Properties.ToDictionary(x => x.Key, x => x.Value);
 

@@ -48,9 +48,16 @@ namespace EgsLib.ConfigFiles
 
         public Trader(IEcfObject obj) : base(obj)
         {
-            Items = UnparsedProperties
+            var items = UnparsedProperties
                 .Where(kvp => kvp.Key.StartsWith("Item"))
-                .Select(kvp => new TraderItem(kvp.Value.Trim(' ', '"')))
+                .ToDictionary(x => x.Key, x => x.Value);
+
+            Items = items
+                .Select(kvp =>
+                {
+                    MarkAsParsed(kvp.Key);
+                    return new TraderItem(kvp.Value.Trim(' ', '"'));
+                })
                 .ToArray();
         }
 
@@ -66,7 +73,7 @@ namespace EgsLib.ConfigFiles
             return ecf.ParseObjects().Select(obj => new Trader(obj));
         }
 
-        public readonly struct TraderItem : IEquatable<TraderItem>
+        public class TraderItem : IEquatable<TraderItem>
         {
             /// <summary>
             /// The item's name

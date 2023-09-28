@@ -18,10 +18,17 @@ namespace EgsLib.ConfigFiles
 
         public LootGroup(IEcfObject obj) : base(obj)
         {
-            Items = UnparsedProperties
-                .OrderBy(kvp => kvp.Key)
+            var items = UnparsedProperties
                 .Where(kvp => kvp.Key.StartsWith("Item_"))
-                .Select(kvp => new LootItem(kvp.Value))
+                .ToDictionary(x => x.Key, x => x.Value);
+
+            Items = items
+                .OrderBy(kvp => kvp.Key)
+                .Select(kvp =>
+                {
+                    MarkAsParsed(kvp.Key);
+                    return new LootItem(kvp.Value);
+                })
                 .ToArray();
         }
 
