@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
-namespace EgsLib
+namespace EgsLib.Extensions
 {
     internal static class StringExtensions
     {
@@ -12,19 +12,19 @@ namespace EgsLib
 
         public static bool ConvertType(this string str, Type outputType, out object output)
         {
-            if(outputType == typeof(string))
+            if (outputType == typeof(string))
             {
                 output = str;
                 return true;
             }
 
-            if(!ConverterCache.TryGetValue(outputType, out TypeConverter converter))
+            if (!ConverterCache.TryGetValue(outputType, out TypeConverter converter))
             {
                 converter = TypeDescriptor.GetConverter(outputType);
                 ConverterCache.TryAdd(outputType, converter);
             }
 
-            if(converter.CanConvertFrom(typeof(string)))
+            if (converter.CanConvertFrom(typeof(string)))
             {
                 output = converter.ConvertFrom(str);
                 return true;
@@ -36,7 +36,7 @@ namespace EgsLib
 
         public static IEnumerable<string> SplitWithQuotes(this string str, params char[] separators)
         {
-            if(string.IsNullOrEmpty(str))
+            if (string.IsNullOrEmpty(str))
                 throw new ArgumentNullException(nameof(str));
 
             if (separators.Contains('"'))

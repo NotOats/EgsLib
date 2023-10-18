@@ -1,5 +1,6 @@
 ﻿using EgsLib.ConfigFiles.Ecf;
 using EgsLib.ConfigFiles.Ecf.Attributes;
+using EgsLib.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;

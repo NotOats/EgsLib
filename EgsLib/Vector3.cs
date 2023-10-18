@@ -5,6 +5,8 @@ namespace EgsLib
 {
     public readonly struct Vector3<T> : IEquatable<Vector3<T>>
     {
+        public static Vector3<T> Default = new Vector3<T>(default, default, default);
+
         public T X { get; }
         public T Y { get; }
         public T Z { get; }
@@ -23,10 +25,7 @@ namespace EgsLib
 
         public override bool Equals(object obj)
         {
-            if (obj is Vector3<T> other)
-                return Equals(other);
-
-            return false;
+            return obj is Vector3<T> other && Equals(other);
         }
 
         public bool Equals(Vector3<T> other)
@@ -38,11 +37,7 @@ namespace EgsLib
 
         public override int GetHashCode()
         {
-            int hashCode = -307843816;
-            hashCode = hashCode * -1521134295 + EqualityComparer<T>.Default.GetHashCode(X);
-            hashCode = hashCode * -1521134295 + EqualityComparer<T>.Default.GetHashCode(Y);
-            hashCode = hashCode * -1521134295 + EqualityComparer<T>.Default.GetHashCode(Z);
-            return hashCode;
+            return HashCode.Combine(X, Y, Z);
         }
 
         public static bool operator ==(Vector3<T> left, Vector3<T> right)
