@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFrameworks>net7.0;net48</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EgsLib\EgsLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\Resources\**\*.*">
+      <Link>Resources\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
