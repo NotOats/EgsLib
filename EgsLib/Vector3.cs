@@ -37,7 +37,11 @@ namespace EgsLib
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(X, Y, Z);
+            int hashCode = -307843816;
+            hashCode = hashCode * -1521134295 + EqualityComparer<T>.Default.GetHashCode(X);
+            hashCode = hashCode * -1521134295 + EqualityComparer<T>.Default.GetHashCode(Y);
+            hashCode = hashCode * -1521134295 + EqualityComparer<T>.Default.GetHashCode(Z);
+            return hashCode;
         }
 
         public static bool operator ==(Vector3<T> left, Vector3<T> right)
