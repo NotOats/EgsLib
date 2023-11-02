@@ -1,6 +1,8 @@
 ﻿using ICSharpCode.SharpZipLib.Zip;
 using System;
 using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace EgsLib.Blueprints
 {
@@ -84,11 +86,15 @@ namespace EgsLib.Blueprints
         private BlueprintBlockData ReadBlockData(BinaryReader reader)
         {
             // Older versions read until the end of file while newer ones support terrain data after block data
-            var length = checked((int)(reader.BaseStream.Length - reader.BaseStream.Position));
+            int length;
             if(Header.Version > 22)
             {
                 length = reader.ReadInt32();
                 reader.ReadBytes(2); // Unknown/garbage
+            }
+            else
+            {
+                length = (int)(reader.BaseStream.Length - reader.BaseStream.Position);
             }
 
             var bytes = reader.ReadBytes(length);
@@ -97,14 +103,36 @@ namespace EgsLib.Blueprints
             bytes[0] = (byte)'P';
             bytes[1] = (byte)'K';
 
-            using (var compressed = new MemoryStream(bytes, false))
-            using (var zipStream = new ZipInputStream(compressed))
+            var compressed = new MemoryStream(bytes, writable: false);
+            using (var zipFile = new ZipFile(compressed, leaveOpen: false))
             {
-                zipStream.GetNextEntry();
+                var entry = zipFile.Cast<ZipEntry>()
+                    .FirstOrDefault(e => e.IsFile && e.Name == "0");
 
-                using (var zipReader = new BinaryReader(zipStream))
+                // TODO: Better error handling for missing block data, low priority since this shouldn't be possible
+                if (entry == null)
+                    return null;
+
+                Stream stream = null;
+                BinaryReader zipReader = null;
+
+                try
                 {
+                    stream = zipFile.GetInputStream(entry);
+                    zipReader = new BinaryReader(stream);
+
                     return new BlueprintBlockData(zipReader, Header);
+                }
+                catch(ZipException)
+                {
+                    // Thrown on malformed zip entry which seems to be an issue with some files
+                    // Notably: CV_New, HV_New, SV_New
+                    return null;
+                }
+                finally
+                {
+                    zipReader?.Dispose();
+                    stream?.Dispose();
                 }
             }
         }

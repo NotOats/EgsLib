@@ -22,8 +22,10 @@ namespace EgsLib.Benchmark.Blueprints
 
         public BlueprintReader()
         {
+            var searchPath = Path.Combine(ProgramFolder, @"Resources\Blueprints");
+
             _blueprintFiles = Directory
-                .EnumerateFiles(Path.Combine(ProgramFolder, @"Resources\Blueprints"), "*.epb")
+                .EnumerateFiles(searchPath, "*.epb")
                 .ToList();
         }
 

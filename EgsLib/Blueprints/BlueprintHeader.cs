@@ -185,9 +185,12 @@ namespace EgsLib.Blueprints
                 Statistics = new Statistics(reader, Version);
             }
 
-            if (Version > 27 & reader.ReadBoolean())
+            if (Version > 27)
             {
-                BlockMap = ReadBlockMap(reader);
+                var readable = reader.ReadBoolean();
+
+                if(readable)
+                    BlockMap = ReadBlockMap(reader);
             }
 
             if (Version > 10)
