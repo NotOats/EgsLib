@@ -7,7 +7,14 @@ using System.Reflection;
 
 namespace EgsLib.ConfigFiles
 {
-    public abstract class BaseConfig<TDerived> where TDerived : BaseConfig<TDerived> 
+    public interface IBaseConfig
+    {
+        IReadOnlyDictionary<string, string> UnparsedProperties { get; }
+        IReadOnlyCollection<IEcfChild> UnparsedChildren { get; }
+    }
+
+    public abstract class BaseConfig<TDerived> : IBaseConfig 
+        where TDerived : BaseConfig<TDerived>
     {
         private static readonly IReadOnlyDictionary<PropertyInfo, EcfFieldAttribute> EcfFieldCache;
         private static readonly IReadOnlyDictionary<PropertyInfo, EcfPropertyAttribute> EcfPropertyCache;

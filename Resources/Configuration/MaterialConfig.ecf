@@ -1,0 +1,664 @@
+/* *** damage_category = dirt, stone, rock, wood, plants, woodblock, concrete, metal, metalhard, hull, hullarmored, hullcombat => damage bonus from multipliers
+*** damage_category for building blocks: woodblock, concrete, hull, hullarmored, hullcombat
+*** damage_category for devices: metal, metalhard
+*** damage_category for resources: resourcesoft, resourcemedium, resourcehard (currently not working)
+*** damage_category for terrain: dirt, stone
+*** damage_category for terrain deco: rock, wood, plants (for small plants and all player growable plants)
+*** when adding a new damage_category, do not forget to add it also to drill and other weapons with dmg multipliers
+*** surface_category = alien, dirt, metal, human, stone, wood, water => determines the sound and particle effect on impact
+*** stepsound = dirt, grass, plants, metal, sand, stone, water */
+
+# hullarmored, hullcombat = cannot be destroyed by most handheld weapons
+
+# SI: current max length of a horizontal beam = 12 blocks 
+# stability_glue / mass = max number of blocks in a row that will not break apart due to SI. 
+
+# Vermillion's Note: As of 1.4.3 explosion damage calculation is incorrectly scaled by default and with ExplosionHardness
+# The values used here were tested to be as close to their accurate intended damage values with 19 being the standard 0.
+
+
+{ Material Name: air
+  collidable: false
+  lightopacity: 0
+}
+
+# Liquids
+{ Material Name: water
+  damage_category: water
+  surface_category: water
+  stepsound: water
+  liquid: true
+  collidable: false
+  lightopacity: 3
+  stability_glue: 10
+  Mass: 0, type: float, display: true, formatter: Kilogram
+  O2Content: 80, type: int, display: true
+}
+{ Material Name: lava
+  damage_category: water
+  surface_category: water
+  particle_category: water
+  stepsound: water
+  liquid: true
+  collidable: false
+  lightopacity: 3
+  stability_glue: 10
+  Mass: 0, type: float, display: true, formatter: Kilogram
+  /* O2Content: 80, type: int, display: true       */
+}
+
+/* *** Terrain surface */
+{ Material Name: grass
+  damage_category: dirt
+  surface_category: dirt
+  particle_category: dirt
+  particle_destroy_category: dirt
+  stepsound: grass
+  fertile_level: 1
+  stability_glue: 2
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  ExplosionHardness: 50
+  HitPoints: 10, type: int, display: true
+}
+{ Material Name: snow
+  damage_category: dirt
+  surface_category: snow
+  particle_category: snow
+  particle_destroy_category: snow
+  stepsound: snow
+  fertile_level: 1
+  stability_glue: 120
+  Mass: 3, type: float, display: true, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  ExplosionHardness: 50
+  HitPoints: 5, type: int, display: true
+  O2Content: 50, type: int, display: true
+}
+{ Material Name: sand
+  damage_category: dirt
+  surface_category: dirt
+  particle_category: dirt
+  particle_destroy_category: dirt
+  stepsound: sand
+  fertile_level: 2
+  stability_glue: 120
+  Mass: 8, type: float, display: true, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  ExplosionHardness: 50
+  HitPoints: 10, type: int, display: true
+}
+{ Material Name: dirt
+  damage_category: dirt
+  surface_category: dirt
+  stepsound: dirt
+  fertile_level: 2
+  stability_glue: 120
+  Mass: 10, type: float, display: true, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  ExplosionHardness: 50
+  HitPoints: 20, type: int, display: true
+}
+{ Material Name: stone
+  damage_category: stone
+  surface_category: stone
+  stepsound: stone
+  fertile_level: 1
+  stability_glue: 120
+  Mass: 12, type: float, display: true, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  ExplosionHardness: 50
+  HitPoints: 40, type: int, display: true
+}
+{ Material Name: resourcesoft
+  damage_category: resourcesoft
+  surface_category: stone
+  particle_category: stone
+  particle_destroy_category: stone
+  stepsound: stone
+  fertile_level: 1
+  stability_glue: 120
+  Mass: 12, type: float, display: true, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  ExplosionHardness: 50
+  HitPoints: 80, type: int, display: true
+}
+{ Material Name: resourcemedium
+  damage_category: resourcemedium
+  surface_category: stone
+  particle_category: stone
+  particle_destroy_category: stone
+  stepsound: stone
+  fertile_level: 1
+  stability_glue: 120
+  Mass: 12, type: float, display: true, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  ExplosionHardness: 50
+  HitPoints: 110, type: int, display: true
+}
+{ Material Name: resourcehard
+  damage_category: resourcehard
+  surface_category: stone
+  particle_category: stone
+  particle_destroy_category: stone
+  stepsound: stone
+  fertile_level: 1
+  stability_glue: 120
+  Mass: 12, type: float, display: true, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  ExplosionHardness: 50
+  HitPoints: 150, type: int, display: true
+}
+{ Material Name: bedrock
+  damage_category: stone
+  surface_category: stone
+  particle_category: stone
+  particle_destroy_category: stone
+  stepsound: stone
+  stability_glue: 110
+  Mass: 15, type: float, display: true, formatter: Kilogram
+  Hardness: 10000, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: true
+}  
+  
+
+
+/* *** Building Blocks */
+# Alien building block and 1 terrain: AlienGreen -> has O2 content
+{ Material Name: alien
+  damage_category: hullcombat
+  surface_category: dirt
+  particle_category: dirt
+  particle_destroy_category: stone
+  stepsound: grass
+  stability_glue: 200
+  Mass: 10, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness   
+  HitPoints: 150, type: int, display: false
+  O2Content: 30, type: int, display: false
+  ExplosionHardness: 21
+}
+
+/* only building block with lower hardness value */
+{ Material Name: woodblock
+  damage_category: woodblock
+  surface_category: wood
+  particle_category: wood
+  particle_destroy_category: wood
+  stepsound: wood
+  stability_glue: 600
+  Mass: 30, type: float, display: false, formatter: Kilogram
+  Hardness: 5, type: float, display: false, formatter: Hardness
+  HitPoints: 10, type: int, display: false
+}
+{ Material Name: concrete
+  damage_category: concrete
+  surface_category: stone
+  particle_category: stone
+  particle_destroy_category: stone
+  stepsound: stone
+  stability_glue: 24000
+  Mass: 2000, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+  ExplosionHardness: 25
+}
+{ Material Name: concretearmored
+  damage_category: concrete
+  surface_category: stone
+  particle_category: stone
+  particle_destroy_category: stone
+  stepsound: stone
+  stability_glue: 26000
+  Mass: 2000, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 2200, type: int, display: false 
+  ExplosionHardness: 50
+}
+{ Material Name: metallight
+  damage_category: metal
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 1000      # due to solar panel stability
+  Mass: 20, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 25, type: int, display: false
+}
+{ Material Name: metal
+  damage_category: metal
+  surface_category: metal
+  stepsound: metal
+  stability_glue: 200
+  Mass: 20, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 50, type: int, display: false
+}
+{ Material Name: metalhard
+  damage_category: metalhard
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 200
+  Mass: 20, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 80, type: int, display: false
+}
+{ Material Name: plastic
+  damage_category: plastic
+  surface_category: stone  
+  particle_category: stone
+  particle_destroy_category: metal
+  stepsound: wood
+  stability_glue: 1280
+  Mass: 80, type: float, display: false, formatter: Kilogram
+  Hardness: 10, type: float, display: false, formatter: Hardness
+  HitPoints: 25, type: int, display: false
+  ExplosionHardness: 28
+}
+# Hulllight is no longer used by the current blocksets
+{ Material Name: hulllight
+  damage_category: hull
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 960
+  Mass: 80, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 25, type: int, display: false
+}
+{ Material Name: hull
+  damage_category: hull
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 2040
+  Mass: 120, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 50, type: int, display: false
+}
+{ Material Name: hullarmored
+  damage_category: hullarmored
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 31200
+  Mass: 2400, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 1600, type: int, display: false
+  ExplosionHardness: 22
+}
+{ Material Name: hullcombat
+  damage_category: hullcombat
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 53200
+  Mass: 3800, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 3500, type: int, display: false
+  ExplosionHardness: 24
+}
+
+/* Items */
+{ Material Name: metalweapon
+  damage_category: metal
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 100
+  Mass: 20, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 20, type: int, display: false
+}
+{ Material Name: metalitem
+  damage_category: metal
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 100
+  Mass: 10, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 20, type: int, display: false
+}
+
+/* Used in items */
+
+{ Material Name: human
+  damage_category: human
+  surface_category: human
+  stepsound: grass
+  fertile_level: 1
+  stability_glue: 2
+  Mass: 1, type: float, display: false, formatter: Kilogram
+  Hardness: 1, type: float, display: false, formatter: Hardness
+  HitPoints: 10, type: int, display: false
+}
+
+/* *** All other materials */
+# Used for GrowingPotSteel and GrowingPotConcrete
+{ Material Name: fertile
+  damage_category: metal     /* necessary because weapons should be able to destroy block */
+  surface_category: wood
+  particle_category: wood
+  particle_destroy_category: wood
+  stepsound: dirt
+  fertile_level: 10
+  stability_glue: 2000
+  Mass: 120, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 25, type: int, display: false
+}
+# Test: Could be used for GrowingPotWood
+{ Material Name: fertilelow
+  damage_category: metal     /* necessary because weapons should be able to destroy block */
+  surface_category: wood
+  particle_category: wood
+  particle_destroy_category: wood
+  stepsound: dirt
+  fertile_level: 4
+  stability_glue: 2000
+  Mass: 120, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 25, type: int, display: false
+}
+
+# For all growable plants 
+# Can be destroyed with weapons 
+{ Material Name: plants
+  damage_category: plants
+  surface_category: wood
+  particle_category: wood
+  particle_destroy_category: wood
+  stepsound: plants
+  stability_glue: 120
+  Mass: 1, type: float, display: false, formatter: Kilogram
+  Hardness: 1, type: float, display: false, formatter: Hardness
+  HitPoints: 25, type: int, display: false
+  plant: true
+}
+
+# For terrain deco stones
+{ Material Name: rock
+  damage_category: rock
+  surface_category: stone
+  particle_category: stone
+  particle_destroy_category: rocksmall
+  stepsound: stone
+  fertile_level: 1
+  stability_glue: 120
+  Mass: 10, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  ExplosionHardness: 50
+  HitPoints: 50, type: int, display: false
+}
+
+{ Material Name: rockhard
+  damage_category: rock
+  surface_category: stone
+  particle_category: stone
+  particle_destroy_category: rock
+  stepsound: stone
+  fertile_level: 1
+  stability_glue: 120
+  Mass: 10, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  ExplosionHardness: 50
+  HitPoints: 500, type: int, display: false
+}
+# For all terrain plants, trees etc
+{ Material Name: wood
+  damage_category: wood
+  surface_category: wood
+  stepsound: wood
+  stability_glue: 25
+  Mass: 5, type: float, display: false, formatter: Kilogram
+  Hardness: 1, type: float, display: false, formatter: Hardness
+  HitPoints: 120, type: int, display: false
+}
+{ Material Name: woodsoft
+  damage_category: wood
+  surface_category: wood
+  particle_category: wood
+  particle_destroy_category: wood
+  stepsound: wood
+  stability_glue: 25
+  Mass: 5, type: float, display: false, formatter: Kilogram
+  Hardness: 1, type: float, display: false, formatter: Hardness
+  HitPoints: 70, type: int, display: false
+}
+{ Material Name: woodhard
+  damage_category: wood
+  surface_category: wood
+  particle_category: wood
+  particle_destroy_category: wood
+  stepsound: wood
+  stability_glue: 25
+  Mass: 5, type: float, display: false, formatter: Kilogram
+  Hardness: 1, type: float, display: false, formatter: Hardness
+  HitPoints: 150, type: int, display: false
+}
+# ===================
+# Reforged Materials
+# ===================
+{ Material Name: hullsmall
+  damage_category: hull
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 2040
+  Mass: 16, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+  ExplosionHardness: 20
+}
+{ Material Name: hullarmoredsmall
+  damage_category: hull
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 5000
+  Mass: 32, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 250, type: int, display: false
+  ExplosionHardness: 24
+}
+{ Material Name: hullcombatsmall
+  damage_category: hull
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 12000
+  Mass: 64, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 450, type: int, display: false
+  ExplosionHardness: 28
+}
+{ Material Name: hullsteel
+  damage_category: hullarmored
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 12000
+  Mass: 1000, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 750, type: int, display: false
+  ExplosionHardness: 19
+}
+{ Material Name: device
+  damage_category: metal
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 4000
+  Mass: 100, type: float, display: false, formatter: Kilogram
+  Hardness: 10, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+  ExplosionHardness: 50
+}
+{ Material Name: weapon
+  damage_category: metalhard
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 4000
+  Mass: 100, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+}
+{ Material Name: thruster
+  damage_category: metalhard
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 4000
+  Mass: 100, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+  ExplosionHardness: 22
+}
+{ Material Name: hullalien
+  damage_category: alien
+  surface_category: dirt
+  particle_category: dirt
+  particle_destroy_category: stone
+  stepsound: grass
+  stability_glue: 40000
+  Mass: 2500, type: float, display: false, formatter: Kilogram
+  Hardness: 15, type: float, display: false, formatter: Hardness   
+  HitPoints: 7500, type: int, display: false
+  ExplosionHardness: 50
+}
+{ Material Name: foundation
+  damage_category: foundation
+  surface_category: stone
+  particle_category: stone
+  particle_destroy_category: stone
+  stepsound: stone
+  stability_glue: 70000
+  Mass: 3500, type: float, display: false, formatter: Kilogram
+  Hardness: 200, type: float, display: false, formatter: Hardness
+  HitPoints: 1000, type: int, display: false
+  ExplosionHardness: 100
+}
+
+
+# ============================================================================================================================================================================
+# ========================================================================================================================== Project Eden Custom Materials
+# ============================================================================================================================================================================
+
+{ Material Name: edensalvaget1
+  damage_category: edensalvaget1
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 6000
+  Mass: 500, type: float, display: false, formatter: Kilogram
+  Hardness: 500, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+}
+
+{ Material Name: edensalvaget2
+  damage_category: edensalvaget2
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 6000
+  Mass: 500, type: float, display: false, formatter: Kilogram
+  Hardness: 500, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+}
+
+{ Material Name: edensalvaget3
+  damage_category: edensalvaget3
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 6000
+  Mass: 500, type: float, display: false, formatter: Kilogram
+  Hardness: 500, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+}
+
+{ Material Name: edenadmin
+  damage_category: edenadmin
+  surface_category: metal
+  particle_category: metal
+  particle_destroy_category: metal
+  stepsound: metal
+  stability_glue: 6000
+  Mass: 500, type: float, display: false, formatter: Kilogram
+  Hardness: 10000, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+}
+
+{ Material Name: edenvoidium
+  damage_category: edenvoidium
+  # surface_category: metal
+  surface_category: water
+  # particle_category: metal
+  particle_category: water
+  particle_destroy_category: alien
+  stepsound: metal
+  stability_glue: 6000
+  Mass: 500, type: float, display: false, formatter: Kilogram
+  Hardness: 1000, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+}
+
+{ Material Name: edenvoidiumt2
+  damage_category: edenvoidiumt2
+  # surface_category: metal
+  surface_category: water
+  # particle_category: metal
+  particle_category: water
+  particle_destroy_category: alien
+  stepsound: metal
+  stability_glue: 6000
+  Mass: 500, type: float, display: false, formatter: Kilogram
+  Hardness: 1000, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+}
+
+{ Material Name: edenice
+  damage_category: edenice
+  # surface_category: metal
+  surface_category: water
+  # particle_category: metal
+  particle_category: water
+  particle_destroy_category: alien
+  stepsound: metal
+  stability_glue: 6000
+  Mass: 500, type: float, display: false, formatter: Kilogram
+  Hardness: 2000, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+}
+
+{ Material Name: edenrich
+  damage_category: edenrich
+  surface_category: stone
+  particle_category: stone
+  particle_destroy_category: stone
+  stepsound: stone
+  stability_glue: 6000
+  Mass: 500, type: float, display: false, formatter: Kilogram
+  Hardness: 2000, type: float, display: false, formatter: Hardness
+  HitPoints: 100, type: int, display: false
+}

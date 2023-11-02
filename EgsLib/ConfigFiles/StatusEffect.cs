@@ -91,6 +91,9 @@ namespace EgsLib.ConfigFiles
             Modifiers = UnparsedChildren
                 .Select(child => new StatusEffectModifier(child))
                 .ToArray();
+
+            // Weirdly this object has a name field and property, they seem to be the same value.
+            MarkAsParsed("Name");
         }
 
         public static IEnumerable<StatusEffect> ReadFile(string filePath)

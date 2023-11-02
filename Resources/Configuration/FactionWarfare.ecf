@@ -1,0 +1,1772 @@
+# Documentation
+#
+# ** SPACE BASE DEFENSE **
+# > SBD is global for a faction for an POI in terms of ships use. You cannot set up a specific ship to spawn for a specific POI with SBD
+# > Tip: if you want to EXCLUDE a POI from the SBD, use:
+# >       SpaceDefenseOverrideDefaults: True
+# >       SpaceDefenseProbability: 1.0
+# >       SpaceDefensePriceMinMax: [ 30, 60 ] 
+# >       in the playfield yaml! You can also use the same parameter to have a fixed SD probability between 0-1. If not set, the Ai manager will make the decision
+# =========================================================================
+
+
+#  ************************************************************************** 
+#  ****************     ZIRAX BASE ATTACK Survival    *********************** 
+#  ************************************************************************** 
+
+
+
+#FactionSettings - Conersion of level number to attack wave price
+#Unit  - definition of a single unit, that can be then used in scenario. Units are assigned to a unit catgegory, that can contain diferent strengths of the same 
+#      unit type (small minigun drone, medium minigun drne...)
+#Scenario - defines a composition of an attack. Can be used automatically by BaseAttack system or manualy in PDA scernario.
+
+{ Element Name: GlobalSettings
+  EnableSpaceDefenseLog: False
+  EnableSpaceDefense: True
+}
+
+{ Element Name: FactionSettings
+  Faction: Zirax
+  ScenarioGroup: Zirax
+  Lvl1MinPrice:50
+  Lvl1MaxPrice:75
+  Lvl5MinPrice:250
+  Lvl5MaxPrice:375
+  Lvl10MinPrice:500
+  Lvl10MaxPrice:750
+  
+  #SD = SpaceDefense
+  #if the trigger for defense is triggered, will we have rainforcments?
+  #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
+  SDScenarioGroup: ZiraxSpaceDefense
+  SDProbabilityMin: 0.30
+  SDProbabilityMax: 0.80
+  #strength of the reinforcments, they will come in in 1 to 3 stages (waves)
+  SDPriceMin: 50 #Price on level 1
+  SDPriceMax: 500 #Price on level 10 
+}
+
+{ Element Name: FactionSettings 
+  Faction: Talon
+  ScenarioGroup: Talon
+  Lvl1MinPrice:80
+  Lvl1MaxPrice:120
+  Lvl10MinPrice:800
+  Lvl10MaxPrice:1200
+}
+
+{ Element Name: FactionSettings
+  Faction: Polaris
+  ScenarioGroup: Polaris
+  Lvl1MinPrice:50
+  Lvl1MaxPrice:75
+  Lvl5MinPrice:250
+  Lvl5MaxPrice:375
+  Lvl10MinPrice:500
+  Lvl10MaxPrice:750
+  
+  #SD = SpaceDefense
+  #if the trigger for defense is triggered, will we have rainforcments?
+  #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
+  SDScenarioGroup: PolarisSpaceDefense
+  SDProbabilityMin: 0.30
+  SDProbabilityMax: 0.80
+  #strength of the reinforcments, they will com in in 1 to 3 stages (waves)
+  SDPriceMin: 50 #Price on level 1
+  SDPriceMax: 250 #Price on level 10 
+}
+
+{ Element Name: FactionSettings
+  Faction: TheLegacy
+  ScenarioGroup: Alien
+  #Planetary base attack is currently only for Talon and Zirax
+  Lvl1MinPrice:50
+  Lvl1MaxPrice:75
+  Lvl5MinPrice:250
+  Lvl5MaxPrice:375
+  Lvl10MinPrice:500
+  Lvl10MaxPrice:750
+  
+  #SD = SpaceDefense
+  #if the trigger for defense is triggered, will we have rainforcments?
+  #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
+  SDScenarioGroup: TheLegacySpaceDefense
+  SDProbabilityMin: 0.80
+  SDProbabilityMax: 0.90
+  #strength of the reinforcments, they will com in in 1 to 3 stages (waves)
+  SDPriceMin: 100 #Price on level 1
+  SDPriceMax: 700 #Price on level 10 
+}
+
+{ Element Name: FactionSettings
+  Faction: Pirates
+  ScenarioGroup: Pirates
+  #Planetary base attack is currently only for Talon and Zirax
+  Lvl1MinPrice:50
+  Lvl1MaxPrice:75
+  Lvl5MinPrice:250
+  Lvl5MaxPrice:375
+  Lvl10MinPrice:500
+  Lvl10MaxPrice:750
+  
+  #SD = SpaceDefense
+  #if the trigger for defense is triggered, will we have rainforcments?
+  #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
+  SDScenarioGroup: PiratesSpaceDefense
+  SDProbabilityMin: 0.6
+  SDProbabilityMax: 0.9
+  #strength of the reinforcments, they will com in in 1 to 3 stages (waves)
+  SDPriceMin: 25 #Price on level 1
+  SDPriceMax: 200 #Price on level 10 
+}
+
+{ Element Name: FactionSettings
+  Faction: Trader
+  ScenarioGroup: Trader
+  Lvl1MinPrice:50
+  Lvl1MaxPrice:75
+  Lvl5MinPrice:250
+  Lvl5MaxPrice:375
+  Lvl10MinPrice:500
+  Lvl10MaxPrice:750
+  
+  #SD = SpaceDefense
+  #if the trigger for defense is triggered, will we have rainforcments?
+  #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
+  SDScenarioGroup: TraderSpaceDefense
+  SDProbabilityMin: 0.10
+  SDProbabilityMax: 0.60
+  #strength of the reinforcments, they will com in in 1 to 3 stages (waves)
+  SDPriceMin: 50 #Price on level 1
+  SDPriceMax: 300 #Price on level 10 
+}
+{ Element Name: FactionSettings
+  Faction: Kriel
+  ScenarioGroup: Kriel
+  Lvl1MinPrice:50
+  Lvl1MaxPrice:75
+  Lvl5MinPrice:250
+  Lvl5MaxPrice:375
+  Lvl10MinPrice:500
+  Lvl10MaxPrice:750
+  
+  #SD = SpaceDefense
+  #if the trigger for defense is triggered, will we have rainforcments?
+  #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
+  SDScenarioGroup: KrielSpaceDefense
+  SDProbabilityMin: 0.30
+  SDProbabilityMax: 0.90
+  #strength of the reinforcments, they will come in in 1 to 3 stages (waves)
+  SDPriceMin: 50 #Price on level 1
+  SDPriceMax: 600 #Price on level 10 
+}
+
+
+#  ***************************************************** 
+#  ****************     UNITS    *********************** 
+#  ***************************************************** 
+
+#Unit definition
+#{ Element Name: Unit 
+#  Faction: Zirax     				   faction of this unit.
+#  ClassName: DroneBaseAttackRocket    class from EClassConfig or ItemConfig
+#  Category: DroneRocketSurv           category name. A category can contain multiple units of different strength. system will choose the best for requested price
+#                                        - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone
+#  CommandPointsLvl1: 8                price of the unit at lvl 1
+#  CommandPointsPerLevel: 1.53         price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel
+#  { Child InventoryItem1               unit can use inventory, usefull for troop transports or talon shamans
+#    ClassName: ZiraxMinigunBaseAttack  class from EClassConfig or ItemConfig
+#	  CountLvl1: 2                        amount of items on level 1
+#	  CountPerLevel: 0.6                  amount of units added per parent level
+#	  LevelOnLvl1: 1                      level of units on parent level1
+#	  LevelPerParentLevel:0.24            level of units per parent level
+#  }   
+#}
+
+
+/* Heavy Rocket Drone */
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneBaseAttackRocket
+  Category: DroneRocketSurv
+  CommandPointsLvl1: 12
+  CommandPointsPerLevel: 1.50
+}
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneBaseAttackMinigun
+  Category: DroneMinigunSurv
+  CommandPointsLvl1: 8
+  CommandPointsPerLevel: 1.0
+}
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneBaseAttackHeavyMinigun
+  Category: DroneHeavyMinigunSurv
+  CommandPointsLvl1: 10
+  CommandPointsPerLevel: 1.0
+}
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneBaseAttackHeavyRocket
+  Category: DroneHeavyRocketSurv
+  CommandPointsLvl1: 14
+  CommandPointsPerLevel: 1.5
+}
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneBomberAttackBase
+  Category: DroneBomberSurv
+  CommandPointsLvl1: 25
+  CommandPointsPerLevel: 3.0
+}
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: LightBomberBase
+  Category: LightBomberSurv
+  CommandPointsLvl1: 21
+  CommandPointsPerLevel: 2.5
+}
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneTroopsTransportBaseAttackSmall
+  Category: TroopTransportSurvSmall
+  CommandPointsLvl1: 12
+  CommandPointsPerLevel: 2.5  
+  
+  { Child InventoryItem1
+    ClassName: ZiraxMinigunBaseAttack
+	CountLvl1: 2
+	CountPerLevel: 1.0
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.20
+  }   
+}
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneTroopsTransportBaseAttack
+  Category: TroopTransportSurv
+  CommandPointsLvl1: 24
+  CommandPointsPerLevel: 2.5  
+  
+  { Child InventoryItem1
+    ClassName: ZiraxMinigunBaseAttack
+	CountLvl1: 2
+	CountPerLevel: 1.5
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.20
+  }
+}
+#  ***************************************************** 
+#  **************     SCENARIOS    ********************* 
+#  ***************************************************** 
+
+#Scenarios definition
+#Scenario - defines a composition of an attack. Can be used automatically by BaseAttack system or manualy in PDA scernario.
+
+#{ Element Name: Scenario
+#  Name: Surv1                     name of the scenario, used with console command for testing
+#  ID: 2001						   a unique ID of the scenario
+#  IsInGroups: "Zirax"             group that the scenario belongs to, it can be in multiple groups
+#									 this is used to group a set of scenarios together. Then you can ask for the best scenario for 
+#                                    given price form the group
+#  MaxPriceMultiplier: 3           maximal price is calculated from the optimal unit count on max level. Ths multiplier allows the system to add 
+#									 more units to the group, increasing the real max. price	
+#  
+#  //the system will calculate a price for each unit at MinLevel for optimal count. Then it will convert the price to % of the wave price.
+#  // then, when it knows, how many % of the wave should a unit use, it will look at the requested wave price, and calculate, what shouldbe the unit price
+#  // It will then select a unit from requested category of fitting level to fill in a candicate.
+#  // The candiate is then added to the attack wave
+#   
+#  { Child Unit1                         unit definition
+#    Category: DroneRocketSurv           we want a unit from this unit category
+#    RequestedUnitStrengthMultiplier: 2  we want to use stronger unit - the price request will be bigger, resulting in higher level unit or stronger unit
+#	  OptimalCount: 1					 how many units should there be in ideal wave? - this can be different in reality
+#  }
+#  { Child Unit2
+#    Category: DroneMinigunSurv
+#	  OptimalCount: 2
+#	  MaxLevel: 3						 we want to limit the maximal level of the unit. For higher price we prefer multiple units over stronger units
+#										  warnign - it can choose bigger unit from the category, we need an option to limit that for low level waves
+#  }    
+#}
+
+# Example calculation:
+# Unit1 minPrice = lvl1 price * RequestedUnitStrengthMultiplier = 8 * 2 = 16
+# Unit1 maxPrice = lvl10 price * RequestedUnitStrengthMultiplier = (8 + 9 * 1.53) * 2 = 21.77 * 2 = 43.54
+# Unit2 minPrice = lvl1 price * RequestedUnitStrengthMultiplier = 7 * 1 = 7
+# Unit2 maxPrice = lvl3 price * RequestedUnitStrengthMultiplier = 7 * 1 = 7 + 2 * 1.06 = 9.12
+# WaveMinPrice = unit1MinPrice * OptimalCount + unit2MinPrice * OptimalCount = 16 + 7 * 2 = 30
+# WaveMaxPrice = unit1MaxPrice * OptimalCount + unit2MaxPrice * OptimalCount = 43.54 + 9.12 * 2 = 61.78
+# 
+# now the system continues with the requested price, if you want to spawn a wave worth of 40 points
+#  - it will calculate the % price of the ideal minimal wave for each unit. Unit1 = 7/30 = 23.3%, unit2 = 16/30 = 53.3%
+#  - now it will calculate requested unit price for each unit  (Unit1 - 23% of 40 points = 9.2, unit2 - 21.32 point
+#  - now it will select candidates for each unit - it will be probably level2 or level3 unit
+#  - it will then choose a candidate and add it to the wave. It can be unit1 or unit2 candidate
+#  - with one candidate selected, it will select new candidates for each unit, considering, how many points it has to use.
+#  - when all points are used up, the system will return the scenario with a list of units so they can be spawned
+
+# Only TT
+{ Element Name: Scenario
+  Name: Surv0
+  ID: 2000
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 2
+  
+  { Child Unit1
+    Category: TroopTransportSurv
+	OptimalCount: 1
+	RequestedUnitStrengthMultiplier: 1
+	MinCount: 1 
+	MaxLevel: 5
+  }   
+}
+
+# Only drones - same amount of MD and RD
+{ Element Name: Scenario
+  Name: Surv1
+  ID: 2001
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 3
+  
+  { Child Unit1
+    Category: DroneRocketSurv
+	OptimalCount: 1
+	MaxLevel: 5
+  }
+  { Child Unit2
+    Category: DroneMinigunSurv
+	OptimalCount: 1
+	MaxLevel: 5
+  }    
+}
+
+# Mixed scenario with more MD and few RD (low level)
+{ Element Name: Scenario     
+  Name: Surv2
+  ID: 2002
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 2
+  
+  { Child Unit1
+    Category: TroopTransportSurvSmall
+	OptimalCount: 1	
+	MinCount: 1
+	MaxLevel: 10
+  }   
+  { Child Unit2
+    Category: DroneMinigunSurv
+	OptimalCount: 1	
+	MaxLevel: 5
+  }    
+  { Child Unit3
+    Category: DroneRocketSurv
+	OptimalCount: 1
+	MaxLevel: 5
+  }
+}
+# Mixed scenario with more MD and few RD (high level)
+{ Element Name: Scenario     
+  Name: Surv3
+  ID: 2003
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 3
+  
+  { Child Unit1
+    Category: TroopTransportSurv
+	OptimalCount: 2	
+	MinCount: 2
+	MaxLevel: 10
+  }   
+  { Child Unit2
+    Category: DroneHeavyMinigunSurv
+	OptimalCount: 3	
+    MinCount: 1
+	MaxLevel: 5
+  }    
+  { Child Unit3
+    Category: DroneHeavyRocketSurv
+	OptimalCount: 2	
+	MaxLevel: 5
+  }
+}
+# RG Heavy Bomber Squadron (high level)
+{ Element Name: Scenario     
+  Name: Surv5
+  ID: 2004
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 3
+  
+  { Child Unit1
+    Category: DroneBomberSurv
+	OptimalCount: 1
+	MinCount: 1
+	MaxLevel: 2
+  }
+  { Child Unit2
+    Category: DroneMinigunSurv
+	OptimalCount: 1	
+	MaxLevel: 5
+  }
+}
+# RG Invasion Force (high level)
+{ Element Name: Scenario     
+  Name: Surv6
+  ID: 2005
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 2
+  
+  { Child Unit1
+    Category: TroopTransportSurv
+	OptimalCount: 4
+	MinCount: 2
+	MaxLevel: 7
+  }
+}
+# RG Bomber Squadron
+{ Element Name: Scenario
+  Name: Surv7
+  ID: 2006
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 2
+  
+  { Child Unit1
+    Category: LightBomberSurv
+	OptimalCount: 2
+	MinCount: 2
+	MaxLevel: 3
+  }   
+}
+# RG Gunship Rocket Attack
+{ Element Name: Scenario
+  Name: Surv8
+  ID: 2007
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 2
+  
+  { Child Unit1
+    Category: DroneHeavyRocketSurv
+	OptimalCount: 1
+	MinCount: 1
+	MaxLevel: 5
+  }   
+}
+# RG Gunship Minigun Attack
+{ Element Name: Scenario
+  Name: Surv9
+  ID: 2008
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 2
+  
+  { Child Unit1
+    Category: DroneHeavyMinigunSurv
+	OptimalCount: 1
+	MinCount: 1
+	MaxLevel: 5
+  }   
+  { Child Unit2
+    Category: DroneMinigunSurv
+	OptimalCount: 1	
+	MaxLevel: 5
+  }
+}
+
+{ Element Name: Scenario     
+  Name: Surv10
+  ID: 2009
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 2
+  
+  { Child Unit1
+    Category: TroopTransportSurvSmall
+	OptimalCount: 2	
+	MinCount: 2
+	MaxLevel: 5
+  }   
+  { Child Unit2
+    Category: LightBomberSurv
+	OptimalCount: 1	
+	MaxLevel: 3
+  }
+}
+
+{ Element Name: Scenario     
+  Name: Surv11
+  ID: 2010
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 2
+  
+  { Child Unit1
+    Category: DroneMinigunSurv
+	OptimalCount: 2	
+	MinCount: 2
+	MaxLevel: 5
+  }   
+  { Child Unit2
+    Category: LightBomberSurv
+	OptimalCount: 1	
+	MaxLevel: 3
+  }
+}
+
+{ Element Name: Scenario     
+  Name: Surv12
+  ID: 2011
+  IsInGroups: "Zirax"   # group name
+  MaxPriceMultiplier: 2
+  
+  { Child Unit1
+    Category: DroneMinigunSurv
+	OptimalCount: 1	
+	MinCount: 1
+	MaxLevel: 5
+  }
+  { Child Unit2
+    Category: DroneRocketSurv
+	OptimalCount: 1	
+	MinCount: 1
+	MaxLevel: 3
+  }
+  { Child Unit3
+    Category: LightBomberSurv
+	OptimalCount: 1	
+	MaxLevel: 3
+  }
+}
+
+//  ************************************************************************** 
+//  ****************     Talon BASE ATTACK All types    ********************** 
+//  ************************************************************************** 
+{ Element Name: Unit
+  Faction: Talon
+  ClassName: UnitGroupStrength1
+  Category: TalonShamanUnit1
+  CommandPointsLvl1: 20
+  CommandPointsPerLevel: 7
+  
+  { Child InventoryItem1
+    ClassName: TalonGuardianBaseAttack
+	UsageType: ShamanGuard
+	CountLvl1: 2
+	CountPerLevel: 0.5
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.5
+  }   
+  { Child InventoryItem2
+    ClassName: TalonGuardianShamanBaseAttack
+	UsageType: Shaman
+	CountLvl1: 1
+	CountPerLevel: 0.0
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.4
+  }
+  { Child InventoryItem3
+    ClassName: TalonSpider01
+	UsageType: ShamanSpawn
+	CountLvl1: 3
+	CountPerLevel: 0.25
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.7
+  }  
+  { Child InventoryItem4
+    ClassName: TalonGuardianBaseAttack
+	UsageType: BaseGuard
+	CountLvl1: 1
+	CountPerLevel: 0.5
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.5
+  }     
+}
+//Stronger Units
+{ Element Name: Unit
+  Faction: Talon
+  ClassName: UnitGroupStrength2
+  Category: TalonShamanUnit2
+  CommandPointsLvl1: 30
+  CommandPointsPerLevel: 10
+  
+  { Child InventoryItem1
+    ClassName: TalonGuardianBaseAttack
+	UsageType: ShamanGuard
+	CountLvl1: 1
+	CountPerLevel: 0.5
+	LevelOnLvl1: 5
+	LevelPerParentLevel:0.5
+  }   
+  { Child InventoryItem2
+    ClassName: TalonGuardianShamanBaseAttack
+	UsageType: Shaman
+	CountLvl1: 2
+	CountPerLevel: 0.0
+	LevelOnLvl1: 5
+	LevelPerParentLevel:0.5
+  }
+  { Child InventoryItem3
+    ClassName: TalonSpider03
+	UsageType: ShamanSpawn
+	CountLvl1: 3
+	CountPerLevel: 0.25
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.7
+  }  
+  { Child InventoryItem4
+    ClassName: TalonCrawler
+	UsageType: ShamanSpawn
+	CountLvl1: 3
+	CountPerLevel: 0.25
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.7
+  }    
+  { Child InventoryItem5
+    ClassName: TalonGuardianBaseAttack
+	UsageType: BaseGuard
+	CountLvl1: 2
+	CountPerLevel: 0.25
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.5
+  }       
+}
+
+{ Element Name: Unit
+  Faction: Talon
+  ClassName: UnitGroupStrength3
+  Category: TalonShamanUnit3
+  CommandPointsLvl1: 35
+  CommandPointsPerLevel: 10
+  
+  { Child InventoryItem1
+    ClassName: TalonGuardianBaseAttack
+	UsageType: ShamanGuard
+	CountLvl1: 5
+	CountPerLevel: 0.5
+	LevelOnLvl1: 20
+	LevelPerParentLevel:0.2
+  }   
+  { Child InventoryItem2
+    ClassName: TalonGuardianShamanBaseAttack
+	UsageType: Shaman
+	CountLvl1: 1
+	CountPerLevel: 0.0
+	LevelOnLvl1: 20
+	LevelPerParentLevel:0.0
+  }
+  { Child InventoryItem3
+    ClassName: TalonCaveWormGrey
+	UsageType: ShamanSpawn
+	CountLvl1: 3
+	CountPerLevel: 0.05
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.75
+  }  
+  { Child InventoryItem4
+    ClassName: TalonPangolin
+	UsageType: ShamanSpawn
+	CountLvl1: 3
+	CountPerLevel: 0.20
+	LevelOnLvl1: 1
+	LevelPerParentLevel:1
+  }    
+  { Child InventoryItem5
+    ClassName: TalonGuardianBaseAttack
+	UsageType: BaseGuard
+	CountLvl1: 2
+	CountPerLevel: 0.5
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.25
+  }     
+}
+
+/* Faction independent wave definition*/
+
+{ Element Name: Scenario
+  Name: Talon1
+  AttackType: BaseAttack_TalonShamans
+  IsInGroups: "Talon"   # group name
+  ID: 1000
+  { Child Unit1
+    Category: TalonShamanUnit1
+	OptimalCount: 1
+  }  
+}
+
+{ Element Name: Scenario
+  Name: Talon2
+  AttackType: BaseAttack_TalonShamans
+  IsInGroups: "Talon"   # group name
+  MaxPriceMultiplier: 1.0
+  ID: 1001
+  { Child Unit1
+    Category: TalonShamanUnit2
+	OptimalCount: 2
+  }  
+}
+
+{ Element Name: Scenario
+  Name: Talon3
+  AttackType: BaseAttack_TalonShamans
+  IsInGroups: "Talon"   # group name
+  MaxPriceMultiplier: 1.0
+  ID: 1002
+  { Child Unit1
+    Category: TalonShamanUnit3
+	OptimalCount: 3
+  }  
+}
+
+//  ************************************************************************** 
+//  ****************     Zirax BaseAttack Scenario      ********************** 
+//  ************************************************************************** 
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneBaseAttackRocket
+  Category: DroneRocket
+  CommandPointsLvl1: 3
+  CommandPointsPerLevel: 3
+}
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneBaseAttackMinigun
+  Category: DroneMinigun
+  CommandPointsLvl1: 6
+  CommandPointsPerLevel: 3
+}
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneTroopsTransportBaseAttack
+  Category: TroopTransportSmall
+  CommandPointsLvl1: 1
+  CommandPointsPerLevel: 1
+  
+  { Child InventoryItem1
+    ClassName: ZiraxMinigunBaseAttack
+	CountLvl1: 2
+	CountPerLevel: 0.35
+	LevelOnLvl1: 1
+	LevelPerParentLevel:1.0
+  }   
+  
+  { Child InventoryItem2
+    ClassName: ZiraxShotgunBaseAttack
+	CountLvl1: 3
+	CountPerLevel: 0.35
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.75
+  }
+}
+
+{ Element Name: Unit
+  Faction: Zirax
+  ClassName: DroneTroopsTransportBaseAttack
+  Category: TroopTransport
+  CommandPointsLvl1: 1
+  CommandPointsPerLevel: 1
+  
+  { Child InventoryItem1
+    ClassName: ZiraxMinigunBaseAttack
+	CountLvl1: 2
+	CountPerLevel: 0.5
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.4
+  }   
+  
+  { Child InventoryItem2
+    ClassName: ZiraxShotgunBaseAttack
+	CountLvl1: 3
+	CountPerLevel: 0.4
+	LevelOnLvl1: 1
+	LevelPerParentLevel:0.2
+  }
+}
+
+
+{ Element Name: Scenario
+  Name: Level1  /* Used for debugging and PDA calls: console command: ba w Level1 15 */
+  ID: 0 /* Used for debugging and PDA calls: console command: ba w 1 15 */
+
+  { Child Unit2
+    Category: TroopTransport
+	OptimalCount: 1
+  }   
+}
+
+{ Element Name: Scenario
+  Name: Level2
+  ID: 1
+  { Child Unit1
+    Category: DroneRocket
+	OptimalCount: 6
+  }  
+  { Child Unit2
+    Category: DroneMinigun
+	OptimalCount: 5
+  }   
+  { Child Unit3
+    Category: TroopTransport
+	OptimalCount: 2
+  }   
+}
+
+{ Element Name: Scenario
+  Name: Level3
+  ID: 2
+  { Child Unit1
+    Category: DroneRocket
+	OptimalCount: 8
+	MinCount: 8
+  }  
+  { Child Unit2
+    Category: DroneMinigun
+	OptimalCount: 7
+	MinCount: 7
+  }   
+  { Child Unit3
+    Category: TroopTransport
+	OptimalCount: 3
+	MinCount: 3
+  }   
+}
+
+{ Element Name: Scenario
+  Name: TT
+  ID: 3
+  MaxPriceMultiplier: 3
+  
+  { Child Unit1
+    Category: TroopTransport
+	OptimalCount: 2
+	MinCount: 1
+  }   
+}
+
+/* Base attack scenario waves */
+{ Element Name: Scenario
+  /* Used for debugging and PDA calls: console command: ba w Level1 15 */
+  Name: BALevel0  
+  ID: 500
+  MaxPriceMultiplier: 2
+  { Child Unit1
+    /* Unit category, the system will choose the right unity for each wave depending on the price */
+    Category: TroopTransportSmall 
+	OptimalCount: 1
+    MinCount: 1
+  }   
+  { Child Unit2
+    Category: DroneMinigun 
+	OptimalCount:3
+	MinCount: 2    
+  }   
+}
+
+{ Element Name: Scenario
+  Name: BALevel1  
+  ID: 501
+  MaxPriceMultiplier: 5
+  { Child Unit1
+    Category: TroopTransportSmall 
+	OptimalCount: 1
+    MinCount: 1
+  }   
+  { Child Unit2
+    Category: DroneMinigun 
+	OptimalCount:3
+	MinCount: 2    
+  }   
+}
+
+{ Element Name: Scenario
+  Name: BALevel2 
+  ID: 502
+  MaxPriceMultiplier: 2
+  { Child Unit1
+    Category: TroopTransportSmall 
+	OptimalCount:1
+	MinCount: 1    
+  }   
+  { Child Unit2
+    Category: DroneRocket 
+	OptimalCount:3
+	MinCount: 2    
+  } 
+}
+
+{ Element Name: Scenario
+  Name: BALevel3
+  ID: 503
+  { Child Unit1
+    Category: TroopTransportSmall 
+	OptimalCount:1
+	MinCount: 1    
+  }   
+  { Child Unit2
+    Category: DroneRocket 
+	OptimalCount:2
+	MinCount: 1    
+  } 
+  { Child Unit3
+    Category: DroneMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }    
+}
+
+{ Element Name: Scenario
+  Name: BALevel10  
+  MaxPriceMultiplier: 2
+  ID: 510
+  { Child Unit1
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2  
+  }  
+  { Child Unit2
+    Category: DroneMinigun 
+	OptimalCount:5
+	MinCount: 2    
+  }
+  { Child Unit3
+    Category: DroneRocket 
+	OptimalCount:5
+	MinCount: 2    
+  } 
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }   
+}
+
+{ Element Name: Scenario
+  Name: BALevel11 
+  MaxPriceMultiplier: 2
+  ID: 511
+  { Child Unit1
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }    
+  { Child Unit2
+    Category: DroneMinigun 
+	OptimalCount:5
+	MinCount: 2    
+  }
+  { Child Unit3
+    Category: DroneRocket 
+	OptimalCount:5
+	MinCount: 2    
+  }  
+  { Child Unit4
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+}
+
+{ Element Name: Scenario
+  Name: BALevel12
+  MaxPriceMultiplier: 2
+  ID: 512
+  { Child Unit1
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }    
+  { Child Unit2
+    Category: DroneMinigun 
+	OptimalCount:5
+	MinCount: 2    
+  }
+  { Child Unit3
+    Category: DroneRocket 
+	OptimalCount:5
+	MinCount: 2    
+  } 
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+  { Child Unit5
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+}
+
+{ Element Name: Scenario
+  Name: BALevel13
+  MaxPriceMultiplier: 2
+  ID: 513
+  { Child Unit1
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }    
+  { Child Unit2
+    Category: DroneMinigun 
+	OptimalCount:5
+	MinCount: 2    
+  }
+  { Child Unit3
+    Category: DroneRocket 
+	OptimalCount:5
+	MinCount: 2    
+  } 
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+  { Child Unit5
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+}
+
+{ Element Name: Scenario
+  Name: BALevel20
+  ID: 520 
+  { Child Unit1
+    Category: DroneMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }    
+  { Child Unit2
+    Category: DroneRocket 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+  { Child Unit3
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:4
+	MinCount: 2  
+  }   
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:4
+	MinCount: 2  
+  }  
+  { Child Unit5
+    Category: DroneBomberSurv 
+	OptimalCount:3
+	MinCount: 2    
+  }   
+  { Child Unit6
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }  
+}
+{ Element Name: Scenario
+  Name: BALevel21
+  ID: 521
+  { Child Unit1
+    Category: DroneMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }    
+  { Child Unit2
+    Category: DroneRocket 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+  { Child Unit3
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:4
+	MinCount: 2  
+  }   
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:4
+	MinCount: 2  
+  }  
+  { Child Unit5
+    Category: DroneBomberSurv 
+	OptimalCount:3
+	MinCount: 2    
+  }   
+  { Child Unit6
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }  
+}
+{ Element Name: Scenario
+  Name: BALevel22
+  ID: 522 
+  { Child Unit1
+    Category: DroneMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }    
+  { Child Unit2
+    Category: DroneRocket 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+  { Child Unit3
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:4
+	MinCount: 2  
+  }   
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:4
+	MinCount: 2  
+  }  
+  { Child Unit5
+    Category: DroneBomberSurv 
+	OptimalCount:3
+	MinCount: 2    
+  }   
+  { Child Unit6
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }  
+}
+{ Element Name: Scenario
+  Name: BALevel23
+  ID: 523
+  { Child Unit1
+    Category: DroneMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }    
+  { Child Unit2
+    Category: DroneRocket 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+  { Child Unit3
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:4
+	MinCount: 2  
+  }   
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:4
+	MinCount: 2  
+  }  
+  { Child Unit5
+    Category: DroneBomberSurv 
+	OptimalCount:3
+	MinCount: 2    
+  }   
+  { Child Unit6
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }  
+}
+
+{ Element Name: Scenario
+  Name: BALevel30
+  ID: 530
+  { Child Unit1
+    Category: DroneMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }    
+  { Child Unit2
+    Category: DroneRocket 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+  { Child Unit3
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:4
+	MinCount: 2  
+  }   
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:4
+	MinCount: 2  
+  }  
+  { Child Unit5
+    Category: DroneBomberSurv 
+	OptimalCount:3
+	MinCount: 2    
+  }   
+  { Child Unit6
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }  
+}
+{ Element Name: Scenario
+  Name: BALevel31
+  ID: 531
+  { Child Unit1
+    Category: DroneMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }    
+  { Child Unit2
+    Category: DroneRocket 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+  { Child Unit3
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:4
+	MinCount: 2  
+  }   
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:4
+	MinCount: 2  
+  }  
+  { Child Unit5
+    Category: DroneBomberSurv 
+	OptimalCount:3
+	MinCount: 2    
+  }   
+  { Child Unit6
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }  
+}
+{ Element Name: Scenario
+  Name: BALevel32
+  ID: 532 
+  { Child Unit1
+    Category: DroneMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }    
+  { Child Unit2
+    Category: DroneRocket 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+  { Child Unit3
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:4
+	MinCount: 2  
+  }   
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:4
+	MinCount: 2  
+  }  
+  { Child Unit5
+    Category: DroneBomberSurv 
+	OptimalCount:3
+	MinCount: 2    
+  }   
+  { Child Unit6
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }  
+}
+{ Element Name: Scenario
+  Name: BALevel33
+  ID: 533
+  { Child Unit1
+    Category: DroneMinigun 
+	OptimalCount:2
+	MinCount: 1    
+  }    
+  { Child Unit2
+    Category: DroneRocket 
+	OptimalCount:2
+	MinCount: 1    
+  }  
+  { Child Unit3
+    Category: DroneHeavyRocketSurv 
+	OptimalCount:4
+	MinCount: 2  
+  }   
+  { Child Unit4
+    Category: DroneBaseAttackHeavyMinigun 
+	OptimalCount:4
+	MinCount: 2  
+  }  
+  { Child Unit5
+    Category: DroneBomberSurv 
+	OptimalCount:3
+	MinCount: 2    
+  }   
+  { Child Unit6
+    Category: TroopTransportSmall 
+	OptimalCount:3
+	MinCount: 2    
+  }  
+}
+
+//  ************************************************************************** 
+//  ****************     Space Base Defense Zirax       ********************** 
+//  ************************************************************************** 
+
+
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: SpaceDroneLaser   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 5              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: SpaceDronePlasma   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 5              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: SDS_Zunat   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 40              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: SDS_Periat   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 60             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 3          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: SDS_Imerat   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 80             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 5          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: RPV_XenuCutterT2   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 10              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: RPV_EpsilonCutterT2   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 10              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: RPV_RadosCutterT2   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 10              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: SDS_Tovera
+  Category: BaseDefenseOrbitVessel
+  CommandPointsLvl1: 120
+  CommandPointsPerLevel: 5
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: SDS_KamiratXenu
+  Category: BaseDefenseOrbitVessel
+  CommandPointsLvl1: 70
+  CommandPointsPerLevel: 5
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: SDS_KamiratEpsilon
+  Category: BaseDefenseOrbitVessel
+  CommandPointsLvl1: 70
+  CommandPointsPerLevel: 5
+}
+# Fleet Combat Scenario
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: SDS_Zrx-Battlefleet01
+  Category: BaseDefenseOrbitVessel
+  CommandPointsLvl1: 170
+  CommandPointsPerLevel: 5
+}
+{ Element Name: Unit 
+  Faction: Zirax
+  ClassName: SDS_Zrx-Battlefleet02
+  Category: BaseDefenseOrbitVessel
+  CommandPointsLvl1: 250
+  CommandPointsPerLevel: 5
+}
+
+
+{ Element Name: Scenario
+  Name: BD1
+  ID: 1200
+  IsInGroups: "ZiraxSpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 3
+  }
+}
+
+{ Element Name: Scenario
+  Name: BD2
+  ID: 1201
+  IsInGroups: "ZiraxSpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 1
+  }
+}
+
+{ Element Name: Scenario
+  Name: BD3
+  ID: 1202
+  IsInGroups: "ZiraxSpaceDefense"
+  MaxPriceMultiplier: 3
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 9
+  }
+}
+
+//  ************************************************************************** 
+//  ****************     Space Base Defense Polaris       ********************** 
+//  ************************************************************************** 
+
+
+{ Element Name: Unit 
+  Faction: Polaris
+  ClassName: ROPV_PolarisCorvetteKF762   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 25             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Polaris
+  ClassName: ROPV_PolarisFrigateVG220   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 50             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 3          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Polaris
+  ClassName: ROPV_PolarisDestroyerSM612   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 100             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 5          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+
+{ Element Name: Unit 
+  Faction: Polaris
+  ClassName: SDS_Pol-Battlefleet01
+  Category: BaseDefenseOrbitVessel
+  CommandPointsLvl1: 250
+  CommandPointsPerLevel: 5
+}
+
+{ Element Name: Scenario
+  Name: SDPOL1
+  ID: 1300
+  IsInGroups: "PolarisSpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 3
+  }
+}
+
+{ Element Name: Scenario
+  Name: SDPOL2
+  ID: 1301
+  IsInGroups: "PolarisSpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 1
+  }
+}
+
+//  ************************************************************************** 
+//  ****************     Space Base Defense Alien       ********************** 
+//  ************************************************************************** 
+
+{ Element Name: Unit 
+  Faction: TheLegacy
+  ClassName: SDS_Decimator   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 100              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 10          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: TheLegacy
+  ClassName: SDS_Infector   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 75             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 5          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: TheLegacy
+  ClassName: SDS_Devastator   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 100             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 5          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: TheLegacy
+  ClassName: SDS_Eradicator   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 150             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 5          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+
+
+{ Element Name: Scenario
+  Name: BD1A
+  ID: 1400
+  IsInGroups: "TheLegacySpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 5
+  }
+}
+
+{ Element Name: Scenario
+  Name: BD2A
+  ID: 1401
+  IsInGroups: "TheLegacySpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 2
+  }
+}
+
+//  ************************************************************************** 
+//  ****************     Space Base Defense Pirates     ********************** 
+//  ************************************************************************** 
+
+{ Element Name: Unit 
+  Faction: Pirates
+  ClassName: ROPV_PirateCorvetteT1A   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 10              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Pirates
+  ClassName: ROPV_PirateCorvetteT1B   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 15             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Pirates
+  ClassName: ROPV_PirateCorvetteT1C   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 15             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Pirates
+  ClassName: ROPV_PirateCorvetteT1D   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 15             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Pirates
+  ClassName: ROPV_PiratesQuinMerac   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 20             /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+
+
+
+{ Element Name: Scenario
+  Name: BD1P
+  ID: 1500
+  IsInGroups: "PiratesSpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 5
+  }
+}
+
+{ Element Name: Scenario
+  Name: BD2P
+  ID: 1501
+  IsInGroups: "PiratesSpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 2
+  }
+}
+
+//  ************************************************************************** 
+//  ****************     Space Base Defense Trader     ********************** 
+//  ************************************************************************** 
+
+{ Element Name: Unit 
+  Faction: Trader
+  ClassName: OPV_Trader   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 20              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+
+
+
+{ Element Name: Scenario
+  Name: BD1T
+  ID: 1600
+  IsInGroups: "TraderSpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 3
+  }
+}
+
+{ Element Name: Scenario
+  Name: BD2T
+  ID: 1601
+  IsInGroups: "TraderSpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 1
+  }
+}
+
+
+//  ************************************************************************** 
+//  ****************     Space Base Defense Kriel     ********************** 
+//  ************************************************************************** 
+
+{ Element Name: Unit 
+  Faction: Kriel
+  ClassName: ROPV_KrielAccipiter   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 80              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Kriel
+  ClassName: ROPV_KrielBeholderT1   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 80              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Kriel
+  ClassName: ROPV_KrielOverseerT1   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 80              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Kriel
+  ClassName: ROPV_KrielShade   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 80              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+{ Element Name: Unit 
+  Faction: Kriel
+  ClassName: ROPV_KrielSubjugator   /* class from EClassConfig or ItemConfig or .epb name for vessels (without the .epb) */
+  Category: BaseDefenseOrbitVessel  /* category name. A category can contain multiple units of different strength. system will choose the best for requested price
+                                    /*  - SmallMinigunDone, MediumMinigunDrone, HeavyMinigunDrone */
+  CommandPointsLvl1: 80              /* price of the unit at lvl 1 */
+  CommandPointsPerLevel: 1          /* price per level, final price = CommandPointsLvl1 + level * CommandPointsPerLevel */
+}
+
+
+
+{ Element Name: Scenario
+  Name: BD1K
+  ID: 1700
+  IsInGroups: "KrielSpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 3
+  }
+}
+
+{ Element Name: Scenario
+  Name: BD2K
+  ID: 1701
+  IsInGroups: "KrielSpaceDefense"
+  MaxPriceMultiplier: 2
+  AttackType: BaseDefense_Space
+  
+  { Child Unit1
+    Category: BaseDefenseOrbitVessel
+	OptimalCount: 1
+  }
+}

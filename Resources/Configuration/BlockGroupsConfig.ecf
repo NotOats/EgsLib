@@ -1,0 +1,134 @@
+# Define a custom Block Group string that should be applied to given blocks. That allows better
+# balancing of block groups, for example turrets.
+# Only works with blocks that have an index.
+# The Blocks you define here will all respect the MaxCount given here but still respect
+# their individual MaxCount limits set at the block itself (BlocksConfig.ecf).
+# Make sure to show your changes to the user by adding for example
+# BlockGroupMaxCount,Max in group,,,,,,,,,,,,,,,,
+# SVWeapons,Total SV Weapons {0},,,,,,,,,,,,,,,,
+# in your Localization.csv
+# Apart from that nothing needs to be added to the BlocksConfig.ecf
+
+# { BlockGroup Name: SVWeapons
+#   MaxCount: 3
+#   Blocks: "WeaponSV01,WeaponSV02,WeaponSV03"
+# }
+
+# { BlockGroup Name: CVWeapons
+#   MaxCount: 8
+#   Blocks: "WeaponCV01,WeaponCV02"
+# }
+
+
+{ BlockGroup Name: Eden_MaxWindTurbines
+  MaxCount: 16
+  Blocks: "Eden_WindTurbineIdle,Eden_WindTurbineActive,Eden_WindTurbineActiveT2"
+}
+
+{ BlockGroup Name: Eden_MaxGeoPower
+  MaxCount: 4
+  Blocks: "Eden_GeothermalGeneratorActive"
+}
+
+{ BlockGroup Name: Eden_MaxAuxiliaryCores
+  MaxCount: 10
+  Blocks: "Eden_AuxillaryDummy,Eden_AuxillaryCPUBA,Eden_AuxillaryPowerBA,Eden_AuxillaryShieldBA"
+}
+
+
+# CPU Extenders
+# Block limit groups for CPU HV CPU Extenders
+{ BlockGroup Name: CPULimitHVT2
+  MaxCount: 1
+  Blocks: "CPUExtenderHVT2"
+}
+{ BlockGroup Name: CPULimitHVT3
+  MaxCount: 2
+  Blocks: "CPUExtenderHVT3"
+}
+{ BlockGroup Name: CPULimitHVT4
+  MaxCount: 5
+  Blocks: "CPUExtenderHVT4"
+}
+
+# Block limit groups for CPU SV CPU Extenders
+{ BlockGroup Name: CPULimitSVT2
+  MaxCount: 1
+  Blocks: "CPUExtenderSVT2"
+}
+{ BlockGroup Name: CPULimitSVT3
+  MaxCount: 2
+  Blocks: "CPUExtenderSVT3"
+}
+{ BlockGroup Name: CPULimitSVT4
+  MaxCount: 5
+  Blocks: "CPUExtenderSVT4"
+}
+
+# Block limit groups for CPU CV CPU Extenders
+{ BlockGroup Name: CPULimitCVT2
+  MaxCount: 1
+  Blocks: "CPUExtenderCVT2"
+}
+{ BlockGroup Name: CPULimitCVT3
+  MaxCount: 2
+  Blocks: "CPUExtenderCVT3"
+}
+{ BlockGroup Name: CPULimitCVT4
+  MaxCount: 5
+  Blocks: "CPUExtenderCVT4"
+}
+
+# Block limit groups for CPU BA CPU Extenders
+{ BlockGroup Name: CPULimitBAT2
+  MaxCount: 1
+  Blocks: "CPUExtenderBAT2"
+}
+{ BlockGroup Name: CPULimitBAT3
+  MaxCount: 2
+  Blocks: "CPUExtenderBAT3"
+}
+{ BlockGroup Name: CPULimitBAT4
+  MaxCount: 5
+  Blocks: "CPUExtenderBAT4"
+}
+
+
+# Shield Upgrades
+# Large Shield Capacitors
+{ BlockGroup Name: ShieldLimitLargeCapT1
+  MaxCount: 4
+  Blocks: "ShieldCapacitorLarge"
+}
+{ BlockGroup Name: ShieldLimitLargeCapT2
+  MaxCount: 4
+  Blocks: "ShieldCapacitorT2Large"
+}
+{ BlockGroup Name: ShieldLimitLargeChargerT3
+  MaxCount: 4
+  Blocks: "ShieldChargerT3Large"
+}
+
+# Large Shield Chargers
+{ BlockGroup Name: ShieldLimitLargeChargerT1
+  MaxCount: 4
+  Blocks: "ShieldChargerLarge"
+}
+{ BlockGroup Name: ShieldLimitLargeChargerT2
+  MaxCount: 4
+  Blocks: "ShieldChargerT2Large"
+}
+{ BlockGroup Name: ShieldLimitLargeCapT3
+  MaxCount: 4
+  Blocks: "ShieldCapacitorT3Large"
+}
+
+# Small Shield Upgrades
+{ BlockGroup Name: ShieldLimitSmallCapT1
+  MaxCount: 8
+  Blocks: "ShieldCapacitorSmall"
+}
+{ BlockGroup Name: ShieldLimitSmallChargerT1
+  MaxCount: 8
+  Blocks: "ShieldChargerSmall"
+}

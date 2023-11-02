@@ -2,7 +2,7 @@
 
 namespace EgsLib.Tests.Blueprints
 {
-    public class BlueprintReader
+    public class BlueprintReaderTests
     {
         [Theory]
         [ClassData(typeof(BlueprintTestData))]

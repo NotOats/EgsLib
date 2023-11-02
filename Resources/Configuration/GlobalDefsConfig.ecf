@@ -1,0 +1,73 @@
+# define here macros that you can use accross other ECF files.
+# Helpful for often occurring properties like Mesh Damage or overall properties that you can change
+# at one location and be done with it.
+# Use the name given here in the ItemsConfig.ecf for example with:
+# GlobalRef: Minigun_Damage
+# More than 1 def can be used in one block by _X.
+# supports GlobalRef_1 to GlobalRef_5 if more than one GlobalRef is needed per entry
+
+# { GlobalDef Name: Minigun_Damage
+    # ROF: 0.1, type: float, display: true, formatter: ROF
+    # Range: 150
+    # Damage: 50, display: true
+# }
+
+# { GlobalDef Name: SmallDrone_Health
+    # MaxHealth: 1200
+# }
+
+
+# ============================================================================================================================================================================
+# ========================================================================================================================== Project Eden Custom Definitions
+# ============================================================================================================================================================================
+
+# POI section. Change for live scenario.
+{ GlobalDef Name: Eden_AllowPlacingAtPOI
+  # AllowPlacingAt: "Base,MS", display: true
+  AllowPlacingAt: Base, display: true
+}
+
+
+
+
+
+
+
+
+
+# Shipment details
+{ GlobalDef Name: Eden_Shipment8k
+  Mass: 48000, type: float, display: true, formatter: Kilogram
+  Volume: 8000, type: float, display: true, formatter: Liter
+  MarketPrice: 100000, display: true
+}
+
+{ GlobalDef Name: Eden_Shipment20k
+  Mass: 120000, type: float, display: true, formatter: Kilogram
+  Volume: 20000, type: float, display: true, formatter: Liter
+  MarketPrice: 100000, display: true
+}
+
+{ GlobalDef Name: Eden_Shipment40k
+  Mass: 240000, type: float, display: true, formatter: Kilogram
+  Volume: 40000, type: float, display: true, formatter: Liter
+  MarketPrice: 100000, display: true
+}
+
+{ GlobalDef Name: Eden_Shipment80k
+  Mass: 480000, type: float, display: true, formatter: Kilogram
+  Volume: 80000, type: float, display: true, formatter: Liter
+  MarketPrice: 250000, display: true
+}
+
+{ GlobalDef Name: Eden_Shipment160k
+  Mass: 96000, type: float, display: true, formatter: Kilogram
+  Volume: 160000, type: float, display: true, formatter: Liter
+  MarketPrice: 500000, display: true
+}
+
+{ GlobalDef Name: Eden_Shipment320k
+  Mass: 192000, type: float, display: true, formatter: Kilogram
+  Volume: 320000, type: float, display: true, formatter: Liter
+  MarketPrice: 1000000, display: true
+}
