@@ -58,6 +58,12 @@ namespace EgsLib.Blueprints
         {
             get
             {
+                // TODO: Investigate missting statistics
+                // RE's 'Eden_New.epb' (version 3) doesn't seem to have to have an entry for it.
+                // Not sure what the correct response is for this, just use -1 for now
+                if (Statistics == null)
+                    return -1;
+
                 var devices   = Statistics.BlockDevices;
                 var lights    = Statistics.Lights;
                 var triangles = Statistics.TrianglesReal;
@@ -94,7 +100,7 @@ namespace EgsLib.Blueprints
             if (!File.Exists(file))
                 throw new FileNotFoundException("Blueprint file does not exist");
 
-            _fileName = Path.GetFileNameWithoutExtension(file);
+            _fileName = file.EndsWith(".epb") ? file.Substring(0, file.IndexOf(".epb")) : file;
 
             // File stream since we don't need to work with block data
             using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read))
@@ -106,7 +112,7 @@ namespace EgsLib.Blueprints
 
         internal BlueprintHeader(string fileName, BinaryReader reader)
         {
-            _fileName = Path.GetFileNameWithoutExtension(fileName);
+            _fileName = fileName.EndsWith(".epb") ? fileName.Substring(0, fileName.IndexOf(".epb")) : fileName;
 
             Read(reader);
         }
