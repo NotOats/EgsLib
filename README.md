@@ -1,14 +1,19 @@
-### EGS Lib
+# EGS Lib
+| Nuget |
+| ----- |
+| [![NuGet](https://img.shields.io/nuget/v/EgsLib.svg)](https://www.nuget.org/packages/EgsLib/)
+
+
 A useful library for interacting with Empyrion Galactic Survival game files.
 
-#### Features
+## Features
 - Read blueprint (epb) files
 - Read scenario configuration (ecf) files
 - Parse playfield yaml into strongly typed .net objects
 
-#### Examples
+## Examples
 
-##### Dumping blueprints to JSON files
+#### Dumping blueprints to JSON files
 ```cs
 var inputFolder = "Foo";
 var outputFolder = "Bar";
@@ -48,7 +53,7 @@ Parallel.ForEach(files, file =>
 });
 ```
 
-##### Dumping scenario configuration to JSON files
+#### Dumping scenario configuration to JSON files
 ```cs
 var inputFolder = "Foo";
 var outputFolder = "Bar";
