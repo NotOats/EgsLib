@@ -52,7 +52,7 @@ namespace EgsLib
         }
 
         /// <summary>Determines if this Range is inside the bounds of another range.</summary>
-        /// <param name="Range">The parent range to test on</param>
+        /// <param name="range">The parent range to test on</param>
         /// <returns>True if range is inclusive, else false</returns>
         public bool IsInsideRange(Range<T> range)
         {
@@ -60,7 +60,7 @@ namespace EgsLib
         }
 
         /// <summary>Determines if another range is inside the bounds of this range.</summary>
-        /// <param name="Range">The child range to test</param>
+        /// <param name="range">The child range to test</param>
         /// <returns>True if range is inside, else false</returns>
         public bool ContainsRange(Range<T> range)
         {

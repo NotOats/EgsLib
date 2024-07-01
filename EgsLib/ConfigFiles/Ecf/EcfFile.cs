@@ -155,7 +155,7 @@ namespace EgsLib.ConfigFiles.Ecf
         }
 
         /// <summary>
-        /// Reads the end of an object or child. When a child is read <paramref name="obj">obj/paramref> is null.
+        /// Reads the end of an object or child. When a child is read <paramref name="obj">obj</paramref> is null.
         /// </summary>
         /// <param name="line"></param>
         /// <param name="obj"></param>
