@@ -2,11 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Playfields\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="SharpZipLib" Version="1.4.2" />

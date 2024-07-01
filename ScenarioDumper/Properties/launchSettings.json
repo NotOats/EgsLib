@@ -1,0 +1,19 @@
+{
+  "profiles": {
+    "ScenarioDumper": {
+      "commandName": "Project"
+    },
+    "Dumper - RE 1": {
+      "commandName": "Project",
+      "commandLineArgs": "--input=\"D:\\Games\\SteamLibrary\\steamapps\\workshop\\content\\383120\\2550354956\" --output=\"output-re1\""
+    },
+    "Dumper - RotDF": {
+      "commandName": "Project",
+      "commandLineArgs": "--input=\"D:\\Games\\SteamLibrary\\steamapps\\common\\Empyrion - Galactic Survival\\Content\\Scenarios\\Rise of the Dark Faction\" --output=\"output-rotdf\""
+    },
+    "Dumper - RE 2 Beta": {
+      "commandName": "Project",
+      "commandLineArgs": "--input=\"D:\\Games\\SteamLibrary\\steamapps\\workshop\\content\\383120\\3143225812\" --output=\"output-re2-beta\""
+    }
+  }
+}

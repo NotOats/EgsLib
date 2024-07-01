@@ -1,12 +1,38 @@
 ﻿using EgsLib.Blueprints;
 using EgsLib.ConfigFiles.Ecf;
+using EgsLib.Playfields;
+using EgsLib.Playfields.Files;
+using Mono.Options;
 using ScenarioDumper.Converters;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-var input = @"D:\Games\SteamLibrary\steamapps\workshop\content\383120\2550354956";
-var output = @"./output/";
+var input = string.Empty;
+var output = "./output";
+
+var options = new OptionSet
+{
+    { "i|input=", "input scenario path", i => input = i },
+    { "o|output=", "optional output folder path", o => output = o}
+};
+
+try
+{
+    options.Parse(args);
+} 
+catch(OptionException e)
+{
+    Console.WriteLine(e.Message);
+    return;
+}
+
+if (string.IsNullOrEmpty(input) || !Directory.Exists(input))
+{
+    Console.WriteLine("Error: input folder does not exist");
+    return;
+}
+
 if (!Directory.Exists(output))
     Directory.CreateDirectory(output);
 
@@ -15,6 +41,9 @@ DumpConfiguration(Path.Join(input, @"Content\Configuration"), Path.Join(output, 
 
 Console.WriteLine("+ Exporting prefabs");
 DumpPrefabs(Path.Join(input, @"Prefabs"), Path.Join(output, "prefabs"));
+
+Console.WriteLine("+ Exporting playfields");
+DumpPlayfields(Path.Join(input, @"Playfields"), Path.Join(output, "playfields"));
 
 Console.WriteLine("+ Finished!");
 
@@ -98,4 +127,66 @@ static void DumpPrefabs(string inputFolder, string outputFolder)
     sw.Stop();
 
     Console.WriteLine($"Exported {count:n0} blueprints in {sw.ElapsedMilliseconds:n0}ms");
+}
+
+static void DumpPlayfields(string inputFolder, string outputFolder)
+{
+    if (!Directory.Exists(outputFolder))
+        Directory.CreateDirectory(outputFolder);
+
+    var directories = Directory.EnumerateDirectories(inputFolder);
+    var count = 0;
+    var options = new JsonSerializerOptions
+    {
+        Converters =
+        {
+            new JsonStringEnumConverter(),
+            new Vector3Converter()
+        }
+    };
+
+    var sw = Stopwatch.StartNew();
+
+    Parallel.ForEach(directories, directory =>
+    {
+        Interlocked.Increment(ref count);
+
+        static object ParseFile(IPlayfieldFile file)
+        {
+            object contents = file;
+
+            if (file is SpaceDynamic spaceDynamic)
+                contents = spaceDynamic.Contents;
+            else if (file is PlayfieldDynamic playfieldDynamic)
+                contents = playfieldDynamic.Contents;
+            else if (file is PlayfieldStatic playfieldStatic)
+                contents = playfieldStatic.Contents;
+            else if (file is PlayfieldObsoleteFormat obsolete)
+                contents = obsolete.Contents;
+            else if (file is GenericPlayfieldFile generic)
+                contents = generic.Properties;
+
+            return new
+            {
+                file.Name,
+                Contents = contents
+            };
+        }
+
+        var playfield = new Playfield(directory);
+        var obj = new
+        {
+            playfield.Folder,
+            Files = playfield.Files.Select(ParseFile)
+        };
+
+        var outputFile = Path.Join(outputFolder, Path.ChangeExtension(Path.GetFileName(directory), "json"));
+
+        using var fs = new FileStream(outputFile, FileMode.Create);
+        JsonSerializer.Serialize(fs, obj, options);
+    });
+
+    sw.Stop();
+
+    Console.WriteLine($"Exported {count:n0} playfields in {sw.ElapsedMilliseconds:n0}ms");
 }

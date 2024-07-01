@@ -66,5 +66,10 @@ namespace EgsLib.Extensions
 
             yield return part;
         }
+
+        public static string AsNullIfEmpty(this string str)
+        {
+            return !string.IsNullOrEmpty(str) ? str : null;
+        }
     }
 }
