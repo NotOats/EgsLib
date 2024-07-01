@@ -9,5 +9,45 @@
     <PackageReference Include="SharpZipLib" Version="1.4.2" />
     <PackageReference Include="YamlDotNet" Version="8.1.0" />
   </ItemGroup>
+  
+  <!-- Nuget package configuration -->
+  <PropertyGroup>
+    <PackageId>EgsLib</PackageId>
+    <Authors>NotOats</Authors>
+    <Description>.Net library for interacting with Empyrion Galactic Survival</Description>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/NotOats/EgsLib</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>empyrion, library</PackageTags>
+    <PackageProjectUrl>https://github.com/NotOats/EgsLib</PackageProjectUrl>
+  </PropertyGroup>
 
+  <!-- Include readme & license-->
+  <ItemGroup>
+    <None Include="$(SolutionDir)\LICENSE.md" Pack="true" PackagePath="" Visible="false" />
+    <None Include="$(SolutionDir)\README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <!-- Enabling reproducible builds -->
+  <ItemGroup>
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="0.1.66">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <!-- Package validation -->
+  <PropertyGroup>
+    <EnablePackageValidation>true</EnablePackageValidation>
+  </PropertyGroup>
+
+  <!-- XML Documentation-->
+  <PropertyGroup>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+
+    <!-- Disable warning for undocumented members -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+  </PropertyGroup>
 </Project>

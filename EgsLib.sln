@@ -19,6 +19,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EgsLib.Tests", "EgsLib.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EgsLib.Benchmark", "EgsLib.Benchmark\EgsLib.Benchmark.csproj", "{32A39BA0-211B-43FE-91EC-F98FB03468F3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{76612BD9-1FF2-48EF-B94B-A1EBB7E9E4CD}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\push.yml = .github\workflows\push.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +50,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{76612BD9-1FF2-48EF-B94B-A1EBB7E9E4CD} = {AF0809CA-9A2E-4AB6-B2FC-B635E8E2CC6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2D35935-6A7C-47B0-AD20-A87848EF25A0}
