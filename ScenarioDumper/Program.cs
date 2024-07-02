@@ -177,6 +177,7 @@ static void DumpPlayfields(string inputFolder, string outputFolder)
         var obj = new
         {
             playfield.Folder,
+            playfield.PlayfieldType,
             Files = playfield.Files.Select(ParseFile)
         };
 
