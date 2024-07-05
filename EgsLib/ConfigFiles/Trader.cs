@@ -234,7 +234,7 @@ namespace EgsLib.ConfigFiles
 
             public static bool operator ==(TraderItem left, TraderItem right)
             {
-                return left.Equals(right);
+                return (left == null && right == null) ||left.Equals(right);
             }
 
             public static bool operator !=(TraderItem left, TraderItem right)
