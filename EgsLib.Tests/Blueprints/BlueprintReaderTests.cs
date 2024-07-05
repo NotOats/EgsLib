@@ -40,5 +40,25 @@ namespace EgsLib.Tests.Blueprints
             Assert.Equal(details.BlockCount, blocks.Count);
             Assert.All(blocks, b => Assert.Contains(blueprint.Header.BlockMap, kvp => kvp.Value == b.BlockId));
         }
+
+        [Theory]
+        [InlineData(@"D:\Games\SteamLibrary\steamapps\workshop\content\383120\2550354956\Prefabs\")]
+        [InlineData(@"D:\Games\SteamLibrary\steamapps\common\Empyrion - Galactic Survival\Content\Prefabs\")]
+        public void BlueprintFolderParsesCorrectly(string folder)
+        {
+            var files = Directory.GetFiles(folder, "*.epb");
+
+            foreach (var file in files)
+            {
+                try
+                {
+                    var bp = new Blueprint(file);
+                }
+                catch(Exception)
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

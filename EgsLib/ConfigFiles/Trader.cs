@@ -73,7 +73,7 @@ namespace EgsLib.ConfigFiles
             return ecf.ParseObjects().Select(obj => new Trader(obj));
         }
 
-        public class TraderItem : IEquatable<TraderItem>
+        public class TraderItem
         {
             /// <summary>
             /// The item's name
@@ -201,45 +201,6 @@ namespace EgsLib.ConfigFiles
                     $"{(int)BuyValue.Minimum}-{(int)BuyValue.Maximum}, {BuyAmount.Minimum}-{BuyAmount.Maximum}";
 
                 return $"{Name}, {sell}, {buy}";
-            }
-
-            public override bool Equals(object obj)
-            {
-                return obj is TraderItem item && Equals(item);
-            }
-
-            public bool Equals(TraderItem other)
-            {
-                return Name == other.Name &&
-                       SellMarketFactor == other.SellMarketFactor &&
-                       SellValue.Equals(other.SellValue) &&
-                       SellAmount.Equals(other.SellAmount) &&
-                       BuyMarketFactor == other.BuyMarketFactor &&
-                       BuyValue.Equals(other.BuyValue) &&
-                       BuyAmount.Equals(other.BuyAmount);
-            }
-
-            public override int GetHashCode()
-            {
-                int hashCode = -1897246606;
-                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-                hashCode = hashCode * -1521134295 + SellMarketFactor.GetHashCode();
-                hashCode = hashCode * -1521134295 + SellValue.GetHashCode();
-                hashCode = hashCode * -1521134295 + SellAmount.GetHashCode();
-                hashCode = hashCode * -1521134295 + BuyMarketFactor.GetHashCode();
-                hashCode = hashCode * -1521134295 + BuyValue.GetHashCode();
-                hashCode = hashCode * -1521134295 + BuyAmount.GetHashCode();
-                return hashCode;
-            }
-
-            public static bool operator ==(TraderItem left, TraderItem right)
-            {
-                return left.Equals(right);
-            }
-
-            public static bool operator !=(TraderItem left, TraderItem right)
-            {
-                return !(left == right);
             }
         }
     }
