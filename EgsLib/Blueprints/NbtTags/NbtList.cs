@@ -27,7 +27,7 @@ namespace EgsLib.Blueprints.NbtTags
 
             var count = reader.ReadUInt16();
 
-            var _tags = ArrayPool<INbtTag>.Shared.Rent(count);
+            _tags = ArrayPool<INbtTag>.Shared.Rent(count);
             for (var i = 0; i < _tags.Length; i++)
             {
                 _tags[i] = null;
