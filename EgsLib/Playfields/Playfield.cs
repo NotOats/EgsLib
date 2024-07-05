@@ -1,5 +1,6 @@
 ﻿using EgsLib.Playfields.Files;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -82,7 +83,8 @@ namespace EgsLib.Playfields
             return null;
         }
 
-        private static readonly Dictionary<Type, Dictionary<string, PropertyInfo>> PropertyCache = new Dictionary<Type, Dictionary<string, PropertyInfo>>();
+        private static readonly ConcurrentDictionary<Type, ConcurrentDictionary<string, PropertyInfo>> PropertyCache 
+            = new ConcurrentDictionary<Type, ConcurrentDictionary<string, PropertyInfo>>();
         public bool TryParseRootVariable<T>(string name, out T value)
         {
             foreach(var file in _files)
@@ -108,13 +110,13 @@ namespace EgsLib.Playfields
                 if (root != null)
                 {
                     var type = root.GetType();
-                    if (!PropertyCache.TryGetValue(type, out Dictionary<string, PropertyInfo> properties))
+                    var properties = PropertyCache.GetOrAdd(type, key =>
                     {
-                        properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                            .ToDictionary(x => x.Name, x => x);
+                        var props = type.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                           .Select(x => new KeyValuePair<string, PropertyInfo>(x.Name, x));
 
-                        PropertyCache.Add(type, properties);
-                    }
+                        return new ConcurrentDictionary<string, PropertyInfo>(props);
+                    });
 
                     if (properties.TryGetValue(name, out PropertyInfo property))
                     {

@@ -73,6 +73,27 @@ namespace EgsLib
         }
 
         /// <summary>
+        /// Finds the localization key for a given string and language
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="language"></param>
+        /// <returns>the localization key or null</returns>
+        public string ReverseLocalization(string value, string language)
+        {
+            foreach (var outerKvp in LocalizationData)
+            {
+                var key = outerKvp.Key;
+                var map = outerKvp.Value;
+
+                if (map.TryGetValue(language, out string translated) 
+                    && translated == value)
+                    return key;
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Reloads the localization data from the originally specified file
         /// </summary>
         public void Reload()
