@@ -1,16 +1,16 @@
 ﻿using EgsLib.Blueprints.NbtTags;
 using EgsLib.Extensions;
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using YamlDotNet.Core;
 
 namespace EgsLib.Blueprints
 {
-    public class BlueprintBlockData
+    public class BlueprintBlockData : IDisposable
     {
+        private static readonly ArrayPool<Block> BlockPool = ArrayPool<Block>.Create();
+
         private readonly int _version;
 
         private readonly Block[] _blocks;
@@ -24,6 +24,7 @@ namespace EgsLib.Blueprints
         public Vector3<int> Size { get; }
 
         public IReadOnlyList<Block> Blocks => _blocks;
+        public int BlocksSize => checked(Size.X * Size.Y * Size.Z);
 
         public IReadOnlyDictionary<Vector3<int>, NbtList> Entities => _entities;
         public IReadOnlyDictionary<Vector3<int>, int> LockCodes => _lockCodes;
@@ -36,14 +37,10 @@ namespace EgsLib.Blueprints
         {
             Size = ReadSize(reader, header);
 
-            var maxSize = checked(Size.X * Size.Y * Size.Z);
-            _blocks = new Block[maxSize];
-            _version = header.Version;
+            _blocks = BlockPool.Rent(BlocksSize);
+            Array.Clear(_blocks, 0, BlocksSize);
 
-            for (var i = 0; i < _blocks.Length; i++)
-            {
-                _blocks[i] = new Block();
-            }
+            _version = header.Version;
 
             ReadBlockData(reader);
             ReadBlockDamage(reader);
@@ -55,6 +52,11 @@ namespace EgsLib.Blueprints
             ReadSignals(reader);
             ReadLogicCircuits(reader);
             ReadShortcutNames(reader);
+        }
+
+        public void Dispose()
+        {
+            BlockPool.Return(_blocks, clearArray: true);
         }
 
         private Vector3<int> ReadSize(BinaryReader reader, BlueprintHeader header)
@@ -73,14 +75,14 @@ namespace EgsLib.Blueprints
         {
             if (_version < 6)
             {
-                for (var i = 0; i < _blocks.Length; i++)
+                for (var i = 0; i < BlocksSize; i++)
                 {
                     _blocks[i].Data = reader.ReadUInt32();
                 }
             }
             else
             {
-                PackedArray.ReadData(reader, _blocks.Length, (i, br) =>
+                PackedArray.ReadData(reader, BlocksSize, (i, br) =>
                 {
                     _blocks[i].Data = br.ReadUInt32();
                 });
@@ -92,7 +94,7 @@ namespace EgsLib.Blueprints
             if (_version <= 11)
                 return;
 
-            PackedArray.ReadData(reader, _blocks.Length, (i, br) => _blocks[i].Damage = br.ReadUInt16());
+            PackedArray.ReadData(reader, BlocksSize, (i, br) => _blocks[i].Damage = br.ReadUInt16());
         }
 
         private void ReadDensity(BinaryReader reader)
@@ -100,18 +102,18 @@ namespace EgsLib.Blueprints
             if (reader.ReadBoolean())
             {
                 var value = reader.ReadByte();
-                for (var i = 0; i < _blocks.Length; i++)
+                for (var i = 0; i < BlocksSize; i++)
                 {
                     _blocks[i].Density = value;
                 }
             }
             else
             {
-                var bytes = reader.ReadBytes(_blocks.Length);
-                if (bytes.Length != _blocks.Length)
+                var bytes = reader.ReadBytes(BlocksSize);
+                if (bytes.Length != BlocksSize)
                     throw new FormatException("Density array is not the correct length");
 
-                for(var i = 0; i < _blocks.Length; i++)
+                for(var i = 0; i < BlocksSize; i++)
                 {
                     _blocks[i].Density = bytes[i];
                 }
@@ -123,13 +125,13 @@ namespace EgsLib.Blueprints
             if (_version < 6)
                 return;
 
-            PackedArray.ReadData(reader, _blocks.Length, (i, br) => _blocks[i].Color = br.ReadInt32());
-            PackedArray.ReadData(reader, _blocks.Length, (i, br) => _blocks[i].Texture = br.ReadInt64());
+            PackedArray.ReadData(reader, BlocksSize, (i, br) => _blocks[i].Color = br.ReadInt32());
+            PackedArray.ReadData(reader, BlocksSize, (i, br) => _blocks[i].Texture = br.ReadInt64());
 
             if (_version < 20)
                 return;
 
-            PackedArray.ReadData(reader, _blocks.Length, (i, br) => _blocks[i].TextureRotation = br.ReadByte());
+            PackedArray.ReadData(reader, BlocksSize, (i, br) => _blocks[i].TextureRotation = br.ReadByte());
         }
 
         private void ReadSymbols(BinaryReader reader)
@@ -137,8 +139,8 @@ namespace EgsLib.Blueprints
             if (_version < 7)
                 return;
 
-            PackedArray.ReadData(reader, _blocks.Length, (i, br) => _blocks[i].Symbol = br.ReadInt32());
-            PackedArray.ReadData(reader, _blocks.Length, 
+            PackedArray.ReadData(reader, BlocksSize, (i, br) => _blocks[i].Symbol = br.ReadInt32());
+            PackedArray.ReadData(reader, BlocksSize, 
                 (i, br) => _blocks[i].SymbolRotation = _version >= 8 ? br.ReadInt32() : br.ReadInt16());
         }
 
@@ -148,6 +150,10 @@ namespace EgsLib.Blueprints
                 return;
 
             var count = reader.ReadUInt16();
+#if NETSTANDARD2_1
+            _entities.EnsureCapacity(count);
+#endif
+
             for(var i = 0; i < count; i++)
             {
                 var location = reader.ReadIntVector3Packed();
@@ -163,7 +169,11 @@ namespace EgsLib.Blueprints
                 return;
 
             var count = reader.ReadUInt16();
-            for(var i = 0; i < count; i++)
+#if NETSTANDARD2_1
+            _lockCodes.EnsureCapacity(count);
+#endif
+
+            for (var i = 0; i < count; i++)
             {
                 var location = reader.ReadIntVector3Packed();
                 var value = _version > 24 ? reader.ReadInt32() : reader.ReadInt16();
@@ -177,8 +187,13 @@ namespace EgsLib.Blueprints
             if (_version < 14)
                 return;
 
-            var sourceCount = reader.ReadUInt16();
-            for (var i = 0; i < sourceCount; i++)
+            var signalcount = reader.ReadUInt16();
+#if NETSTANDARD2_1
+            if (_signalSources.Capacity < signalcount)
+                _signalSources.Capacity = signalcount;
+#endif
+
+            for (var i = 0; i < signalcount; i++)
             {
                 if(_version >= 17)
                 {
@@ -195,7 +210,10 @@ namespace EgsLib.Blueprints
             }
 
             var receiverCount = reader.ReadUInt16();
-            for(var i = 0; i < receiverCount; i++)
+#if NETSTANDARD2_1
+            _signalReceivers.EnsureCapacity(receiverCount);
+#endif
+            for (var i = 0; i < receiverCount; i++)
             {
                 var name = reader.ReadString();
                 var count = reader.ReadUInt16();
@@ -216,7 +234,12 @@ namespace EgsLib.Blueprints
                 return;
 
             var count = reader.ReadUInt16();
-            for(var i = 0; i < count; i++)
+#if NETSTANDARD2_1
+            if (_circuits.Capacity < count)
+                _circuits.Capacity = count;
+#endif
+
+            for (var i = 0; i < count; i++)
             {
                 var nbt = new NbtList(reader);
                 _circuits.Add(nbt);
@@ -229,6 +252,11 @@ namespace EgsLib.Blueprints
                 return;
 
             var count = reader.ReadUInt16();
+#if NETSTANDARD2_1
+            if (_shortcutNames.Capacity < count)
+                _shortcutNames.Capacity = count;
+#endif
+
             for (var i = 0; i < count; i++)
             {
                 var name = reader.ReadString();

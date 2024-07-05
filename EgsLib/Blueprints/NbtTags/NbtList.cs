@@ -1,15 +1,19 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace EgsLib.Blueprints.NbtTags
 {
-    public class NbtList : INbtTag, IReadOnlyList<INbtTag>
+    public class NbtList : INbtTag, IReadOnlyList<INbtTag>, IDisposable
     {
+        private readonly INbtTag[] _tags;
+
         public string Name => "Root";
 
-        public IReadOnlyList<INbtTag> Value { get; }
+        public IReadOnlyList<INbtTag> Value => _tags;
 
         object INbtTag.Value => Value;
 
@@ -22,7 +26,12 @@ namespace EgsLib.Blueprints.NbtTags
             reader.ReadByte(); // Unknown/garbage
 
             var count = reader.ReadUInt16();
-            var tags = new INbtTag[count];
+
+            var _tags = ArrayPool<INbtTag>.Shared.Rent(count);
+            for (var i = 0; i < _tags.Length; i++)
+            {
+                _tags[i] = null;
+            }
 
             for (var i = 0; i < count; i++)
             {
@@ -47,15 +56,20 @@ namespace EgsLib.Blueprints.NbtTags
                         break;
                 }
 
-                tags[i] = tag ?? throw new NotSupportedException("NbtTag type not supported");
+                _tags[i] = tag ?? throw new NotSupportedException("NbtTag type not supported");
             }
-
-            Value = tags;
         }
 
-        public IEnumerator<INbtTag> GetEnumerator() => Value.GetEnumerator();
+        public void Dispose()
+        {
+            ArrayPool<INbtTag>.Shared.Return(_tags, clearArray: true);
+        }
 
-        IEnumerator IEnumerable.GetEnumerator() => Value.GetEnumerator();
+        public IEnumerator<INbtTag> GetEnumerator() => _tags == null ? 
+            Enumerable.Empty<INbtTag>().GetEnumerator() : 
+            ((IEnumerable<INbtTag>)_tags).GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator() => _tags.GetEnumerator();
 
         private enum NbtType : byte
         {

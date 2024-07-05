@@ -1,6 +1,6 @@
 ﻿namespace EgsLib.Blueprints
 {
-    public class Block
+    public struct Block
     {
         #region From BP File
         public uint Data { get; internal set; }

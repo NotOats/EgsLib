@@ -147,9 +147,9 @@ static void DumpPlayfields(string inputFolder, string outputFolder)
 
     var sw = Stopwatch.StartNew();
 
-    Parallel.ForEach(directories, directory =>
+    foreach(var directory in directories)
     {
-        Interlocked.Increment(ref count);
+        count++;
 
         static object ParseFile(IPlayfieldFile file)
         {
@@ -185,7 +185,7 @@ static void DumpPlayfields(string inputFolder, string outputFolder)
 
         using var fs = new FileStream(outputFile, FileMode.Create);
         JsonSerializer.Serialize(fs, obj, options);
-    });
+    }
 
     sw.Stop();
 
