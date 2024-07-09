@@ -10,6 +10,18 @@ namespace EgsLib.Extensions
     {
         private readonly static ConcurrentDictionary<Type, TypeConverter> ConverterCache = new ConcurrentDictionary<Type, TypeConverter>();
 
+        public static bool ConvertType<T>(this string str, out T output)
+        {
+            if (ConvertType(str, typeof(T), out object outputObj))
+            {
+                output = (T)outputObj;
+                return true;
+            }
+
+            output = default;
+            return false;
+        }
+
         public static bool ConvertType(this string str, Type outputType, out object output)
         {
             if (outputType == typeof(string))

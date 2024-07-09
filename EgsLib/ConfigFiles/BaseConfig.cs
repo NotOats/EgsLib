@@ -33,7 +33,9 @@ namespace EgsLib.ConfigFiles
 
         public IReadOnlyDictionary<string, string> UnparsedProperties => _unparsed;
 
-        public IReadOnlyCollection<IEcfChild> UnparsedChildren { get; }
+        private readonly List<IEcfChild> _unparsedChildren;
+
+        public IReadOnlyCollection<IEcfChild> UnparsedChildren => _unparsedChildren;
 
         protected BaseConfig(IEcfObject obj)
         {
@@ -46,12 +48,21 @@ namespace EgsLib.ConfigFiles
 
             // TODO: Figure out child object parsing
             // For now let the inheriting class figure it out
-            UnparsedChildren = obj.Children;
+            _unparsedChildren = obj.Children.ToList();
         }
 
         protected bool MarkAsParsed(string name)
         {
             return _unparsed.Remove(name);
+        }
+
+        protected bool MarkChildAsParsed(string name)
+        {
+            var entry = _unparsedChildren.FirstOrDefault(x => x.Name == name);
+            if (entry == null)
+                return false;
+
+            return _unparsedChildren.Remove(entry);
         }
 
         private void SetFields(IEcfObject obj)

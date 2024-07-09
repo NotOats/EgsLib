@@ -31,6 +31,34 @@ namespace EgsLib.ConfigFiles.Ecf
 
     public static class EcfObjectExtensions
     {
+        #region Common Fields/Properties
+        /// <summary>
+        /// Attemps to read the Id field of the object, retuns -1 if it's not found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int GetId(this IEcfObject obj)
+        {
+            if (ReadField(obj, "Id", out int value))
+                return value;
+
+            return -1;
+        }
+
+        /// <summary>
+        /// Attempts to read the Name field of the object, returns null if it's not found
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static string GetName(this IEcfObject obj)
+        {
+            if (ReadField(obj, "Name", out string value))
+                return value;
+
+            return null;
+        }
+        #endregion
+
         public static bool ReadField<T>(this IEcfObject obj, string name, out T value) where T : IConvertible
         {
             if (ReadField(obj, name, out object raw, typeof(T)))
