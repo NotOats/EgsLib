@@ -4,6 +4,7 @@ using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace EgsLib.Blueprints
 {
@@ -23,6 +24,10 @@ namespace EgsLib.Blueprints
 
         public Vector3<int> Size { get; }
 
+        /// <summary>
+        /// Note: Use BlocksSize instead of Blocks.Count.
+        /// Blocks.Count may be longer than the actual data
+        /// </summary>
         public IReadOnlyList<Block> Blocks => _blocks;
         public int BlocksSize => checked(Size.X * Size.Y * Size.Z);
 

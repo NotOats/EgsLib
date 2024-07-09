@@ -10,30 +10,40 @@ namespace EgsLib.Blueprints.NbtTags
     public class NbtList : INbtTag, IReadOnlyList<INbtTag>, IDisposable
     {
         private readonly INbtTag[] _tags;
+        private readonly int _size;
 
         public string Name => "Root";
 
-        public IReadOnlyList<INbtTag> Value => _tags;
+        public IEnumerable<INbtTag> Value => _tags.TakeWhile(x => x != null);
 
         object INbtTag.Value => Value;
 
-        public int Count => Value.Count;
+        public int Count => _size;
 
-        public INbtTag this[int index] => Value[index];
+        public INbtTag this[int index]
+        {
+            get
+            {
+                if (index >= _size)
+                    throw new ArgumentOutOfRangeException("index");
+
+                return _tags[index];
+            }
+        }
 
         public NbtList(BinaryReader reader)
         {
             reader.ReadByte(); // Unknown/garbage
 
-            var count = reader.ReadUInt16();
+            _size = reader.ReadUInt16();
 
-            _tags = ArrayPool<INbtTag>.Shared.Rent(count);
+            _tags = ArrayPool<INbtTag>.Shared.Rent(_size);
             for (var i = 0; i < _tags.Length; i++)
             {
                 _tags[i] = null;
             }
 
-            for (var i = 0; i < count; i++)
+            for (var i = 0; i < _size; i++)
             {
                 var type = (NbtType)reader.ReadByte();
                 var name = reader.ReadString();
