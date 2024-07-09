@@ -24,24 +24,66 @@
 { Element Name: GlobalSettings
   EnableSpaceDefenseLog: False
   EnableSpaceDefense: True
+  PlayerAttackMaxCountFrequencySpawned: 10
+  PlayerAttackMaxCountPOISpawned: 10
 }
+
+# { Element Name: FactionSettings
+  # Faction: Zirax
+  # ScenarioGroup: Zirax
+  # Lvl1MinPrice:50
+  # Lvl1MaxPrice:75
+  # Lvl5MinPrice:250
+  # Lvl5MaxPrice:375
+  # Lvl10MinPrice:500
+  # Lvl10MaxPrice:750
+
 
 { Element Name: FactionSettings
   Faction: Zirax
   ScenarioGroup: Zirax
-  Lvl1MinPrice:50
-  Lvl1MaxPrice:75
-  Lvl5MinPrice:250
-  Lvl5MaxPrice:375
-  Lvl10MinPrice:500
-  Lvl10MaxPrice:750
   
+	{ Child BaseAttack_TargetBaseSuitability
+		MaxOwnerReputation: 12000
+		# MinimalBaseStrength: 20
+		MinimalBaseStrength: 40
+	}
+	
+	{ Child BaseAttack_TimeBetweenAttacks # parameters to calculate the time between attacks, All values are added together
+		#InGame hours
+		HoursAtPlayfieldLvl1: 72
+		HoursAtPlayfieldLvlMax:	24 #max lvl = 10
+		HoursAtRep0: 24 #at rep 0
+		HoursAtRepMax: 48 #at rep 24000
+	}
+
+	{ Child BaseAttack_ScenarioPrice # parameters to calculate price of the attack, values are added together
+		# PlayFieldLvl1Min:50
+		# PlayFieldLvl1Min:5
+		PlayFieldLvl1Min:15
+		# PlayFieldLvl1Max:75
+		# PlayFieldLvl1Max:10
+		PlayFieldLvl1Max:30
+		PlayFieldLvl5Min:40
+		PlayFieldLvl5Max:60
+		PlayFieldLvl10Min:70
+		PlayFieldLvl10Max:100
+	
+		# TargetBaseStrengthToPriceMultiplier: 0.1
+		TargetBaseStrengthToPriceMultiplier: 0.05
+	}
+	
+
+
+
   #SD = SpaceDefense
   #if the trigger for defense is triggered, will we have rainforcments?
   #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
   SDScenarioGroup: ZiraxSpaceDefense
-  SDProbabilityMin: 0.30
-  SDProbabilityMax: 0.80
+  # SDProbabilityMin: 0.30
+  # SDProbabilityMax: 0.80
+  SDProbabilityMin: 0
+  SDProbabilityMax: 0
   #strength of the reinforcments, they will come in in 1 to 3 stages (waves)
   SDPriceMin: 50 #Price on level 1
   SDPriceMax: 500 #Price on level 10 
@@ -70,8 +112,10 @@
   #if the trigger for defense is triggered, will we have rainforcments?
   #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
   SDScenarioGroup: PolarisSpaceDefense
-  SDProbabilityMin: 0.30
-  SDProbabilityMax: 0.80
+  # SDProbabilityMin: 0.30
+  # SDProbabilityMax: 0.80
+  SDProbabilityMin: 0
+  SDProbabilityMax: 0
   #strength of the reinforcments, they will com in in 1 to 3 stages (waves)
   SDPriceMin: 50 #Price on level 1
   SDPriceMax: 250 #Price on level 10 
@@ -92,8 +136,10 @@
   #if the trigger for defense is triggered, will we have rainforcments?
   #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
   SDScenarioGroup: TheLegacySpaceDefense
-  SDProbabilityMin: 0.80
-  SDProbabilityMax: 0.90
+  # SDProbabilityMin: 0.80
+  # SDProbabilityMax: 0.90
+  SDProbabilityMin: 0
+  SDProbabilityMax: 0
   #strength of the reinforcments, they will com in in 1 to 3 stages (waves)
   SDPriceMin: 100 #Price on level 1
   SDPriceMax: 700 #Price on level 10 
@@ -114,8 +160,10 @@
   #if the trigger for defense is triggered, will we have rainforcments?
   #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
   SDScenarioGroup: PiratesSpaceDefense
-  SDProbabilityMin: 0.6
-  SDProbabilityMax: 0.9
+  # SDProbabilityMin: 0.6
+  # SDProbabilityMax: 0.9
+  SDProbabilityMin: 0
+  SDProbabilityMax: 0
   #strength of the reinforcments, they will com in in 1 to 3 stages (waves)
   SDPriceMin: 25 #Price on level 1
   SDPriceMax: 200 #Price on level 10 
@@ -135,8 +183,10 @@
   #if the trigger for defense is triggered, will we have rainforcments?
   #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
   SDScenarioGroup: TraderSpaceDefense
-  SDProbabilityMin: 0.10
-  SDProbabilityMax: 0.60
+  # SDProbabilityMin: 0.10
+  # SDProbabilityMax: 0.60
+  SDProbabilityMin: 0
+  SDProbabilityMax: 0
   #strength of the reinforcments, they will com in in 1 to 3 stages (waves)
   SDPriceMin: 50 #Price on level 1
   SDPriceMax: 300 #Price on level 10 
@@ -155,8 +205,10 @@
   #if the trigger for defense is triggered, will we have rainforcments?
   #probability in 0% - 100%  on lvl1 = ProbabilityMin | on lvl10 = ProbabilityMax
   SDScenarioGroup: KrielSpaceDefense
-  SDProbabilityMin: 0.30
-  SDProbabilityMax: 0.90
+  # SDProbabilityMin: 0.30
+  # SDProbabilityMax: 0.90
+  SDProbabilityMin: 0
+  SDProbabilityMax: 0
   #strength of the reinforcments, they will come in in 1 to 3 stages (waves)
   SDPriceMin: 50 #Price on level 1
   SDPriceMax: 600 #Price on level 10 

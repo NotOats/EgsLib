@@ -24,15 +24,9 @@
 # POI section. Change for live scenario.
 { GlobalDef Name: Eden_AllowPlacingAtPOI
   # AllowPlacingAt: "Base,MS", display: true
-  AllowPlacingAt: Base, display: true
+  # AllowPlacingAt: Base, display: false
+  AllowPlacingAt: "", display: false
 }
-
-
-
-
-
-
-
 
 
 # Shipment details

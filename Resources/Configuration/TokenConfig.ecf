@@ -14,7 +14,9 @@
 # - Currently only the item 'Token' (Itemsconfig.ecf id: 1305) can have a 4-digit META element. Any OTHER "keycard" named item or other items in general can NOT have meta info attached!
 # - When working with the TokenConfig.ecf, adding custom names for the Token:Meta combination, you can use the console command 'token reload' when you are ingame. You do not need to restart the game when working with this file!
 # =================================
-
+#
+# DropOnDeath:   > If set to 'False'  this item or block is not dropped on player death. Use for important story items that players shall not lose on death. Default is set to 'True'.
+# =================================
 # Example Token
 { Token Id: 1, Name: KeyCardRed
   Description: The red key card will open red doors
@@ -30,184 +32,13 @@
   #RemoveOnUse: true
 }
 
-# === RP Creditibility Token ===
-
-{ Token Id: 100, Name: CredTokenZiraxEmpire
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 101, Name: CredTokenXenu
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 102, Name: CredTokenRados
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 103, Name: CredTokenGhyst
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 104, Name: CredTokenEpsilon
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 105, Name: CredTokenSerdu
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 106, Name: CredTokenAbyssal
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 107, Name: CredTokenPolaris
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 108, Name: CredTokenTradersGuild
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 109, Name: CredTokenPirates
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 110, Name: CredTokenKriel
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 111, Name: CredTokenTesch
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 112, Name: CredTokenTalon
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-{ Token Id: 113, Name: CredTokenColonists
-  Description: Restore your reputation with the faction from Hostile or Unfriendly to Neutral. Find its ambassador or a console of the galactic information network (GIN)
-  CustomIcon: KeyCardRed
-  MarketPrice: 300000, display: true
-  #RemoveOnUse: true
-}
-
-
-# === Story Tokens (Do not change! === 
-
-{ Token Id: 9999, Name: AI Routine 32 Key
-  Description: Activates a station or the telporter in that station. We need to find out.
-  #RemoveOnUse: true
-}
-{ Token Id: 9998, Name: Chief Palant
-  Description: The Log of Chief Engineer Palant found in the wreckage of the UCH Heidelberg
-  #RemoveOnUse: true
-}
-{ Token Id: 9997, Name: Ensign Emmerson
-  Description: The Log of Ensign Emmerson found in the wreckage of the UCH Heidelberg
-  #RemoveOnUse: true
-}
-{ Token Id: 9996, Name: M
-  Description: The log of a crewman with the mysterious short-handle M found in the wreckage of the UCH Heidelberg
-  #RemoveOnUse: true
-}
-{ Token Id: 9995, Name: Titan Code Recovery Main Key
-  Description: Required to reveal a code fragment each with one of the 3 prepared consoles in the TITAN
-  #RemoveOnUse: true
-}
-{ Token Id: 9994, Name: Titan Code Fragment
-  Description: Code fragment required to generate the override code for the TITAN failsave datacache
-  #RemoveOnUse: true
-}
-{ Token Id: 9993, Name: Zirax Commander Keycard
-  Description: A full-access keycard for any base on the moon dropped accidentally while stumbling in your weapon fire
-  #RemoveOnUse: true
-}
-{ Token Id: 9992, Name: Root Beer Formula
-  Description: The secret formula of the delicious Totally Overpowered Brewery low-gravity root beer
-  #RemoveOnUse: true
-}
-{ Token Id: 9991, Name: Repair Bay Key Card
-  Description: "Repair Bay Key Card"
-}
-{ Token Id: 9990, Name: Med and O2 Stations Key Card
-  Description: "Med and O2 Stations Key Card"
-}
-{ Token Id: 9989, Name: Seal of the House of Abyssal
-  Description: "Grants access to the hidden War of Silence archives of the House of Abyssal"
-}
-{ Token Id: 9988, Name: Ghyst Command Card
-  Description: "Access Card for restricted areas. Can be found in the pockets of Ghyst Commanders"
-}
-
-
-# ======================================================================================================================================================================
-# =================================================================================================================================Project Eden Tokens:
-# ======================================================================================================================================================================
-# ================================================================================================================================ Test Tokens
-
-# Test
-{ Token Id: 5000, Name: [c][FFFFFF]Contracted Cargo[-][/c]
-  Description: [c][ffffff]Mission Item.[-][/c] \n\nDeliver this cargo to the TOP Manager on board the Polaris Trading Station in orbit around Haven Akua Tallodar Omicron Roggery or Ningues in the Alpha or Beta star systems.
-}
-
-{ Token Id: 5001, Name: [c][FF00FF]Virus Sample 127-Beta[-][/c]
-  Description: [c][ff00ff]Mission Item.[-][/c] \n\nA virus sample discovered by Polaris miners in the Deep Core Mining Facility on Helion IV. \nDeliver to the UCHN Artemis in orbit of Helion IV in the Helion system. \n\n[c][A9A9A9][i]Maybe you should not handle this with your bare hands?[/i][-][/c]
-}
-
-{ Token Id: 5002, Name: [c][00FF00]Green Voucher[-][/c]
-  Description: [c][FFFFFF]50000 Credits[-][/c] \n\nCash in at any Trader Guild Bank.
-}
-
-# ================================================================================================================================ The Infected mission tokens
-
-# =============================================== REFORGED TOKENS ============================================================
+# ====================================================
+# ======= Original Reforged Mission Tokens ===========
+# ====================================================
 # UCH Keycard (Offworld Grave)
 { Token Id: 4001, Name: [c][F0F8FF]UCH Keycard[/c]
   CustomIcon: UCHKeycard
   Description: A Personal Keycard from the M.S Titan found in the crew quarters. It authorizes access to the Titan's secure systems.
-}
-# Missing Cargo (GIN cargo)
-{ Token Id: 4002, Name: [c][00FFFF]Undelivered Cargo[/c]
-  CustomIcon: ScifiContainer1Small
-  Description: A sealed container filled with cargo intended for a recipient in the Trade Guild. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
-}
-{ Token Id: 4003, Name: [c][FFFF00]Undelivered Cargo[/c]
-  CustomIcon: ScifiContainer1Small
-  Description: A sealed container filled with cargo. There's a recipient on the label but no other markings. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
-}
-{ Token Id: 4004, Name: [c][FF0000]Undelivered Cargo[/c]
-  CustomIcon: ScifiContainer1Small
-  Description: A sealed container filled with cargo. The text on the tags indicate this cargo belongs to RADOS. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
-}
-{ Token Id: 4005, Name: [c][FFC100]Undelivered Cargo[/c]
-  CustomIcon: ScifiContainer1Small
-  Description: A sealed container filled with cargo intended for a Polaris Habitat. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
 }
 # Illegal Goods (Unlawful Possession)
 { Token Id: 4006, Name: [c][FF9900]Illegal Goods[/c]
@@ -234,21 +65,887 @@
   CustomIcon: Decryptor
   Description: A sophisticated E-warfare device designed to connect to a ship or station's communications relay and siphon off data sent and received.
 }
-{ Token Id: 4011, Name: [c][FFFFFF]Undelivered Cargo[/c]
-  CustomIcon: ScifiContainer1Small
-  Description: A sealed container filled with cargo intended for a Frontier Colony. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
-}
 { Token Id: 4012, Name: [c][FFBB00]Mining Shipment[/c]
   CustomIcon: LargeHarvestContainer
   Description: A container of ore emblazoned with Polaris Mining's Logo from one of their many industrial facilities. \n\n[c][ffffff]Can be returned to Polaris using the shipping service of any GIN Console.[-][/c]
 }
+# IDA's core (The Cruel Stars)
+{ Token Id: 4015, Name: [c][F0F8FF]A.I Core[/c]
+  CustomIcon: ReactorCore
+  Description: The core processing module of a high-order UCH Artificial Intelligence. \n\n[c][FFFFFF]Story Mission Item[-][/c]
+}
+# ====================================================
+# ====== Undelivered Cargo (GIN Rewards) =============
+# ====================================================
+{ Token Id: 4002, Name: [c][00FFFF]Undelivered Cargo[/c]
+  CustomIcon: ScifiContainer1Small
+  Description: A sealed container filled with cargo intended for a recipient in the Trade Guild. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
+}
+{ Token Id: 4003, Name: [c][FFFF00]Undelivered Cargo[/c]
+  CustomIcon: ScifiContainer1Small
+  Description: A sealed container filled with cargo. There's a recipient on the label but no other markings. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
+}
+{ Token Id: 4004, Name: [c][FF0000]Undelivered Cargo[/c]
+  CustomIcon: ScifiContainer1Small
+  Description: A sealed container filled with cargo. The text on the tags indicate this cargo belongs to RADOS. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
+}
+{ Token Id: 4005, Name: [c][FFC100]Undelivered Cargo[/c]
+  CustomIcon: ScifiContainer1Small
+  Description: A sealed container filled with cargo intended for a Polaris Habitat. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
+}
+{ Token Id: 4011, Name: [c][FFFFFF]Undelivered Cargo[/c]
+  CustomIcon: ScifiContainer1Small
+  Description: A sealed container filled with cargo intended for a Frontier Colony. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
+}
+{ Token Id: 4014, Name: [c][FFD359]Undelivered Cargo[/c]
+  CustomIcon: ScifiContainer1Small
+  Description: A sealed container filled with cargo intended for a enclave of the Farr Brotherhood. \n\n[c][ffffff]Take this lost cargo to the Galactic Information Network Terminal on any primary Trade Station for a reward![-][/c]
+}
+# ====================================================
 { Token Id: 4013, Name: [c][F0F8FF]Naval Commendation[/c]
   CustomIcon: NavalCommendation
   Description: A UCH Naval commendation for distinguished acts of heroism against the Enemy. \n\n[c][ffffff]Can be used to increase the player's current Main or Sub-Class Rank by 1 level[-][/c]
 }
+# ====================================================
+# ============== Reforged Galaxy 2 New Tokens ========
+# ====================================================
+# Roboerotic Magazine for Trader Mission
+{ Token Id: 4020, Name: [c][D375FF]Mechababe's Toolbox - Issue 347[/c]
+  CustomIcon: Magazines
+  Description: [c][ffffff]Seems to be a rather risque roboerotic magazine about sexbots. I'm sure there's a market for this...[-][/c]
+}
+# Sexbot Type 1 (Main)
+{ Token Id: 4021, Name: [c][FD73FF]Robogirl Model S32[/c]
+  CustomIcon: DancingHuman3
+  Description: [c][ffffff]Model S32-165 IronTech Robogirl. The craftsmanship is exquisite and i'm sure it'll make some guy somewhere very happy.[-][/c]
+}
+# Sexbot Type 2 (Secondary)
+{ Token Id: 4022, Name: [c][FD73FF]Robogirl Model S24[/c]
+  CustomIcon: DancingHuman2
+  Description: [c][ffffff]Model S24-165 IronTech Robogirl. The craftsmanship is very good and i'm sure it'll make some guy somewhere very happy.[-][/c]
+}
+# Wire (Drug)
+{ Token Id: 4023, Name: [c][FF5555]Wire Shipment[/c]
+  CustomIcon: EnergyPills
+  Description: [c][ffffff]A shipment of the drug known as 'Wire'. A highly addictive hallucinogen with a feeling described as though your veins are on fire. This effect is where it gets it's name.[-][/c]\n\n[c][FF0000]Possession of Wire is in violation of both Trade Federation and Imperial Law.[-][/c]
+}
+# Zyme (Drug)
+{ Token Id: 4024, Name: [c][AAFF00]Zyme Vial[/c]
+  CustomIcon: AntiToxicOintment
+  Description: [c][ffffff]A synthetic drug new to the black market. Zyme use has caused a rash of violent outbreaks among users triggering a zero-tolerance crackdown by law enforcement.[-][/c]\n\n[c][FF0000]Possession of Zyme is in violation of both Trade Federation and Imperial Law.[-][/c]
+}
+# Black Ice (Drug)
+{ Token Id: 4025, Name: [c][8800FF]Black Ice Shipment[/c]
+  CustomIcon: AntiParasitePills
+  Description: [c][ffffff]Black Ice is a highly toxic substance that's found a niche market among the Imperial Military as zirax are unaffected by the toxins in the drug. Under Imperial law any soldier caught with Black Ice is punished severely.[-][/c]\n\n[c][FF0000]Possession of Black Ice is in violation of both Trade Federation (as a poison) and Imperial Law (as an illegal drug).[-][/c]
+}
+# Ripperdog Food
+{ Token Id: 4026, Name: [c][D44A0F]Hound Chow[/c]
+  CustomIcon: TexturedPlantProtein
+  Description: [c][ffffff]Specially formulated food for growing Ripperdogs to ensure your goodboy grows up big and strong!\nNot for terran consumption.[-][/c]
+}
+# Ghyst Keycard (Used in Ghyst Bunker)
+{ Token Id: 4027, Name: [c][0000FF]Security Keycard[/c]
+  CustomIcon: KeyCardBlue
+  RemoveOnUse: true
+  Description: [c][ffffff]A Zirax Keycard belonging to the House of Ghyst. It can probably access something somewhere on this base.[-][/c]\n[c][FF0000]Consumed on use[-][/c]
+}
+# Xenu Keycard (Used in NONE)
+{ Token Id: 4028, Name: [c][FF0000]Security Keycard[/c]
+  CustomIcon: KeyCardRed
+  RemoveOnUse: true
+  Description: [c][ffffff]A Zirax Keycard belonging to the House of Xenu. It can probably access something somewhere on this base.[-][/c]\n[c][FF0000]Consumed on use[-][/c]
+}
+# Epsilon Keycard (Used in NONE)
+{ Token Id: 4029, Name: [c][AAFF00]Security Keycard[/c]
+  CustomIcon: KeyCardGreen
+  RemoveOnUse: true
+  Description: [c][ffffff]A Zirax Keycard belonging to the House of Epsilon. It can probably access something somewhere on this base.[-][/c]\n[c][FF0000]Consumed on use[-][/c]
+}
+# Rados Keycard (Used in NONE)
+{ Token Id: 4030, Name: [c][00FFFF]Security Keycard[/c]
+  CustomIcon: KeyCardBlue
+  RemoveOnUse: true
+  Description: [c][ffffff]A Zirax Keycard belonging to the House of Rados. It can probably access something somewhere on this base.[-][/c]\n[c][FF0000]Consumed on use[-][/c]
+}
+# Serdu Keycard (Used in NONE)
+{ Token Id: 4031, Name: [c][8800FF]Security Keycard[/c]
+  CustomIcon: KeyCardBlack
+  RemoveOnUse: true
+  Description: [c][ffffff]A Zirax Keycard belonging to the House of Serdu. It can probably access something somewhere on this base.[-][/c]\n[c][FF0000]Consumed on use[-][/c]
+}
+# Abyssal Keycard (Used in NONE)
+{ Token Id: 4032, Name: [c][000000]Security Keycard[/c]
+  CustomIcon: KeyCardBlack
+  RemoveOnUse: true
+  Description: [c][ffffff]A Zirax Keycard belonging to the House of Abyssal. It can probably access something somewhere on this base.[-][/c]\n[c][FF0000]Consumed on use[-][/c]
+}
+# Polaris Keycard (Used in NONE)
+{ Token Id: 4033, Name: [c][FFBB00]Security Keycard[/c]
+  CustomIcon: KeyCardYellow
+  RemoveOnUse: true
+  Description: [c][ffffff]A Polaris Security Keycard. It can probably get you into a restricted area.[-][/c]\n[c][FF0000]Consumed on use[-][/c]
+}
+# ====================================================
+# ============== Work Orders =========================
+# ====================================================
 
-
-
+# Hostile Apparatus
+{ Token Id: 4050, Name: [c][FFC100]Work Order - Hostile Apparatus Robotics[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Hostile Apparatus Robotics.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# P3
+{ Token Id: 4051, Name: [c][FFC100]Work Order - P3 Productions[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Polaris Planetary Productions.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Zero Horizons
+{ Token Id: 4052, Name: [c][FFC100]Work Order - Zero Horizons Manufacturing[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Zero Horizons Manufacturing.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Non-Linear Productions
+{ Token Id: 4053, Name: [c][FFC100]Work Order - Non-Linear Productions[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Non-Linear Productions.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Arriake Technology
+{ Token Id: 4054, Name: [c][FFC100]Work Order - Arriake Technology[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Arriake Technology.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Chromium-Sierra
+{ Token Id: 4055, Name: [c][FFC100]Work Order - Chromium-Sierra Sciences[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Chromium Sierra Sciences.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Thermal Interactions
+{ Token Id: 4056, Name: [c][FFC100]Work Order - Thermal Interactions Ltd[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Thermal Interactions Ltd.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Solaris-AMP
+{ Token Id: 4057, Name: [c][FFC100]Work Order - Solaris-AMP[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Solaris-AMP.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# PentMaxIt
+{ Token Id: 4058, Name: [c][FFC100]Work Order - PentMaxIt Refinery[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for PentMaxIt.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Cloudminer
+{ Token Id: 4059, Name: [c][FFC100]Work Order - Cloudmining Industrial[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for a Cloudmining Industrial Platform.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Interweapon Factory
+{ Token Id: 4060, Name: [c][FFC100]Work Order - InterWeapon Manufacturing[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for InterWeapon Manufacturing.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Chemmix
+{ Token Id: 4061, Name: [c][FFC100]Work Order - Chemmix Industrial[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Chemmix Industrial.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Vitalife
+{ Token Id: 4062, Name: [c][FFC100]Work Order - Vitalife Pharmaceuticals[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Vitalife Pharmaceuticals.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Gold Standard
+{ Token Id: 4063, Name: [c][FFC100]Work Order - Gold Standard[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for a Gold Standard Warehouse.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# TOP Brewery
+{ Token Id: 4064, Name: [c][FFC100]Work Order - Totally Overpowered Brewing[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for Totally Overpowered Brewing.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# Hydroflux
+{ Token Id: 4065, Name: [c][FFC100]Work Order - Hydroflux Pumpstation[/c]
+  CustomIcon: OrderA
+  Description: [c][ffffff]A completed work order for a Hydroflux Pumpstation.\nGive it to the client to confirm completion of the order and unlock their trades.[-][/c]
+}
+# ====================================================
+# ============== Weapon Upgrade Tokens ===============
+# ====================================================
+# Barrel Upgrades - Common
+{ Token Id: 20, Name: [c][3C00FF]Short Heavy Barrel[/c]
+  CustomIcon: WeaponKitA
+  Description: A high-density alloy barrel compatible with most conventional Pistols that improves recoil but increases weight.\n[c][00FF00]Recoil -20%[-][/c]\n[c][FF0000]Accuracy -20%[-][/c]\n[c][FFBB00]Compatible with most Pistols and SMG[-][/c]
+  MarketPrice: 10000, display: true
+}
+{ Token Id: 21, Name: [c][3C00FF]Medium Heavy Barrel[/c]
+  CustomIcon: WeaponKitA
+  Description: A high-density alloy barrel compatible with most conventional Assault Rifles and Shotguns that improves recoil but increases weight.\n[c][00FF00]Recoil -20%[-][/c]\n[c][FF0000]Accuracy -20%[-][/c]\n[c][FFBB00]Compatible with most Assault Rifles and Shotguns[-][/c]
+  MarketPrice: 10000, display: true
+}
+{ Token Id: 22, Name: [c][3C00FF]Long Heavy Barrel[/c]
+  CustomIcon: WeaponKitA
+  Description: A high-density alloy barrel compatible with most conventional long-barreled firearms that improves recoil but increases weight.\n[c][00FF00]Recoil -20%[-][/c]\n[c][FF0000]Accuracy -20%[-][/c]\n[c][FFBB00]Compatible with most Sniper Rifles and Miniguns[-][/c]
+  MarketPrice: 10000, display: true
+}
+# Barrel Upgrades - Rare
+{ Token Id: 23, Name: [c][11D100]Short Ultralight Barrel[/c]
+  CustomIcon: WeaponKitB
+  Description: A lightweight alloy barrel compatible with most conventional Pistols thats easy to handle but lacks the mass necessary to counteract recoil.\n[c][00FF00]Accuracy +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Pistols and SMG[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 24, Name: [c][11D100]Medium Ultralight Barrel[/c]
+  CustomIcon: WeaponKitB
+  Description: A lightweight alloy barrel compatible with most conventional Assault Rifles and Shotguns thats easy to handle but lacks the mass necessary to counteract recoil.\n[c][00FF00]Accuracy +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Assault Rifles and Shotguns[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 25, Name: [c][11D100]Long Ultralight Barrel[/c]
+  CustomIcon: WeaponKitB
+  Description: A lightweight alloy barrel compatible with most conventional Sniper Rifles thats easy to handle but lacks the mass necessary to counteract recoil.\n[c][00FF00]Accuracy +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Sniper Rifles and Miniguns[-][/c]
+  MarketPrice: 15000, display: true
+}
+# Barrel Upgrades - Ultra
+{ Token Id: 26, Name: [c][FF0000]Short High-Velocity Barrel[/c]
+  CustomIcon: WeaponKitC
+  Description: An exotic alloy barrel compatible with most conventional Pistols that improves damage but increases recoil.\n[c][00FF00]Damage +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Pistols and SMG[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 27, Name: [c][FF0000]Medium High-Velocity Barrel[/c]
+  CustomIcon: WeaponKitC
+  Description: An exotic alloy barrel compatible with most conventional Assault Rifles and Shotguns that improve damage but increases recoil.\n[c][00FF00]Damage +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Assault Rifles and Shotguns[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 28, Name: [c][FF0000]Long High-Velocity Barrel[/c]
+  CustomIcon: WeaponKitC
+  Description: An exotic alloy barrel compatible with most conventional Sniper Rifles that improves damage but increases recoil.\n[c][00FF00]Damage +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Sniper Rifles and Miniguns[-][/c]
+  MarketPrice: 22500, display: true
+}
+# Laser Barrel Upgrades - Rare
+{ Token Id: 29, Name: [c][11D100]Cascade Laser Array[/c]
+  CustomIcon: WeaponKitB
+  Description: A barrel attachment for most laser weapons that produces a coherent laser beam using multiple emitters firing in synchroncity. Increases damage but due to overheating it increases reload time significantly.\n[c][00FF00]Damage +20%[-][/c]\n[c][FF0000]Reload -20%[-][/c]\n[c][FFBB00]Compatible with most Laser Weapons[-][/c]
+  MarketPrice: 15000, display: true
+}
+# Laser Barrel Upgrades - Ultra
+{ Token Id: 30, Name: [c][FF0000]Collimated Laser Array[/c]
+  CustomIcon: WeaponKitC
+  Description: A barrel attachment for most laser weapons that utilizes a Zascosium-doped lens to produce a condensed beam. Increases damage but produces recoil from the rapid expansion of gases in front of the muzzle.\n[c][00FF00]Damage +20%[-][/c]\n[c][FF0000]Recoil Up[-][/c]\n[c][FFBB00]Compatible with most Laser Weapons[-][/c]
+  MarketPrice: 22500, display: true
+}
+# Plasma/Rocket Barrel Upgrades - Rare
+{ Token Id: 31, Name: [c][11D100]Scram Rail[/c]
+  CustomIcon: WeaponKitB
+  Description: A barrel attachment for some heavy weapons that utilizes electromagnetic rails to propel projectiles along the barrel faster improving reload speed by reducing heat build-up at the cost of heavier recoil.\n[c][00FF00]Reload +15%[-][/c]\n[c][FF0000]Recoil +25%[-][/c]\n[c][FFBB00]Compatible with most Heavy Weapons[-][/c]
+  MarketPrice: 15000, display: true
+}
+# Plasma/Rocket Barrel Upgrades - Ultra
+{ Token Id: 32, Name: [c][FF0000]Hyper Rail[/c]
+  CustomIcon: WeaponKitC
+  Description: A barrel attachment for some heavy weapons that utilizes superconducting rails to propel projectiles along the barrel at supersonic speeds smoothing recoil but stresses the auto-loader.\n[c][00FF00]Recoil -20%[-][/c]\n[c][FF0000]Reload -20%[-][/c]\n[c][FFBB00]Rocket Launchers and Plasma Cannons Only[-][/c]
+  MarketPrice: 22500, display: true
+}
+#{ Token Id: 69, Name: [c][FF0000]Finned Heavy Barrel[/c]
+#  CustomIcon: WeaponKitC
+#  Description: A lightweight barrel replacement for plasma and rocket weapons that uses aluminium heat sinks to disperse barrel heat between shots.\n[c][00FF00]Reload +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Rocket Launchers and Plasma Cannons[-][/c]
+#  MarketPrice: 22500, display: true
+#}
+# Crossbow Upgrades
+{ Token Id: 33, Name: [c][3C00FF]Polymer Crossbow Limb[/c]
+  CustomIcon: WeaponKitA
+  Description: An easy-draw synthetic polymer composite crossbow limb used on some novelty hunting crossbows and occasionally sold or traded to Tal'on hunters.\n[c][00FF00]Reload +30%[-][/c]\n[c][FFBB00]Crossbow Only[-][/c]
+  MarketPrice: 10000, display: true
+}
+{ Token Id: 34, Name: [c][3C00FF]Carbon Fiber Crossbow Limb[/c]
+  CustomIcon: WeaponKitA
+  Description: A high-performance carbon fiber crossbow limb used on some novelty hunting crossbows and occasionally sold or traded to Tal'on hunters.\n[c][00FF00]Damage +15%\nReload +15%[-][/c]\n[c][FFBB00]Crossbow Only[-][/c]
+  MarketPrice: 10000, display: true
+}
+{ Token Id: 35, Name: [c][11D100]Alloy Crossbow Limb[/c]
+  CustomIcon: WeaponKitB
+  Description: A high-powered exotic alloy crossbow limb used on some big-game hunting crossbows and occasionally sold or traded to Tal'on hunters.\n[c][00FF00]Damage +50%[-][/c]\n[c][FF0000]Reload -50%[-][/c]\n[c][FFBB00]Crossbow Only[-][/c]
+  MarketPrice: 15000, display: true
+}
+# Grip/Stock Upgrades - Common
+{ Token Id: 36, Name: [c][3C00FF]Polymer Grip[/c]
+  CustomIcon: WeaponKitA
+  Description: A lightweight pistol grip compatible with most conventional firearms that cuts down on the weapon's mass making it easier to aim but slightly harder to control the recoil.\n[c][00FF00]Accuracy +15%[-][/c]\n[c][FF0000]Recoil +15%[-][/c]\n[c][FFBB00]Compatible with most Firearms[-][/c]
+  MarketPrice: 10000, display: true
+}
+{ Token Id: 37, Name: [c][3C00FF]Weighted Grip[/c]
+  CustomIcon: WeaponKitA
+  Description: A dense Sathium grip compatible with most smaller conventional firearms that increases mass making it easier to control recoil but makes it heavier.\n[c][00FF00]Recoil -15%[-][/c]\n[c][FF0000]Accuracy -15%[-][/c]\n[c][FFBB00]Compatible with most Firearms[-][/c]
+  MarketPrice: 10000, display: true
+}
+{ Token Id: 38, Name: [c][3C00FF]Powertool Grip[/c]
+  CustomIcon: WeaponKitA
+  Description: A civilian tool grip typically used on industrial tools that need a constant supply of energy or fuel. Due to its civilian design it's not practical on most weapons though does make it easier to reload.\n[c][00FF00]Reload +25%[-][/c]\n[c][FF0000]Accuracy -20%\nRecoil +20%[-][/c]\n[c][FFBB00]Compatible with most pistols and Tools[-][/c]
+  MarketPrice: 10000, display: true
+}
+{ Token Id: 39, Name: [c][3C00FF]Wooden Stock[/c]
+  CustomIcon: WeaponKitA
+  Description: Heavier than carbon or polymer... certainly classier. While nothing special it IS well balanced.\n[c][00FF00]Recoil -10%[-][/c]\n[c][FFBB00]Compatible with most Rifles and Shotguns[-][/c]
+  MarketPrice: 10000, display: true
+}
+# Grip/Stock Upgrades - Rare
+{ Token Id: 40, Name: [c][11D100]Folding Stock[/c]
+  CustomIcon: WeaponKitB
+  Description: A lightweight alloy stock compatible with most rifles and shotguns that folds along the side of the receiver and barrel. A design flaw results in the stock obscuring the magazine release when folded.\n[c][00FF00]Accuracy +15%\nRecoil -10%[-][/c]\n[c][FF0000]Reload -15%[-][/c]\n[c][FFBB00]Compatible with most Rifles and Shotguns[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 41, Name: [c][11D100]Short Stock[/c]
+  CustomIcon: WeaponKitB
+  Description: A shortened stock typically used to improve handling in close quarters.\n[c][00FF00]Accuracy +10%\nRecoil -5%[-][/c]\n[c][FFBB00]Compatible with most Rifles and Shotguns[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 42, Name: [c][11D100]Full Stock[/c]
+  CustomIcon: WeaponKitB
+  Description: A full-length rifle stock designed for sniping rather than close quarters. Improves accuracy and damage slightly when using a scope but takes longer to reload.\n[c][00FF00]Damage +10%\nAccuracy +10%[-][/c]\n[c][FF0000]Reload -20%[-][/c]\n[c][FFBB00]Compatible with most Rifles and Shotguns[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 43, Name: [c][11D100]Tactical Pistol Grip[/c]
+  CustomIcon: WeaponKitB
+  Description: A specialized pistol grip for close quarters combat designed for comfortable use and easy reloading.\n[c][00FF00]Recoil -15%\nReload +15%[-][/c]\n[c][FFBB00]Compatible with most Pistols and SMG[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 44, Name: [c][11D100]Capacitor Grip[/c]
+  CustomIcon: WeaponKitB
+  Description: A complex pistol grip for energy weapons that provides redundant energy storage.\n[c][00FF00]Damage +10%[-][/c]\n[c][FF0000]Reload -10%[-][/c]\n[c][FFBB00]Compatible with most Laser Weapons[-][/c]
+  MarketPrice: 15000, display: true
+}
+# Grip/Stock Upgrades - Ultra
+{ Token Id: 45, Name: [c][FF0000]Sharpshooter's Pistol Grip[/c]
+  CustomIcon: WeaponKitC
+  Description: A mix of lightweight alloys and synthetic polymers. This specialized grip is designed for competition shooting.\n[c][00FF00]Recoil -20%\nAccuracy +20%[-][/c]\n[c][FFBB00]Compatible with most Pistols and SMG[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 46, Name: [c][FF0000]Tactical Stock[/c]
+  CustomIcon: WeaponKitC
+  Description: An adjustable polymer stock with pouches for additional ammunition for quicker reloading. Provides minor recoil absorption and improves reload speed.\n[c][00FF00]Recoil -20%\nReload +15%[-][/c]\n[c][FFBB00]Compatible with most Rifles and Shotguns[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 47, Name: [c][FF0000]Marksman's Stock[/c]
+  CustomIcon: WeaponKitC
+  Description: A dedicated long-range stock complete with adjustable buttplate and cheek riser. Provides superior performance but is difficult to reload through.\n[c][00FF00]Damage +15%\nAccuracy +10%\nRecoil -10%[-][/c]\n[c][FF0000]Reload -30%[-][/c]\n[c][FFBB00]Compatible with most Rifles[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 48, Name: [c][FF0000]Recoil-Compensating Stock[/c]
+  CustomIcon: WeaponKitC
+  Description: A complex stock that uses pneumatic buffers to reduce recoil providing a comfortable shooting experience no matter the caliber.\n[c][00FF00]Recoil -40%[-][/c]\n[c][FFBB00]Compatible with most Rifles and Shotguns[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 49, Name: [c][FF0000]Recoil-Compensating Grip[/c]
+  CustomIcon: WeaponKitC
+  Description: A dynamic grip that uses pneumatic buffers to reduce the kick from high-caliber pistols and heavy weapons.\n[c][00FF00]Recoil -40%[-][/c]\n[c][FFBB00]Compatible with most Pistols SMGs and Miniguns[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 50, Name: [c][FF0000]Superconductor Stock[/c]
+  CustomIcon: WeaponKitC
+  Description: An insulated stock with a heavy superconductor array that supplies power from an energy weapon's power cell to the firing mechanism faster. Increases damage but reduces accuracy due to the added weight.\n[c][00FF00]Damage +20%[-][/c]\n[c][FF0000]Accuracy -30%[-][/c]\n[c][FFBB00]Compatible with Laser Rifles and some Plasma Weaponry[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 70, Name: [c][FF0000]Shielded Dual Grip[/c]
+  CustomIcon: WeaponKitC
+  Description: A heavy weapons grip with an added blast shield to protect the wielder from explosive and radioactive backblast.\n[c][00FF00]Recoil -40%[-][/c]\n[c][FF0000]Reload -20%[-][/c]\n[c][FFBB00]Compatible with most Heavy Weapons[-][/c]
+  MarketPrice: 22500, display: true
+}
+# Frame/Receiver Upgrades - Common
+{ Token Id: 51, Name: [c][3C00FF]Light Pistol Receiver[/c]
+  CustomIcon: WeaponKitA
+  Description: A low-cost polymer frame for small arms with low weight making it easier to aim but the low weight does nothing to blunt the force of recoil.\n[c][00FF00]Accuracy +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Pistols and SMG[-][/c]
+  MarketPrice: 10000, display: true
+}
+{ Token Id: 52, Name: [c][3C00FF]Light Rifle Receiver[/c]
+  CustomIcon: WeaponKitA
+  Description: A low-cost polymer frame for rifles with low weight making it easier to aim but the low weight does nothing to blunt the force of recoil.\n[c][00FF00]Accuracy +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Rifles and Laser Rifles[-][/c]
+  MarketPrice: 10000, display: true
+}
+{ Token Id: 53, Name: [c][3C00FF]Light Shotgun Receiver[/c]
+  CustomIcon: WeaponKitA
+  Description: A low-cost polymer frame for shotguns with low weight making it easier to aim but the low weight does nothing to blunt the force of recoil.\n[c][00FF00]Accuracy +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Shotguns[-][/c]
+  MarketPrice: 10000, display: true
+}
+{ Token Id: 54, Name: [c][3C00FF]Light Cannon Frame[/c]
+  CustomIcon: WeaponKitA
+  Description: A lightweight Aluminium frame for Heavy Weapons with low weight making it easier to aim but the low weight does nothing to blunt the force of recoil.\n[c][00FF00]Accuracy +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Heavy Weapons[-][/c]
+  MarketPrice: 10000, display: true
+}
+# Frame/Receiver Upgrades - Rare
+{ Token Id: 55, Name: [c][11D100]Heavy Pistol Receiver[/c]
+  CustomIcon: WeaponKitB
+  Description: A denser receiver made from Sathium alloy that combats the force of recoil from large caliber handguns.\n[c][00FF00]Recoil -10%[-][/c]\n[c][FFBB00]Compatible with most Pistols and SMG[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 56, Name: [c][11D100]Heavy Rifle Receiver[/c]
+  CustomIcon: WeaponKitB
+  Description: A denser receiver made from Sathium alloy that combats the force of recoil from automatic fire but the additional weight makes it unwieldy.\n[c][00FF00]Recoil -15%[-][/c]\n[c][FF0000]Accuracy -10%[-][/c]\n[c][FFBB00]Compatible with most Rifles and Laser Rifles[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 57, Name: [c][11D100]Heavy Shotgun Receiver[/c]
+  CustomIcon: WeaponKitB
+  Description: A denser receiver made from Sathium alloy that combats the impressive force of recoil from shotgun slugs but the additional weight makes it unwieldy.\n[c][00FF00]Recoil -15%[-][/c]\n[c][FF0000]Accuracy -10%[-][/c]\n[c][FFBB00]Compatible with most Shotguns[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 58, Name: [c][11D100]Heavy Cannon Frame[/c]
+  CustomIcon: WeaponKitB
+  Description: A heavy frame made from Sathium alloy that makes automatic fire and high-recoil cannon shots more managable. Due to the extreme weight the weapon must be laid down to be reloaded.\n[c][00FF00]Recoil -20%[-][/c]\n[c][FF0000]Reload -20%[-][/c]\n[c][FFBB00]Compatible with most Heavy Weapons[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 59, Name: [c][11D100]Heat Sink Frame[/c]
+  CustomIcon: WeaponKitB
+  Description: An experimental energy frame for energy weapons that uses integrated heat sink cooling to prevent overheating from consecutive shots.\n[c][00FF00]Reload +15%[-][/c]\n[c][FF0000]Damage -5%[-][/c]\n[c][FFBB00]Compatible with most Energy Weapons[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 60, Name: [c][11D100]Overclocked Energy Frame[/c]
+  CustomIcon: WeaponKitB
+  Description: An experimental energy frame for laser weapons that uses a thermocouple assembly to feed charge into the weapon's accumulators.\n[c][00FF00]Damage +10%[-][/c]\n[c][FF0000]Reload -20%[-][/c]\n[c][FFBB00]Compatible with most Laser Weapons[-][/c]
+  MarketPrice: 15000, display: true
+}
+# Frame/Receiver Upgrades - Ultra
+{ Token Id: 61, Name: [c][FF0000]Electromagnetic Pistol Receiver[/c]
+  CustomIcon: WeaponKitC
+  Description: Utilizes a magnetic hyper rail on either side of the barrel to achieve secondary acceleration that increases damage at the cost of increased recoil.\n[c][00FF00]Damage +20%[-][/c]\n[c][FF0000]Recoil +20%[-][/c]\n[c][FFBB00]Compatible with most Pistols and SMG[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 62, Name: [c][FF0000]Calibrated Rifle Receiver[/c]
+  CustomIcon: WeaponKitC
+  Description: A high-end frame for rifles that uses a floating bolt carrier to reduce recoil and drift while providing maximum pressure. Superior performance but sometimes causes the ammo feed to jam with the new configuration.\n[c][00FF00]Damage +10%\nAccuracy +10%\nRecoil -10%[-][/c]\n[c][FF0000]Reload -15%[-][/c]\n[c][FFBB00]Compatible with most Rifles[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 63, Name: [c][FF0000]Automatic Shotgun Receiver[/c]
+  CustomIcon: WeaponKitC
+  Description: A military-specific shotgun receiver designed specifically for fast reloading in combat situations.\n[c][00FF00]Reload +20%[-][/c]\n[c][FFBB00]Compatible with most Shotguns[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 64, Name: [c][FF0000]Gyro-Stabilized Frame[/c]
+  CustomIcon: WeaponKitC
+  Description: A prototype heavy weapon frame that attaches to the wielders armor to minimize recoil and assist in aiming.\n[c][00FF00]Accuracy +15%\nRecoil -15%[-][/c]\n[c][FFBB00]Compatible with most Heavy Weapons[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 65, Name: [c][FF0000]Gamma-Wave Amplifier Frame[/c]
+  CustomIcon: WeaponKitC
+  Description: A prototype energy frame for energy-based weaponry that collimates laser wavelengths into the gamma spectrum.\n[c][00FF00]Damage +20%[-][/c]\n[c][FF0000]Accuracy DOWN[-][/c]\n[c][FFBB00]Compatible with most Energy Weapons[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 66, Name: [c][FF0000]Mk-00 Generator Frame[/c]
+  CustomIcon: WeaponKitC
+  Description: No information exists on this piece of equipment. It appears to be a frame for laser weapons that uses external power cells to supply constant power to a weapon's accumulator.\n[c][00FF00]Reload +125%[-][/c]\n[c][FF0000]Damage -33%[-][/c]\n[c][FFBB00]Compatible with most Laser Weapons[-][/c]
+  MarketPrice: 22500, display: true
+}
+# ======= Ammo Upgrades
+# Ultra Rare
+{ Token Id: 67, Name: [c][FF0000]Gyro-Jet Attachment[/c]
+  CustomIcon: WeaponKitC
+  Description: An aftermarket attachment for Rocket Launchers that autocorrects the projectile for improved penetrative damage.\n[c][00FF00]Impact Damage +10%[-][/c]\n[c][FFBB00]Compatible with most 40mm Rockets[-][/c]
+  MarketPrice: 32500, display: true
+}
+{ Token Id: 68, Name: [c][FF0000]Phonon Maser Converter[/c]
+  CustomIcon: WeaponKitC
+  Description: An experimental attachment for the Plasma Cell Magazine that raises the number of supersonic oscillations to form a quantum heat ray on detonation. Converts a plasma cell's entire explosive damage into pure thermal impact damage.\n[c][00FF00]Impact Damage 100%[-][/c]\n[c][FF0000]Blast Damage 0%[-][/c]\n[c][FFBB00]Compatible with Plasma Cannon Magazines[-][/c]
+  MarketPrice: 32500, display: true
+}
+{ Token Id: 69, Name: [c][FF0000]Proximity Detonator[/c]
+  CustomIcon: WeaponKitC
+  Description: A sensor firmware update for Rockets that causes them to detonate prematurely with increased explosive damage. Increases Blast Damage but sacrifices penetration.\n[c][00FF00]Blast Damage +50%[-][/c]\n[c][FF0000]Impact Damage -75%[-][/c]\n[c][FFBB00]Compatible with most 40mm Rockets[-][/c]
+  MarketPrice: 32500, display: true
+}
+{ Token Id: 71, Name: [c][FF0000]Kinetic Penetrator[/c]
+  CustomIcon: WeaponKitC
+  Description: An ammunition refit for handheld rockets that replaces the fragmentation explosive head with a sathium-steel penetrator for increased kinetic damage. Increases impact damage but significantly reduces blast damage as only the fuel in the rocket will explode.\n[c][00FF00]Impact Damage +50%[-][/c]\n[c][FF0000]Blast Damage -50%[-][/c]\n[c][FFBB00]Compatible with most 40mm Rockets[-][/c]
+  MarketPrice: 32500, display: true
+}
+# ======= Flamethrower/Tool Upgrades
+{ Token Id: 72, Name: [c][11D100]High-Pressure Nozzle[/c]
+  CustomIcon: WeaponKitB
+  Description: An industrial-grade nozzle replacement for chemical sprayers used for hitting climbing weeds and vines.\n[c][00FF00]Impact Damage +50%[-][/c]\n[c][FFBB00]Compatible with Flamethrowers[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 73, Name: [c][FF0000]Jet Nozzle[/c]
+  CustomIcon: WeaponKitC
+  Description: A high-pressure attachment for military flamethrowers that condenses the aerated fuel stream at a single target for a precise high-temperature burn.\n[c][00FF00]Impact Damage +300%[-][/c]\n[c][FF0000]Blast Damage -75%[-][/c]\n[c][FFBB00]Compatible with Flamethrowers[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 74, Name: [c][11D100]Sprayer Nozzle[/c]
+  CustomIcon: WeaponKitB
+  Description: A low-pressure attachment for commercial chemical sprayers for spraying pesticides over a wider area with less force.\n[c][00FF00]Blast Damage +20%[-][/c]\n[c][FF0000]Impact Damage -100%[-][/c]\n[c][FFBB00]Compatible with Flamethrowers[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 75, Name: [c][FF0000]Dynamic Nozzle[/c]
+  CustomIcon: WeaponKitC
+  Description: An adjustable attachment typically used on water cannons for riot control in prisons. It provides adjustable flow and strength using a second trigger on the forward grip.\n[c][00FF00]Blast Damage +25%[-][/c]\n[c][FFBB00]Compatible with Flamethrowers[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 76, Name: [c][FF0000]Industrial Frame[/c]
+  CustomIcon: WeaponKitC
+  Description: A reinforced steel frame used on industrial tools subject to a lot of wear-and-tear that reduces warping from prolonged use.\n[c][00FF00]Reload Speed +25%[-][/c]\n[c][FFBB00]Compatible with most tools and flamethrowers[-][/c]
+  MarketPrice: 225000, display: true
+}
+{ Token Id: 77, Name: [c][11D100]Commercial Frame[/c]
+  CustomIcon: WeaponKitB
+  Description: A lightweight after-market frame for personal tools that eases the strain of reloading fluid tanks and powercells.\n[c][00FF00]Reload Speed +15%[-][/c]\n[c][FFBB00]Compatible with most tools and flamethrowers[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 78, Name: [c][11D100]Titanium-Alloy Chain[/c]
+  CustomIcon: WeaponKitB
+  Description: A replacement chain for chainsaws comprised of a titanium alloy that's lighter weight and easier to reach higher RPM but prone to snagging.\n[c][00FF00]Damage +25%[-][/c]\n[c][FFBB00]Compatible with the Chainsaw[-][/c]
+  MarketPrice: 15000, display: true
+}
+{ Token Id: 79, Name: [c][FF0000]Sathium-Alloy Chain[/c]
+  CustomIcon: WeaponKitC
+  Description: A heavy chain replacement for chainsaws intended for sawing through metal bulkheads. While it wasn't able to surpass plasma cutters it proved an effective weapon in combat despite being a war crime.\n[c][00FF00]Damage +50%[-][/c]\n[c][FFBB00]Compatible with the Chainsaw[-][/c]
+  MarketPrice: 22500, display: true
+}
+{ Token Id: 80, Name: [c][FF0000]Phase-Shift Modulator[/c]
+  CustomIcon: WeaponKitC
+  Description: Induces phase-shift colloid across the surface of a metal surface protecting it from damage and increasing plasma conductivity.\n[c][00FF00]Unknown Effect[-][/c]\n[c][FFBB00]Unknown Use[-][/c]
+  MarketPrice: 32500, display: true
+}
+# ==========================================================
+# ============= Trading Cards (weird, right?) ==============
+# ==========================================================
+# ===== Location Cards
+{ Token Id: 120, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Akua[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]Akua is a temperate planet within Imperial Galactic Territory and the most well-known exile planet of the Tal'on. It's also a hyperspace junction point tha attracts many anomalies.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 121, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Omicron[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]Omicron is a hot and arid planet within Imperial Galactic Territory and a neighbor to Akua. The planet can be difficult for many oxygen-breathing lifeforms due to high levels of Fluorine in the atmosphere.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 122, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Ningues[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]Ningues is a cold and frozen world within Imperial Galactic Territory with a wide orbit. The planet is locked in snow and ice for 12 years before experiencing a brief spring period of only 2 years.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 123, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Tallodar[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]Tallodar is an older planet that was settled centuries ago but has since been largely abandoned as industry in the sector moved on leaving ancient and outdated buildings across the arid landscape.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 124, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Oscatune[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]Oscatune is a comparatively large moon to a blue gas giant. Much of Oscatune's surface is water with a number of Tal'on vying for space against the resident Epsilon emplacements.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 125, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Uai[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]A temperate planet of some note due to it's unusual coloration caused by high quantities of beryllium and aluminium in the rocks.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 126, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Roggery[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]A warm and wet world rich in both life and death. Roggery's surface is primarily swampland with brackish water hiding many dangers beneath the surface.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 127, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Pandora[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]A world of ancient towering trees and lush rainforest. Pandora's high temperatures and difficult-to-access resources have caused it to go undeveloped for centuries.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 128, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Sienna[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]A frozen and barren wasteland stretches from horizon to horizon with great riches beneath the ground if one can only crack through the hard ice that covers the surface.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 129, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Masperon[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]Wreathed in toxic fog for most of the year. Masperon is a hostile and exotic world that's not recommended for novice explorers.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 130, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Sharee[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]An dry and hot expanse of sand separates the spaces between canyons on this desert world. Despite the emptiness it possesses some adventurous souls that call it home.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 131, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Purgatory[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]A formerly-great city planet of the federation. Purgatory now stand silent. dead and depleted in the wake of the War of Silence.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 132, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Dread[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]Once a bustling metropolis now a blasted ruin consumed by radioactive ash and sand. Dread remains a haunted wasteland left in the wake of an ancient war.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 133, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Rogue J-5565[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]A planet cast free of it's orbit that drifts shiftlessly across the galaxy. Caught briefly by a star's gravity as it passes through different systems.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 134, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Rogue PX-37[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]A drifting rock devoid of all natural life as it crosses the void between stars. No light has reached this planet's surface in thousands of years.[-][/c]
+  MarketPrice: 1200, display: true
+}
+{ Token Id: 135, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Haven[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]A temperate world bountiful in life and natural resources. It has attracted a number of minor mining companies to stake their claim in the tame forests and plains.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 136, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Maveth[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]A barren and lifeless world that once served as the last defense in an ancient and long-forgotten war.[-][/c]
+  MarketPrice: 5000, display: true
+}
+{ Token Id: 137, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Xanthos[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]The Imperial Homeworld that is the seat of the current Empress of the Zirax Empire. Historically it was a great cityplanet but much of the vast metropolis was razed during the War of Silence.[-][/c]
+  MarketPrice: 1200, display: true
+}
+{ Token Id: 138, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Altandor[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]The ancestral home of the Arkenian Republic. A large ocean planet once teeming with life. It was toxified during the early space age and has since been abandoned for over a millenium.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 139, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Corribus[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]The current center of the Trade Federation. Corribus is a temperate ocean planet chosen as the federation's new home due to the similarity to the ancestral home Altandor.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 140, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Amphythos[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]A warm tropical ocean planet. Home to Tal'on exiles spread across raft towns and island villages covering the surface.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 141, Name: [c][0088FF]Trading Card[/c][-][b] - [c][AAFF00]Haginaa[/c][/b]
+  CustomIcon: TradingCard01
+  Description: A collectible Location trading card from the Empyrion Collection.\n[c][FFFFFF]Once the frontier of the Tallax Assembly. Haginaa was the first planet ever lost to The Legacy and still remains under their control. The active elements still resisting all attempts to cleanse them from the galaxy.[-][/c]
+  MarketPrice: 5000, display: true
+}
+# ===== Structure Cards
+{ Token Id: 150, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Rados Missile Base[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The Rados Missile Base is a large-scale operation constructed by the Zirax's House of Rados to provide long-range coverage of imperial territory with anti-starship missiles. Indestructible.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 151, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Imperial Drone Base[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]Drone Bases act as the control center of a planet's surveillance and protection system. From them unmanned drones can be dispatched to hotspots all over the planet.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 152, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Sunat-Class Corvette[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The Sunat-Class Corvette is the workhorse of the Imperial Navy. Possessing the typical hammerhead shape of most zirax vessels it transports troops and supplies across the galaxy.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 153, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Kiuvera-Class Cutter[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The smallest of the Imperial Navy's main line of warships. The Kiuvera is lightly armed and armored and comes in a variety of configurations for each zirax house.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 154, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Periat-Class Frigate[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]A medium-sized Frigate of the Imperial Navy. The Periat is an armored warship capable of long-ranged bombardment with both plasma and missiles and heavier armor than the Sunat.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 155, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Imerat-Class Destroyer[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The empire's fast-response warship. The Imerat is the largest vessel that the empire can field at a moment's notice. It possesses superior firepower and shields with an internal combat bridge for added protection.[-][/c]
+  MarketPrice: 1200, display: true
+}
+{ Token Id: 156, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Malrak-Class Carrier[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The latest carrier in the Imperial Navy built to replace the aging Kamirat-Class Battlecarriers. They can both launch fighters and offer long-ranged fire support with heavy Artillery.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 157, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Kamirat-Class Battlecarrier[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]An older and experimental design for a carrier that is presently being replaced by the newer Merkatz-Class Carrier.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 158, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Tovera-Class Dreadnought[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The most feared vessel in the Imperial Fleet. The Tovera is a Battleship with the most formidible armaments and weapons of any vessel in space. Where this ship goes only wreckage will be left in it's wake.[-][/c]
+  MarketPrice: 5000, display: true
+}
+{ Token Id: 159, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Kellen-Class Corvette[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]Polaris' Security Division's anti-pirate warship. The Kellen-Class is primarily used as a guard ship to protect planetary orbits from Pirates and Bandits.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 160, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Hyozen-Class Frigate[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]A frigate-class security ship of PolSec. The Hyozen is armed primarily with long-ranged missiles and light lasers which are used to escort merchant vessels from pirates during transit.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 161, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Skenya-Class Destroyer[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The Skenya-Class is the largest officially-recognized warship employed by Polaris Security. It's primary role is the protection of Superfreighters and important stations during their construction phase.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 162, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Tursas-Class Battleship[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]Polaris has not confirmed the existence of the Tursas-class. The existence of a privately-owned battleship is a violation of the Trade Protection agreement with the Zirax Empire.[-][/c]
+  MarketPrice: 5000, display: true
+}
+{ Token Id: 163, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Ilmarinen-Class Superfreighter[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The Ilmarinen-Class is the largest freighter in the galaxy. Measured in the kilotons (empty) the Ilmarinen-Class are used for transporting of bulk goods between the core worlds of the empire and federation.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 164, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Infector[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The Infector is the most common of Legacy Bioship. Officially classed as a Corvette the Infector possesses compact Positron weapons that tear through shields and hull alike with offense and defense rivaling an Imperial Destroyer.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 165, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Decimator[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]A rarer variant of Legacy Bioship classed as a Frigate. The Decimator is evolved solely for combat boasting a significant increase in firepower over the Infector that not even an imperial battlegroup can withstand it's full armaments.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 166, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Devastator[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]A rare variant of Legacy Bioship similar to the Decimator but evolved with a more balanced design. Fast and Durable the Devastator has more forward-focused offense that its contemporaries.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 167, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Eradicator[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]A highly-evolved form of Legacy Bioship. It boasts the highest offense and defense of any other legacy vessel. Surpassing the Tovera-Class Dreadnought by leaps and bounds despite only being classed as a Destroyer.[-][/c]
+  MarketPrice: 1200, display: true
+}
+{ Token Id: 168, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Cataclysm[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]A lost remnant from the War of Silence. The Cataclysm hasn't been seen since the war and only one has ever been recorded. It possesses gravity weapons capable of destroying entire planets but little more is known about it.[-][/c]
+  MarketPrice: 5000, display: true
+}
+{ Token Id: 169, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Sector Command[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The Imperial Fortress and stronghold of any system. The Sector Command is the largest and most heavily armed structure in the Empire that doubles as a Drone Base and Command center for entire sectors.[-][/c]
+  MarketPrice: 1200, display: true
+}
+{ Token Id: 170, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]The Epilogue[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]Officially listed as Dreadnought class. The Epilogue is the only recognized battleship of the Trade Federation. There is only one and acts as the mobile datacenter for the entire Galactic Economy.[-][/c]
+  MarketPrice: 1200, display: true
+}
+{ Token Id: 171, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FFDD00]Orbital Command[/c][/b]
+  CustomIcon: TradingCard02
+  Description: A collectible Structure trading card from the Empyrion Collection.\n[c][FFFFFF]The spaceborne counterpart to the Sector Command. It's less fortified and is used primarily as a military spaceport and fortress in key orbits across the empire.[-][/c]
+  MarketPrice: 400, display: true
+}
+# ===== Entity Cards
+{ Token Id: 180, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Tal'on Hunter[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]The Tal'on may be a shell of their previous greatness but make no mistake. Their crossbows are excellent and their bolts are sharp.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 181, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Combat Android[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]A marvel of modern robotics. The L0-K1 Combat Android is a low-cost alternative to security among a large number of corporate entities across the empire.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 182, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Combat Mechanoid[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]The Zirax Empire's counterpart to the Trade Federation's more civilian L0-K1. Combat Mechanoids weapons are integrated into their arms with a focus on offensive combat.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 183, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Zirax Trooper[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]The flesh and blood soldiers of the Empire. While over 80% of the soldiers may be clones they are all 100% zirax and loyal to the empire.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 184, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Zirax Assault Trooper[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]Specialized soldiers from the House of Xenu. Assault Troopers are typically deployed in siege combat to capture enemy fortifications and facilities.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 185, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Zirax Elite Trooper[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]Officers in the Zirax Military. They all wear a signature blue suit with a full helmet utilizing the latest in armor and weapons. No elite is a cloned trooper.[-][/c]
+  MarketPrice: 1200, display: true
+}
+{ Token Id: 186, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Assault Mechanoid[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]Few in numbers but large in both size and firepower. Assault Mechs are piloted mechs with armor and firepower rivaling most combat drones but have a weakness where their legs connect to the torso.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 187, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Guardian Mechanoid[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]Made in the same production line as the Assault Mechanoid it has comparable armor and firepower. Unlike the Assault Mech the Guardian is automated but suffers from poor mobility.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 188, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Leafcutter Insect[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]A pain in both the leg and butt. Leafcutters are commonly found on temperate planets where their vertical mouths are used to eat tree bark and bushes.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 189, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Erebus Spider[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]With 8 legs and fangs this unusually large spider is named after the god of darkness as it skulks from shadow to shadow on it's hunt for prey.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 190, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Androraptor[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]With retractable claws and an uncomfortable number of sharp teeth you'd better be armed if you run into this Clever girl.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 191, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Telluropod[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]The disturbing hybrid between alligator and jellyfish. The Telluropod is a common ambush predator found along the shores of lakes and swamps across the galaxy.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 192, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Argos[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]A real life Centaur... if centaurs were insects. Argos are an offshoot of the Kriel worker class that have gone feral over thousands of years of separation from the central Hive.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 193, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Ignidon[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]With tough scales and a belly full of flammable gas the Ignidon is like a furnace with legs with an equally hot temperament to match.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 194, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Ripperdog[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]A zirax's best friend and companion. Ripperdogs come in all shapes and sizes but are most common in the zirax military as working dogs used to bring down enemy troops.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 195, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Gigas[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]These big boys can be found in a variety of different colorations and environments. They all like to collect shiny rocks though.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 196, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Nyxiss Scorpion[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]With four legs and a barbed tail these guys are the least fun thing you can find in a hole. They like dark and damp places like abandoned buildings.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 197, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Abomination[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]The most common remnants of the Legacy's blight on the galaxy. Most abominations were once citizens of the Empire who suffered the worst fate imaginable.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 198, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Overseer[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]An evolved form of abomination. The overseer towers over other creatures and possesses lighting speed and a toxic radioactive glow. If you hear your radiation meter crackling there's one not far away.[-][/c]
+  MarketPrice: 400, display: true
+}
+{ Token Id: 199, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Parasaur[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]Fast on their feet and fearful of predators the Parasaur is a common sight on temperate planets. A good source of meat for a hungry hunter though.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 200, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Moularidon[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]As big as they are Moularidon will run from anything it perceives as a threat unless properly tamed as the Tal'on have done. You'll find them pulling plows and carts in many Tal'on villages.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 201, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Thymosaurus[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]Despite a fearsome appearance their eyesight is so poor they can't identify prey unless it hits them first. Once enraged there's not much that can stop one though.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 202, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Wraithworm[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]While the males are rarely seen the Wraithworm Queens are common in forests and burrows across the galaxy where they're a major pest to spaceports everywhere.[-][/c]
+  MarketPrice: 100, display: true
+}
+{ Token Id: 203, Name: [c][0088FF]Trading Card[/c][-][b] - [c][FF5555]Sandworm[/c][/b]
+  CustomIcon: TradingCard03
+  Description: A collectible Entity trading card from the Empyrion Collection.\n[c][FFFFFF]Common in deserts Sandworms travel in small packs where they filter their food from the shifting sands with their teeth. Watch out though. Those teeth are harder than steel and can puncture most light armors.[-][/c]
+  MarketPrice: 100, display: true
+}
 
 
 # ======================================================================================================================================================================
@@ -307,9 +1004,15 @@
 # ================================================================================================================================ Deep Core Mining Keys
 
 # Deep Core Facility Access Key
-{ Token Id: 6005, Name: [c][FF00FF]Deep Core Facility Access Key[/c]
+{ Token Id: 6005, Name: [c][FF00FF]Deep Core Facility Access Key[-][/c]
   DropOnDeath: false
   Description: [c][FF00FF]Mission Item.[-][/c] This key card grants access to the lower levels of the Deep Core Mining Facility on Ice Giant class planets.
+}
+
+# Derelict Station/Lost Station logs
+{ Token Id: 6006, Name: "[c][FF0000]Salvaging or retrieving with a multitool is[-][/c]"
+  DropOnDeath: false
+  Description: "Dummy token for in-game description of the locked Salvage found in wrecks."
 }
 
 # ================================================================================================================================ Tutorial Tokens:
@@ -345,22 +1048,50 @@
 }
 
 
+# ================================================================================================================================ Starting planet tokens
+
+{ Token Id: 6016, Name: [c][ff0000]Red Key Card[-][/c]
+  CustomIcon: KeyCardRed
+  DropOnDeath: false
+  RemoveOnUse: true
+  Description: "A security card used to access doors in the crashed prison transport on the rogue planet."
+}
+
+{ Token Id: 6017, Name: [c][ffff00]Yellow Key Card[-][/c]
+  CustomIcon: KeyCardYellow
+  DropOnDeath: false
+  RemoveOnUse: true
+  Description: "A security card used to access doors in the crashed prison transport on the rogue planet."
+}
+
+{ Token Id: 6018, Name: [c][00ffff]Blue Key Card[-][/c]
+  CustomIcon: KeyCardBlue
+  DropOnDeath: false
+  Description: "A security card used to access doors and medical equipment in the crashed prison transport on the rogue planet."
+}
+
+# On Dread starter
+{ Token Id: 6019, Name: [c][A9A9A9]Message to the Terran[-][/c]
+  CustomIcon: Tablet
+  DropOnDeath: false
+  Description: "[c][A9A9A9]Dear Terran,\n\nThank you for the ship! We'll make sure to think of you every time we're out cruisin' the galaxy.\nToo bad we had to leave you in that pit, I was just starting to like you.\n\nLucky for you I was able to convince the rest of me crew to leave you with some gear to give you a fightin' chance!\n\nAh well, perhaps we will meet again one day and I might even give you the opportunity to win back your ship.\nWho am I kidding? I could read you like an open book! Hah!\n\nUntil we meet again.[-][/c]"
+}
 
 # ================================================================================================================================ Trading seperators
 # old color [CC99FF]
 # Encrypted Data Chip
-{ Token Id: 6101, Name: "[c][FFD700]Buys:[-][/c]"
+{ Token Id: 6101, Name: "[c][FFD700]============= Buys =============[-][/c]"
   CustomIcon: GoldCoins
   Description: "Trades in this category are primarily sold to the trader, though some items may also be purchasable."
 }
 
 # Flawed Data Chip
-{ Token Id: 6102, Name: "[c][00FF00]Sells:[-][/c]"
+{ Token Id: 6102, Name: "[c][00FF00]============= Sells =============[-][/c]"
   CustomIcon: MoneyCard
   Description: "Trades in this category are primarily bought from the trader, though some items may also be sellable."
 }
 
-{ Token Id: 6103, Name: "[c][00FFFF]Buy & sell[-][/c]"
+{ Token Id: 6103, Name: "[c][00FFFF]========== Buys & Sells ==========[-][/c]"
   CustomIcon: GoldIngot
   Description: "Trades in this category are bought and sold from the trader."
 }
@@ -372,13 +1103,11 @@
   Description: [c][ff8000]Story mission item.[-][/c] \n\nThis matrix grants access to Progenitor computer terminals. \n\nRequired to access the core system controls on Progenitor Cores and other Progenitor computer systems.
 }
 
-
-
 # ================================================================================================================================ Object 82 Keys.
 
 # Progenitor Key I - Object 1
 { Token Id: 6105, Name: [c][FF00FF]Progenitor Key I[/c]
-  CustomIcon: ProgenitorKeyI
+  CustomIcon: Eden_ObjectKey1
   DropOnDeath: false
   RemoveOnUse: true
   Description: [c][FF0000]Consumed on use.[-][/c] \n\nThis key grants access to one of the doors of Object 82 located near the starting solar systems. You must also have personally activated the Subspace Link at Object 1. \n\nCaptains of UCH Research Ships can tell you where Object 82 is. \n\n[i][c][A9A9A9]Once we were one. Once we had harmony...[-][/c][/i]
@@ -386,7 +1115,7 @@
 
 # Progenitor Key II - Object 13
 { Token Id: 6106, Name: [c][FF00FF]Progenitor Key II[/c]
-  CustomIcon: ProgenitorKeyII
+  CustomIcon: Eden_ObjectKey2
   DropOnDeath: false
   RemoveOnUse: true
   Description: [c][FF0000]Consumed on use.[-][/c] \n\nThis key grants access to one of the doors of Object 82 located near the starting solar systems. You must also have personally activated the Subspace Link at Object 13. \n\nCaptains of UCH Research Ships can tell you where Object 82 is. \n\n[i][c][A9A9A9]...Not content with one mortal life we sought more...[-][/c][/i]
@@ -394,7 +1123,7 @@
 
 # Progenitor Key III - Object 42
 { Token Id: 6107, Name: [c][FF00FF]Progenitor Key III[/c]
-  CustomIcon: ProgenitorKeyIII
+  CustomIcon: Eden_ObjectKey3
   DropOnDeath: false
   RemoveOnUse: true
   Description: [c][FF0000]Consumed on use.[-][/c] \n\nThis key grants access to one of the doors of Object 82 located near the starting solar systems. You must also have personally activated the Subspace Link at Object 42. \n\nCaptains of UCH Research Ships can tell you where Object 82 is. \n\n[i][c][A9A9A9]...We ascended to dreams and fell to nightmare...[-][/c][/i]
@@ -402,7 +1131,7 @@
 
 # Progenitor Key IV - Object 276
 { Token Id: 6108, Name: [c][FF00FF]Progenitor Key IV[/c]
-  CustomIcon: ProgenitorKeyIV
+  CustomIcon: Eden_ObjectKey4
   DropOnDeath: false
   RemoveOnUse: true
   Description: [c][FF0000]Consumed on use.[-][/c] \n\nThis key grants access to one of the doors of Object 82 located near the starting solar systems.  You must also have personally activated the Subspace Link at Object 276.\n\nCaptains of UCH Research Ships can tell you where Object 82 is. \n\n[i][c][A9A9A9]...Now we see our children following in our footsteps. Now we see you following in theirs.[-][/c][/i]
@@ -511,6 +1240,60 @@
   MarketPrice: 25, display: true
 }
 
+# For hidden secret on UCH Research Vessels
+{ Token Id: 6124, Name: Maintenance Access Card 12-A
+  CustomIcon: KeyCardBlue
+  Description: "An access card for a maintenance hatch somewhere on board a UCH Research Vessel.\nConsumed on use."
+  MarketPrice: 25, display: true
+  DropOnDeath: false
+  RemoveOnUse: true
+}
+
+{ Token Id: 6125, Name: Maintenance Access Card 12-B
+  CustomIcon: KeyCardBlue
+  Description: "An access card for a maintenance hatch somewhere on board a UCH Research Vessel.\nConsumed on use."
+  MarketPrice: 25, display: true
+  DropOnDeath: false
+  RemoveOnUse: true
+}
+
+{ Token Id: 6126, Name: Maintenance Access Card 12-C
+  CustomIcon: KeyCardBlue
+  Description: "An access card for a maintenance hatch somewhere on board a UCH Research Vessel.\nConsumed on use."
+  MarketPrice: 25, display: true
+  DropOnDeath: false
+  RemoveOnUse: true
+}
+
+{ Token Id: 6127, Name: "Gerald's Partially Corrupted Log"
+  CustomIcon: KeyCardRed
+  Description: "A partially corrupted log. Perhaps by finding more pieces of the log you can reconstruct it."
+  MarketPrice: 25, display: true
+  DropOnDeath: false
+}
+
+{ Token Id: 6128, Name: "Gerald's Keycard"
+  CustomIcon: KeyCardRed
+  Description: "A key, to something, on a UCH Research Vessel.\nRemoved on use."
+  MarketPrice: 25, display: true
+  DropOnDeath: false
+  RemoveOnUse: true
+}
+
+{ Token Id: 6129, Name: "Gerald's Last Log"
+  CustomIcon: KeyCardRed
+  Description: "A tale of betrayal and adventure.[sup]\n\n[c][00ffff]Log 47:[-][/c] Today I arrived on a UCH Research Vessel. I snuck in via the rear hangar and made my way to engineering. As it was the middle of the night ship time, there were few personel on duty and I was able to sneak into a maintenance shaft. This will be home for now while I plot my revenge.\n\n[c][00ffff]Log 53:[-][/c] I had to leave the last research vessel as the terran scum were getting suspicious. I found a new place to hide in another maintenance section. I will have my revenge on my former captain!\n\n[c][00ffff]Log 59:[-][/c] Yet again I had to move, but this time I found a nice spacious room next to the air filtration system. Good news is it's nice and cool here, though the fans are a little noisy. Now I can work in peace on plotting my revenge!"
+  MarketPrice: 25, display: true
+  DropOnDeath: false
+}
+
+# For mission Expedition: Dronelands
+{ Token Id: 6130, Name: Broken Drone Processor
+  CustomIcon: Eden_BrokenDroneProcessor
+  DropOnDeath: false
+  Description: "A broken processor taken from an strange structure on an asteroid field in the Syntrax system.\n\n[c][FF00FF]Mission item:[-][/c]\nExpedition: Dronelands"
+}
+
 # ================================================================================================================================ Tokens for message deliveries
 
 { Token Id: 6150, Name: Message for Trade Federation Orbital Habitat
@@ -566,7 +1349,7 @@
 }
 
 
-# # Exploration Data
+# Exploration Data
 # { Token Id: 6202, Name: Exploration Data
   # # CustomIcon: Eden_RelicoftheMoon
   # Description: This token is not currently used but may have a use in a future update. Hold on to it!
@@ -629,7 +1412,20 @@
   RemoveOnUse: true
 }
 
+{ Token Id: 6310, Name: "The Explorer's Pocket Guide to Star Classes"
+  CustomIcon: KeyCardBlue
+  Description: "A draft version of a pocket guide to the basic star classes in Andromeda."
+}
+
 # ================================================================================================================================ Schematics
+# Encrypted Schematic
+{ Token Id: 6400, Name: "[c][FFFFFF]Encrypted Schematic[-][/c]"
+  CustomIcon: Eden_RecipeRandom2
+  DropOnDeath: false
+  Description: "An encrypted schematic.\nDecode it to obtain a random schematic by using a schematic computer on board a UCH Research Vessel or your science station."
+  MarketPrice: 50000, display: true
+}
+
 # Sentinel Flak Turret
 { Token Id: 6401, Name: "Schematic - [c][FFFFFF]Sentinel Flak Turret[-][/c]"
   CustomIcon: Eden_TurretFlakClose_Recipe
@@ -682,7 +1478,7 @@
 { Token Id: 6407, Name: "Schematic - [c][FFFFFF]Heavy Railgun Turret[-][/c]"
   CustomIcon: Eden_TurretRailgunHeavy_Recipe
   DropOnDeath: false
-  Description: "Schematic category: [c][00FFFF]UCH Technology[-][/c].\nCost: [c][00FFFF]100 Unlock Points[-][/c]\n[c][FFFF00]Requires Light Railgun Turret unlocked.[-][/c]\n\nSchematics can be turned in at Schematic Computers on UCH Research Vessels to unlock the listed crafting template or sold to traders."
+  Description: "Schematic category: [c][00FFFF]UCH Technology[-][/c].\nCost: [c][00FFFF]100 Unlock Points[-][/c]\n[c][FFFF00]Requires Medium Railgun Turret unlocked.[-][/c]\n\nSchematics can be turned in at Schematic Computers on UCH Research Vessels to unlock the listed crafting template or sold to traders."
   MarketPrice: 50000, display: true
 }
 
@@ -755,7 +1551,15 @@
   CustomIcon: Eden_WindTurbineActiveT2_Recipe
   DropOnDeath: false
   Description: "Schematic category: [c][00FFFF]Civilian Technology[-][/c].\nCost: [c][00FFFF]100 Unlock Points[-][/c]\n\nSchematics can be turned in at Schematic Computers on UCH Research Vessels to unlock the listed crafting template or sold to traders."
-  MarketPrice: 100000, display: true
+  MarketPrice: 200000, display: true
+}
+
+# Industrial Water Extractor
+{ Token Id: 6417, Name: "Schematic - [c][FFFFFF]Industrial Water Extractor[-][/c]"
+  CustomIcon: Eden_WaterGeneratorT2_Recipe
+  DropOnDeath: false
+  Description: "Schematic category: [c][00FFFF]Civilian Technology[-][/c].\nCost: [c][00FFFF]100 Unlock Points[-][/c]\nLevel required: [c][00FFFF]15 to craft, 20 to activate[-][/c]\n\nSchematics can be turned in at Schematic Computers on UCH Research Vessels to unlock the listed crafting template or sold to traders."
+  MarketPrice: 50000, display: true
 }
 
 # ================================================================================================================================ Mission Tokens
@@ -931,6 +1735,32 @@
   CustomIcon: Eden_CacheCombatT6
   Description: Eden_CacheCombatinfo
   MarketPrice: 300000, display: true
+}
+
+# ----------------------------------------------------------------------------------------- Alien Loot
+# Alien reward caches
+{ Token Id: 6527, Name: "[c][B7B7B7]Common Alien Cache[-][/c]"
+  CustomIcon: AlienContainer
+  Description: Eden_CacheAlieninfo
+  MarketPrice: 10000, display: false
+}
+
+{ Token Id: 6528, Name: "[c][FFFFFF]Rare Alien Cache[-][/c]"
+  CustomIcon: AlienContainerRare
+  Description: Eden_CacheAlieninfo
+  MarketPrice: 20000, display: false
+}
+
+{ Token Id: 6529, Name: "[c][FF0000]Very Rare Alien Cache[-][/c]"
+  CustomIcon: AlienContainerVeryRare
+  Description: Eden_CacheAlieninfo
+  MarketPrice: 40000, display: false
+}
+
+{ Token Id: 6530, Name: "[c][FF00FF]Ultra Rare Alien Cache[-][/c]"
+  CustomIcon: AlienContainerUltraRare
+  Description: Eden_CacheAlieninfo
+  MarketPrice: 60000, display: false
 }
 
 # ----------------------------------------------------------------------------------------- Exploration reports
@@ -2277,13 +3107,22 @@
 
 
 # ================================================================================================================================ Project Eden Scenario Info Tokens
-{ Token Id: 6998, Name: [c][FFA500]Project Eden Support Guide[-][/c]
-  CustomIcon: Eden_Guide18
+{ Token Id: 6997, Name: [c][00FFFF]Reforged Eden 2 Creative Guide[/c]
+  CustomIcon: Eden_Guide4
   DropOnDeath: false
-  Description: "[c][00ffff]   >>> Read the PDA First <<<[-][/c][sup]\nAccess the PDA with [c][ffff00]F1[-][/c].\n\n[c][FFA500]This is a custom scenario created by players and the game developers cannot assist with problems encountered while playing it.[-][/c]\n\n[c][FFFF00][b]PLEASE REPRODUCE ANY GAME ISSUE IN A DEFAULT, UNMODIFIED SAVE GAME BEFORE REPORTING ANY ISSUE TO THE GAME DEVELOPERS.[/b][-][/c]\n\nPlease always fully exit Empyrion all the way back to Windows desktop when switching saves or servers.\n\nThere are certain risks in playing a custom scenario and it may be more demanding on your PC hardware. SAVE YOUR BLUEPRINTS OFTEN.\n\nYou can find support and report issues on the Reforged Eden Workshop page.\n\nIf playing on a server speak with your server admin.\nFor any updates on the scenario please see the workshop page.[/sup]"
+  # Description: "[c][00ffff]>>> Empyriopedia <<<[-][/c][sup]\n\n[c][FFFF00]Tooltips:[-][/c] Tooltips provide useful information on many items and devices. Mouse over any item in your inventory, constructor, or tech tree to view important details.\n[c][FFFF00]PDA:[-][/c] Your PDA contains information on missions and an Empyriopedia section with important information.\n\nComplete the [c][00FFFF]Make Contact with Terran Forces[-][/c] mission under the Project Eden Story section to unlock additional missions and Empyriopedia entries. The Empyriopedia is filled in as you progress.\n\nAccess the PDA with [c][FFFF00]F1[-][/c].\n\n[c][FFFF00]Planets and Sectors: [-][/c]Planets and sectors in the current solar system are scanned and a basic description of each can be viewed on the local or solar system map.\n\n[c][FFFF00]Galaxy: [-][/c]Project Eden contains a large galaxy viewable on the galaxy map. Star class and faction territory change what you may find in a star system.[/sup]"
+  # Description: "[c][00ffff]   >>> Read the PDA First <<<[-][/c][sup]\nAccess the PDA with [c][ffff00]F1[-][/c].\n\n[c][00ffff]Missions:[-][/c] Missions are managed under the Solo Missions PDA tab. Start completing the Reforged Galaxy or Project Eden story missions to unlock additional missions.\n\n[c][00ffff]Empyriopedia:[-][/c] Contains a comprehensive encyclopedia of the scenario in the PDA and can answer many of your questions. Additional entries are unlocked as you progress through the scenario.\n\n[c][00ffff]Journey Book:[-][/c] Shows a log of previous mission dialog in the PDA.\n\n[c][00ffff]Tooltips:[-][/c] Tooltips provide important information on many items and devices. Mouse over any item in your inventory, constructor, or tech tree to view details.\n\n[c][00ffff]Planets and Sectors:[-][/c] Planets and sectors in the current solar system are scanned and a basic description of each can be viewed on the local or solar system map.\n\n[c][00ffff]Galaxy:[-][/c] Project Eden contains a large galaxy viewable on the galaxy map. Star class and faction territory change what you may find in a star system.\n\n[c][00ffff]Mass and Volume:[-][/c] Enabled by default. Use the logistics system to move items too big to fit in your inventory.\n\n[c][00ffff]CPU:[-][/c] Enabled by default. Add CPU Extenders to increase the max CPU of your ship or base.[/sup]"
+  Description: "[c][00ffff]>>> Save blueprints often <<<[-][/c]\n\n[sup][c][00ffff]Missions:[-][/c] Missions and the PDA is disabled in creative mode.\n[c][00ffff]Mass and Volume:[-][/c] Disabled in creative mode. Use a [c][00ff00]survival game[-][/c] for testing the effects of mass and volume. Ship mass still counts while in creative.\n[c][00ffff]CPU:[-][/c] Disabled in creative mode. Add CPU Extenders to increase the max CPU of your ship or base so it will still function in survival. Check the CPU tab of the control panel to view current CPU specs.\n[c][ff5000]Restricted items:[-][/c] Some items in the Item Menu are intended for internal scenario development only and are not meant for use by players.\n\n[c][00ffff]Keyboard shortcuts:[-][/c] (default)\n[c][00ff00][G][-][/c] God Mode, [c][00ff00][H][-][/c] Item Menu\n\n[c][00ffff]Useful Console Commands:[-][/c]\n[c][00ff00]help[-][/c] Prints a list of all console commands. Use [c][ffffff]help command[-][/c] for help specific to that command.\n[c][00ff00]sector 'Name of Star/Planet'[-][/c] Teleports you to that star system, space sector, or orbit of that planet.\n[c][00ff00]tt 'Name of Planet'[-][/c] Teleports you to the surface of the planet or moon.\n[c][ffffff]sector 'Haven'[-][/c] will teleport you to the orbit of Haven.\n[c][ffffff]tt 'Alpha IV'[-][/c] will teleport you to the surface of Alpha IV.\n[c][00ff00]sd debug[-][/c] Allows you to double click any star in the galaxy map to view that star system. Useful for finding a specific planet type to build on.[/sup]"
+  # Description: Eden_Supportinfo
 }
 
-{ Token Id: 6999, Name: [c][00FFFF]Project Eden Gameplay Guide[/c]
+{ Token Id: 6998, Name: [c][FFA500]Reforged Eden 2 Support Guide[-][/c]
+  CustomIcon: Eden_Guide18
+  DropOnDeath: false
+  Description: "[c][00ffff]   >>> Read the PDA First <<<[-][/c][sup]\nAccess the PDA with [c][ffff00]F1[-][/c].\n\n[c][FFA500]This is a custom scenario created by players and the game developers cannot assist with problems encountered while playing it.[-][/c]\n\n[c][FFFF00]PLEASE REPRODUCE ANY GAME ISSUE IN A DEFAULT, UNMODIFIED SAVE GAME BEFORE REPORTING ANY ISSUE TO THE GAME DEVELOPERS.[-][/c]\n[c][FFFF00]DO NOT USE THE CHANGEMODE OR CM COMMAND IN A SURVIVAL GAME.\nUSE CONSOLE COMMANDS ONLY IF YOU UNDERSTAND WHAT THEY DO.[-][/c]\n\nPlease always fully exit Empyrion all the way back to Windows desktop when switching saves or servers.\n\nThere are certain risks in playing a custom scenario and it may be more demanding on your PC hardware.\n[c][00FFFF]SAVE YOUR BLUEPRINTS OFTEN.[-][/c]\n\nYou can find support and report issues on the Reforged Eden 2 Workshop page.\n\nIf playing on a server speak with your server admin.\nFor any updates on the scenario please see the workshop page.[/sup]"
+}
+
+{ Token Id: 6999, Name: [c][00FFFF]Reforged Eden 2 Gameplay Guide[/c]
   CustomIcon: Eden_Guide4
   DropOnDeath: false
   # Description: "[c][00ffff]>>> Empyriopedia <<<[-][/c][sup]\n\n[c][FFFF00]Tooltips:[-][/c] Tooltips provide useful information on many items and devices. Mouse over any item in your inventory, constructor, or tech tree to view important details.\n[c][FFFF00]PDA:[-][/c] Your PDA contains information on missions and an Empyriopedia section with important information.\n\nComplete the [c][00FFFF]Make Contact with Terran Forces[-][/c] mission under the Project Eden Story section to unlock additional missions and Empyriopedia entries. The Empyriopedia is filled in as you progress.\n\nAccess the PDA with [c][FFFF00]F1[-][/c].\n\n[c][FFFF00]Planets and Sectors: [-][/c]Planets and sectors in the current solar system are scanned and a basic description of each can be viewed on the local or solar system map.\n\n[c][FFFF00]Galaxy: [-][/c]Project Eden contains a large galaxy viewable on the galaxy map. Star class and faction territory change what you may find in a star system.[/sup]"

@@ -262,6 +262,7 @@ namespace EgsLib.ConfigFiles
             SizeInBlocksLocked = ParseList("SizeInBlocksLocked");
             TechTreeNames = ParseList("TechTreeNames");
 
+            // TODO: Wait for this to be fixed upstream in the scenario
             // Fix possible misspellings
             var showUser = UnparsedProperties.FirstOrDefault(x => x.Key == "Showuser");
             if (showUser.Key != null && string.IsNullOrEmpty(ShowUser))

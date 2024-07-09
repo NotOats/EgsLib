@@ -580,59 +580,98 @@
 
 
 
-
-
-
-# =================================================================================== Project Eden Custom Groups
+# =============================================== Project Eden Custom Groups - RG Compatibility
 
 # =============================================== Zirax
 
 { EGroup Name: Eden_ZiraxPatrolSniper
-  ZiraxSniper: "2, 3"
+  ZiraxSniper: "1, 1"
   ZiraxShotgun: "1, 1"
 }
 
 { EGroup Name: Eden_ZiraxRipperDogPatrolMinigun
   ZiraxMinigun: "1, 1"
-  RipperDog: "2, 3"
+  RipperDog: "2, 4"
 }
 
 { EGroup Name: Eden_ZiraxRipperDogPatrolSniper
   ZiraxSniper: "1, 1"
-  RipperDog: "2, 3"
+  RipperDog: "2, 4"
+}
+
+{ EGroup Name: Eden_ZiraxSalvageDrones
+  Eden_ZiraxSalvageDrone: "2, 4"
+}
+
+{ EGroup Name: Eden_ZiraxSalvageDronesGuarded
+  Eden_ZiraxSalvageDrone: "2, 4"
+  Mechanoid: "2, 3"
+  SpawnInSameDirection:true
+}
+
+{ EGroup Name: Eden_ZiraxMiningDrones
+  Eden_ZiraxMiningDrone: "2, 4"
+}
+
+{ EGroup Name: Eden_ZiraxMiningDronesGuarded
+  Eden_ZiraxMiningDrone: "2, 4"
+  Mechanoid: "2, 3"
+  SpawnInSameDirection:true
+}
+
+# =============================================== Polaris
+
+{ EGroup Name: Eden_PolarisMiningDrones
+  Eden_PolarisMiningDrone: "2, 4"
+}
+
+{ EGroup Name: Eden_PolarisMiningDronesGuarded
+  Eden_PolarisMiningDrone: "2, 4"
+  AssaultCyborg: "2, 3"
+  SpawnInSameDirection:true
+}
+
+{ EGroup Name: Eden_PolarisSalvageDrones
+  Eden_PolarisSalvageDrone: "2, 4"
+}
+
+{ EGroup Name: Eden_PolarisSalvageDronesGuarded
+  Eden_PolarisSalvageDrone: "2, 4"
+  AssaultCyborg: "2, 3"
+  SpawnInSameDirection:true
 }
 
 # =============================================== Talon
 { EGroup Name: Eden_TalonGuardianHerdMega
-  TalonGuardianGroup: "3, 5"
-  TalonGuardianCrossbowGroup: "3, 5"
+  TalonGuardianGroup: "4, 7"
+  TalonGuardianCrossbowGroup: "4, 7"
 }
 
 { EGroup Name: Eden_TalonCrossbowPatrol
-  TalonGuardianCrossbowGroup: "4, 6"
+  TalonGuardianCrossbowGroup: "5, 8"
 }
 
 { EGroup Name: Eden_TalonShamanPatrol
   TalonGuardianShamanBaseAttack: "1, 1"
-  TalonGuardianGroup: "1, 2"
-  TalonGuardianCrossbowGroup: "3, 4"
+  TalonGuardianGroup: "1, 3"
+  TalonGuardianCrossbowGroup: "3, 5"
 }
 
 { EGroup Name: Eden_TalonCrawlerPatrol
   TalonGuardianGroup: "1, 2"
-  Crawler: "2, 4"
+  Crawler: "4, 7"
 }
 
 { EGroup Name: Eden_TalonLizardMulePatrol
   TalonGuardianGroup: "1, 2"
-  LizardMule: "4, 6"
+  LizardMule: "4, 8"
   LizardMuleBaby: "2, 4"
 }
 
 # =============================================== Predator
 
 { EGroup Name: Eden_AlienBugs03Herd
-  AlienBug03: "3, 5"
+  AlienBug03: "4, 6"
 }
 
 { EGroup Name: Eden_AlienBugs03HerdMega
@@ -640,11 +679,11 @@
 }
 
 { EGroup Name: Eden_RaptorsNightHerdMega
-  RaptorNight: "6, 9"
+  RaptorNight: "7, 12"
 }
 
 { EGroup Name: Eden_Spiders03HerdMega
-  Spider03: "6, 9"
+  Spider03: "5, 8"
 }
 
 { EGroup Name: Eden_SpidersHerdMega
@@ -653,21 +692,36 @@
   Spider03: "2, 3"
 }
 
+{ EGroup Name: Eden_OtyughsHerd
+  Otyugh: "3, 4"
+}
+
 # =============================================== Alien
 { EGroup Name: Eden_OverseerPatrol
   Overseer: "1, 1"
-  TotalHorror: "2, 2"
+  TotalHorror: "2, 3"
 }
 
 # Golems
 { EGroup Name: Eden_GolemsIceMega
-  GolemIce: "6, 10"
+  GolemIce: "6, 8"
 }
 
 { EGroup Name: Eden_GolemsDesertMega
-  GolemDesert: "6, 10"
+  GolemDesert: "6, 8"
 }
 
 { EGroup Name: Eden_GolemsSwampMega
-  GolemSwamp: "6, 10"
+  GolemSwamp: "6, 8"
+}
+## =============== Elite Patrols ====================== 
+
+
+
+# Project Eden Custom Groups
+
+
+
+{ EGroup Name: Eden_InfectedPlantMonster
+  Eden_InfectedPlantMonster: "1, 1"
 }

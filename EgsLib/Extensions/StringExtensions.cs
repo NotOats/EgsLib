@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 
 namespace EgsLib.Extensions
@@ -38,7 +39,7 @@ namespace EgsLib.Extensions
 
             if (converter.CanConvertFrom(typeof(string)))
             {
-                output = converter.ConvertFrom(str);
+                output = converter.ConvertFromInvariantString(str);
                 return true;
             }
 

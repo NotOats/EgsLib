@@ -1,0 +1,116 @@
+# Rename the file to _PoiGroupsConfig.yaml
+# Place it in the "Scenarios/<Scenario Name>/Prefabs" folder
+
+# This will add two new groups TowersTest and AbandonedFactory to the groups that are already defined within the blueprint files. 
+# The group TowersTest is a union set of all blueprints that are within the groups TSOStory, TSOZirax plus the blueprints that have the tags T2, Y, Z and the single blueprint files BA_AlienTower1, BA_AlienTower2, BA_AlienTower3.
+
+# You should now be able to use these two groups wherever you use the existing groups, f.e. playfield_static.yaml
+
+# All properties set here will override properties set in the playfield_static.yaml!
+       
+# To be able to debug this better, we added a new console command "bplib" to list and export all groups and tags:
+# bplib - lists all groups
+# bplib <group name> - list all blueprints within this group
+# bplib export <filename> - write all blueprint groups and the blueprint of each group into the file
+# bplib exporttags <filename> - write all blueprint tags and the blueprints for each tag into the file
+
+---
+  PoiGroups:
+    - GroupName: TowersTest
+      Filters:
+          #BlueprintGroupNames: [TSOStory, TSOZirax]
+          #BlueprintTags: [T2, Y, Z]
+          #BlueprintFileNames: [ BA_AlienTower1, BA_AlienTower2, BA_AlienTower3 ]
+          BlueprintFileNames: [ BA_AlienTower1 ]
+      Defaults:
+          Faction: Zirax                                        # Faction of the POI. Choose between: Zirax, Polaris, Talon, Kriel, Trader, Pirates, Alien, None. 'None' is intended for wreckages, 'Alien' = The Legacy
+          DroneSetupID: FirstBase                               # [string] String UID keyword to link exactly one base with exactly one POI that share the same string ID (see FirstBase); Note: This is NOT related to the Base Attack coming from or using its definitions!          
+          Territory: false                                      # POI will not show faction territory on the map
+          FactionTerritory: [Zirax, Polaris]                    # Use to allow a POI in multiple or all faction territories (use 'All' instead of faction list); 'Faction: ' parameter will be ignored]
+          NoShieldReload: true                                  # true/false: true shield will reload when its depleted (0%). false it will not reload anymore
+          IsCommandCenter: true                                 # true/false: true is CommandCenter for Base Attack (Zirax and Talon ONLY currently!)
+          CountMinMax: [ 1, 2 ]                                 # Range of number of POIs of this group to distribute on planet          
+          IsImportant: true                                     # true/false: will try to spawn the POI 100 times more
+          IsScalingCount: true                                  # true/false: will scale the CountMinMax with the PlayfieldSize (2,3,4,5)
+          LevelMod: +1                                          # 1 to 10: PlayfieldLevel + LevelMod = POILevel
+          InitPower: true                                       # true/false: true sets power to be ON
+          PlayerStart: true                                     # true/false: If its a POI where the player has to start in (instead of a escape pod)
+          DroneProb: 1                                          # Probability that a POI is defended by drones; Can use float between 0 (never) to 1 (always)
+          DronesMinMax: [ 1, 2 ]                                # Range of number of drones that defend POI
+          ReserveCount: 1                                       # Number of drones that will be replaced when destroyed          
+          TroopTransport: true                                  # true/false: Decides if troop transport will be sent when POI is attacked by a player  
+          SpawnPOIAvoid: [ThatDangerousPOI]                     # Groupdname of POIs to NOT spawn this one close to; Note: referred POIs must be already have been spawned, so place referring POI in the POI list AFTER the referred POI! 
+          SpawnPOIAvoidDistance: 1500                           # Means: spawn AT LEAST this distance away from the defined POI
+          SpawnPOINear: [ThatCompanionPOI]                      # Groupname of POIs to actively spawn CLOSE to;  Note: referred POIs must be already have been spawned, so place referring POI in the POI list AFTER the referred POI!  
+          SpawnPOINearRange: [100, 250]                         # Range min/max of POI to spawn. Note: Do not go closer than 50-70m. If the defined POI is wider than the NearRange, this might result in spawning issues!
+          SpawnResource: ["CopperResource:0-1"]                 # Tries to spawn the given amount of CopperResource deposits close to each POI in this group (list can contain several resources); Syntax: <resource>:<min>-<max>
+          ResourceDistance: 300                                 # Distance to the POI (must be at least 80m); NOTE: If a resource is not set for this planet under fixed or random Resources, the referred resource of this setting will NOT be spawned, eg. you cannot have a resource that is not at least allowed once on the planet; Note: the SIZE of the deposit is also derived from the setting for this resource from the Resources list for the planet!          
+          PlaceAt: OnWater,UnderWater                           # OnWater (floating on water/exactly on the waterline); UnderWater, Terrain;; Default: not set = Terrain only; One, two or all values can be combinded/used for one POI group!          
+          SpaceDefenseOverrideDefaults: true                    # for space playfields and the Space Defence System
+          SpaceDefenseProbability: 0                            # for space playfields and the Space Defence System
+          SpaceDefensePriceMinMax: [ 30, 60 ]                   # for space playfields and the Space Defence System          
+          UseEachBlueprintOnlyOnce: true                        # Will spawn each blueprint in the group only once!
+          Properties: 
+            - Key: PersonalContainer                            # Personal Container
+              Value: "Drill:2, BioFuel:4"                       # Content of Personal Container; Each player can pick THIS stuff once. Works in SP and MP! Syntax: <item/block/device>:<amount>
+            - Key: MapDistance                                  # Sets visibility of map markers in meters. Optional property to override the default visibility setting; Attention: Changes will override DETECTOR device RANGE!!
+              Value: 500                                        # Reveals map marker if player is 500m away from object. If set to 0, map marker will never be revealed; Attention: Changes will override DETECTOR device RANGE!! 
+            - Key: HudDistance                                  # Sets visibility of HUD marker in meters. Optional property to override the default visibility setting; Attention: Changes will override DETECTOR device RANGE!!.
+              Value: 100                                        # Shows HUD marker if player is 100m away from object. If set to 0, HUD marker will never be shown; Attention: Changes will override DETECTOR device RANGE!!
+            - Key: MapMarker                                    # Sets color of HUD marker
+              Value: Neutral                                    # Neutral means the HUD marker is white        
+            - Key: Discovery                                    # Overrides visibility and DETECTOR mechanics!!
+              Value: False                                      # False = the POI is always visible, even if not detected or under fog of war; does NOT depend on core typ used!
+            - Key: RegenAfter                                   # Enable regeneration of POI if it has been "visited" and no player is in its vicinity; Note for Multiplayer only: REGENAFTER POIs cannot be taken over by the players, as they can not place a new core
+              Value: 250                                        # Regenerate timer in realtime minutes (72 realtime minutes = 24h in-game)             
+            - Key: Music                                        # Music that is played when a player enters the POI
+              Value: DarkSoundscape                             # Name of the music track that is played 
+            - Key: TraderZone                                   # The TraderZone sets all traders of THIS POI GROUP that have #ZONE# selected from their TYPE dropdown setting to use the 'ExampleZone' Trading table set up under /Content/Configuration/TraderNPCConfig.ecf! Any entry from this file can be used as Traderzone!  Note: If you set a TraderZone to a POI via 'Properties' the Playfield-TraderZone is not used for those POI. Furthermore if you set a specifc Trading Table to any Trader and do NOT use the #ZONE# setting from its dropdown, neither the Traderzone for a playfield, nor the traderzone for a POI group will be used for THAT particular trader (only!).
+              Value: ExampleZone                                            
+            - Key: PvEArea                                      # Defines an area around a POI in an PvP playfield, where players cannot harm each other
+              Value: 500                                        # Distance from about the center of the structure
+            - Key: StationInterface                             # Allows the user do buy/refill his vessel remotely (use Control Panel (P) > StationServices tab)
+              Value: "Fuel:1.1,O2:1.1,Warp:1.1,Ammo:1,Repair:2,Shield:2,IfNeutral:0,IfFriendly:-0.1,IfHonored:-0.20"   #Available services: Fuel, O2, Warp, Ammo, Repair, Shield; Syntax: <service>:<multiplier>; multiplier is applied to setting MarketPrice in ItemsConfig and Blocksconfig! If the item has no Marketprice, the station service will not work!;; Discount settings: IfNeutral, IfFriendly, IfHonored; '-' = cost % less; without '-' = costs % more )
+            - Key: SI                                           # Disable SI  (f.ex. use for POI floating in mid air or OnWater)
+              Value: Off
+      Configuration:
+          ReplaceLootContainers: 
+            - Name: "MyContainer1"
+              Items: "Pistol:0:0:1,GoldIngot:0:0:100,Token:0:1234:1"
+            - Name: "MyContainer2"
+              ContainerId: 254 # Taken from Containers.ecf
+          ReplaceBlocks: [ [ TurretIONCannon, TurretEnemyLaser] ] # Will only work with blocks from the same size!
+          ColorPalette: "|0#0#0#0#0|1#0#255#0#0|2#0#255#255#0|3#0#255#0#0|4#0#206#0#255|5#0#0#74#255|6#0#0#255#255|7#0#0#255#177|0#1#255#0#0|1#1#255#0#0|2#1#255#246#0|3#1#255#0#0|4#1#255#0#174|5#1#0#97#255|6#1#0#175#255|7#1#118#255#0|0#2#255#0#0|1#2#255#0#0|2#2#255#196#0|3#2#255#0#43|4#2#255#0#237|5#2#0#38#255|6#2#0#94#255|7#2#0#255#17|0#3#255#0#0|1#3#255#0#0|2#3#255#108#0|3#3#255#0#0|4#3#115#0#255|5#3#248#0#255|6#3#9#0#255|7#3#0#255#0"
+          DamageBlocks: [ "TurretEnemyLaser:-2", "InteriorLight:-1" ]
+
+
+    #- GroupName: AbandonedFactory
+    #  Filters:
+    #      BlueprintFileNames: [ BA_AbandonedBunker, BA_AbandonedAssemblyYard, BA_AbandonedVesselYard ]
+
+    #- GroupName: WreckagesXXX
+    #  Filters:
+    #      BlueprintFileNames: [ BAJ_WreckageCVFlair, BAJ_WreckageCamp1 ]
+      #Configuration:
+          #UseEachBlueprintOnlyOnce: true
+      
+      
+#################################################################################
+#################################################################################
+
+# Now you can use the group TowersTest from _PoiGroupsConfig.yaml in a playfield_static.yaml
+# Properties set here WILL override the _PoiGroupsConfig.yaml
+# If no properties are used but only the GroupName from _PoiGroupsConfig then it will take all properties from there
+
+### POIs
+POIs:
+    Random:
+        - GroupName: TowersTest
+          BiomesExcluded: [ PolarSnow ]
+          CountMinMax: [ 5, 10 ]
+          IsScalingCount: True
+          Properties:
+            - Key: MapMarker
+              Value: Neutral
+            - Key: RegenAfter
+              Value: 720

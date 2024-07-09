@@ -19,116 +19,82 @@
 #   Blocks: "WeaponCV01,WeaponCV02"
 # }
 
+# =========================================================
+# ============= REFORGED WEAPON TIER GROUPS ===============
+# =========================================================
+# If you have this file open, you're here to do something stupid. It's stupid because I
+# say it's stupid. So close this file, make no changes. Because whatever you're thinking
+# You are WRONG.
+# =========================================================
 
-{ BlockGroup Name: Eden_MaxWindTurbines
-  MaxCount: 16
-  Blocks: "Eden_WindTurbineIdle,Eden_WindTurbineActive,Eden_WindTurbineActiveT2"
-}
+ { BlockGroup Name: LightWeaponsSmall
+   MaxCount: 8
+   Blocks: "WeaponSV01,WeaponSV02,WeaponSV03,WeaponSV04,WeaponHVCannonT1,WeaponSV05,WeaponSV05Homing,WeaponSVRocketLauncherT1V2,TurretGVMinigun,TurretGVMinigunRetract,TurretGVCannon,TurretGVCannonRetract,TurretGVRocket,TurretGVRocketRetract,TurretGVLaser,TurretGVLaserRetract,TurretGVPlasma,TurretGVPlasmaRetract"
+ }
 
-{ BlockGroup Name: Eden_MaxGeoPower
-  MaxCount: 4
-  Blocks: "Eden_GeothermalGeneratorActive"
-}
+ { BlockGroup Name: MediumWeaponsSmall
+   MaxCount: 4
+   Blocks: "WeaponSVPlasmaCannonT2,WeaponSVRailgunT2,WeaponSVLaserT2,WeaponSVGatlingT2,WeaponSVBombLauncherT2,WeaponSVBombLauncherEMPT2,WeaponHVCannonT2,WeaponHVFlamethrowerT2,WeaponSVRocketT2,WeaponSVRocketHomingT2,TurretGVMinigunT2, TurretGVMinigunT2Retract,TurretGVCannonT2,TurretGVCannonT2Retract,TurretGVRocketT2,TurretGVRocketT2Retract,TurretGVLaserT2,TurretGVLaserT2Retract,TurretGVPlasmaT2,TurretGVPlasmaT2Retract, Eden_ModularLaserBlocksSV, Eden_ModularPulseLaserSVIR, Eden_ModularPulseLaserSVUV, Eden_ModularPulseLaserSVGamma, Eden_TurretVulcanSmall"
+ }
 
-{ BlockGroup Name: Eden_MaxAuxiliaryCores
-  MaxCount: 10
-  Blocks: "Eden_AuxillaryDummy,Eden_AuxillaryCPUBA,Eden_AuxillaryPowerBA,Eden_AuxillaryShieldBA"
-}
+ { BlockGroup Name: HeavyWeaponsSmall
+   MaxCount: 2
+   Blocks: "WeaponSVPlasmaCannonT3, WeaponSVRailgunT3, WeaponSVLaserT3, WeaponSVGatlingT3, WeaponSVTorpedoLauncherT3, WeaponSVRocketT3, WeaponHVCannonT3, TurretGVArtillery, TurretGVArtilleryRetract"
+ }
 
+ { BlockGroup Name: LightWeaponsLarge
+   MaxCount: 24
+   Blocks: "WeaponCVPlasmaT1, WeaponCVRailgunT1, WeaponMS01, WeaponMS02, TurretMSMinigunRetract, TurretMSMinigun, TurretMSCannon, TurretMSCannonRetract, TurretMSRocket, TurretMSRocketRetract, TurretMSPlasma, TurretMSPlasmaRetract, TurretMSPulseLaser, TurretMSPulseLaserRetract, TurretMSFlak, TurretMSFlakRetract, TurretBaseMinigunRetract, TurretBaseMinigun, TurretBaseCannon, TurretBaseCannonRetract, TurretBaseRocket, TurretBaseRocketRetract, TurretBasePlasma, TurretBasePlasmaRetract, TurretBasePulseLaser, TurretBasePulseLaserRetract, TurretBaseFlak, TurretBaseFlakRetract, Eden_TurretBolterCV, Eden_TurretMissileLight, Eden_TurretBeamBlocksT1, Eden_TurretLaserBeamCV, Eden_TurretLaserBeamCVT2, Eden_TurretLaserBeamCVT3, Eden_CVTorpedoRapid"
+ }
 
-# CPU Extenders
-# Block limit groups for CPU HV CPU Extenders
-{ BlockGroup Name: CPULimitHVT2
-  MaxCount: 1
-  Blocks: "CPUExtenderHVT2"
-}
-{ BlockGroup Name: CPULimitHVT3
-  MaxCount: 2
-  Blocks: "CPUExtenderHVT3"
-}
-{ BlockGroup Name: CPULimitHVT4
-  MaxCount: 5
-  Blocks: "CPUExtenderHVT4"
-}
+ { BlockGroup Name: MediumWeaponsLarge
+   MaxCount: 12
+   Blocks: "WeaponCVPlasmaT2, WeaponCVPlasmaT2V2, WeaponCVRailgunT2, WeaponCVRailgunT2V2, WeaponCVLaserCannonT2V2, WeaponCVHeavyCannonT2, WeaponCVHeavyCannonT2V2, WeaponCVLaserCannonT2, WeaponCVRocketLauncherT2, TurretMSMinigunRetractT2, TurretMSMinigunT2, TurretMSCannonT2, TurretMSCannonRetractT2, TurretMSRocketT2, TurretMSRocketRetractT2, TurretMSPlasmaT2, TurretMSPlasmaRetractT2, TurretMSPulseLaserT2, TurretMSPulseLaserRetractT2, TurretMSFlakT2, TurretMSFlakRetractT2, TurretMSArtillery, TurretMSArtilleryRetract, TurretMSPlasmaArtillery, TurretMSPlasmaArtilleryRetract, TurretBAMinigunRetractT2, TurretBAMinigunT2, TurretBACannonT2, TurretBACannonRetractT2, TurretBARocketT2, TurretBARocketRetractT2, TurretBAPlasmaT2, TurretBAPlasmaRetractT2, TurretBAPulseLaserT2, TurretBAPulseLaserRetractT2, TurretBAFlakT2, TurretBAFlakRetractT2, TurretBaseArtillery, TurretBaseArtilleryRetract, TurretBAPlasmaArtillery, TurretBAPlasmaArtilleryRetract, Eden_TurretBolterBA, Eden_TurretMissileLightT2, Eden_TurretFlakClose, Eden_TurretVulcanCV, Eden_TurretAlienVulcan, Eden_TurretRailgun, Eden_TurretBeamBlocksT2, Eden_TurretModulatedCVT2V1, Eden_TurretModulatedCVT2V2, Eden_TurretModulatedCVT2V3, Eden_BlasterCVT2"
+ }
 
-# Block limit groups for CPU SV CPU Extenders
-{ BlockGroup Name: CPULimitSVT2
-  MaxCount: 1
-  Blocks: "CPUExtenderSVT2"
-}
-{ BlockGroup Name: CPULimitSVT3
-  MaxCount: 2
-  Blocks: "CPUExtenderSVT3"
-}
-{ BlockGroup Name: CPULimitSVT4
-  MaxCount: 5
-  Blocks: "CPUExtenderSVT4"
-}
+ { BlockGroup Name: HeavyWeaponsLarge
+   MaxCount: 6
+   Blocks: "WeaponCVPlasmaT3, WeaponCVRailgunT3, WeaponCVHeavyCannonT3, WeaponCVPlasmaT3V2, WeaponCVRailgunT3V2, WeaponCVHeavyCannonT3V2, WeaponCVLaserCannonT3V2, WeaponCVLaserCannonT3, WeaponCVRocketLauncherT3, WeaponCVPositronT3, TurretBAPositronT3, TurretBAPlasmaT3, Eden_TurretRailgunT2, Eden_TurretMissileCruiseBlocks, Eden_TurretMissileCruiseCV, Eden_TurretMissileCruiseEMPCV"
+ }
 
-# Block limit groups for CPU CV CPU Extenders
-{ BlockGroup Name: CPULimitCVT2
-  MaxCount: 1
-  Blocks: "CPUExtenderCVT2"
-}
-{ BlockGroup Name: CPULimitCVT3
-  MaxCount: 2
-  Blocks: "CPUExtenderCVT3"
-}
-{ BlockGroup Name: CPULimitCVT4
-  MaxCount: 5
-  Blocks: "CPUExtenderCVT4"
-}
+ { BlockGroup Name: Crew
+   MaxCount: 16
+   Blocks: "CrewEngineer01, CrewEngineer02, CrewEngineer03, CrewPilot01, CrewBridge01, CrewBridge02, CrewSecurity01, CrewMedical01"
+ }
+# To prevent people from wasting CPU and resources on a detector with no purpose
+ { BlockGroup Name: Detector
+   MaxCount: 1
+   Blocks: "DetectorHVT1, DetectorSVT1, DetectorSVT2, DetectorSVT3, DetectorCV, DetectorCVT2, DetectorCVT3"
+ }
+# To prevent people from placing multiple shield generators and receiving no benefits only extra costs
+ { BlockGroup Name: ShieldGenerator
+   MaxCount: 1
+   Blocks: "ShieldGeneratorT0, ShieldGeneratorBA, ShieldGeneratorBAT2, ShieldGeneratorBADome, ShieldGeneratorCV, ShieldGeneratorCVT2, ShieldGeneratorSV, ShieldGeneratorSVT2, ShieldGeneratorHV, ShieldGeneratorHVT2"
+ }
+# Hard cap for decorative trees for performance reasons
+ { BlockGroup Name: Trees
+   MaxCount: 30
+   Blocks: "Acacia_Sapling_Fall_BA, Alien_Shroomtree_02_1_BA, Alien_Shroomtree_02_2_BA, Alien_Tree_01_1_BA, Alien_Tree_01_2_BA, Alien_Tree_04_3_BA, Birch_Paper_Desktop_Forest_Fall_BA, Birch_Paper_Desktop_Forest_Spring_BA, Birch_Paper_Sapling_Fall_BA,Birch_Paper_Sapling_Spring_BA,ElderberryBushBlue_BA,ElderberryBushNoFruitPrefab_BA,Maple_Red_Hero_Field_Fall_BA,Oak_White_Desktop_Field_Fall_BA,Oak_White_Desktop_Field_Spring_BA,Palm_Coconut_Hero_1_Spring_BA,Redwood_Sierra_Hero_Field_BA,Sycamore_American_Hero_Forest_Fall_BA,Sycamore_American_Hero_Forest_Spring_BA,Sycamore_American_Sapling_1_Spring_BA,Alien_Shroomtree_02_1_h2_BA,Alien_Shroomtree_02_2_h2_BA,Alien_Shroomtree_02_2_h3_BA"
+ }
+ 
+# Project Eden Custom block limits
 
-# Block limit groups for CPU BA CPU Extenders
-{ BlockGroup Name: CPULimitBAT2
-  MaxCount: 1
-  Blocks: "CPUExtenderBAT2"
-}
-{ BlockGroup Name: CPULimitBAT3
-  MaxCount: 2
-  Blocks: "CPUExtenderBAT3"
-}
-{ BlockGroup Name: CPULimitBAT4
-  MaxCount: 5
-  Blocks: "CPUExtenderBAT4"
-}
+ { BlockGroup Name: Eden_MaxWindTurbines
+   MaxCount: 16
+   Blocks: "Eden_WindTurbineIdle,Eden_WindTurbineActive,Eden_WindTurbineActiveT2"
+ }
 
+ { BlockGroup Name: Eden_MaxGeoPower
+   MaxCount: 8
+   Blocks: "Eden_GeothermalGeneratorActive"
+ }
 
-# Shield Upgrades
-# Large Shield Capacitors
-{ BlockGroup Name: ShieldLimitLargeCapT1
-  MaxCount: 4
-  Blocks: "ShieldCapacitorLarge"
-}
-{ BlockGroup Name: ShieldLimitLargeCapT2
-  MaxCount: 4
-  Blocks: "ShieldCapacitorT2Large"
-}
-{ BlockGroup Name: ShieldLimitLargeChargerT3
-  MaxCount: 4
-  Blocks: "ShieldChargerT3Large"
-}
+ { BlockGroup Name: Eden_ExpWeaponsLarge
+   MaxCount: 2
+   Blocks: "Eden_RailgunCVSpinal"
+ }
 
-# Large Shield Chargers
-{ BlockGroup Name: ShieldLimitLargeChargerT1
-  MaxCount: 4
-  Blocks: "ShieldChargerLarge"
-}
-{ BlockGroup Name: ShieldLimitLargeChargerT2
-  MaxCount: 4
-  Blocks: "ShieldChargerT2Large"
-}
-{ BlockGroup Name: ShieldLimitLargeCapT3
-  MaxCount: 4
-  Blocks: "ShieldCapacitorT3Large"
-}
-
-# Small Shield Upgrades
-{ BlockGroup Name: ShieldLimitSmallCapT1
-  MaxCount: 8
-  Blocks: "ShieldCapacitorSmall"
-}
-{ BlockGroup Name: ShieldLimitSmallChargerT1
-  MaxCount: 8
-  Blocks: "ShieldChargerSmall"
-}
+ # { BlockGroup Name: Eden_MaxAuxiliaryCores
+   # MaxCount: 10
+   # Blocks: "Eden_AuxillaryDummy,Eden_AuxillaryCPUBA,Eden_AuxillaryPowerBA,Eden_AuxillaryShieldBA"
+ # }

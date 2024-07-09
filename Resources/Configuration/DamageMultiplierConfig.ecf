@@ -1,0 +1,2093 @@
+#
+# Define damage multipliers here and reference them from ItemsConfig.ecf
+# using DamageMultiplier_Group: Pistol.
+# For now you can either use DamageMultiplier_x OR DamageMultiplier_Group in ItemsConfig.ecf
+#
+#{ DamageMultiplierGroup Name: Pistol
+#  DamageMultiplier_1: 5, param1: head, display: DmgMultiplierHead  
+#  DamageMultiplier_2: 0, param1: dirt|stone|rock|wood|hullarmored|hullcombat
+#  DamageMultiplier_3: 0, param1: shield 
+#}
+#{ DamageMultiplierGroup Name: RocketLauncher_1
+#  DamageMultiplier_1: 0, param1: dirt|stone
+#  DamageMultiplier_2: 0.75, param1: hullarmored|hullcombat
+#  BlastDamageMultiplier_1: 0.75, param1: hullarmored|hullcombat
+#  BlastDamageMultiplier_2: 0.5, param1: dirt|stone
+#}
+#{ DamageMultiplierGroup Name: RocketLauncher_2
+#  DamageMultiplier_1: 0.75, param1: shield
+#  DamageMultiplier_2: 10,   param1: rock
+#}
+# Define a group of groups. Cannot reference another group of groups!
+#{ DamageMultiplierGroup Name: TestGroup
+#  Collection: "RocketLauncher_1, RocketLauncher_2"
+#}
+# ======================= Reforged Damage Multipliers =============================
+# ==============================================================================================
+# Because apparently these groups don't work how they SHOULD work. I need a group for
+# EVERY single weapon because they all have different headshot multipliers and shield damages.
+# ==============================================================================================
+# Melee
+{ DamageMultiplierGroup Name: BladeT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.20, param1: CreatureSoft|HumanSoft
+  DamageMultiplier_6: 0.5, param1: Mechanical|DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: BladeT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.75, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.20, param1: CreatureSoft|HumanSoft|Mechanical
+  DamageMultiplier_6: 2.0, param1: device
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# Pistols
+{ DamageMultiplierGroup Name: PistolT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 3.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.20, param1: CreatureSoft
+  DamageMultiplier_6: 0.80, param1: Mechanical|DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: PistolT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 3.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.20, param1: CreatureSoft
+  DamageMultiplier_6: 0.80, param1: Mechanical|DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: PistolT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 3.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.20, param1: CreatureSoft
+  DamageMultiplier_6: 0.80, param1: Mechanical|DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# Laser Pistols
+{ DamageMultiplierGroup Name: LaserPistolT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.2, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.75, param1: device
+  DamageMultiplier_4: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_5: 2.5, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_6: 1.20, param1: Mechanical
+  DamageMultiplier_7: 0.80, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: LaserPistolT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.2, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.75, param1: device
+  DamageMultiplier_4: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_5: 2.5, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_6: 1.20, param1: Mechanical
+  DamageMultiplier_7: 0.80, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: LaserPistolT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.2, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.75, param1: device
+  DamageMultiplier_4: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_5: 2.5, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_6: 1.20, param1: Mechanical
+  DamageMultiplier_7: 0.80, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# Shotguns
+{ DamageMultiplierGroup Name: ShotgunT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.20, param1: CreatureHard
+  DamageMultiplier_6: 0.90, param1: HumanHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: ShotgunT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.20, param1: CreatureHard
+  DamageMultiplier_6: 0.90, param1: HumanHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: ShotgunT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.20, param1: CreatureHard
+  DamageMultiplier_6: 0.90, param1: HumanHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: ShotgunPolaris
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.20, param1: CreatureHard
+  DamageMultiplier_6: 0.90, param1: HumanHard
+  DamageMultiplier_7: 0.5, param1: Player
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# Assault Rifles
+{ DamageMultiplierGroup Name: AssaultRifleT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.25, param1: device
+  DamageMultiplier_6: 1.10, param1: HumanSoft
+  DamageMultiplier_7: 0.90, param1: CreatureSoft
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: AssaultRifleT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.25, param1: device
+  DamageMultiplier_6: 1.10, param1: HumanSoft
+  DamageMultiplier_7: 0.90, param1: CreatureSoft
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: AssaultRifleT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.35, param1: device
+  DamageMultiplier_6: 1.10, param1: HumanSoft
+  DamageMultiplier_7: 0.90, param1: CreatureSoft
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: PulseRifleT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.75, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.8, param1: device
+  DamageMultiplier_6: 1.20, param1: Mechanical
+  DamageMultiplier_7: 0.80, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: AssaultRifleZirax
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.25, param1: device
+  DamageMultiplier_6: 1.10, param1: HumanHard
+  DamageMultiplier_7: 0.90, param1: CreatureSoft
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: AssaultRiflePolaris
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.25, param1: device
+  DamageMultiplier_6: 1.10, param1: HumanSoft
+  DamageMultiplier_7: 0.90, param1: CreatureSoft
+  DamageMultiplier_8: 0.24, param1: Player
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DebugRifle
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.1, param1: shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|foundation|shield
+}
+# Sniper Rifles
+{ DamageMultiplierGroup Name: SniperRifleT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 4.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.5, param1: device
+  DamageMultiplier_6: 1.20, param1: HumanHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SniperRifleT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 4.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.5, param1: device
+  DamageMultiplier_6: 1.20, param1: HumanHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SniperRifleT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|combatsmall
+  DamageMultiplier_4: 4.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.0, param1: device|steelsmall|titaniumsmall
+  DamageMultiplier_6: 1.20, param1: HumanHard|DronePlanet|DroneSpace|Mechanical
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# Crossbow
+{ DamageMultiplierGroup Name: CrossbowT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.25, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 3.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.25, param1: device
+  DamageMultiplier_7: 1.20, param1: HumanSoft|CreatureSoft
+  DamageMultiplier_6: 0.80, param1: Mechanical|DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# Plasma Crossbow
+{ DamageMultiplierGroup Name: CrossbowT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 3.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.75, param1: device
+  DamageMultiplier_6: 1.20, param1: Mechanical|DronePlanet|DroneSpace
+  DamageMultiplier_7: 0.80, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# Laser Rifles
+{ DamageMultiplierGroup Name: LaserRifleT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.2, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.75, param1: device
+  DamageMultiplier_4: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_6: 1.20, param1: Mechanical
+  DamageMultiplier_7: 0.80, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: LaserRifleT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.2, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.75, param1: device
+  DamageMultiplier_4: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_6: 1.20, param1: Mechanical
+  DamageMultiplier_7: 0.80, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: LaserRiflePolaris
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.4, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.75, param1: device
+  DamageMultiplier_4: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_6: 0.38, param1: Player
+  DamageMultiplier_7: 1.20, param1: Mechanical
+  DamageMultiplier_8: 0.80, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# Submachine Guns
+{ DamageMultiplierGroup Name: SMGT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.25, param1: device
+  DamageMultiplier_6: 1.2, param1: CreatureSoft
+  DamageMultiplier_7: 0.8, param1: Mechanical|DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SMGT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.25, param1: device
+  DamageMultiplier_6: 1.2, param1: CreatureSoft
+  DamageMultiplier_7: 0.8, param1: Mechanical|DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SMGT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.2, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: device
+  DamageMultiplier_4: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_6: 1.2, param1: Mechanical
+  DamageMultiplier_7: 0.80, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# Miniguns
+{ DamageMultiplierGroup Name: MinigunT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_4: 1.5, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 1.2, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: MinigunT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.15, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.75, param1: device
+  DamageMultiplier_4: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_5: 1.5, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_6: 1.2, param1: DronePlanet|DroneSpace|Mechanical
+  DamageMultiplier_7: 0.80, param1: CreatureHard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# Rocket Launchers
+{ DamageMultiplierGroup Name: RocketT1
+  DamageMultiplier_1: 0, param1: dirt|stone|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 1.0, param1: device
+  DamageMultiplier_4: 2.0, param1: head
+  DamageMultiplier_5: 0.125, param1: Player
+  DamageMultiplier_6: 15.0, param1: Mechanical|DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0.33, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|xenosteel|legacy
+  BlastDamageMultiplier_2: 1.25, param1: carbonsmall|steelsmall
+  BlastDamageMultiplier_3: 0.075, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+  BlastDamageMultiplier_5: 0.666, param1: Player
+}
+# Special Weapons
+{ DamageMultiplierGroup Name: PlasmaCannonT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.5, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 1.5, param1: head
+  BlastDamageMultiplier_1: 1.0, param1: device|weaponsmall|carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_2: 0.25, param1: tree|rock|weaponlarge|thruster|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_3: 0, param1: shield|foundation|concrete|concretearmored|legacy
+  BlastDamageMultiplier_4: 1.5, param1: Mechanical
+  BlastDamageMultiplier_5: 5.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_6: 0.075, param1: dirt|stone
+}
+{ DamageMultiplierGroup Name: PlasmaBlasterT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.10, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: device
+  DamageMultiplier_4: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall|combatsmall
+  DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_6: 1.2, param1: Mechanical|DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: FlamethrowerT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.15, param1: device
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 1.5, param1: CreatureHard|Mechanical
+  BlastDamageMultiplier_1: 0, param1: stone|rock|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation
+  BlastDamageMultiplier_2: 1.0, param1: carbonsmall|wood
+  BlastDamageMultiplier_3: 0.01, param1: dirt|tree
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+  BlastDamageMultiplier_5: 1.20, param1: CreatureHard
+  BlastDamageMultiplier_6: 0.20, param1: Mechanical|DronePlanet|DroneSpace
+}
+{ DamageMultiplierGroup Name: LaserRing
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.1, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  BlastDamageMultiplier_1: 0.5, param1: device|carbonsmall|carbonlarge
+  BlastDamageMultiplier_2: 0, param1: dirt|stone|rock|tree|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+# Tools
+{ DamageMultiplierGroup Name: SurvivalToolDefense
+  DamageMultiplier_1: 0, param1: tree|plants|dirt|rock|stone|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 2.0, param1: head, display: DmgMultiplierHead
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SurvivalToolDrill
+  DamageMultiplier_1: 0, param1: body|head|carbonsmall|carbonlarge|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 1, param1: plants|tree
+  DamageMultiplier_4: 1.25, param1: dirt
+  DamageMultiplier_5: 1.1, param1: rock
+  DamageMultiplier_6: 0.8, param1: resourcesoft
+  DamageMultiplier_7: 0.7, param1: resourcemedium
+  DamageMultiplier_8: 0.6, param1: resourcehard
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: Chainsaw
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonlarge|carbonsmall|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 1.5, param1: head|body
+  DamageMultiplier_4: 1.5, param1: tree|plants
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DrillT1
+  DamageMultiplier_1: 0, param1: tree|plants|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0, param1: head|body
+  DamageMultiplier_4: 1, param1: dirt
+  DamageMultiplier_5: 1.5, param1: rock
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DrillT2
+  DamageMultiplier_1: 0, param1: tree|plants|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0, param1: head|body
+  DamageMultiplier_4: 1.5, param1: dirt
+  DamageMultiplier_5: 1.6, param1: rock
+  DamageMultiplier_6: 1.2, param1: resourcesoft
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DrillFlattening
+  DamageMultiplier_1: 0, param1: tree|plants|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0, param1: head|body
+  DamageMultiplier_4: 0, param1: dirt
+  DamageMultiplier_5: 0, param1: rock
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: Harvester
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonlarge|carbonsmall|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 1.5, param1: head|body
+  DamageMultiplier_4: 1.0, param1: tree|wood
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: Bulldozer
+  DamageMultiplier_1: 0, param1: dirt|stone|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonlarge|carbonsmall|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 2.5, param1: head|body
+  DamageMultiplier_4: 1.0, param1: tree|wood
+  DamageMultiplier_5: 2.0, param1: rock
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DrillHVT1
+  DamageMultiplier_1: 0, param1: tree|plants|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0, param1: head|body
+  DamageMultiplier_4: 1, param1: dirt
+  DamageMultiplier_5: 1.5, param1: rock
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DrillSVT1
+  DamageMultiplier_1: 0, param1: tree|plants|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0, param1: head|body
+  DamageMultiplier_4: 0.75, param1: dirt
+  DamageMultiplier_5: 1.0, param1: rock
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DrillSVT2
+  DamageMultiplier_1: 0, param1: tree|plants|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0, param1: head|body
+  DamageMultiplier_4: 1, param1: dirt
+  DamageMultiplier_5: 1.5, param1: rock
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DrillCVT1
+  DamageMultiplier_1: 0, param1: tree|plants|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0, param1: head|body
+  DamageMultiplier_4: 0.75, param1: rock
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DrillCVTurret
+  DamageMultiplier_1: 0, param1: tree|plants|wood|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0, param1: head|body
+  DamageMultiplier_4: 0.15, param1: dirt|rock|stone
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# ====================================================================
+# ================ SV Weapon Groups
+# ====================================================================
+{ DamageMultiplierGroup Name: SVGatlingGunT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.25, param1: rock|tree|plants
+  DamageMultiplier_4: 1.5, param1: body
+  DamageMultiplier_5: 3, param1: head
+  DamageMultiplier_6: 0.125, param1: ShieldSmall
+  DamageMultiplier_7: 0.125, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SVGatlingGunT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.25, param1: rock|tree|plants
+  DamageMultiplier_4: 1.5, param1: body
+  DamageMultiplier_5: 3, param1: head
+  DamageMultiplier_6: 0.125, param1: ShieldSmall
+  DamageMultiplier_7: 0.125, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SVGatlingGunT3
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.25, param1: tree|plants
+  DamageMultiplier_4: 1.5, param1: body
+  DamageMultiplier_5: 3, param1: head
+  DamageMultiplier_6: 0.166, param1: ShieldSmall
+  DamageMultiplier_7: 0.166, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 1.0, param1: device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+  BlastDamageMultiplier_4: 4.0, param1: head|body
+}
+{ DamageMultiplierGroup Name: SVRailgunT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.25, param1: steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge
+  DamageMultiplier_3: 0.25, param1: tree|plants
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 0.125, param1: ShieldSmall
+  DamageMultiplier_6: 0.125, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SVRailgunT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.25, param1: steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge
+  DamageMultiplier_3: 0.25, param1: tree|plants
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 0.125, param1: ShieldSmall
+  DamageMultiplier_6: 0.125, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SVRailgunT3
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.25, param1: steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge
+  DamageMultiplier_3: 0.25, param1: tree|plants
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 0.1666, param1: ShieldSmall
+  DamageMultiplier_6: 0.1666, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.5, param1: dirt|stone|rock|tree|weaponsmall|weaponlarge|thruster|device
+  BlastDamageMultiplier_2: 2.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|carbonsmall|steelsmall|titaniumsmall
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: SVLaserCannonT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1.5, param1: device|xenosteel|legacy
+  DamageMultiplier_3: 0.25, param1: tree|plants
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 0.5, param1: ShieldSmall
+  DamageMultiplier_6: 0.5, param1: ShieldLarge|ShieldPlanet|shield
+  DamageMultiplier_7: 0.666, param1: weaponlarge|weaponsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SVLaserCannonT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1.75, param1: device|xenosteel|legacy
+  DamageMultiplier_3: 0.25, param1: tree|plants
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 0.5, param1: ShieldSmall
+  DamageMultiplier_6: 0.5, param1: ShieldLarge|ShieldPlanet|shield
+  DamageMultiplier_7: 0.666, param1: weaponlarge|weaponsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SVLaserCannonT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 2.0, param1: device|xenosteel|legacy
+  DamageMultiplier_3: 0.25, param1: tree|plants
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 0.5, param1: ShieldSmall
+  DamageMultiplier_6: 0.5, param1: ShieldLarge|ShieldPlanet|shield
+  DamageMultiplier_7: 0.666, param1: weaponlarge|weaponsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SVPlasmaCannonT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 2.265, param1: ShieldSmall
+  DamageMultiplier_3: 2.265, param1: ShieldLarge|ShieldPlanet|shield
+  DamageMultiplier_4: 1.0, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|rock|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: SVPlasmaCannonT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 5.862, param1: ShieldSmall
+  DamageMultiplier_3: 5.862, param1: ShieldLarge|ShieldPlanet|shield
+  DamageMultiplier_4: 1.0, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|rock|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: SVPlasmaCannonT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 3.03, param1: ShieldSmall
+  DamageMultiplier_3: 3.03, param1: ShieldLarge|ShieldPlanet|shield
+  DamageMultiplier_4: 1.0, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|rock|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: SVRocketT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 3.0, param1: head|body
+  DamageMultiplier_3: 0.382, param1: ShieldSmall
+  DamageMultiplier_4: 0.382, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge
+}
+{ DamageMultiplierGroup Name: SVRocketT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 3.0, param1: head|body
+  DamageMultiplier_3: 0.416, param1: ShieldSmall
+  DamageMultiplier_4: 0.416, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge
+}
+{ DamageMultiplierGroup Name: SVRocketT3
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 3.0, param1: head|body
+  DamageMultiplier_3: 0.416, param1: ShieldSmall
+  DamageMultiplier_4: 0.416, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge
+}
+{ DamageMultiplierGroup Name: SVRocketHomingT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.382, param1: ShieldSmall
+  DamageMultiplier_4: 0.382, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: SVRocketHomingT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.443, param1: ShieldSmall
+  DamageMultiplier_4: 0.443, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: SVBombT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.0, param1: head|body
+  DamageMultiplier_3: 0.555, param1: ShieldSmall
+  DamageMultiplier_4: 0.555, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.5, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 2.0, param1: concrete|concretearmored
+  BlastDamageMultiplier_4: 1.5, param1: steellarge|titaniumlarge|combatlarge
+}
+{ DamageMultiplierGroup Name: SVBombEMPT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1.0, param1: head|body
+  DamageMultiplier_3: 22.22, param1: ShieldSmall|ShieldPlanet|shield
+  DamageMultiplier_4: 33.33, param1: ShieldLarge
+  BlastDamageMultiplier_1: 0.5, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 2.5, param1: Mechanical|DronePlanet|DroneSpace
+}
+{ DamageMultiplierGroup Name: SVTorpedoT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 10.0, param1: head|body
+  DamageMultiplier_3: 1.5, param1: ShieldSmall
+  DamageMultiplier_4: 1.5, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 2.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel|legacy
+}
+{ DamageMultiplierGroup Name: HVCannonT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored
+  DamageMultiplier_4: 0.21, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_5: 0.21, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.05, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: HVCannonT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored
+  DamageMultiplier_4: 0.229, param1: ShieldSmall
+  DamageMultiplier_5: 0.229, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: HVCannonT3
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored
+  DamageMultiplier_3: 0.25, param1: ShieldSmall
+  DamageMultiplier_4: 0.25, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.20, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: HVFlamethrower
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.585, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.15, param1: device
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 1.5, param1: CreatureHard
+  BlastDamageMultiplier_1: 0.3, param1: stone|rock|tree|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation
+  BlastDamageMultiplier_2: 1.0, param1: carbonsmall|wood|device
+  BlastDamageMultiplier_3: 0.005, param1: dirt
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+  BlastDamageMultiplier_5: 1.5, param1: CreatureHard|CreatureSoft|HumanSoft|HumanHard
+}
+# ====================================================================
+# ================ HV/SV Turret Groups
+# ====================================================================
+{ DamageMultiplierGroup Name: HVGatlingTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.5, param1: rock|tree|plants
+  DamageMultiplier_4: 1.5, param1: body
+  DamageMultiplier_5: 3.0, param1: head
+  DamageMultiplier_6: 0.125, param1: ShieldSmall
+  DamageMultiplier_7: 0.125, param1: ShieldPlanet|ShieldLarge|shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: HVGatlingTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.5, param1: rock|tree|plants
+  DamageMultiplier_4: 1.5, param1: body
+  DamageMultiplier_5: 3.0, param1: head
+  DamageMultiplier_6: 0.125, param1: ShieldSmall
+  DamageMultiplier_7: 0.125, param1: ShieldPlanet|ShieldLarge|shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: HVPlasmaTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 2.358, param1: ShieldSmall
+  DamageMultiplier_3: 2.358, param1: ShieldLarge|ShieldPlanet|shield
+  DamageMultiplier_4: 0.1, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|rock|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: HVRocketTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.25, param1: ShieldSmall
+  DamageMultiplier_4: 0.25, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: HVRocketTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.25, param1: ShieldSmall
+  DamageMultiplier_4: 0.25, param1: ShieldLarge|ShieldPlanet|shield
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+# ====================================================================
+# ================ CV Weapon Groups
+# ====================================================================
+{ DamageMultiplierGroup Name: CVLaserCannonT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1.5, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.25, param1: ShieldPlanet
+  DamageMultiplier_6: 0.9, param1: weaponlarge|weaponsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: CVLaserCannonT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1.75, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.25, param1: ShieldPlanet
+  DamageMultiplier_6: 0.8, param1: weaponlarge|weaponsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: CVLaserCannonT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 2.0, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.25, param1: ShieldPlanet
+  DamageMultiplier_6: 0.7, param1: weaponlarge|weaponsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: CVPlasmaCannonT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 5, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 2.5, param1: ShieldPlanet
+  DamageMultiplier_4: 0.1, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|rock|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: CVPlasmaCannonT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 5, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 2.5, param1: ShieldPlanet
+  DamageMultiplier_4: 0.25, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|rock|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: CVPlasmaCannonT3
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 5, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 2.5, param1: ShieldPlanet
+  DamageMultiplier_4: 0.5, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|rock|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: CVRailgunT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.25, param1: steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge
+  DamageMultiplier_3: 0.25, param1: tree|plants
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 0.124, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_6: 0.062, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: CVRailgunT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.25, param1: steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge
+  DamageMultiplier_3: 0.25, param1: tree|plants
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 0.139, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_6: 0.069, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: CVRailgunT3
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.25, param1: steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge
+  DamageMultiplier_3: 0.25, param1: tree|plants
+  DamageMultiplier_4: 1.5, param1: head
+  DamageMultiplier_5: 0.2, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_6: 0.1, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.5, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 2.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|carbonsmall|steelsmall|titaniumsmall
+}
+{ DamageMultiplierGroup Name: CVRocketT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.537, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.268, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: CVRocketT3
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.40, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.2, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: CVCannonT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored
+  DamageMultiplier_4: 0.25, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_5: 0.125, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 1.35, param1: thruster
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: CVCannonT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored
+  DamageMultiplier_4: 0.265, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_5: 0.132, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 1.47, param1: thruster
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: CVCannonT3
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored
+  DamageMultiplier_4: 0.2, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_5: 0.1, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 1.6, param1: thruster
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: CVPositronT3
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 0.333, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_4: 0.166, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# ====================================================================
+# ================ CV Turret Groups
+# ====================================================================
+{ DamageMultiplierGroup Name: CVGatlingTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.25, param1: rock|tree|plants
+  DamageMultiplier_4: 1.5, param1: body
+  DamageMultiplier_5: 2.5, param1: head
+  DamageMultiplier_6: 0.125, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_7: 0.066, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: CVGatlingTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.25, param1: rock|tree|plants
+  DamageMultiplier_4: 1.5, param1: body
+  DamageMultiplier_5: 2.5, param1: head
+  DamageMultiplier_6: 0.125, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_7: 0.066, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: CVLaserTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1.5, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.25, param1: ShieldPlanet
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 0.9, param1: weaponlarge|weaponsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: CVLaserTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1.75, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.25, param1: ShieldPlanet
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 0.8, param1: weaponlarge|weaponsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: CVPlasmaTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 3.24, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 1.62, param1: ShieldPlanet
+  DamageMultiplier_4: 0.25, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: CVPlasmaTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 6.03, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 3.01, param1: ShieldPlanet
+  DamageMultiplier_4: 0.5, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: CVRocketTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.425, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.212, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: CVRocketTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.437, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.218, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: CVFlakTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1.0, param1: head|body
+  DamageMultiplier_3: 0.833, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.416, param1: ShieldPlanet
+  DamageMultiplier_5: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  DamageMultiplier_6: 8.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_4: 2.0, param1: DronePlanet|DroneSpace
+}
+{ DamageMultiplierGroup Name: CVFlakTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1.0, param1: head|body
+  DamageMultiplier_3: 0.933, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.416, param1: ShieldPlanet
+  DamageMultiplier_5: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  DamageMultiplier_6: 8.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_4: 2.0, param1: DronePlanet|DroneSpace
+}
+{ DamageMultiplierGroup Name: CVArtilleryTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored
+  DamageMultiplier_4: 0.533, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_5: 0.267, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 1.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: CVPlasmaArtilleryT2
+  DamageMultiplier_1: 0, param1: dirt|stone|tree|plants|foundation
+  DamageMultiplier_2: 4.102, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 2.051, param1: ShieldPlanet
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.1, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+# ====================================================================
+# ================ BA Turret Groups
+# ====================================================================
+{ DamageMultiplierGroup Name: BAGatlingTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.25, param1: rock|tree|plants
+  DamageMultiplier_4: 1.5, param1: body
+  DamageMultiplier_5: 2.5, param1: head
+  DamageMultiplier_6: 0.125, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_7: 0.062, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: BAGatlingTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.25, param1: rock|tree|plants
+  DamageMultiplier_4: 1.5, param1: body
+  DamageMultiplier_5: 2.5, param1: head
+  DamageMultiplier_6: 0.125, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_7: 0.062, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: BALaserTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1.5, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.25, param1: ShieldPlanet
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 0.9, param1: weaponlarge|weaponsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: BALaserTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1.75, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.25, param1: ShieldPlanet
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 0.8, param1: weaponlarge|weaponsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: BAPlasmaTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 3.25, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 1.512, param1: ShieldPlanet
+  DamageMultiplier_4: 0.25, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: BAPlasmaTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|tree|plants|legacy|foundation
+  DamageMultiplier_2: 6.03, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 3.01, param1: ShieldPlanet
+  DamageMultiplier_4: 0.5, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: BAPlasmaTurretT3
+  DamageMultiplier_1: 0, param1: dirt|stone|tree|plants|legacy|foundation
+  DamageMultiplier_2: 2.222, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 1.111, param1: ShieldPlanet
+  DamageMultiplier_4: 1.0, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: BARocketTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.425, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.213, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: BARocketTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.437, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.218, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: BAFlakTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1.0, param1: head|body
+  DamageMultiplier_3: 0.833, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.416, param1: ShieldPlanet
+  DamageMultiplier_5: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  DamageMultiplier_6: 8.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_4: 2.0, param1: DronePlanet|DroneSpace
+}
+{ DamageMultiplierGroup Name: BAFlakTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1.0, param1: head|body
+  DamageMultiplier_3: 0.833, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.416, param1: ShieldPlanet
+  DamageMultiplier_5: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  DamageMultiplier_6: 8.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_4: 2.0, param1: DronePlanet|DroneSpace
+}
+{ DamageMultiplierGroup Name: BAArtilleryTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored|carbonlarge|steellarge|titaniumlarge|combatlarge
+  DamageMultiplier_4: 0.4, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_5: 0.2, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 1.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: BAPlasmaArtilleryT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|foundation
+  DamageMultiplier_2: 3.076, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 1.538, param1: ShieldPlanet
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.1, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: BAPositronTurretT3
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.25, param1: rock|tree|plants
+  DamageMultiplier_3: 0.25, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_4: 0.125, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# ====================================================================
+# ================ POI Turret Groups
+# ====================================================================
+{ DamageMultiplierGroup Name: POIGatlingTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.5, param1: rock|tree|plants
+  DamageMultiplier_4: 0.5, param1: Player
+  DamageMultiplier_5: 1.5, param1: head
+  DamageMultiplier_6: 0.125, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_7: 0.063, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: POIGatlingTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel|legacy|device|thruster|weaponlarge|weaponsmall
+  DamageMultiplier_3: 0.5, param1: rock|tree|plants
+  DamageMultiplier_4: 0.5, param1: Player
+  DamageMultiplier_5: 1.5, param1: head
+  DamageMultiplier_6: 0.125, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_7: 0.063, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: POILaserTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.5, param1: tree|plants|rock
+  DamageMultiplier_3: 1.5, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.25, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: POILaserTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.5, param1: tree|plants|rock
+  DamageMultiplier_3: 1.75, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.25, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: POIPlasmaTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 2.08, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 1.04, param1: ShieldPlanet
+  DamageMultiplier_4: 1.0, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: POIPlasmaTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 2.43, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_3: 1.22, param1: ShieldPlanet
+  DamageMultiplier_4: 1.0, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: POIRocketTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.347, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.174, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: POIRocketTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.347, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.174, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: POIFlakTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.0, param1: head|body
+  DamageMultiplier_3: 0.833, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.417, param1: ShieldPlanet
+  DamageMultiplier_5: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  DamageMultiplier_6: 2.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_4: 2.0, param1: DronePlanet|DroneSpace
+}
+{ DamageMultiplierGroup Name: POICannonTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored|carbonlarge|steellarge|titaniumlarge|combatlarge
+  DamageMultiplier_4: 0.444, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_5: 0.222, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone
+  BlastDamageMultiplier_2: 1.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: POICannonTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored|carbonlarge|steellarge|titaniumlarge|combatlarge
+  DamageMultiplier_4: 0.444, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_5: 0.222, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone|
+  BlastDamageMultiplier_2: 1.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: POIEMPTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 1.0, param1: device|thruster
+  DamageMultiplier_3: 0.033, param1: Player
+  DamageMultiplier_4: 2.5, param1: Mechanical|DronePlanet|DroneSpace
+  DamageMultiplier_5: 1.0, param1: ShieldSmall|ShieldLarge|ShieldPlanet|shield
+  DamageMultiplier_6: 0.333, param1: weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: POIBallista
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.25, param1: rock|tree|plants
+  DamageMultiplier_3: 0.2, param1: Player
+  DamageMultiplier_4: 0.266, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.133, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: POIDisruptorTurret
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.5, param1: tree|plants
+  DamageMultiplier_3: 1.5, param1: device|weaponlarge|thruster|carbonlarge|carbonsmall
+  DamageMultiplier_4: 1.25, param1: steellarge|titaniumlarge|combatlarge
+  DamageMultiplier_5: 0.4, param1: ShieldSmall|ShieldLarge|ShieldPlanet|shield
+  DamageMultiplier_6: 0.666, param1: head|body|xenosteel|legacy
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: POIYellowTurret
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|plants|legacy|foundation
+  DamageMultiplier_2: 1.0, param1: device|weaponsmall|weaponlarge|thruster
+  DamageMultiplier_3: 0.4, param1: Player
+  DamageMultiplier_4: 2.5, param1: Mechanical|DronePlanet|DroneSpace
+  DamageMultiplier_5: 3.0, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_6: 0, param1: wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: POIColliderTurret
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: steelsmall|titaniumsmall|combatsmall|carbonsmall|weaponsmall
+  DamageMultiplier_3: 2.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_4: 0.25, param1: ShieldSmall|ShieldLarge|ShieldPlanet|shield
+  DamageMultiplier_5: 0.0001, param1: Player
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SentryGunPlayer
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation|tree|rock
+  DamageMultiplier_2: 0.25, param1: plants|thruster|weaponlarge|steellarge|titaniumlarge|combatlarge|concrete|concretearmored
+  DamageMultiplier_3: 1.0, param1: Player
+  DamageMultiplier_4: 2.0, param1: head
+  DamageMultiplier_5: 0.16, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_6: 0, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: SentryGunAlien
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation|tree|rock
+  DamageMultiplier_2: 0.25, param1: plants
+  DamageMultiplier_3: 1.0, param1: Player
+  DamageMultiplier_4: 2.0, param1: head
+  DamageMultiplier_5: 0.54, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_6: 0, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# ====================================================================
+# ================ POI PLANET Turret Groups (2x block+shield damage to CV)
+# ====================================================================
+{ DamageMultiplierGroup Name: PlanetGatlingTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steelsmall|titaniumsmall|combatsmall|carbonsmall|weaponsmall
+  DamageMultiplier_3: 1.50, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel
+  DamageMultiplier_4: 0.5, param1: rock|tree|plants
+  DamageMultiplier_5: 0.5, param1: Player
+  DamageMultiplier_6: 0.75, param1: head
+  DamageMultiplier_7: 0.125, param1: ShieldSmall|ShieldPlanet
+  DamageMultiplier_8: 0.25, param1: ShieldLarge|shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: PlanetGatlingTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: steelsmall|titaniumsmall|combatsmall|carbonsmall|weaponsmall
+  DamageMultiplier_3: 1.50, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel
+  DamageMultiplier_4: 0.5, param1: rock|tree|plants
+  DamageMultiplier_5: 0.5, param1: Player
+  DamageMultiplier_6: 0.75, param1: head
+  DamageMultiplier_7: 0.125, param1: ShieldSmall|ShieldPlanet
+  DamageMultiplier_8: 0.25, param1: ShieldLarge|shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: PlanetLaserTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.5, param1: tree|plants|rock
+  DamageMultiplier_3: 2.00, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldPlanet
+  DamageMultiplier_5: 1.0, param1: ShieldLarge|shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: PlanetLaserTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.5, param1: tree|plants|rock
+  DamageMultiplier_3: 2.00, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel
+  DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldPlanet
+  DamageMultiplier_5: 1.0, param1: ShieldLarge|shield
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: PlanetPlasmaTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|tree|plants|legacy|foundation
+  DamageMultiplier_2: 1.875, param1: ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 3.75, param1: ShieldLarge|shield
+  DamageMultiplier_4: 1.0, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_2: 2.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel
+  BlastDamageMultiplier_3: 1.0, param1: concrete|concretearmored
+  BlastDamageMultiplier_4: 0.333, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_5: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: PlanetPlasmaTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|tree|plants|legacy|foundation
+  DamageMultiplier_2: 2.25, param1: ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 4.5, param1: ShieldLarge|shield
+  DamageMultiplier_4: 1.0, param1: device|thruster|weaponsmall|weaponlarge|wood|concrete|concretearmored|steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|xenosteel
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_2: 2.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel
+  BlastDamageMultiplier_3: 1.0, param1: concrete|concretearmored
+  BlastDamageMultiplier_4: 0.333, param1: stone|tree|dirt|plants
+  BlastDamageMultiplier_5: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: PlanetRocketTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.341, param1: ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 0.681, param1: ShieldLarge|shield
+  DamageMultiplier_5: 2.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+  BlastDamageMultiplier_4: 2.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel
+}
+{ DamageMultiplierGroup Name: PlanetRocketTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.341, param1: ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 0.681, param1: ShieldLarge|shield
+  DamageMultiplier_5: 2.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+  BlastDamageMultiplier_4: 2.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel
+}
+{ DamageMultiplierGroup Name: PlanetFlakTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.0, param1: head|body
+  DamageMultiplier_3: 0.75, param1: ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.5, param1: ShieldLarge|shield
+  DamageMultiplier_5: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  DamageMultiplier_6: 2.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel|DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_4: 2.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|weaponlarge|xenosteel|DronePlanet|DroneSpace
+}
+{ DamageMultiplierGroup Name: PlanetCannonTurretT1
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored|carbonlarge|steellarge|titaniumlarge|combatlarge
+  DamageMultiplier_4: 0.4, param1: ShieldPlanet|ShieldSmall|shield
+  DamageMultiplier_5: 0.8, param1: ShieldLarge
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone
+  BlastDamageMultiplier_2: 1.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: PlanetCannonTurretT2
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.5, param1: head
+  DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored|carbonlarge|steellarge|titaniumlarge|combatlarge
+  DamageMultiplier_4: 0.45, param1: ShieldPlanet|ShieldSmall|shield
+  DamageMultiplier_5: 0.9, param1: ShieldLarge
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone
+  BlastDamageMultiplier_2: 1.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+}
+# ====================================================================
+# ================ Enemy Weapons - MELEE
+# ====================================================================
+{ DamageMultiplierGroup Name: MeleeDefault
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.3333, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall
+  DamageMultiplier_3: 1.5, param1: head
+  DamageMultiplier_4: 1.0, param1: body
+  DamageMultiplier_5: 0.25, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+}
+{ DamageMultiplierGroup Name: MeleeBaseAttack
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|legacy|foundation
+  DamageMultiplier_2: 2.5, param1: device|weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|combatsmall|xenosteel
+  DamageMultiplier_3: 1.5, param1: head
+  DamageMultiplier_4: 1.0, param1: body
+  DamageMultiplier_5: 0.5, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+}
+# ====================================================================
+# ================ Enemy Weapons - DRONES
+# ====================================================================
+{ DamageMultiplierGroup Name: DroneKinetic
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.333, param1: rock|tree
+  DamageMultiplier_3: 1.0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.3, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 1.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 1.0, param1: body
+  DamageMultiplier_7: 1.5, param1: head
+  BlastDamageMultiplier_1: 1, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DroneCannon
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.5, param1: rock|tree
+  DamageMultiplier_3: 1.0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.3, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 1.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 1.0, param1: body|head
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|foundation
+  BlastDamageMultiplier_2: 0.1, param1: rock|tree
+  BlastDamageMultiplier_3: 0, param1: shield
+  BlastDamageMultiplier_4: 1.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  BlastDamageMultiplier_5: 1.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_6: 0.5, param1: body|head
+}
+{ DamageMultiplierGroup Name: DroneRocket
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.5, param1: rock|tree
+  DamageMultiplier_3: 1.0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.3, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 1.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 0.5, param1: body|head
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|foundation
+  BlastDamageMultiplier_2: 0.25, param1: rock|tree
+  BlastDamageMultiplier_3: 0, param1: shield
+  BlastDamageMultiplier_4: 1.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  BlastDamageMultiplier_5: 1.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_6: 0.3, param1: body|head
+}
+{ DamageMultiplierGroup Name: DronePlasma
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.1, param1: rock|tree
+  DamageMultiplier_3: 2.0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.5, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 1.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 1.0, param1: body|head
+  BlastDamageMultiplier_1: 0, param1: dirt|stone
+  BlastDamageMultiplier_2: 0.5, param1: rock|tree
+  BlastDamageMultiplier_3: 0, param1: shield|foundation
+  BlastDamageMultiplier_4: 1.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  BlastDamageMultiplier_5: 2, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_6: 0.2, param1: body|head
+}
+{ DamageMultiplierGroup Name: DroneLaser
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.25, param1: rock|tree
+  DamageMultiplier_3: 2.5, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.0, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 1.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 1.0, param1: body
+  DamageMultiplier_7: 1.5, param1: head
+  BlastDamageMultiplier_1: 1, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DroneRailgunLarge
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.0, param1: rock|tree
+  DamageMultiplier_3: 1.25, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.3, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 1.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 0.25, param1: body
+  DamageMultiplier_7: 0.5, param1: head
+  BlastDamageMultiplier_1: 1, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DroneRailgunSmall
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.0, param1: rock|tree
+  DamageMultiplier_3: 1.5, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 1.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 0.4, param1: body
+  DamageMultiplier_7: 0.6, param1: head
+  BlastDamageMultiplier_1: 1, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DroneRocketBaseAttack
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.25, param1: rock|tree
+  DamageMultiplier_3: 2.5, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 2.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 1, param1: body|head
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|foundation
+  BlastDamageMultiplier_2: 0.1, param1: rock|tree
+  BlastDamageMultiplier_3: 0, param1: shield
+  BlastDamageMultiplier_4: 1.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  BlastDamageMultiplier_5: 1.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_6: 0.2, param1: body|head
+}
+{ DamageMultiplierGroup Name: DroneKineticBaseAttack
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.25, param1: rock|tree
+  DamageMultiplier_3: 1.5, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.5, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 2.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 1.0, param1: body
+  DamageMultiplier_7: 1.5, param1: head
+  BlastDamageMultiplier_1: 1, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DroneBomb
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.0, param1: rock|tree
+  DamageMultiplier_3: 1.0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.0, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 1.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 1.0, param1: body|head
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|foundation
+  BlastDamageMultiplier_2: 0.1, param1: rock|tree
+  BlastDamageMultiplier_3: 0, param1: shield
+  BlastDamageMultiplier_4: 1.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood
+  BlastDamageMultiplier_5: 1, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_6: 0.1, param1: body|head
+}
+{ DamageMultiplierGroup Name: DronePlasmaSpace
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|foundation
+  DamageMultiplier_2: 2.5, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0, param1: device|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_4: 0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_5: 0.5, param1: body|head
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|foundation
+  BlastDamageMultiplier_2: 0.1, param1: rock|tree
+  BlastDamageMultiplier_3: 0, param1: shield
+  BlastDamageMultiplier_4: 1.25, param1: steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_5: 2.5, param1: device|thruster|weaponsmall|weaponlarge
+  BlastDamageMultiplier_6: 0.1, param1: body|head
+}
+{ DamageMultiplierGroup Name: DroneLaserSpace
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|foundation
+  DamageMultiplier_2: 0.25, param1: head|body
+  DamageMultiplier_3: 1.5, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 2.0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_1: 1, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: DroneRocketSpace
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.1, param1: rock|tree
+  DamageMultiplier_3: 1.0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 2.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 3.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 0.5, param1: body|head
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|foundation
+  BlastDamageMultiplier_2: 0.1, param1: rock|tree
+  BlastDamageMultiplier_3: 0, param1: shield
+  BlastDamageMultiplier_4: 1.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  BlastDamageMultiplier_5: 2.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_6: 0.2, param1: body|head
+}
+{ DamageMultiplierGroup Name: DroneEMP
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0, param1: rock|tree
+  DamageMultiplier_3: 5.0, param1: shield|thruster|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 0, param1: device|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 0, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|foundation
+  BlastDamageMultiplier_2: 0, param1: rock|tree
+  BlastDamageMultiplier_3: 0, param1: shield
+  BlastDamageMultiplier_4: 0, param1: concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  BlastDamageMultiplier_5: 0, param1: device|thruster|weaponsmall|weaponlarge|carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+}
+{ DamageMultiplierGroup Name: DroneRocketLarge
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 0.75, param1: rock|tree
+  DamageMultiplier_3: 2.5, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.3, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  DamageMultiplier_5: 1.5, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  DamageMultiplier_6: 1.0, param1: body|head
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|foundation
+  BlastDamageMultiplier_2: 0.5, param1: rock|tree
+  BlastDamageMultiplier_3: 0, param1: shield
+  BlastDamageMultiplier_4: 1.5, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|combatsmall|carbonsmall
+  BlastDamageMultiplier_5: 1.75, param1: carbonlarge|steellarge|titaniumlarge|combatlarge|xenosteel
+  BlastDamageMultiplier_6: 0.5, param1: body|head
+}
+{ DamageMultiplierGroup Name: DroneLegacy
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|foundation
+  DamageMultiplier_2: 0.1, param1: head|body
+  DamageMultiplier_3: 0.208, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 1.25, param1: device|thruster|weaponsmall|weaponlarge|concrete|concretearmored|wood|steelsmall|titaniumsmall|carbonsmall|titaniumlarge|combatlarge
+  DamageMultiplier_5: 2.0, param1: carbonlarge|steellarge
+  BlastDamageMultiplier_1: 1, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|Shield
+}
+# ====================================================================
+# ================ Enemy Weapons - RANGED
+# ====================================================================
+{ DamageMultiplierGroup Name: EnemyKineticWeapon
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.25, param1: shield|ShieldLarge|ShieldPlanet
+  DamageMultiplier_3: 0.125, param1: ShieldSmall
+  DamageMultiplier_4: 1.5, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.25, param1: device|plants|combatsmall|concrete|concretearmored
+  DamageMultiplier_6: 0.5, param1: steellarge|titaniumlarge|combatlarge|titaniumsmall
+  DamageMultiplier_7: 0.75, param1: weaponsmall|weaponlarge|thruster|steelsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: EnemyLaserWeapon
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.5, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 1.0, param1: weaponlarge|thruster
+  DamageMultiplier_4: 1.25, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.25, param1: device|plants|combatsmall|concrete|concretearmored
+  DamageMultiplier_6: 0.5, param1: steellarge|titaniumlarge|combatlarge|titaniumsmall
+  DamageMultiplier_7: 0.75, param1: weaponsmall|steelsmall
+  BlastDamageMultiplier_1: 0.5, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|Shield
+}
+
+
+# =================================================================================================
+# Project Eden custom damage groups
+# =================================================================================================
+
+# ====================================================================
+# ================ handheld Weapon Groups
+# ====================================================================
+{ DamageMultiplierGroup Name: Eden_RailgunRifle
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|titaniumlarge|combatlarge|concrete|concretearmored|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.25, param1: steellarge|combatsmall
+  DamageMultiplier_3: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_4: 0.5, param1: weaponsmall|weaponlarge|thruster|steelsmall|titaniumsmall|device
+  DamageMultiplier_5: 2.0, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_6: 2.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: Eden_IonRifle
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.05, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 0.5, param1: weaponsmall|weaponlarge|thruster|device
+  DamageMultiplier_4: 1.5, param1: Mechanical|DronePlanet|DroneSpace
+  DamageMultiplier_5: 0.75, param1: HumanSoft|HumanHard|CreatureSoft|CreatureHard
+  DamageMultiplier_6: 1.5, param1: head, display: DmgMultiplierHead
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# ====================================================================
+# ================ SV Weapon Groups
+# ====================================================================
+{ DamageMultiplierGroup Name: EdenModulatedInfraredS
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.25, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.125, param1: ShieldPlanet
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.5, param1: steellarge|titaniumlarge|combatlarge|combatsmall|thruster
+  DamageMultiplier_8: 1.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: EdenModulatedUltravioletS
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.25, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.125, param1: ShieldPlanet
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.5, param1: weaponlarge|weaponsmall
+  DamageMultiplier_8: 2, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: EdenModulatedGammaS
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.742, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_5: 0.742, param1: ShieldPlanet
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.0, param1: steellarge|titaniumlarge|combatlarge|combatsmall|thruster
+  DamageMultiplier_8: 1.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+
+# ====================================================================
+# ================ CV Turret Groups
+# ====================================================================
+# { DamageMultiplierGroup Name: HVCannonT1
+  # DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  # DamageMultiplier_2: 1.5, param1: head
+  # DamageMultiplier_3: 1.25, param1: weaponsmall|weaponlarge|concrete|concretearmored
+  # DamageMultiplier_4: 0.21, param1: ShieldLarge|ShieldSmall|shield
+  # DamageMultiplier_5: 0.21, param1: ShieldPlanet
+  # BlastDamageMultiplier_1: 0.05, param1: dirt|stone|rock|tree
+  # BlastDamageMultiplier_2: 0, param1: shield|foundation
+# }
+{ DamageMultiplierGroup Name: EdenBolter
+  DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  DamageMultiplier_2: 1.25, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|xenosteel|legacy
+  DamageMultiplier_3: 0.625, param1: steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge|weaponsmall
+  DamageMultiplier_4: 0.25, param1: rock|tree|plants
+  DamageMultiplier_5: 0.125, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_6: 0.0625, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: EdenMissileLight
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 2.0, param1: head|body
+  DamageMultiplier_3: 0.208, param1: ShieldLarge|shield
+  DamageMultiplier_4: 0.104, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_5: 0.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall|DronePlanet|DroneSpace|weaponsmall
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 0.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall|DronePlanet|DroneSpace|weaponsmall
+}
+{ DamageMultiplierGroup Name: EdenFlak
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1.0, param1: head|body
+  DamageMultiplier_3: 0.1, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.05, param1: ShieldPlanet
+  DamageMultiplier_5: 2.0, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  DamageMultiplier_6: 4.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0.1, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 2.0, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall
+  BlastDamageMultiplier_4: 4.0, param1: DronePlanet|DroneSpace
+}
+
+# CV Modulated Beam Laser Turrets
+{ DamageMultiplierGroup Name: EdenModulatedInfraredL
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.25, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.125, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.5, param1: steellarge|titaniumlarge|combatlarge|thruster
+  DamageMultiplier_8: 1.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: EdenModulatedMicrowaveL
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.25, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.125, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.5, param1: weaponlarge|weaponsmall
+  DamageMultiplier_8: 2, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: EdenModulatedGammaL
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.75, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.375, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 0.75, param1: steellarge|titaniumlarge|combatlarge|thruster|weaponlarge
+  DamageMultiplier_8: 1.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# { DamageMultiplierGroup Name: EdenModulatedVisibleL
+  # DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  # DamageMultiplier_2: 0.25, param1: tree|plants
+  # DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  # DamageMultiplier_4: 0.25, param1: ShieldSmall|ShieldLarge|shield
+  # DamageMultiplier_5: 0.125, param1: ShieldPlanet
+  # DamageMultiplier_6: 1.5, param1: head
+  # DamageMultiplier_7: 1.5, param1: steellarge|titaniumlarge|combatlarge|thruster
+  # DamageMultiplier_8: 1.0, param1: DronePlanet|DroneSpace
+  # BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+# }
+# { DamageMultiplierGroup Name: EdenModulatedUltravioletL
+  # DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  # DamageMultiplier_2: 0.25, param1: tree|plants
+  # DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  # DamageMultiplier_4: 0.25, param1: ShieldSmall|ShieldLarge|shield
+  # DamageMultiplier_5: 0.125, param1: ShieldPlanet
+  # DamageMultiplier_6: 1.5, param1: head
+  # DamageMultiplier_7: 1.5, param1: weaponlarge|weaponsmall
+  # DamageMultiplier_8: 1.25, param1: DronePlanet|DroneSpace
+  # BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+# }
+# { DamageMultiplierGroup Name: EdenModulatedXrayL
+  # DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  # DamageMultiplier_2: 0.25, param1: tree|plants
+  # DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  # DamageMultiplier_4: 0.5, param1: ShieldSmall|ShieldLarge|shield
+  # DamageMultiplier_5: 0.25, param1: ShieldPlanet
+  # DamageMultiplier_6: 1.5, param1: head
+  # DamageMultiplier_7: 0.75, param1: steellarge|titaniumlarge|combatlarge|combatsmall|thruster|weaponsmall|weaponlarge
+  # DamageMultiplier_8: 1.0, param1: DronePlanet|DroneSpace
+  # BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+# }
+{ DamageMultiplierGroup Name: EdenModulatedVisibleL
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.25, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.125, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.5, param1: steellarge|titaniumlarge|combatlarge|thruster
+  DamageMultiplier_8: 1.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: EdenModulatedUltravioletL
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.25, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.125, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.5, param1: weaponlarge|weaponsmall
+  DamageMultiplier_8: 2, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: EdenModulatedXrayL
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 0.75, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.375, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 0.75, param1: steellarge|titaniumlarge|combatlarge|thruster|weaponlarge
+  DamageMultiplier_8: 1.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+
+{ DamageMultiplierGroup Name: EdenCVCruise
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1, param1: head|body
+  DamageMultiplier_3: 0.25, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 0.125, param1: ShieldPlanet
+  DamageMultiplier_5: 1.25, param1: thruster
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.25, param1: thruster
+}
+{ DamageMultiplierGroup Name: EdenCVCruiseEMP
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1, param1: head|body
+  DamageMultiplier_3: 2, param1: ShieldLarge|ShieldSmall|shield
+  DamageMultiplier_4: 1, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+}
+{ DamageMultiplierGroup Name: EdenCVBlaster
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 1.25, param1: device|xenosteel|legacy
+  DamageMultiplier_4: 1.25, param1: weaponlarge|weaponsmall
+  DamageMultiplier_5: 0.25, param1: ShieldSmall|ShieldLarge|shield
+  DamageMultiplier_6: 0.125, param1: ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+# { DamageMultiplierGroup Name: EdenRailgun
+  # DamageMultiplier_1: 0, param1: dirt|stone|foundation
+  # DamageMultiplier_2: 1.25, param1: steellarge|titaniumlarge|combatlarge|steelsmall|titaniumsmall|combatsmall|carbonsmall|carbonlarge
+  # DamageMultiplier_3: 0.25, param1: rock|tree|plants
+  # DamageMultiplier_4: 1.5, param1: head
+  # DamageMultiplier_5: 0.109, param1: ShieldSmall|ShieldLarge|shield
+  # DamageMultiplier_6: 0.055, param1: ShieldPlanet
+  # BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+# }
+{ DamageMultiplierGroup Name: EdenDrillIce
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+  DamageMultiplier_2: 0, param1: head|body
+  DamageMultiplier_3: 2000, param1: edenice
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: EdenDrillOre
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+  DamageMultiplier_2: 0, param1: head|body
+  DamageMultiplier_3: 500, param1: edenice
+  DamageMultiplier_4: 2000, param1: edenrich
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+
+# ====================================================================
+# ================ POI Weapons
+# ====================================================================
+{ DamageMultiplierGroup Name: EdenPOIShieldBoost
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation
+  DamageMultiplier_2: -100, param1: shield|ShieldSmall|ShieldLarge|ShieldPlanet
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+
+{ DamageMultiplierGroup Name: EdenModulatedInfraredPOI
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 0.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall|weaponsmall
+  DamageMultiplier_4: 0.35, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.175, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.5, param1: steellarge|titaniumlarge|combatlarge|combatsmall|thruster
+  DamageMultiplier_8: 1.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+
+{ DamageMultiplierGroup Name: EdenModulatedMicrowavePOI
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 0.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall|weaponsmall
+  DamageMultiplier_4: 0.35, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.175, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.5, param1: weaponlarge|weaponsmall
+  DamageMultiplier_8: 2, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+
+{ DamageMultiplierGroup Name: EdenModulatedUltravioletPOI
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 0.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall|weaponsmall
+  DamageMultiplier_4: 0.35, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.175, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.5, param1: weaponlarge|weaponsmall
+  DamageMultiplier_8: 2, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+
+{ DamageMultiplierGroup Name: EdenModulatedGammaPOI
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 0.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall|weaponsmall
+  DamageMultiplier_4: 0.75, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.375, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.5, param1: head
+  DamageMultiplier_7: 1.0, param1: steellarge|titaniumlarge|combatlarge|combatsmall|thruster
+  DamageMultiplier_8: 1.0, param1: DronePlanet|DroneSpace
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+
+{ DamageMultiplierGroup Name: EdenPOIBlaster
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 0.35, param1: ShieldLarge|shield
+  DamageMultiplier_4: 0.175, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_5: 1.5, param1: head
+  DamageMultiplier_6: 1.5, param1: steellarge|titaniumlarge|combatlarge|combatsmall|thruster
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+
+{ DamageMultiplierGroup Name: EdenPOIBlasterT2
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 0.25, param1: tree|plants
+  DamageMultiplier_3: 0.35, param1: ShieldLarge|shield
+  DamageMultiplier_4: 0.175, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_5: 1.5, param1: head
+  DamageMultiplier_6: 1.5, param1: steellarge|titaniumlarge|combatlarge|combatsmall|thruster
+  BlastDamageMultiplier_1: 1.25, param1: device|carbonsmall|steelsmall|titaniumsmall|combatsmall|steellarge|titaniumlarge|combatlarge
+  BlastDamageMultiplier_2: 0.5, param1: concrete|concretearmored
+  BlastDamageMultiplier_3: 0.25, param1: stone|rock|tree|dirt|plants
+  BlastDamageMultiplier_4: 0, param1: shield|foundation
+}
+
+{ DamageMultiplierGroup Name: EdenNovaPOI
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|foundation
+  DamageMultiplier_2: 1, param1: head|body
+  DamageMultiplier_3: 0.5, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall|weaponsmall
+  DamageMultiplier_4: 0.15, param1: ShieldLarge|shield
+  DamageMultiplier_5: 0.075, param1: ShieldPlanet|ShieldSmall
+  DamageMultiplier_6: 1.25, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|thruster
+  BlastDamageMultiplier_1: 0.25, param1: dirt|stone|rock|tree
+  BlastDamageMultiplier_2: 0, param1: shield|foundation
+  BlastDamageMultiplier_3: 1.5, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|thruster
+  BlastDamageMultiplier_4: 0.25, param1: carbonsmall|steelsmall|titaniumsmall|combatsmall|weaponsmall
+}
+
+
+# ====================================================================
+# ================ Enemy weapons ranged
+# ====================================================================
+
+{ DamageMultiplierGroup Name: Eden_EnemyBioWeapon
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0.25, param1: shield|ShieldLarge|ShieldPlanet
+  DamageMultiplier_3: 0.125, param1: ShieldSmall
+  DamageMultiplier_4: 1.5, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_5: 0.1, param1: device|plants|combatsmall|concrete|concretearmored
+  DamageMultiplier_6: 0.2, param1: steellarge|titaniumlarge|combatlarge|titaniumsmall
+  DamageMultiplier_7: 0.2, param1: weaponsmall|weaponlarge|thruster|steelsmall
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|shield
+}
+{ DamageMultiplierGroup Name: Eden_EnemyCryoWeapon
+  DamageMultiplier_1: 0, param1: dirt|stone|rock|tree|xenosteel|legacy|foundation
+  DamageMultiplier_2: 0, param1: shield|ShieldLarge|ShieldSmall|ShieldPlanet
+  DamageMultiplier_3: 1.25, param1: head, display: DmgMultiplierHead
+  DamageMultiplier_4: 0, param1: steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall
+  DamageMultiplier_5: 0, param1: weaponsmall|weaponlarge|thruster|device
+  BlastDamageMultiplier_1: 0, param1: dirt|stone|rock|tree|device|thruster|weaponlarge|weaponsmall|steellarge|titaniumlarge|combatlarge|concrete|concretearmored|steelsmall|titaniumsmall|combatsmall|xenosteel|legacy|foundation|Shield
+}

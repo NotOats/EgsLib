@@ -7,20 +7,26 @@ using EgsLib;
 
 namespace EgsLib.Tests.Localization
 {
+    public class LocalizationFixture
+    {
+        public EgsLib.Localization Localization { get; }
+
+        public LocalizationFixture()
+        {
+            Localization = new EgsLib.Localization(@"Resources\Localization\Localization.csv");
+        }
+    }
+
     public class LocalizationTests : IClassFixture<LocalizationFixture>
     {
         private LocalizationFixture Fixture { get; }
-
-        public LocalizationTests(LocalizationFixture fixture)
-        {
-            Fixture = fixture;
-        }
+        public LocalizationTests(LocalizationFixture fixture) => Fixture = fixture;
 
 
         [Theory]
         [InlineData("English", "ConcreteDestroyedBlocks", "Concrete Blocks (Damaged)")]
-        [InlineData("English", "HullArmoredFull", "Hardened Steel Block")]
-        [InlineData("English", "bkiShieldCapacitor", "A secondary capacitor dedicated to supplying reserve energy to a shield generator; increasing shield strength at the cost of shield charge speed.")]
+        [InlineData("English", "HullArmoredFullLarge", "Hardened Steel Block (Large)")]
+        [InlineData("English", "bkiShieldCapacitorT1", "A secondary capacitor dedicated to supplying reserve energy to a shield generator; increasing shield strength at the cost of shield charge speed.\\nIncreases Shield Capacity\\nReduces Shield Charge Rate")]
         [InlineData("Deutsch", "ConcreteDestroyedBlocks", "Betonblöcke - zerstört")]
         [InlineData("Français", "ConcreteDestroyedBlocks", "Blocs béton - détruits")]
         public void TestReadValues(string language, string key, string expected)
@@ -37,6 +43,18 @@ namespace EgsLib.Tests.Localization
         [InlineData("Deutsch", "MedicalIngredients")]
         [InlineData("Deutsch", "ColonyLargeFood")]
         public void TestReadEmptyValues(string language, string key)
+        {
+            var loc = Fixture.Localization;
+            var result = loc.Localize(key, language);
+
+            Assert.NotNull(result);
+            Assert.Equal(key, result);
+        }
+
+        [Theory]
+        [InlineData("English", "SomeStringThatDoesntExistInTheFile")]
+        [InlineData("FakeLanguage", "PaxPurgatory")]
+        public void TestBadKeys(string language, string key)
         {
             var loc = Fixture.Localization;
             var result = loc.Localize(key, language);

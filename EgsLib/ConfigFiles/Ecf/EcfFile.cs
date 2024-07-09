@@ -70,17 +70,35 @@ namespace EgsLib.ConfigFiles.Ecf
         /// </summary>
         private static string CleanLine(string input)
         {
-            input = input.Trim();
+            var end = -1;
+            var inQuotes = false;
 
-            // ignore comments
-            var comments = new[] { "#", "@", "=", "/*", "//" };
-            if (comments.Any(x => input.StartsWith(x, StringComparison.Ordinal)))
-                return null;
+            for (var i = input.Length - 1; i > 0; i--)
+            {
+                char c = input[i];
 
-            // remove end of line comments
-            var parts = input.Split(new[] { "#", "@", "//" }, StringSplitOptions.None);
+                if (c == '"')
+                {
+                    inQuotes = !inQuotes;
+                    continue;
+                }
 
-            return parts[0];
+                if (inQuotes)
+                    continue;
+
+                if (c == '#')
+                    end = i;
+
+                if (c == '/' && i != 0 && input[i - 1] == '/')
+                    end = i - 1;
+            }
+
+            if (end == -1)
+                end = input.Length;
+
+            var line = input.Substring(0, end);
+
+            return line.Trim();
         }
 
         /// <summary>

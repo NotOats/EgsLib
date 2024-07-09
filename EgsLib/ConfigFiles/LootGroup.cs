@@ -13,7 +13,8 @@ namespace EgsLib.ConfigFiles
     {
         [EcfField] public string Name { get; private set; }
 
-        [EcfProperty] public string Count { get; private set; }
+        [EcfProperty("Count", typeof(LootGroup), "ParseIntRange")]
+        public Range<int> Count { get; private set; }
 
         public IReadOnlyList<LootItem> Items { get; }
 
@@ -33,6 +34,40 @@ namespace EgsLib.ConfigFiles
                 .ToArray();
         }
 
+        private static bool ParseIntRange(string input, out object output, Type type)
+        {
+            output = default;
+
+            if (type != typeof(Range<int>))
+                return false;
+
+            // hard coded "all"
+            if (input == "all")
+            {
+                output = new Range<int>(1, int.MaxValue);
+                return true;
+            }
+
+            var parts = input.Trim('"').Split(',');
+            if (parts.Length == 1 && parts[0].ConvertType(out int single))
+            {
+                // single value
+                output = new Range<int>(single, single);
+                return true;
+            }
+             
+            if (parts.Length == 2 
+                && parts[0].ConvertType(out int min) 
+                && parts[1].ConvertType(out int max))
+            {
+                // min/max pair
+                output = new Range<int>(min, max);
+                return true;
+            }
+
+            return false;
+        }
+
         public static IEnumerable<LootGroup> ReadFile(string filePath)
         {
             if (string.IsNullOrWhiteSpace(filePath))
@@ -48,8 +83,10 @@ namespace EgsLib.ConfigFiles
         public readonly struct LootItem : IEquatable<LootItem>
         {
             public string Name { get; }
-            public string Param1 { get; }
-            public string Param2 { get; }
+            // TODO: Figure out how to represent Count.
+            // Count can be 1 or "1,2" or "meta=1"
+            public string Count { get; }
+            public float? Weight { get; }
 
             internal LootItem(string line)
             {
@@ -57,13 +94,21 @@ namespace EgsLib.ConfigFiles
                 if (parts.Length != 2 && parts.Length != 3)
                     throw new FormatException("Invalid item format in LootGroup");
 
+                // Name & Count
                 Name = parts[0];
-                Param1 = SplitParam(parts[1]);
+                Count = SplitParam(parts[1]);
 
-                if (parts.Length == 3)
-                    Param2 = SplitParam(parts[2]);
-                else
-                    Param2 = null;
+                // Weight
+                if (parts.Length != 3)
+                {
+                    Weight = null;
+                    return;
+                }
+
+                if (!SplitParam(parts[2]).ConvertType(out float value))
+                    throw new FormatException("Invalid weight in LootGroup");
+
+                Weight = value;
             }
 
             private static string SplitParam(string param)
@@ -79,11 +124,11 @@ namespace EgsLib.ConfigFiles
             {
                 var parts = new List<string> { Name };
 
-                if (!string.IsNullOrWhiteSpace(Param1))
-                    parts.Add($"param1: {Param1}");
+                if (!string.IsNullOrWhiteSpace(Count))
+                    parts.Add($"Count: {Count}");
 
-                if (!string.IsNullOrWhiteSpace(Param2))
-                    parts.Add($"param2: {Param2}");
+                if (Weight != null)
+                    parts.Add($"Weight: {Weight}");
 
                 return string.Join(", ", parts);
             }
@@ -96,16 +141,16 @@ namespace EgsLib.ConfigFiles
             public bool Equals(LootItem other)
             {
                 return Name == other.Name &&
-                       Param1 == other.Param1 &&
-                       Param2 == other.Param2;
+                       Count == other.Count &&
+                       Weight == other.Weight;
             }
 
             public override int GetHashCode()
             {
                 int hashCode = 1697885511;
                 hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
-                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Param1);
-                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Param2);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Count);
+                hashCode = hashCode * -1521134295 + EqualityComparer<float?>.Default.GetHashCode(Weight);
                 return hashCode;
             }
 

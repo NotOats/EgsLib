@@ -23,12 +23,85 @@
 # For previwng changes made in the galaxy without having to start a new game > load a savegame and edit its Galaxyconfig.ecf in the savegame/content folder. 
 # Then you can reload the edits with the ingame console > cmd: 'galaxy' 
 #===================================================
-
+#== Count Limits ==
+# Regions: Range from Child StarRegion_1 up to Child StarRegion_99
+# Territories: Range from Child Territory_1 up to Child Territory_20
+# Territories: You can set 1-10 Other_ factions to exist for this territory  (Other_1 > Other_10)
+# Main-types (suntypes: unlimited)
+# ===
+# Special configuration: Dual-star systems
+# CompanionStarClass: <value>  ; adding this parameter to a StarClass definition adds a 2nd star of the named value as compantion; 2nd star is decoration only;; <value> needs to be chosen from an already existing StarClass in this config!
+# ===
+# CONFIGS:
+# SolarSystemConfigSuffix: K   ; SolarSystemConfigSuffix can be used to override the use of the sun type in thesolar system config file. Use it f.e. like that: SolarSystemConfigSuffix: K  = use that suntype in the SolarSystemConfigK.yaml 
+# ===
+# For the star models, we support these:
+# Available Models: SunBlueGiant, SunWhiteDwarf, SunYellowWhite, SunYellow, SunRedGiant, SunRedDwarf, SunNeutron, BlackHole, SunGeneric
+# Customizing: You can add new IDs at the end of the list or modify the given ones. You can customize ALL parameters and use our own values, for example for StarClass (You can then use in your Sectors.yaml or SolarSystemConfg!). Only the models are limited to those mentioned above.
+# Starter System: When your scenario does NOT use a fixed sectors.yaml with starterplanets, you can define one starter system in the General settings below. If you use a sectors.yaml with starter planets set AND have a starter system added below, the starter system entry in this galaxy config will not be used.
+# Starter System Settings: The StarterSystemName can be freely chosen. The StarterSystemClass needs to be one defined in the IDs 1 and onwards.
+# Territories > Factions available are: Zirax, Talon, Polaris, Kriel, Pirates, Trader, UCH, Civilian, Alien
+# Territories > You can set up several individual territories for the same faction with different or overlapping coordinates and spheres!
+# Territories > In a given territory, only the POI of the Territory-Faction will be placed. To allow other factions POI use the 'Other_' setting with an ongoing number. You can define the probability from center to edge of the territory!
+# Internal calculation values: 
+# 1 LJ = 10.000 AU = 100.000 Sectors (In reality one LY is about 65.000 AU, but the value was chosen for readability and better measurement)
+# 1 AU = 10 Sectors
+# Note: The coordinates of a territory or a sun (in the sectors.yaml f.ex), the GalaxySpawnRadius and the Radius of the Galaxy are given in LIGHTYEARS. The coordinates (min/max) of a zone of a Star (f.ex HabitableCold ), the coordinates of a planet in the sectors.yaml and the definitions given for planet, moon or station positions in the solarsystemconfigs are measured in SECTORS (not AU). Example: HabitableHot: "109, 120" > a planet in this zone is 109 to 120 SECTORS away from his star.
+# ===
+# You can add labels to the galaxy view in all StarRegion blocks with these properties:
+# LabelName: <name> ; adds a label with content <name> at the position 
+# LabelColor:     ; Set a color for the label like "0, 1, 0.67"; you can also use a color with ALPHA channel for transparence like: "1.0,0.0,0.0,0.2"
+# LabelSize:       ; Set size of the label
+# LabelLYDistance: <distance in LY>  ; optionally allows to set a distance to the player where the label shows up, if the player is farther away it will hide
+#===================================================
+# Define nebulas within star regions:
+# NebulaSpawnCount: 30  ; if this is specified within a star region, no random nebulas will be spawned any more but only nebulas within star regions that use this property
+# NebulaColorIndex: 2  ; if this is specified within a star region, the nebulas will take its color from this NebulaColor gradient
+# Also up to 30 NebulaColor gradients are possible now
+#===================================================
+# For viewing changes made in the galaxy without having to start a new game > load a savegame and edit its Galaxyconfig.ecf in the savegame/content folder. 
+# Then you can reload the edits with the ingame console > cmd: 'galaxy' 
+#===================================================
+# HIDING a solar system
+# HideFromMap: true/false → the given Solar System will be hidden from the galaxy map
+# HideFromSearch: true/false → the given Solar System will show on the map but can't be searched for
+#===================================================
+# SUN SETTINGS
+# GalaxyConfig, Name: G Type Star  # Name of the star; Can be a custom name. For generic use "<StarClass> Type Star"
+# StarClass: G3                    # Class of the star. Letters and Numbers. 3 to 4 characters only
+# Model: SunGeneric                # Default: SunGeneric; OLD models: SunBlueGiant, SunWhiteDwarf, SunYellowWhite, SunYellow, SunRedGiant, SunRedDwarf, SunNeutron, BlackHole  
+#  Probability: 1                  # FLOAT: 0-1; Overall probability for this StarClass to exist in the galaxy; Do not use 0
+# SizeClass: 10                    # INT: 1-12; Size of the actual sun and icon ingame. Relevant for the warp sectors when sectors.yaml is used: For lager starts you need to set a bigger distance of its warp sectors  
+#  Color: "1.00,0.95,0.75"         # Color of the sun in-game and on the galaxy map; value = RBG Color code / 255
+# LightColor: "1,0.96,0.87"        # If set, will override the color for in-game appearance
+# ModelColor: "1, 0.8, 0.7"        # Inner color; can be used if you want a different color apart from Color or LightColor); Only works for 'Model: SunGeneric'
+# ModelColor2: "1,0.96,0.87"       # 2nd Color for Corona & protuberances; Only works for 'Model: SunGeneric'
+# ModelBrightness: 0.9             # FLOAT: 0.1 to 1.5; Overall Corona brightness; 1 is okay bright for sun  0.5 is dying, nearly old 0.2 is some strange object  1.5 is large star corona; Only works for 'Model: SunGeneric'
+# ModelNoiseTiling: 90             # INT: 40 to 500; The higher the more fine-graned / smoother sphere visuals ; Only works for 'Model: SunGeneric'
+# ModelCoronaSpikesSize: 0.7       # FLOAT: 0.01 to 1.00; Default is 0.75; values < 0.6 will hide the spikes completely. Very sensitive! 0.9 is for special objects 0.76 for small stars; Only works for 'Model: SunGeneric'
+# ModelPlasmaArcsSize: 0.5         # FLOAT: 0.1 to 1; Default is 0.5 for Plasma Arcs
+# ModelFlareBrightness: 0.4 # 0.8  # FLOAT: 0.1 to 1; Default is 0.5; values < 1 will make the flare smaller; Only works for 'Model: SunGeneric' 
+# SurfaceTemperature: "5500, 6000" # trivia, no gameplay effect
+# Mass: 1                          # trivia, no gameplay effect, multiples of the earth sun
+# Radius: 1                        # trivia, no gameplay effect, multiples of the earth sun
+# Luminosity: 1                    # trivia, no gameplay effect, multiples of the earth sun
+# ColorName: Yellow                # trivia: customizable color name for the star on the map info
+# Age: 10                          # trivia, no gameplay effect; age of star in billion years
+# InnerSystem: "8, 34"             # INT; Defines the range for INNER system playfields, measured in AU = Astronomical Units; 5 is extremely close to the sun symbol, nearly touching it.
+# HabitableHot: "35, 63"           # INT; Defines the range for HABITABLE HOT system playfields, measured in AU = Astronomical Units; Habitable Hot/Temperate/Cold are usually closer togeher as they define the inner and outer edges of the general 'habitable zone' of a star.
+# HabitableTemperate: "64, 69"     # INT; Defines the range for HABITABLE TEMPERATE system playfields, measured in AU = Astronomical Units;
+# HabitableCold: "70, 75"          # INT; Defines the range for HABITABLE COLD system playfields, measured in AU = Astronomical Units;
+# OuterSystem: "76, 132"           # INT; Everything that is further away than the habitable  zone, measured in AU = Astronomical Units; Usually the largest area/distances; 
+#GalaxySpawnRadius: "300, 400"  # INT; min and max in LY from the center where this star should spawn, if not set star will spawn everywhere
+# GalaxySpawnAmount: 10             # INT; How many stars of this type are placed in the galaxy; ONLY set to 0 if you want to manage it from the REGIONS. Default > 1
+# ClusterProb: 1                    # FLOAT; Decides if StarClass is placed in clusters in general. 1 = always/only , 0 = never; can use float between 0 and 1
+# ClusterRange: "0, 0.5"           # FLOAT; Decides the position of the StarClass in a cluster; 0 = close to edge; 1 = close to center; Example: '0, 0.5' = position is more towards the edge of the cluster
+# Description: " "                 # STRING; Description for the galaxy/map info; briefly describe the star in 'colorful' or 'scientific' words in 1-3 sentences.
+  
   #===========================
   # General Galaxy Settings
   #===========================
-
-
+  
 
 
 # ======================================================================================================================================================
@@ -239,9 +312,9 @@
     RadiusMinMax: "4, 8"
     TotalSpawnCount: 25
     UseDefaultStarDef: false
-    StarClass_1: N1a, param1: "SpawnAmount=25, ClusterProb=0"
-    StarClass_2: S-S, param1: "Prob=0.05"
-    StarClass_3: L3, param1: "Prob=0.1"
+    StarClass_1: N1a-Legacy, param1: "SpawnAmount=25, ClusterProb=0"
+    StarClass_2: S-S-Legacy, param1: "Prob=0.05"
+    StarClass_3: L3-Legacy, param1: "Prob=0.1"
     # NebulaSpawnCount: 5
     # NebulaColorIndex: 13
   }
@@ -254,11 +327,11 @@
     TotalSpawnCount: 250
     FlattenFac: 0.2  # default is 0.2
     UseDefaultStarDef: false
-    StarClass_1: M1Ia, param1: "Prob=0.01"
-    StarClass_2: K, param1: "Prob=0.4"
-    StarClass_3: M, param1: "Prob=0.4"
-    StarClass_4: S-S, param1: "Prob=0.05"
-    StarClass_5: L3, param1: "Prob=0.1"
+    StarClass_1: B-Legacy, param1: "Prob=0.2"
+    StarClass_2: D-Legacy, param1: "Prob=0.3"
+    StarClass_3: M-Legacy, param1: "Prob=0.5"
+    StarClass_4: S-S-Legacy, param1: "Prob=0.05"
+    StarClass_5: L3-Legacy, param1: "Prob=0.1"
     NebulaSpawnCount: 5
     NebulaColorIndex: 3
   }
@@ -271,15 +344,10 @@
     TotalSpawnCount: 500
     FlattenFac: 0.35  # default is 0.2
     UseDefaultStarDef: false
-    StarClass_1: M1Ia, param1: "Prob=0.01"
-    StarClass_2: K, param1: "Prob=0.3"
-    StarClass_3: M, param1: "Prob=0.4"
-    StarClass_4: A, param1: "Prob=0.2"
-    StarClass_5: F, param1: "Prob=0.1"
-    StarClass_6: Q23, param1: "SpawnAmount=5, Prob=0.5"
-    StarClass_7: Q94, param1: "SpawnAmount=5, Prob=0.5"
-    StarClass_8: Q95, param1: "SpawnAmount=5, Prob=0.5"
-    StarClass_9: L3, param1: "SpawnAmount=5, Prob=0.5"
+    StarClass_1: B-Legacy, param1: "Prob=0.2"
+    StarClass_2: D-Legacy, param1: "Prob=0.3"
+    StarClass_3: M-Legacy, param1: "Prob=0.5"
+    StarClass_4: L3-Legacy, param1: "SpawnAmount=5, Prob=0.5"
     NebulaSpawnCount: 90
     NebulaColorIndex: 13
   }
@@ -292,11 +360,9 @@
     TotalSpawnCount: 200
     FlattenFac: 0.2  # default is 0.2
     UseDefaultStarDef: false
-    StarClass_1: M1Ia, param1: "Prob=0.01"
-    StarClass_2: K, param1: "Prob=0.3"
-    StarClass_3: M, param1: "Prob=0.4"
-    StarClass_4: A, param1: "Prob=0.2"
-    StarClass_5: F, param1: "Prob=0.1"
+    StarClass_1: B-Legacy, param1: "Prob=0.2"
+    StarClass_2: D-Legacy, param1: "Prob=0.3"
+    StarClass_3: M-Legacy, param1: "Prob=0.5"
     NebulaSpawnCount: 45
     NebulaColorIndex: 13
   }
@@ -380,7 +446,7 @@
     RadiusMinMax: "0, 2"
     TotalSpawnCount: 1
     UseDefaultStarDef: false
-    StarClass_1: KrielHomeSystem, param1: "SpawnAmount=1, Prob=1"
+    StarClass_1: B2V, param1: "SpawnAmount=1, Prob=1"
   }
 
   { Child StarRegion_21
@@ -414,15 +480,14 @@
     TotalSpawnCount: 150
     FlattenFac: 0.25  # default is 0.2
     UseDefaultStarDef: false
-    StarClass_1: TraderHomeSystem, param1: "SpawnAmount=1, Prob=1"
-    StarClass_2: G, param1: "Prob=0.3"
-    StarClass_3: G2, param1: "Prob=0.5"
-    StarClass_4: F, param1: "Prob=0.3"
-    StarClass_5: A, param1: "Prob=0.2"
-    StarClass_6: K, param1: "Prob=0.2"
-    StarClass_7: B, param1: "Prob=0.1"
-    StarClass_8: K2V, param1: "Prob=0.2"
-    StarClass_9: A4V-G2, param1: "Prob=0.15"
+    StarClass_1: G, param1: "Prob=0.3"
+    StarClass_2: G2, param1: "Prob=0.5"
+    StarClass_3: F, param1: "Prob=0.3"
+    StarClass_4: A, param1: "Prob=0.2"
+    StarClass_5: K, param1: "Prob=0.2"
+    StarClass_6: B, param1: "Prob=0.1"
+    StarClass_7: K2V, param1: "Prob=0.2"
+    StarClass_8: A4V-G2, param1: "Prob=0.15"
   }
 
   { Child StarRegion_23
@@ -454,14 +519,13 @@
     TotalSpawnCount: 50
     FlattenFac: 0.7
     UseDefaultStarDef: false
-    StarClass_1: PiratesHomeSystem, param1: "SpawnAmount=1, Prob=1"
-    StarClass_2: F2, param1: "Prob=0.7"
-    StarClass_3: F, param1: "Prob=0.3"
-    StarClass_4: G, param1: "Prob=0.3"
-    StarClass_5: K, param1: "Prob=0.1"
-    StarClass_6: A, param1: "Prob=0.1"
-    StarClass_7: Q23, param1: "SpawnAmount=2, Prob=0.1"
-    StarClass_8: F4, param1: "Prob=0.35"
+    StarClass_1: F2, param1: "Prob=0.7"
+    StarClass_2: F, param1: "Prob=0.3"
+    StarClass_3: G, param1: "Prob=0.3"
+    StarClass_4: K, param1: "Prob=0.1"
+    StarClass_5: A, param1: "Prob=0.1"
+    StarClass_6: Q23, param1: "SpawnAmount=2, Prob=0.1"
+    StarClass_7: F4, param1: "Prob=0.35"
     NebulaSpawnCount: 16
     NebulaColorIndex: 17
   }
@@ -504,9 +568,8 @@
     TotalSpawnCount: 52
     # FlattenFac: 0.5
     UseDefaultStarDef: true
-    StarClass_1: PolarisHomeSystem, param1: "SpawnAmount=1, Prob=1"
-    StarClass_2: K2-7, param1: "SpawnAmount=2, Prob=1"
-    StarClass_3: F5, param1: "Prob=0.7"
+    StarClass_1: K2-7, param1: "SpawnAmount=2, Prob=1"
+    StarClass_2: F5, param1: "Prob=0.7"
     NebulaSpawnCount: 20
     NebulaColorIndex: 4
   }
@@ -573,25 +636,9 @@
     # NebulaColorIndex: 5
   }
 
-# ------------------------------------------------------------------------------------------------------------------------------------------------------------------ Tesch Cluster
-  { Child StarRegion_30
-    Name: "Star Cluster Tesch"
-    LabelName: "<align=center><voffset=12em><line-height=1em>Void<br><size=75%>[Tesch]"
-    LabelColor: "1, 1, 1, 0.8"
-    LabelSize: 200
-    Shape: Sphere
-    Position: "-290, 23, -40"
-    RadiusMinMax: "5, 50"
-    TotalSpawnCount: 15
-    # FlattenFac: 0.5
-    # UseDefaultStarDef: true
-    StarClass_1: TeschHomeSystem, param1: "SpawnAmount=3, Prob=1"
-    StarClass_2: G, param1: "Prob=0.5"
-    StarClass_3: M, param1: "Prob=0.4"
-    StarClass_4: K, param1: "Prob=0.3"
-    NebulaSpawnCount: 22
-    NebulaColorIndex: 16
-  }
+# Free ID 30
+
+
 
   { Child StarRegion_31
     Name: "Star Cluster Wastelands Center"
@@ -604,9 +651,7 @@
     TotalSpawnCount: 50
     FlattenFac: 0.5
     UseDefaultStarDef: true
-    StarClass_1: WastelandersHomeSystem, param1: "SpawnAmount=1, Prob=1"
-    # StarClass_2: F3, param1: "SpawnAmount=1, Prob=1"
-    StarClass_2: F3, param1: "Prob=0.9"
+    StarClass_1: F3, param1: "Prob=0.9"
     NebulaSpawnCount: 20
     NebulaColorIndex: 8
   }
@@ -619,8 +664,7 @@
     TotalSpawnCount: 75
     FlattenFac: 0.2
     UseDefaultStarDef: true
-    StarClass_1: ARCHomeSystem, param1: "SpawnAmount=1, Prob=1"
-    StarClass_2: F3, param1: "Prob=0.9"
+    StarClass_1: F3, param1: "Prob=0.9"
     NebulaSpawnCount: 100
     NebulaColorIndex: 12
   }
@@ -636,13 +680,13 @@
     TotalSpawnCount: 100
     FlattenFac: 0.4  # default is 0.2
     UseDefaultStarDef: false
-    StarClass_1: M2, param1: "Prob=0.3"
-    StarClass_2: R, param1: "Prob=0.5"
-    StarClass_3: T, param1: "Prob=0.4"
-    StarClass_4: BH4, param1: "Prob=0.3"
+    StarClass_1: M2-Drone, param1: "Prob=0.3"
+    StarClass_2: R-Drone, param1: "Prob=0.5"
+    StarClass_3: T-Drone, param1: "Prob=0.4"
+    StarClass_4: BH4-Drone, param1: "Prob=0.3"
     StarClass_5: M, param1: "Prob=0.03"
     StarClass_6: K, param1: "Prob=0.02"
-    StarClass_7: D4, param1: "Prob=0.2"
+    StarClass_7: D4-Drone, param1: "Prob=0.2"
 
     NebulaSpawnCount: 45
     NebulaColorIndex: 6
@@ -657,13 +701,13 @@
     TotalSpawnCount: 350
     FlattenFac: 0.4  # default is 0.2
     UseDefaultStarDef: false
-    StarClass_1: M2, param1: "Prob=0.7"
-    StarClass_2: R, param1: "Prob=0.3"
-    StarClass_3: T, param1: "Prob=0.2"
-    StarClass_4: BH4, param1: "Prob=0.15"
+    StarClass_1: M2-Drone, param1: "Prob=0.7"
+    StarClass_2: R-Drone, param1: "Prob=0.3"
+    StarClass_3: T-Drone, param1: "Prob=0.2"
+    StarClass_4: BH4-Drone, param1: "Prob=0.15"
     StarClass_5: M, param1: "Prob=0.03"
     StarClass_6: K, param1: "Prob=0.02"
-    StarClass_7: D4, param1: "Prob=0.2"
+    StarClass_7: D4-Drone, param1: "Prob=0.2"
 
     NebulaSpawnCount: 135
     NebulaColorIndex: 11
@@ -789,6 +833,23 @@
     StarClass_3: M, param1: "Prob=0.3"
   }
 
+  { Child StarRegion_48
+    Name: "The Void"
+    LabelName: "<align=center><voffset=6em><line-height=1em>The Void"
+    LabelColor: "0.6, 0.6, 0.6, 0.6"
+    LabelSize: 100
+    Shape: Sphere
+    Position: "-290, 23, -40"
+    RadiusMinMax: "5, 50"
+    TotalSpawnCount: 15
+    # FlattenFac: 0.5
+    # UseDefaultStarDef: true
+    StarClass_1: G, param1: "Prob=0.5"
+    StarClass_2: M, param1: "Prob=0.4"
+    StarClass_3: K, param1: "Prob=0.3"
+    NebulaSpawnCount: 22
+    NebulaColorIndex: 16
+  }
 
 
 
@@ -1132,7 +1193,7 @@
     UseDefaultStarDef: false
     StarClass_1: N, param1: "Prob=0.02"
     StarClass_2: BH, param1: "Prob=0.01"
-    StarClass_3: M2, param1: "Prob=0.01"
+    StarClass_3: M2-Drone, param1: "Prob=0.01"
     StarClass_4: D, param1: "Prob=0.01"
     StarClass_5: R, param1: "SpawnAmount=100"
     StarClass_6: L, param1: "SpawnAmount=75"
@@ -1164,11 +1225,11 @@
     FlattenFac: 0.35
     UseDefaultStarDef: false
     StarClass_1: M, param1: "Prob=0.3"
-    StarClass_2: M2, param1: "Prob=0.4"
-    StarClass_3: R, param1: "Prob=0.15"
+    StarClass_2: M2-Drone, param1: "Prob=0.55"
+    StarClass_3: R-Drone, param1: "Prob=0.2"
     StarClass_4: K, param1: "Prob=0.2"
     StarClass_5: D, param1: "Prob=0.2"
-    StarClass_6: T, param1: "Prob=0.15"
+    StarClass_6: T-Drone, param1: "Prob=0.2"
     StarClass_7: M-M, param1: "SpawnAmount=4, Prob=1"
     StarClass_8: M6, param1: "SpawnAmount=4, Prob=1"
     StarClass_9: K7, param1: "SpawnAmount=4, Prob=1"
@@ -1185,11 +1246,11 @@
     FlattenFac: 0.35
     UseDefaultStarDef: false
     StarClass_1: M, param1: "Prob=0.3"
-    StarClass_2: M2, param1: "Prob=0.4"
-    StarClass_3: R, param1: "Prob=0.15"
+    StarClass_2: M2-Drone, param1: "Prob=0.55"
+    StarClass_3: R-Drone, param1: "Prob=0.2"
     StarClass_4: K, param1: "Prob=0.2"
     StarClass_5: D, param1: "Prob=0.2"
-    StarClass_6: T, param1: "Prob=0.15"
+    StarClass_6: T-Drone, param1: "Prob=0.2"
   }
 
   { Child StarRegion_87
@@ -1201,11 +1262,11 @@
     FlattenFac: 0.35
     UseDefaultStarDef: false
     StarClass_1: M, param1: "Prob=0.3"
-    StarClass_2: M2, param1: "Prob=0.4"
-    StarClass_3: R, param1: "Prob=0.15"
+    StarClass_2: M2-Drone, param1: "Prob=0.55"
+    StarClass_3: R-Drone, param1: "Prob=0.2"
     StarClass_4: K, param1: "Prob=0.2"
     StarClass_5: D, param1: "Prob=0.2"
-    StarClass_6: T, param1: "Prob=0.15"
+    StarClass_6: T-Drone, param1: "Prob=0.2"
   }
 
   { Child StarRegion_88
@@ -1217,11 +1278,11 @@
     FlattenFac: 0.35
     UseDefaultStarDef: false
     StarClass_1: M, param1: "Prob=0.3"
-    StarClass_2: M2, param1: "Prob=0.4"
-    StarClass_3: R, param1: "Prob=0.15"
+    StarClass_2: M2-Drone, param1: "Prob=0.55"
+    StarClass_3: R-Drone, param1: "Prob=0.2"
     StarClass_4: K, param1: "Prob=0.2"
     StarClass_5: D, param1: "Prob=0.2"
-    StarClass_6: T, param1: "Prob=0.15"
+    StarClass_6: T-Drone, param1: "Prob=0.2"
   }
 
   { Child StarRegion_89
@@ -1233,11 +1294,11 @@
     FlattenFac: 0.35
     UseDefaultStarDef: false
     StarClass_1: M, param1: "Prob=0.3"
-    StarClass_2: M2, param1: "Prob=0.4"
-    StarClass_3: R, param1: "Prob=0.15"
+    StarClass_2: M2-Drone, param1: "Prob=0.55"
+    StarClass_3: R-Drone, param1: "Prob=0.2"
     StarClass_4: K, param1: "Prob=0.2"
     StarClass_5: D, param1: "Prob=0.2"
-    StarClass_6: T, param1: "Prob=0.15"
+    StarClass_6: T-Drone, param1: "Prob=0.2"
   }
 
   { Child StarRegion_90
@@ -1249,11 +1310,11 @@
     FlattenFac: 0.35
     UseDefaultStarDef: false
     StarClass_1: M, param1: "Prob=0.3"
-    StarClass_2: M2, param1: "Prob=0.4"
-    StarClass_3: R, param1: "Prob=0.15"
+    StarClass_2: M2-Drone, param1: "Prob=0.55"
+    StarClass_3: R-Drone, param1: "Prob=0.2"
     StarClass_4: K, param1: "Prob=0.2"
     StarClass_5: D, param1: "Prob=0.2"
-    StarClass_6: T, param1: "Prob=0.15"
+    StarClass_6: T-Drone, param1: "Prob=0.2"
   }
 
   { Child StarRegion_91
@@ -1265,11 +1326,11 @@
     FlattenFac: 0.35
     UseDefaultStarDef: false
     StarClass_1: M, param1: "Prob=0.3"
-    StarClass_2: M2, param1: "Prob=0.4"
-    StarClass_3: R, param1: "Prob=0.15"
+    StarClass_2: M2-Drone, param1: "Prob=0.55"
+    StarClass_3: R-Drone, param1: "Prob=0.2"
     StarClass_4: K, param1: "Prob=0.2"
     StarClass_5: D, param1: "Prob=0.2"
-    StarClass_6: T, param1: "Prob=0.15"
+    StarClass_6: T-Drone, param1: "Prob=0.2"
   }
 
   { Child StarRegion_92
@@ -1281,11 +1342,11 @@
     FlattenFac: 0.35
     UseDefaultStarDef: false
     StarClass_1: M, param1: "Prob=0.3"
-    StarClass_2: M2, param1: "Prob=0.4"
-    StarClass_3: R, param1: "Prob=0.15"
+    StarClass_2: M2-Drone, param1: "Prob=0.55"
+    StarClass_3: R-Drone, param1: "Prob=0.2"
     StarClass_4: K, param1: "Prob=0.2"
     StarClass_5: D, param1: "Prob=0.2"
-    StarClass_6: T, param1: "Prob=0.15"
+    StarClass_6: T-Drone, param1: "Prob=0.2"
   }
 
   { Child StarRegion_93
@@ -1297,11 +1358,11 @@
     FlattenFac: 0.35
     UseDefaultStarDef: false
     StarClass_1: M, param1: "Prob=0.3"
-    StarClass_2: M2, param1: "Prob=0.4"
-    StarClass_3: R, param1: "Prob=0.15"
+    StarClass_2: M2-Drone, param1: "Prob=0.55"
+    StarClass_3: R-Drone, param1: "Prob=0.2"
     StarClass_4: K, param1: "Prob=0.2"
     StarClass_5: D, param1: "Prob=0.2"
-    StarClass_6: T, param1: "Prob=0.15"
+    StarClass_6: T-Drone, param1: "Prob=0.2"
   }
 
   { Child StarRegion_97
@@ -1337,7 +1398,7 @@
     Radius: 145
     Other_1: Talon, param1: "0.3, 0.7"  # prob for Talon spawn at "center, radius"
     Other_2: Alien, param1: "1, 1"
-    Other_3: Xenu, param1: "1, 0.35"
+    Other_3: Xenu, param1: "1, 1"
     Other_4: Rados, param1: "1, 1"
     Other_5: Epsilon, param1: "0.1, 1"
     Other_6: Ghyst, param1: "1, 0"
@@ -1355,9 +1416,7 @@
     Other_4: UCH, param1: "1, 1"
     Other_5: Colonists, param1: "0.01, 0.1"
     Other_6: Eden_PolarisTerritory, param1: "1, 1"
-    Other_7: Eden_PolarisDefense, param1: "1, 0.25"
-    Other_8: Farr, param1: "0, 0.5"
-    Other_9: Civilian, param1: "1, 1"
+    Other_7: Civilian, param1: "1, 1"
   }
   { Child Territory_3
     Faction: Kriel
@@ -1386,14 +1445,12 @@
     Other_3: Talon, param1: "0.5, 1"
     Other_4: Colonists, param1: "0.01, 0.5"
     Other_5: Eden_PiratesTerritory, param1: "1, 1"
-    Other_6: Eden_PiratesDefense, param1: "1, 0.25"
-    # Other_7: Eden_Syndicate, param1: "1, 0.25"
   }
   { Child Territory_6 # Legacy space. Galaxy M31 - Legacy Galaxy
     Faction: TheLegacy
     Center: "360, 50, -1150" 
     Radius: 250  # in LY
-    Other_1: Alien, param1: "1, 1"
+    # Other_1: Alien, param1: "1, 1"
   }
   { Child Territory_7
     Faction: Zirax
@@ -1408,16 +1465,16 @@
     Other_7: Alien, param1: "1, 1"         # Abandoned BP Groups, should always be available in any Territory
     Other_8: Eden_ZiraxTerritory, param1: "1, 1"
   }
-  { Child Territory_8                        # Tesch Collective
-    Faction: Tesch
-    Center: "-290, 23, -40" 
-    Radius: 50  # in LY 
-    Other_1: Alien, param1: "1, 1"
-    Other_2: Progenitor, param1: "1, 1"
-    Other_3: Colonists, param1: "1, 1"       # As long as they do not bother the Tesch, they are allowed
-    Other_4: Void, param1: "1, 1"            # Void/Tesch/Progenitor share one history
-  }
-  { Child Territory_9
+  # { Child Territory_8                        # Tesch Collective
+    # Faction: Tesch
+    # Center: "-290, 23, -40" 
+    # Radius: 50  # in LY 
+    # Other_1: Alien, param1: "1, 1"
+    # Other_2: Progenitor, param1: "1, 1"
+    # Other_3: Colonists, param1: "1, 1"       # As long as they do not bother the Tesch, they are allowed
+    # Other_4: Void, param1: "1, 1"            # Void/Tesch/Progenitor share one history
+  # }
+  { Child Territory_8
     Faction: Eden_Progenitor
     # Center: "850, 200, 0" 
     Center: "1010, 290, 0"
@@ -1426,7 +1483,7 @@
     Other_2: Alien, param1: "1, 1"
     Other_3: Void, param1: "1, 1"
   }
-  { Child Territory_10
+  { Child Territory_9
     Faction: Farr
     Center: "138, 0, 415"
     Radius: 40
@@ -1438,7 +1495,7 @@
     Other_6: Talon, param1: "0, 0.2"
     Other_7: Civilian, param1: "1, 1"
   }
-  { Child Territory_11 # Large colonized area of space.
+  { Child Territory_10 # Large colonized area of space.
     Faction: Colonists
     Center: "-200, 0, 350" 
     Radius: 125
@@ -1451,7 +1508,7 @@
     Other_7: Eden_ColonistsTerritory, param1: "1, 1"
     Other_8: Civilian, param1: "1, 1"
   }
-  { Child Territory_12 # Outlaw Space
+  { Child Territory_11 # Outlaw Space
     Faction: Wastelanders
     Center: "-100, 0, -350" 
     Radius: 160
@@ -1461,12 +1518,12 @@
     Other_4: ARC, param1: "1, 1"
     Other_5: Ravagers, param1: "1, 1"
   }
-  { Child Territory_13 # Dronelands
+  { Child Territory_12 # Dronelands
     Faction: Eden_DroneHome
     Center: "-625, -25, 625" 
     Radius: 275
   }
-  { Child Territory_14 # Solitude
+  { Child Territory_13 # Solitude
     Faction: Eden_SolitudeTerritory
     Center: "-418, 0, -258" 
     Radius: 125
@@ -1483,7 +1540,7 @@
     Other_2: Alien, param1: "1"
     Other_3: Pirates, param1: "1"
     Other_4: Polaris, param1: "1"
-    Other_5: Trader, param1: "0.05"
+    Other_5: Trader, param1: "0.25"
     Other_6: Zirax, param1: "1"
     Other_7: Eden_Defender, param1: "1"
     Other_8: Colonists, param1: "1"
@@ -1529,11 +1586,17 @@
   Luminosity: 1
   ColorName: Yellow
   Age: 10
-  InnerSystem: "5, 35"
-  HabitableHot: "36, 63"
-  HabitableTemperate: "64, 89"
-  HabitableCold: "90, 104"
-  OuterSystem: "105, 132"
+  # InnerSystem: "5, 35"
+  # HabitableHot: "36, 63"
+  # HabitableTemperate: "64, 89"
+  # HabitableCold: "90, 104"
+  # OuterSystem: "105, 132"
+  # Class G Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 44"
+  HabitableCold: "45, 69"
+  OuterSystem: "70, 135"
   Description: "[c][00ff00]Habitable system.[-][/c] G-type stars, including the Sun, have prominent spectral lines H and K of Ca II, which are most pronounced at G2. They have even weaker hydrogen lines than F, but along with the ionized metals, they have neutral metals. There is a prominent spike in the G band of CH molecules."
   GalaxySpawnAmount: 0
 }
@@ -1692,12 +1755,18 @@
   Luminosity: 500000  # Trivia: multiples of the solar sun lumen; bolometric luminosities 
   ColorName: Blue # Trivia: customizable color name for the star  
   Age: 0.01 # Trivia: In Billion years
-  HabitableZone: "450, 900" # GENERATION; AU; Defines the Start-End RANGE of usual habitable zone, split in 3 sub-zones. Note: each playfield can be put in any zone of the system via setup in a random or unique solarsystemconfg!
-  InnerSystem: "16, 108"  # GENERATION: RANGE (start-end) for very hot playfields. Example: Lava planets
-  HabitableHot: "109, 135"  # GENERATION: RANGE (start-end) for warm/hot playfields. Example: Arid or deserts
-  HabitableTemperate: "136, 159"  # GENERATION:  RANGE (start-end) for temperate playfields (or those that are set to appear in the center hab zone)
-  HabitableCold: "160, 189"  # GENERATION: RANGE (start-end) for colder playfields. Example: ColdArid or ColdDesert or Snow
-  OuterSystem: "190, 350"  # GENERATION: RANGE (start-end) for very cold playfields. Snow, barren, GasPlanets
+  # HabitableZone: "450, 900" # GENERATION; AU; Defines the Start-End RANGE of usual habitable zone, split in 3 sub-zones. Note: each playfield can be put in any zone of the system via setup in a random or unique solarsystemconfg!
+  # InnerSystem: "16, 108"  # GENERATION: RANGE (start-end) for very hot playfields. Example: Lava planets
+  # HabitableHot: "109, 135"  # GENERATION: RANGE (start-end) for warm/hot playfields. Example: Arid or deserts
+  # HabitableTemperate: "136, 159"  # GENERATION:  RANGE (start-end) for temperate playfields (or those that are set to appear in the center hab zone)
+  # HabitableCold: "160, 189"  # GENERATION: RANGE (start-end) for colder playfields. Example: ColdArid or ColdDesert or Snow
+  # OuterSystem: "190, 350"  # GENERATION: RANGE (start-end) for very cold playfields. Snow, barren, GasPlanets
+  # Class O Climate Ranges
+  InnerSystem: "15, 79"
+  HabitableHot: "80, 119"
+  HabitableTemperate: "120, 159"
+  HabitableCold: "160, 189"
+  OuterSystem: "190, 350"
   Description: "[c][ff0000]Hot system.[-][/c] An O-type star is a hot, blue-white star of spectral type O in the Yerkes classification system employed by astronomers. They have temperatures in excess of 30,000 Kelvin (K)."
   #GalaxySpawnRadius: "300, 400"  # min and max in LY from the center where this star should spawn, if not set star will spawn everywhere
   # GalaxySpawnAmount: 50 # for special stars, specify the max number that should be spawned, if not set, star will spawn unlimited
@@ -1728,12 +1797,18 @@
   Luminosity: 500000  # Trivia: multiples of the solar sun lumen; bolometric luminosities 
   ColorName: Blue # Trivia: customizable color name for the star  
   Age: 0.01 # Trivia: In Billion years
-  HabitableZone: "450, 900" # GENERATION; AU; Defines the Start-End RANGE of usual habitable zone, split in 3 sub-zones. Note: each playfield can be put in any zone of the system via setup in a random or unique solarsystemconfg!
-  InnerSystem: "16, 108"  # GENERATION: RANGE (start-end) for very hot playfields. Example: Lava planets
-  HabitableHot: "109, 135"  # GENERATION: RANGE (start-end) for warm/hot playfields. Example: Arid or deserts
-  HabitableTemperate: "136, 159"  # GENERATION:  RANGE (start-end) for temperate playfields (or those that are set to appear in the center hab zone)
-  HabitableCold: "160, 189"  # GENERATION: RANGE (start-end) for colder playfields. Example: ColdArid or ColdDesert or Snow
-  OuterSystem: "190, 350"  # GENERATION: RANGE (start-end) for very cold playfields. Snow, barren, GasPlanets
+  # HabitableZone: "450, 900" # GENERATION; AU; Defines the Start-End RANGE of usual habitable zone, split in 3 sub-zones. Note: each playfield can be put in any zone of the system via setup in a random or unique solarsystemconfg!
+  # InnerSystem: "16, 108"  # GENERATION: RANGE (start-end) for very hot playfields. Example: Lava planets
+  # HabitableHot: "109, 135"  # GENERATION: RANGE (start-end) for warm/hot playfields. Example: Arid or deserts
+  # HabitableTemperate: "136, 159"  # GENERATION:  RANGE (start-end) for temperate playfields (or those that are set to appear in the center hab zone)
+  # HabitableCold: "160, 189"  # GENERATION: RANGE (start-end) for colder playfields. Example: ColdArid or ColdDesert or Snow
+  # OuterSystem: "190, 350"  # GENERATION: RANGE (start-end) for very cold playfields. Snow, barren, GasPlanets
+  # Class O Climate Ranges
+  InnerSystem: "15, 79"
+  HabitableHot: "80, 119"
+  HabitableTemperate: "120, 159"
+  HabitableCold: "160, 189"
+  OuterSystem: "190, 350"
   Description: "[c][ff0000]Hot system.[-][/c] An O-type star is a hot, blue-white star of spectral type O in the Yerkes classification system employed by astronomers. They have temperatures in excess of 30,000 Kelvin (K)."
   #GalaxySpawnRadius: "300, 400"  # min and max in LY from the center where this star should spawn, if not set star will spawn everywhere
   # GalaxySpawnAmount: 50 # for special stars, specify the max number that should be spawned, if not set, star will spawn unlimited
@@ -1760,19 +1835,25 @@
   ModelNoiseTiling: 40
   # ModelCoronaSpikesSize: .7 # (default is 0.75, values < 0.6 will hide the spikes completely)
   ModelPlasmaArcsSize: 0.75
-  ModelFlareBrightness: 4 # (values < 1 will make the flare smaller)
+  ModelFlareBrightness: 1 # (values < 1 will make the flare smaller)
   SurfaceTemperature: "30000, 50000" 
   Mass: 40     # Trivia: multiple of the solar sun mass 
   Radius: 18   # Trivia: multiple of the solar sun radius
   Luminosity: 500000  # Trivia: multiples of the solar sun lumen; bolometric luminosities 
   ColorName: Blue # Trivia: customizable color name for the star  
   Age: 0.01 # Trivia: In Billion years
-  HabitableZone: "450, 900" # GENERATION; AU; Defines the Start-End RANGE of usual habitable zone, split in 3 sub-zones. Note: each playfield can be put in any zone of the system via setup in a random or unique solarsystemconfg!
-  InnerSystem: "32, 108"  # GENERATION: RANGE (start-end) for very hot playfields. Example: Lava planets
-  HabitableHot: "109, 135"  # GENERATION: RANGE (start-end) for warm/hot playfields. Example: Arid or deserts
-  HabitableTemperate: "136, 159"  # GENERATION:  RANGE (start-end) for temperate playfields (or those that are set to appear in the center hab zone)
-  HabitableCold: "160, 189"  # GENERATION: RANGE (start-end) for colder playfields. Example: ColdArid or ColdDesert or Snow
-  OuterSystem: "190, 350"  # GENERATION: RANGE (start-end) for very cold playfields. Snow, barren, GasPlanets
+  # HabitableZone: "450, 900" # GENERATION; AU; Defines the Start-End RANGE of usual habitable zone, split in 3 sub-zones. Note: each playfield can be put in any zone of the system via setup in a random or unique solarsystemconfg!
+  # InnerSystem: "32, 108"  # GENERATION: RANGE (start-end) for very hot playfields. Example: Lava planets
+  # HabitableHot: "109, 135"  # GENERATION: RANGE (start-end) for warm/hot playfields. Example: Arid or deserts
+  # HabitableTemperate: "136, 159"  # GENERATION:  RANGE (start-end) for temperate playfields (or those that are set to appear in the center hab zone)
+  # HabitableCold: "160, 189"  # GENERATION: RANGE (start-end) for colder playfields. Example: ColdArid or ColdDesert or Snow
+  # OuterSystem: "190, 350"  # GENERATION: RANGE (start-end) for very cold playfields. Snow, barren, GasPlanets
+  # Class O Climate Ranges
+  InnerSystem: "15, 79"
+  HabitableHot: "80, 119"
+  HabitableTemperate: "120, 159"
+  HabitableCold: "160, 189"
+  OuterSystem: "190, 350"
   Description: "[c][ff0000]Hot system.[-][/c] An O-type star is a hot, blue-white star of spectral type O in the Yerkes classification system employed by astronomers. They have temperatures in excess of 30,000 Kelvin (K)."
   #GalaxySpawnRadius: "300, 400"  # min and max in LY from the center where this star should spawn, if not set star will spawn everywhere
   #GalaxySpawnAmount: 10 # for special stars, specify the max number that should be spawned, if not set, star will spawn unlimited
@@ -1806,11 +1887,23 @@
   Luminosity: 800 
   ColorName: Blue 
   Age: 0.25
-  InnerSystem: "8, 92"
-  HabitableHot: "93, 102"
-  HabitableTemperate: "103, 122"
-  HabitableCold: "123, 142"
-  OuterSystem: "143, 254"
+  # InnerSystem: "8, 92"
+  # HabitableHot: "93, 102"
+  # HabitableTemperate: "103, 122"
+  # HabitableCold: "123, 142"
+  # OuterSystem: "143, 254"
+  # Class B Climate Ranges
+  # InnerSystem: "10, 59"
+  # HabitableHot: "60, 89"
+  # HabitableTemperate: "90, 119"
+  # HabitableCold: "120, 159"
+  # OuterSystem: "160, 250"
+  # Class B Climate Ranges
+  InnerSystem: "10, 59"
+  HabitableHot: "60, 89"
+  HabitableTemperate: "90, 119"
+  HabitableCold: "120, 159"
+  OuterSystem: "160, 250"
   Description: "[c][ff0000]Hot system.[-][/c] A B-type main-sequence star (B V) is a main-sequence (hydrogen-burning) star of spectral type B and luminosity class V. These stars have from 2 to 16 times the mass of the Sun and surface temperatures between 10,000 and 30,000 K. B-type stars are extremely luminous and blue."
 }
 
@@ -1836,11 +1929,17 @@
   Luminosity: 800 
   ColorName: Blue 
   Age: 0.25
-  InnerSystem: "8, 92"
-  HabitableHot: "93, 102"
-  HabitableTemperate: "103, 122"
-  HabitableCold: "123, 142"
-  OuterSystem: "143, 254"
+  # InnerSystem: "8, 92"
+  # HabitableHot: "93, 102"
+  # HabitableTemperate: "103, 122"
+  # HabitableCold: "123, 142"
+  # OuterSystem: "143, 254"
+  # Class B Climate Ranges
+  InnerSystem: "10, 59"
+  HabitableHot: "60, 89"
+  HabitableTemperate: "90, 119"
+  HabitableCold: "120, 159"
+  OuterSystem: "160, 250"
   Description: "[c][ff0000]Hot system.[-][/c] A B-type main-sequence star (B V) is a main-sequence (hydrogen-burning) star of spectral type B and luminosity class V. These stars have from 2 to 16 times the mass of the Sun and surface temperatures between 10,000 and 30,000 K. B-type stars are extremely luminous and blue."
 }
 
@@ -1873,11 +1972,17 @@
   Luminosity: 800 
   ColorName: Blue 
   Age: 0.25
-  InnerSystem: "24, 92"
-  HabitableHot: "93, 102"
-  HabitableTemperate: "103, 122"
-  HabitableCold: "123, 142"
-  OuterSystem: "143, 254"
+  # InnerSystem: "24, 92"
+  # HabitableHot: "93, 102"
+  # HabitableTemperate: "103, 122"
+  # HabitableCold: "123, 142"
+  # OuterSystem: "143, 254"
+  # Class B Climate Ranges
+  InnerSystem: "10, 59"
+  HabitableHot: "60, 89"
+  HabitableTemperate: "90, 119"
+  HabitableCold: "120, 159"
+  OuterSystem: "160, 250"
   Description: "[c][ff0000]Hot system.[-][/c] A B-type main-sequence star (B V) is a main-sequence (hydrogen-burning) star of spectral type B and luminosity class V. These stars have from 2 to 16 times the mass of the Sun and surface temperatures between 10,000 and 30,000 K. B-type stars are extremely luminous and blue."
 }
 
@@ -1908,11 +2013,17 @@
   Luminosity: 800 
   ColorName: Blue 
   Age: 0.25
-  InnerSystem: "8, 92"
-  HabitableHot: "93, 102"
-  HabitableTemperate: "103, 122"
-  HabitableCold: "123, 142"
-  OuterSystem: "143, 254"
+  # InnerSystem: "8, 92"
+  # HabitableHot: "93, 102"
+  # HabitableTemperate: "103, 122"
+  # HabitableCold: "123, 142"
+  # OuterSystem: "143, 254"
+  # Class B Climate Ranges
+  InnerSystem: "10, 59"
+  HabitableHot: "60, 89"
+  HabitableTemperate: "90, 119"
+  HabitableCold: "120, 159"
+  OuterSystem: "160, 250"
   Description: "[c][ff0000]Hot system.[-][/c] A B-type main-sequence star (B V) is a main-sequence (hydrogen-burning) star of spectral type B and luminosity class V. These stars have from 2 to 16 times the mass of the Sun and surface temperatures between 10,000 and 30,000 K. B-type stars are extremely luminous and blue."
 }
 
@@ -1943,14 +2054,19 @@
   Luminosity: 800 
   ColorName: Blue 
   Age: 0.25
-  InnerSystem: "8, 92"
-  HabitableHot: "93, 102"
-  HabitableTemperate: "103, 122"
-  HabitableCold: "123, 142"
-  OuterSystem: "143, 254"
+  # InnerSystem: "8, 92"
+  # HabitableHot: "93, 102"
+  # HabitableTemperate: "103, 122"
+  # HabitableCold: "123, 142"
+  # OuterSystem: "143, 254"
+  # Class B Climate Ranges
+  InnerSystem: "10, 59"
+  HabitableHot: "60, 89"
+  HabitableTemperate: "90, 119"
+  HabitableCold: "120, 159"
+  OuterSystem: "160, 250"
   Description: "[c][ff0000]Hot system.[-][/c] A B-type main-sequence star (B V) is a main-sequence (hydrogen-burning) star of spectral type B and luminosity class V. These stars have from 2 to 16 times the mass of the Sun and surface temperatures between 10,000 and 30,000 K. B-type stars are extremely luminous and blue."
 }
-
 
 # Type A
 { GalaxyConfig, Name: A Type Star
@@ -1968,18 +2084,24 @@
   ModelNoiseTiling: 80 # (default is 40, set to higher values for bigger stars)
   ModelCoronaSpikesSize: 0.75 # (default is 0.75, values < 0.6 will hide the spikes completely)
   ModelPlasmaArcsSize: 0.4 # (default is 0.5)
-  ModelFlareBrightness: 1 # (values < 1 will make the flare smaller)
+  ModelFlareBrightness: 0.8 # (values < 1 will make the flare smaller)
   SurfaceTemperature: "7500, 10000" 
   Mass: 2.2
   Radius: 2.4
   Luminosity: 25
   ColorName: White
   Age: 0.5
-  InnerSystem: "5, 78"
-  HabitableHot: "79, 97"
-  HabitableTemperate: "98, 139"
-  HabitableCold: "140, 179"
-  OuterSystem: "180, 250"
+  # InnerSystem: "5, 78"
+  # HabitableHot: "79, 97"
+  # HabitableTemperate: "98, 139"
+  # HabitableCold: "140, 179"
+  # OuterSystem: "180, 250"
+  # Class A Climate Ranges
+  InnerSystem: "19, 29"
+  HabitableHot: "30, 39"
+  HabitableTemperate: "40, 69"
+  HabitableCold: "70, 109"
+  OuterSystem: "110, 150"
   Description: "[c][00ff00]Habitable system.[-][/c] An A-type main-sequence star is a main-sequence (hydrogen-burning) star of spectral type A and luminosity class V. They have masses from 1.4 to 2.1 times the mass of the Sun and surface temperatures between 7600 and 10,000  K"
 }
 
@@ -2005,11 +2127,17 @@
   Luminosity: 25
   ColorName: White
   Age: 0.5
-  InnerSystem: "5, 78"
-  HabitableHot: "79, 97"
-  HabitableTemperate: "98, 139"
-  HabitableCold: "140, 179"
-  OuterSystem: "180, 250"
+  # InnerSystem: "5, 78"
+  # HabitableHot: "79, 97"
+  # HabitableTemperate: "98, 139"
+  # HabitableCold: "140, 179"
+  # OuterSystem: "180, 250"
+  # Class A Climate Ranges
+  InnerSystem: "19, 29"
+  HabitableHot: "30, 39"
+  HabitableTemperate: "40, 69"
+  HabitableCold: "70, 109"
+  OuterSystem: "110, 150"
   Description: "[c][00ff00]Habitable system.[-][/c] An A-type main-sequence star is a main-sequence (hydrogen-burning) star of spectral type A and luminosity class V. They have masses from 1.4 to 2.1 times the mass of the Sun and surface temperatures between 7600 and 10,000  K"
 }
 
@@ -2036,11 +2164,17 @@
   Luminosity: 25
   ColorName: White-Blue
   Age: 0.5
-  InnerSystem: "5, 78"
-  HabitableHot: "79, 97"
-  HabitableTemperate: "98, 139"
-  HabitableCold: "140, 179"
-  OuterSystem: "180, 250"
+  # InnerSystem: "5, 78"
+  # HabitableHot: "79, 97"
+  # HabitableTemperate: "98, 139"
+  # HabitableCold: "140, 179"
+  # OuterSystem: "180, 250"
+  # Class A Climate Ranges
+  InnerSystem: "19, 29"
+  HabitableHot: "30, 39"
+  HabitableTemperate: "40, 69"
+  HabitableCold: "70, 109"
+  OuterSystem: "110, 150"
   Description: "[c][00ff00]Habitable system.[-][/c] An A-type main-sequence star is a main-sequence (hydrogen-burning) star of spectral type A and luminosity class V. They have masses from 1.4 to 2.1 times the mass of the Sun and surface temperatures between 7600 and 10,000  K"
 }
 
@@ -2067,11 +2201,17 @@
   Luminosity: 11
   ColorName: Yellow-White
   Age: 1
-  InnerSystem: "5, 66"
-  HabitableHot: "67, 84"
-  HabitableTemperate: "85, 104"
-  HabitableCold: "105, 129"
-  OuterSystem: "130, 155"
+  # InnerSystem: "5, 66"
+  # HabitableHot: "67, 84"
+  # HabitableTemperate: "85, 104"
+  # HabitableCold: "105, 129"
+  # OuterSystem: "130, 155"
+  # Class F Climate Ranges
+  InnerSystem: "19, 29"
+  HabitableHot: "30, 39"
+  HabitableTemperate: "40, 69"
+  HabitableCold: "70, 109"
+  OuterSystem: "110, 150"
   Description: "[c][00ff00]Habitable system.[-][/c] F-type stars have strengthening spectral lines H and K of Ca II. Neutral metals (Fe I, Cr I) beginning to gain on ionized metal lines by late F. Their spectra are characterized by the weaker hydrogen lines and ionized metals. Their color is white."
 }
 # Type F
@@ -2097,11 +2237,17 @@
   Luminosity: 11
   ColorName: Yellow-White
   Age: 1
-  InnerSystem: "5, 66"
-  HabitableHot: "67, 84"
-  HabitableTemperate: "85, 104"
-  HabitableCold: "105, 129"
-  OuterSystem: "130, 155"
+  # InnerSystem: "5, 66"
+  # HabitableHot: "67, 84"
+  # HabitableTemperate: "85, 104"
+  # HabitableCold: "105, 129"
+  # OuterSystem: "130, 155"
+  # Class F Climate Ranges
+  InnerSystem: "19, 29"
+  HabitableHot: "30, 39"
+  HabitableTemperate: "40, 69"
+  HabitableCold: "70, 109"
+  OuterSystem: "110, 150"
   Description: "[c][00ff00]Habitable system.[-][/c] F-type stars have strengthening spectral lines H and K of Ca II. Neutral metals (Fe I, Cr I) beginning to gain on ionized metal lines by late F. Their spectra are characterized by the weaker hydrogen lines and ionized metals. Their color is white."
 }
 # Type G
@@ -2120,6 +2266,7 @@
   ModelNoiseTiling: 140 # (default is 40, set to higher values for bigger stars)
   ModelCoronaSpikesSize: 0.7 # (default is 0.75, values < 0.6 will hide the spikes completely)
   ModelPlasmaArcsSize: 0.35 # (default is 0.5)
+  # ModelFlareBrightness: 0.8 # (values < 1 will make the flare smaller)
   ModelFlareBrightness: 0.8 # (values < 1 will make the flare smaller)
   SurfaceTemperature: "5500, 6000" 
   Mass: 1
@@ -2127,11 +2274,17 @@
   Luminosity: 1
   ColorName: Yellow
   Age: 10
-  InnerSystem: "5, 35"
-  HabitableHot: "36, 63"
-  HabitableTemperate: "64, 89"
-  HabitableCold: "90, 104"
-  OuterSystem: "105, 132"
+  # InnerSystem: "5, 35"
+  # HabitableHot: "36, 63"
+  # HabitableTemperate: "64, 89"
+  # HabitableCold: "90, 104"
+  # OuterSystem: "105, 132"
+  # Class G Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 44"
+  HabitableCold: "45, 69"
+  OuterSystem: "70, 135"
   Description: "[c][00ff00]Habitable system.[-][/c] G-type stars, including the Sun, have prominent spectral lines H and K of Ca II, which are most pronounced at G2. They have even weaker hydrogen lines than F, but along with the ionized metals, they have neutral metals. There is a prominent spike in the G band of CH molecules."
 }
 
@@ -2158,11 +2311,17 @@
   Luminosity: 1.2
   ColorName: Yellow
   Age: 8
-  InnerSystem: "5, 35"
-  HabitableHot: "36, 63"
-  HabitableTemperate: "64, 89"
-  HabitableCold: "90, 104"
-  OuterSystem: "105, 132"
+  # InnerSystem: "5, 35"
+  # HabitableHot: "36, 63"
+  # HabitableTemperate: "64, 89"
+  # HabitableCold: "90, 104"
+  # OuterSystem: "105, 132"
+  # Class G Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 44"
+  HabitableCold: "45, 69"
+  OuterSystem: "70, 135"
   Description: "[c][00ff00]Habitable system.[-][/c] G-type stars, including the Sun, have prominent spectral lines H and K of Ca II, which are most pronounced at G2. They have even weaker hydrogen lines than F, but along with the ionized metals, they have neutral metals. There is a prominent spike in the G band of CH molecules."
 }
 
@@ -2188,11 +2347,18 @@
   Luminosity: 1.2
   ColorName: Yellow
   Age: 8
-  InnerSystem: "5, 35"
-  HabitableHot: "36, 63"
-  HabitableTemperate: "64, 89"
-  HabitableCold: "90, 104"
-  OuterSystem: "105, 132"
+  # InnerSystem: "5, 35"
+  # HabitableHot: "36, 63"
+  # HabitableTemperate: "64, 89"
+  # HabitableCold: "90, 104"
+  # OuterSystem: "105, 132"
+  
+  # Class G Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 44"
+  HabitableCold: "45, 69"
+  OuterSystem: "70, 135"
   Description: "[c][00ff00]Habitable system.[-][/c] G-type stars, including the Sun, have prominent spectral lines H and K of Ca II, which are most pronounced at G2. They have even weaker hydrogen lines than F, but along with the ionized metals, they have neutral metals. There is a prominent spike in the G band of CH molecules."
 }
 
@@ -2222,11 +2388,17 @@
   Luminosity: 1.2
   ColorName: Pink
   Age: 4
-  InnerSystem: "5, 78"
-  HabitableHot: "79, 97"
-  HabitableTemperate: "98, 139"
-  HabitableCold: "140, 179"
-  OuterSystem: "180, 250"
+  # InnerSystem: "5, 78"
+  # HabitableHot: "79, 97"
+  # HabitableTemperate: "98, 139"
+  # HabitableCold: "140, 179"
+  # OuterSystem: "180, 250"
+  # Class G Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 44"
+  HabitableCold: "45, 69"
+  OuterSystem: "70, 135"
   Description: "[c][00ff00]Habitable system.[-][/c] G-type stars, including the Sun, have prominent spectral lines H and K of Ca II, which are most pronounced at G2. They have even weaker hydrogen lines than F, but along with the ionized metals, they have neutral metals. There is a prominent spike in the G band of CH molecules."
 }
 
@@ -2238,7 +2410,7 @@
   Model: SunGeneric
   # Probability: 0.04
   Probability: 0.015
-  SizeClass: 12
+  SizeClass: 11
   Color: "0.97,0.85,0.75"
   LightColor: "0.97,0.85,0.7"
   # ModelColor: "1, 0.6, 0.55"
@@ -2257,11 +2429,17 @@
   Luminosity: 1.2
   ColorName: Pink
   Age: 4
-  InnerSystem: "25, 78"
-  HabitableHot: "79, 97"
-  HabitableTemperate: "98, 139"
-  HabitableCold: "140, 179"
-  OuterSystem: "180, 250"
+  # InnerSystem: "25, 78"
+  # HabitableHot: "79, 97"
+  # HabitableTemperate: "98, 139"
+  # HabitableCold: "140, 179"
+  # OuterSystem: "180, 250"
+  # Class G Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 44"
+  HabitableCold: "45, 69"
+  OuterSystem: "70, 135"
   Description: "[c][00ff00]Habitable system.[-][/c] G-type stars, including the Sun, have prominent spectral lines H and K of Ca II, which are most pronounced at G2. They have even weaker hydrogen lines than F, but along with the ionized metals, they have neutral metals. There is a prominent spike in the G band of CH molecules."
 }
 
@@ -2289,11 +2467,17 @@
   Luminosity: 0.3
   ColorName: Orange
   Age: 30
-  InnerSystem: "5, 48"
-  HabitableHot: "49, 69"
-  HabitableTemperate: "70, 89"
-  HabitableCold: "90, 109"
-  OuterSystem: "110, 140"
+  # InnerSystem: "5, 48"
+  # HabitableHot: "49, 69"
+  # HabitableTemperate: "70, 89"
+  # HabitableCold: "90, 109"
+  # OuterSystem: "110, 140"
+  # Class K Climate Ranges
+  InnerSystem: "8, 39"
+  HabitableHot: "40, 59"
+  HabitableTemperate: "60, 79"
+  HabitableCold: "80, 99"
+  OuterSystem: "100, 150"
   Description: "[c][ff0000]Hot system.[-][/c] K-type stars are orangish stars that are slightly cooler than a G-Type star. They make up about 12% of the main-sequence stars in the solar neighborhood."
 }
 
@@ -2320,11 +2504,17 @@
   Luminosity: 0.3
   ColorName: Orange
   Age: 30
-  InnerSystem: "12, 48"
-  HabitableHot: "49, 69"
-  HabitableTemperate: "70, 89"
-  HabitableCold: "90, 109"
-  OuterSystem: "110, 140"
+  # InnerSystem: "12, 48"
+  # HabitableHot: "49, 69"
+  # HabitableTemperate: "70, 89"
+  # HabitableCold: "90, 109"
+  # OuterSystem: "110, 140"
+  # Class K Climate Ranges
+  InnerSystem: "8, 39"
+  HabitableHot: "40, 59"
+  HabitableTemperate: "60, 79"
+  HabitableCold: "80, 99"
+  OuterSystem: "100, 150"
   Description: "[c][ff0000]Hot system.[-][/c] K-type stars are orangish stars that are slightly cooler than a G-Type star. They make up about 12% of the main-sequence stars in the solar neighborhood."
 }
 
@@ -2351,11 +2541,17 @@
   Luminosity: 0.3
   ColorName: Orange
   Age: 30
-  InnerSystem: "12, 48"
-  HabitableHot: "49, 69"
-  HabitableTemperate: "70, 89"
-  HabitableCold: "90, 109"
-  OuterSystem: "110, 140"
+  # InnerSystem: "12, 48"
+  # HabitableHot: "49, 69"
+  # HabitableTemperate: "70, 89"
+  # HabitableCold: "90, 109"
+  # OuterSystem: "110, 140"
+  # Class K Climate Ranges
+  InnerSystem: "8, 39"
+  HabitableHot: "40, 59"
+  HabitableTemperate: "60, 79"
+  HabitableCold: "80, 99"
+  OuterSystem: "100, 150"
   Description: "[c][ff0000]Hot system.[-][/c] K-type stars are orangish stars that are slightly cooler than a G-Type star. They make up about 12% of the main-sequence stars in the solar neighborhood."
 }
 
@@ -2381,11 +2577,17 @@
   Luminosity: 0.3
   ColorName: Orange
   Age: 30
-  InnerSystem: "5, 48"
-  HabitableHot: "49, 69"
-  HabitableTemperate: "70, 89"
-  HabitableCold: "90, 109"
-  OuterSystem: "110, 140"
+  # InnerSystem: "5, 48"
+  # HabitableHot: "49, 69"
+  # HabitableTemperate: "70, 89"
+  # HabitableCold: "90, 109"
+  # OuterSystem: "110, 140"
+  # Class K Climate Ranges
+  InnerSystem: "8, 39"
+  HabitableHot: "40, 59"
+  HabitableTemperate: "60, 79"
+  HabitableCold: "80, 99"
+  OuterSystem: "100, 150"
   Description: "[c][ff0000]Hot system.[-][/c] K-type stars are orangish stars that are slightly cooler than a G-Type star. They make up about 12% of the main-sequence stars in the solar neighborhood."
 }
 
@@ -2443,11 +2645,17 @@
   Luminosity: 0.3 
   ColorName: Yellow-Orange
   Age: 30
-  InnerSystem: "5, 35"
-  HabitableHot: "36, 63"
-  HabitableTemperate: "64, 89"
-  HabitableCold: "90, 104"
-  OuterSystem: "105, 132"
+  # InnerSystem: "5, 35"
+  # HabitableHot: "36, 63"
+  # HabitableTemperate: "64, 89"
+  # HabitableCold: "90, 104"
+  # OuterSystem: "105, 132"
+  # Custom Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 44"
+  HabitableCold: "45, 69"
+  OuterSystem: "70, 135"
   Description: "[c][00ff00]Habitable system.[-][/c] K-type stars are orangish stars that are slightly cooler than a G-Type star. They make up about 12% of the main-sequence stars in the solar neighborhood."
 }
 
@@ -2468,18 +2676,24 @@
   ModelNoiseTiling: 40 # (default is 40, set to higher values for bigger stars)
   ModelCoronaSpikesSize: 0.65 # (default is 0.75, values < 0.6 will hide the spikes completely)
   ModelPlasmaArcsSize: 0.25 # (default is 0.5)
-  ModelFlareBrightness: 0.9 # (values < 1 will make the flare smaller)
+  ModelFlareBrightness: 1 # (values < 1 will make the flare smaller)
   SurfaceTemperature: "2500, 4000" 
   Mass: 0.3
   Radius: 0.4 
   Luminosity: 0.002
   ColorName: Red
   Age: 200
-  InnerSystem: "5, 29"
-  HabitableHot: "30, 44"
-  HabitableTemperate: "45, 50"
-  HabitableCold: "51, 69"
-  OuterSystem: "70, 149"
+  # InnerSystem: "5, 29"
+  # HabitableHot: "30, 44"
+  # HabitableTemperate: "45, 50"
+  # HabitableCold: "51, 69"
+  # OuterSystem: "70, 149"
+  # Class M Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 34"
+  HabitableTemperate: "35, 49"
+  HabitableCold: "50, 69"
+  OuterSystem: "70, 150"
   Description: "[c][ffff00]Cold system.[-][/c] Class M stars are by far the most common. About 76% of the main-sequence stars in the solar neighborhood are class M stars. However, class M main-sequence stars (red dwarfs) have such low luminosities that none are bright enough to be seen with the unaided eye, unless under exceptional conditions. Typically, an M-type star's surface temperature is under about 4,000 K."
 }
 
@@ -2507,11 +2721,17 @@
   Luminosity: 0.002
   ColorName: Red
   Age: 200
-  InnerSystem: "5, 29"
-  HabitableHot: "30, 44"
-  HabitableTemperate: "45, 50"
-  HabitableCold: "51, 69"
-  OuterSystem: "70, 149"
+  # InnerSystem: "5, 29"
+  # HabitableHot: "30, 44"
+  # HabitableTemperate: "45, 50"
+  # HabitableCold: "51, 69"
+  # OuterSystem: "70, 149"
+  # Class M Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 34"
+  HabitableTemperate: "35, 49"
+  HabitableCold: "50, 69"
+  OuterSystem: "70, 150"
   Description: "[c][ffff00]Cold system.[-][/c] Class M stars are by far the most common. About 76% of the main-sequence stars in the solar neighborhood are class M stars. However, class M main-sequence stars (red dwarfs) have such low luminosities that none are bright enough to be seen with the unaided eye, unless under exceptional conditions. Typically, an M-type star's surface temperature is under about 4,000 K."
 }
 
@@ -2539,11 +2759,17 @@
   Luminosity: 0.0015
   ColorName: Pink
   Age: 200
-  InnerSystem: "5, 13"
-  HabitableHot: "14, 20"
-  HabitableTemperate: "21, 30"
-  HabitableCold: "31, 44"
-  OuterSystem: "45, 69"
+  # InnerSystem: "5, 13"
+  # HabitableHot: "14, 20"
+  # HabitableTemperate: "21, 30"
+  # HabitableCold: "31, 44"
+  # OuterSystem: "45, 69"
+  # Class M Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 34"
+  HabitableTemperate: "35, 49"
+  HabitableCold: "50, 69"
+  OuterSystem: "70, 150"
   Description: "[c][ffff00]Cold system.[-][/c] Class M stars are by far the most common. About 76% of the main-sequence stars in the solar neighborhood are class M stars. However, class M main-sequence stars (red dwarfs) have such low luminosities that none are bright enough to be seen with the unaided eye, unless under exceptional conditions. Typically, an M-type star's surface temperature is under about 4,000 K."
 }
 
@@ -2573,11 +2799,17 @@
   Luminosity: 0.002
   ColorName: Red-Orange
   Age: 200
-  InnerSystem: "5, 29"
-  HabitableHot: "30, 44"
-  HabitableTemperate: "45, 50"
-  HabitableCold: "51, 69"
-  OuterSystem: "70, 149"
+  # InnerSystem: "5, 29"
+  # HabitableHot: "30, 44"
+  # HabitableTemperate: "45, 50"
+  # HabitableCold: "51, 69"
+  # OuterSystem: "70, 149"
+  # Class M Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 34"
+  HabitableTemperate: "35, 49"
+  HabitableCold: "50, 69"
+  OuterSystem: "70, 150"
   Description: "[c][ffff00]Cold system.[-][/c] Class M stars are by far the most common. About 76% of the main-sequence stars in the solar neighborhood are class M stars. However, class M main-sequence stars (red dwarfs) have such low luminosities that none are bright enough to be seen with the unaided eye, unless under exceptional conditions. Typically, an M-type star's surface temperature is under about 4,000 K."
 }
 
@@ -2605,11 +2837,17 @@
   Luminosity: 0.002
   ColorName: Red
   Age: 200
-  InnerSystem: "5, 10"
-  HabitableHot: "11, 16"
-  HabitableTemperate: "17, 23"
-  HabitableCold: "24, 30"
-  OuterSystem: "31, 50"
+  # InnerSystem: "5, 10"
+  # HabitableHot: "11, 16"
+  # HabitableTemperate: "17, 23"
+  # HabitableCold: "24, 30"
+  # OuterSystem: "31, 50"
+  # Class M Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 34"
+  HabitableTemperate: "35, 49"
+  HabitableCold: "50, 69"
+  OuterSystem: "70, 150"
   Description: "[c][ffff00]Cold system.[-][/c] Class M stars are by far the most common. About 76% of the main-sequence stars in the solar neighborhood are class M stars. However, class M main-sequence stars (red dwarfs) have such low luminosities that none are bright enough to be seen with the unaided eye, unless under exceptional conditions. Typically, an M-type star's surface temperature is under about 4,000 K."
 }
 
@@ -2638,11 +2876,17 @@
   Luminosity: 0.002
   ColorName: Red
   Age: 200
-  InnerSystem: "5, 29"
-  HabitableHot: "30, 44"
-  HabitableTemperate: "45, 50"
-  HabitableCold: "51, 69"
-  OuterSystem: "70, 149"
+  # InnerSystem: "5, 29"
+  # HabitableHot: "30, 44"
+  # HabitableTemperate: "45, 50"
+  # HabitableCold: "51, 69"
+  # OuterSystem: "70, 149"
+  # Class M Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 34"
+  HabitableTemperate: "35, 49"
+  HabitableCold: "50, 69"
+  OuterSystem: "70, 150"
   Description: "[c][ffff00]Cold system.[-][/c] Class M stars are by far the most common. About 76% of the main-sequence stars in the solar neighborhood are class M stars. However, class M main-sequence stars (red dwarfs) have such low luminosities that none are bright enough to be seen with the unaided eye, unless under exceptional conditions. Typically, an M-type star's surface temperature is under about 4,000 K."
 }
 
@@ -2652,7 +2896,7 @@
   SolarSystemConfigSuffix: _MainExoticT1
   Model: SunNeutron
   Probability: 0.00625
-  SizeClass: 7
+  SizeClass: 8
   Color: "0.35,0.35,0.75"
   SurfaceTemperature: "4000, 4000" 
   ColorName: White
@@ -2661,11 +2905,17 @@
   Description: "[c][ff00ff]Exotic system.[-][/c] A neutron star is the collapsed core of a giant star which before collapse had a total mass of between 10 and 29 solar masses. Neutron stars are the smallest and densest stars, excluding black holes, hypothetical white holes, quark stars and strange stars. Neutron stars have a radius on the order of 10 kilometres (6.2 mi) and a mass of about 1.4 solar masses. They result from the supernova explosion of a massive star, combined with gravitational collapse, that compresses the core past white dwarf star density to that of atomic nuclei."
   #Luminosity: 0.002
   Age: 400
-  InnerSystem: "5, 19"
-  HabitableHot: "20, 49"
-  HabitableTemperate: "50, 89"
-  HabitableCold: "90, 144"
-  OuterSystem: "145, 300"
+  # InnerSystem: "5, 19"
+  # HabitableHot: "20, 49"
+  # HabitableTemperate: "50, 89"
+  # HabitableCold: "90, 144"
+  # OuterSystem: "145, 300"
+  # Class M Climate Ranges
+  InnerSystem: "8, 11"
+  HabitableHot: "12, 15"
+  HabitableTemperate: "16, 20"
+  HabitableCold: "21, 24"
+  OuterSystem: "25, 69"
 }
 
 # Type N
@@ -2695,18 +2945,24 @@
   Description: "[c][ff00ff]Exotic system.[-][/c] A neutron star is the collapsed core of a giant star which before collapse had a total mass of between 10 and 29 solar masses. Neutron stars are the smallest and densest stars, excluding black holes, hypothetical white holes, quark stars and strange stars. Neutron stars have a radius on the order of 10 kilometres (6.2 mi) and a mass of about 1.4 solar masses. They result from the supernova explosion of a massive star, combined with gravitational collapse, that compresses the core past white dwarf star density to that of atomic nuclei."
   #Luminosity: 0.002
   Age: 400
-  InnerSystem: "5, 9"
-  HabitableHot: "10, 15"
-  HabitableTemperate: "16, 21"
-  HabitableCold: "22, 30"
-  OuterSystem: "31, 100"
-  GalaxySpawnAmount: 0
+  # InnerSystem: "5, 9"
+  # HabitableHot: "10, 15"
+  # HabitableTemperate: "16, 21"
+  # HabitableCold: "22, 30"
+  # OuterSystem: "31, 100"
+  # GalaxySpawnAmount: 0
+  # Class M Climate Ranges
+  InnerSystem: "8, 11"
+  HabitableHot: "12, 15"
+  HabitableTemperate: "16, 20"
+  HabitableCold: "21, 24"
+  OuterSystem: "25, 69"
 }
 
 # Type N
 { GalaxyConfig, Name: Magnetar
   StarClass: SGR
-  # SolarSystemConfigSuffix: _MainExoticT1
+  SolarSystemConfigSuffix: _MainExoticT1
   # Model: SunNeutron
   Model: SunGeneric
   Probability: 0.001
@@ -2729,11 +2985,17 @@
   Description: "[c][ff00ff]Exotic system.[-][/c] A neutron star is the collapsed core of a giant star which before collapse had a total mass of between 10 and 29 solar masses. Neutron stars are the smallest and densest stars, excluding black holes, hypothetical white holes, quark stars and strange stars. Neutron stars have a radius on the order of 10 kilometres (6.2 mi) and a mass of about 1.4 solar masses. They result from the supernova explosion of a massive star, combined with gravitational collapse, that compresses the core past white dwarf star density to that of atomic nuclei."
   Luminosity: 11
   Age: 400
-  InnerSystem: "3, 5"
-  HabitableHot: "6, 9"
-  HabitableTemperate: "10, 14"
-  HabitableCold: "15, 20"
-  OuterSystem: "21, 100"
+  # InnerSystem: "3, 5"
+  # HabitableHot: "6, 9"
+  # HabitableTemperate: "10, 14"
+  # HabitableCold: "15, 20"
+  # OuterSystem: "21, 100"
+  # Class M Climate Ranges
+  InnerSystem: "8, 11"
+  HabitableHot: "12, 15"
+  HabitableTemperate: "16, 20"
+  HabitableCold: "21, 24"
+  OuterSystem: "25, 69"
   GalaxySpawnAmount: 10
 }
 
@@ -2763,11 +3025,17 @@
   Description: "[c][ff00ff]Exotic system.[-][/c] A neutron star is the collapsed core of a giant star which before collapse had a total mass of between 10 and 29 solar masses. Neutron stars are the smallest and densest stars, excluding black holes, hypothetical white holes, quark stars and strange stars. Neutron stars have a radius on the order of 10 kilometres (6.2 mi) and a mass of about 1.4 solar masses. They result from the supernova explosion of a massive star, combined with gravitational collapse, that compresses the core past white dwarf star density to that of atomic nuclei."
   Luminosity: 11
   Age: 400
-  InnerSystem: "3, 5"
-  HabitableHot: "6, 9"
-  HabitableTemperate: "10, 14"
-  HabitableCold: "15, 20"
-  OuterSystem: "21, 50"
+  # InnerSystem: "3, 5"
+  # HabitableHot: "6, 9"
+  # HabitableTemperate: "10, 14"
+  # HabitableCold: "15, 20"
+  # OuterSystem: "21, 50"
+  # Class M Climate Ranges
+  InnerSystem: "8, 11"
+  HabitableHot: "12, 15"
+  HabitableTemperate: "16, 20"
+  HabitableCold: "21, 24"
+  OuterSystem: "25, 69"
   GalaxySpawnAmount: 10
 }
 
@@ -2797,12 +3065,49 @@
   Description: "[c][ff00ff]Exotic system.[-][/c] A neutron star is the collapsed core of a giant star which before collapse had a total mass of between 10 and 29 solar masses. Neutron stars are the smallest and densest stars, excluding black holes, hypothetical white holes, quark stars and strange stars. Neutron stars have a radius on the order of 10 kilometres (6.2 mi) and a mass of about 1.4 solar masses. They result from the supernova explosion of a massive star, combined with gravitational collapse, that compresses the core past white dwarf star density to that of atomic nuclei."
   Luminosity: 11
   Age: 400
-  InnerSystem: "3, 5"
-  HabitableHot: "6, 9"
-  HabitableTemperate: "10, 14"
-  HabitableCold: "15, 20"
-  OuterSystem: "21, 50"
+  # InnerSystem: "3, 5"
+  # HabitableHot: "6, 9"
+  # HabitableTemperate: "10, 14"
+  # HabitableCold: "15, 20"
+  # OuterSystem: "21, 50"
+  # Class M Climate Ranges
+  InnerSystem: "8, 11"
+  HabitableHot: "12, 15"
+  HabitableTemperate: "16, 20"
+  HabitableCold: "21, 24"
+  OuterSystem: "25, 69"
   GalaxySpawnAmount: 10
+}
+
+# Type R
+{ GalaxyConfig, Name: Rogue Planet
+  StarClass: R
+  SolarSystemConfigSuffix: _MainExoticT2
+  # Model: SunRedDwarf
+  Model: SunGeneric
+  Probability: 0.001
+  SizeClass: 1
+  # Color: "0.9,0.05,0.9"
+  Color: "0,-0.7,0"
+  LightColor: "0.00,0.00,0.00"
+  ModelColor: "0, 0, 0"
+  ModelBrightness: 0
+  ModelCoronaSpikesSize: 0
+  ModelPlasmaArcsSize: 0
+  ModelFlareBrightness: 0
+  SurfaceTemperature: "10, 20" 
+  Mass: 0.1
+  Radius: 0.1
+  Luminosity: 0.002
+  ColorName: Black
+  Age: 5
+  InnerSystem: "10, 49" 
+  HabitableHot: "50, 69" 
+  HabitableTemperate: "70, 99" 
+  HabitableCold: "100, 149" 
+  OuterSystem: "150, 350"
+  Description: "[c][ff00ff]Exotic system.[-][/c] A rogue planet or other object or signal that is not orbiting any star."
+  GalaxySpawnAmount: 100
 }
 
 # Type BH
@@ -2811,7 +3116,7 @@
   SolarSystemConfigSuffix: _MainExoticT2
   Model: BlackHole
   Probability: 0.002
-  SizeClass: 7
+  SizeClass: 10
   Color: "0.20,0.20,0.20"
   LightColor: "0.25,0.2,0.15"
   # SurfaceTemperature: "10000000, 100000000" 
@@ -2822,11 +3127,17 @@
   Description: "[c][ff00ff]Exotic system.[-][/c] A black hole is a region of spacetime exhibiting gravitational acceleration so strong that nothing, not even particles or electromagnetic radiation, can escape from it. The theory of general relativity predicts that a sufficiently compact mass can deform spacetime to form a black hole. The boundary of the region from which no escape is possible is called the event horizon. Although the event horizon has an enormous effect on the fate and circumstances of an object crossing it, no locally detectable features appear to be observed."
   #Luminosity: 0.002
   Age: 900
-  InnerSystem: "5, 39" 
-  HabitableHot: "40, 89" 
-  HabitableTemperate: "90, 132" 
-  HabitableCold: "133, 144" 
-  OuterSystem: "145, 252"  
+  # InnerSystem: "5, 39" 
+  # HabitableHot: "40, 89" 
+  # HabitableTemperate: "90, 132" 
+  # HabitableCold: "133, 144" 
+  # OuterSystem: "145, 252"  
+  # Class BH Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 39"
+  HabitableCold: "40, 59"
+  OuterSystem: "60, 150"
   ClusterProb: 1                              # Decides if StarClass is placed in clusters in general. 1 = always/only , 0 = never; can use float between 0 and 1
   ClusterRange: "0, 0.5"                      # Decides the position of the StarClass in a cluster; 0 = close to edge; 1 = close to center; Example: '0, 0.5' = position is more towards the edge of the cluster
 }
@@ -2836,12 +3147,13 @@
   SolarSystemConfigSuffix: _MainExoticT2
   Model: SunGeneric
   Probability: 0.001
-  SizeClass: 9
+  SizeClass: 10
   Color: "0.20,0.20,0.20"
   LightColor: "0,0,0"
   ModelColor: "-25,-25,-25" # (can be used if you want a different color apart from Color or LightColor)
   # ModelColor2: "0.5,0.3,0" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
   ModelColor2: "0.2,0.1,0" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
+  # ModelColor2: "2,1,0" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
   ModelBrightness: 0.6 # (overall brightness)
   ModelNoiseTiling: 3 # (default is 40, set to higher values for bigger stars)
   ModelCoronaSpikesSize: 0 # (default is 0.75, values < 0.6 will hide the spikes completely)
@@ -2854,11 +3166,17 @@
   Description: "[c][ff00ff]Exotic system.[-][/c] A black hole is a region of spacetime exhibiting gravitational acceleration so strong that nothing, not even particles or electromagnetic radiation, can escape from it. The theory of general relativity predicts that a sufficiently compact mass can deform spacetime to form a black hole. The boundary of the region from which no escape is possible is called the event horizon. Although the event horizon has an enormous effect on the fate and circumstances of an object crossing it, no locally detectable features appear to be observed."
   #Luminosity: 0.002
   Age: 900
-  InnerSystem: "5, 39" 
-  HabitableHot: "40, 89" 
-  HabitableTemperate: "90, 132" 
-  HabitableCold: "133, 144" 
-  OuterSystem: "145, 252"  
+  # InnerSystem: "5, 39" 
+  # HabitableHot: "40, 89" 
+  # HabitableTemperate: "90, 132" 
+  # HabitableCold: "133, 144" 
+  # OuterSystem: "145, 252"
+  # Class BH Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 39"
+  HabitableCold: "40, 59"
+  OuterSystem: "60, 150"
 }
 
 { GalaxyConfig, Name: Black Hole
@@ -2883,11 +3201,17 @@
   ColorName: Black
   Description: "[c][ff00ff]Exotic system.[-][/c] A black hole is a region of spacetime exhibiting gravitational acceleration so strong that nothing, not even particles or electromagnetic radiation, can escape from it. The theory of general relativity predicts that a sufficiently compact mass can deform spacetime to form a black hole. The boundary of the region from which no escape is possible is called the event horizon. Although the event horizon has an enormous effect on the fate and circumstances of an object crossing it, no locally detectable features appear to be observed."
   Age: 900
-  InnerSystem: "5, 39" 
-  HabitableHot: "40, 89" 
-  HabitableTemperate: "90, 132" 
-  HabitableCold: "133, 144" 
-  OuterSystem: "145, 252"  
+  # InnerSystem: "5, 39" 
+  # HabitableHot: "40, 89" 
+  # HabitableTemperate: "90, 132" 
+  # HabitableCold: "133, 144" 
+  # OuterSystem: "145, 252"  
+  # Class BH Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 39"
+  HabitableCold: "40, 59"
+  OuterSystem: "60, 150"
 }
 
 { GalaxyConfig, Name: Black Hole
@@ -2913,11 +3237,53 @@
   Description: "[c][ff00ff]Exotic system.[-][/c] A black hole is a region of spacetime exhibiting gravitational acceleration so strong that nothing, not even particles or electromagnetic radiation, can escape from it. The theory of general relativity predicts that a sufficiently compact mass can deform spacetime to form a black hole. The boundary of the region from which no escape is possible is called the event horizon. Although the event horizon has an enormous effect on the fate and circumstances of an object crossing it, no locally detectable features appear to be observed."
   #Luminosity: 0.002
   Age: 900
-  InnerSystem: "5, 20" 
-  HabitableHot: "21, 40" 
-  HabitableTemperate: "41, 60" 
-  HabitableCold: "61, 80" 
-  OuterSystem: "81, 150"  
+  # InnerSystem: "5, 20" 
+  # HabitableHot: "21, 40" 
+  # HabitableTemperate: "41, 60" 
+  # HabitableCold: "61, 80" 
+  # OuterSystem: "81, 150"  
+  # Class BH Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 39"
+  HabitableCold: "40, 59"
+  OuterSystem: "60, 150"
+}
+
+{ GalaxyConfig, Name: Black Hole
+  StarClass: BH6
+  SolarSystemConfigSuffix: _MainExoticT2
+  Model: SunGeneric
+  Probability: 0.001
+  SizeClass: 10
+  Color: "0.4,0.3,0.1"
+  LightColor: "0.4,0.15,0"
+  ModelColor: "0,0,0" # (can be used if you want a different color apart from Color or LightColor)
+  ModelColor2: "2,0.5,-1" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
+  # ModelBrightness: 0.6 # (overall brightness)
+  ModelBrightness: 4 # (overall brightness)
+  ModelNoiseTiling: 3 # (default is 40, set to higher values for bigger stars)
+  ModelCoronaSpikesSize: 0 # (default is 0.75, values < 0.6 will hide the spikes completely)
+  ModelPlasmaArcsSize: 0 # (default is 0.5)
+  ModelFlareBrightness: 0 # (values < 1 will make the flare smaller)
+  Mass: 1000000
+  # Schwarzschildradius
+  Radius: 0.21
+  ColorName: Black
+  Description: "[c][ff00ff]Exotic system.[-][/c] A black hole is a region of spacetime exhibiting gravitational acceleration so strong that nothing, not even particles or electromagnetic radiation, can escape from it. The theory of general relativity predicts that a sufficiently compact mass can deform spacetime to form a black hole. The boundary of the region from which no escape is possible is called the event horizon. Although the event horizon has an enormous effect on the fate and circumstances of an object crossing it, no locally detectable features appear to be observed."
+  #Luminosity: 0.002
+  Age: 900
+  # InnerSystem: "5, 39" 
+  # HabitableHot: "40, 89" 
+  # HabitableTemperate: "90, 132" 
+  # HabitableCold: "133, 144" 
+  # OuterSystem: "145, 252"
+  # Class BH Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 39"
+  HabitableCold: "40, 59"
+  OuterSystem: "60, 150"
 }
 
 # Type BH
@@ -3139,7 +3505,7 @@
 # Type Gate
 { GalaxyConfig, Name: Gate
   StarClass: Gate
-  Model: SunRedDwarf
+  Model: SunGeneric
   Probability: 0
   SizeClass: 1
   # Color: "0.9,0.05,0.9"
@@ -3156,7 +3522,31 @@
   HabitableTemperate: "70, 99" 
   HabitableCold: "100, 149" 
   OuterSystem: "150, 350"
-  Description: "A warp gate in empty space."
+  Description: "A warp gate in empty space. You can only warp to Gate_Destination systems while you are within a Gate system."
+  GalaxySpawnAmount: 0
+}
+
+# Type WarpPoint
+{ GalaxyConfig, Name: Gate_Destination
+  StarClass: Gate_Destination
+  Model: SunGeneric
+  Probability: 0
+  SizeClass: 1
+  # Color: "0.9,0.05,0.9"
+  Color: "-0.5,0,-0.5"
+  LightColor: "0.00,0.00,0.00"
+  SurfaceTemperature: "10, 20" 
+  Mass: 0.3
+  Radius: 0.4 
+  Luminosity: 0.002
+  ColorName: Black
+  Age: 200
+  InnerSystem: "10, 49" 
+  HabitableHot: "50, 69" 
+  HabitableTemperate: "70, 99" 
+  HabitableCold: "100, 149" 
+  OuterSystem: "150, 350"
+  Description: "The destination of a warp gate. You can only warp to Gate_Destination systems while you are within a Gate system."
   GalaxySpawnAmount: 0
 }
 
@@ -3262,11 +3652,17 @@
   Luminosity: 0.1
   ColorName: White
   Age: 2.5
-  InnerSystem: "5, 11"
-  HabitableHot: "12, 19"
-  HabitableTemperate: "20, 34"
-  HabitableCold: "35, 49"
-  OuterSystem: "50, 74"
+  # InnerSystem: "5, 11"
+  # HabitableHot: "12, 19"
+  # HabitableTemperate: "20, 34"
+  # HabitableCold: "35, 49"
+  # OuterSystem: "50, 74"
+  # Class D Climate Ranges
+  InnerSystem: "10, 14"
+  HabitableHot: "15, 19"
+  HabitableTemperate: "20, 24"
+  HabitableCold: "25, 34"
+  OuterSystem: "35, 60"
   Description: "[c][ffff00]Cold system.[-][/c] A white dwarf, also called a degenerate dwarf, is a stellar core remnant composed mostly of electron-degenerate matter. A white dwarf is very dense: its mass is comparable to that of the Sun, while its volume is comparable to that of Earth."
 }
 
@@ -3294,11 +3690,17 @@
   Luminosity: 0.1
   ColorName: White
   Age: 2.5
-  InnerSystem: "5, 11"
-  HabitableHot: "12, 19"
-  HabitableTemperate: "20, 34"
-  HabitableCold: "35, 49"
-  OuterSystem: "50, 74"
+  # InnerSystem: "5, 11"
+  # HabitableHot: "12, 19"
+  # HabitableTemperate: "20, 34"
+  # HabitableCold: "35, 49"
+  # OuterSystem: "50, 74"
+  # Class D Climate Ranges
+  InnerSystem: "10, 14"
+  HabitableHot: "15, 19"
+  HabitableTemperate: "20, 24"
+  HabitableCold: "25, 34"
+  OuterSystem: "35, 60"
   Description: "[c][ffff00]Cold system.[-][/c] A white dwarf, also called a degenerate dwarf, is a stellar core remnant composed mostly of electron-degenerate matter. A white dwarf is very dense: its mass is comparable to that of the Sun, while its volume is comparable to that of Earth."
 }
 
@@ -3325,11 +3727,17 @@
   Luminosity: 0.1
   ColorName: White
   Age: 2.5
-  InnerSystem: "5, 11"
-  HabitableHot: "12, 19"
-  HabitableTemperate: "20, 34"
-  HabitableCold: "35, 49"
-  OuterSystem: "50, 74"
+  # InnerSystem: "5, 11"
+  # HabitableHot: "12, 19"
+  # HabitableTemperate: "20, 34"
+  # HabitableCold: "35, 49"
+  # OuterSystem: "50, 74"
+  # Class D Climate Ranges
+  InnerSystem: "10, 14"
+  HabitableHot: "15, 19"
+  HabitableTemperate: "20, 24"
+  HabitableCold: "25, 34"
+  OuterSystem: "35, 60"
   Description: "[c][ffff00]Cold system.[-][/c] A white dwarf, also called a degenerate dwarf, is a stellar core remnant composed mostly of electron-degenerate matter. A white dwarf is very dense: its mass is comparable to that of the Sun, while its volume is comparable to that of Earth."
 }
 
@@ -3357,11 +3765,17 @@
   Luminosity: 0.1
   ColorName: White
   Age: 2.5
-  InnerSystem: "5, 11"
-  HabitableHot: "12, 19"
-  HabitableTemperate: "20, 34"
-  HabitableCold: "35, 49"
-  OuterSystem: "50, 74"
+  # InnerSystem: "5, 11"
+  # HabitableHot: "12, 19"
+  # HabitableTemperate: "20, 34"
+  # HabitableCold: "35, 49"
+  # OuterSystem: "50, 74"
+  # Class D Climate Ranges
+  InnerSystem: "10, 14"
+  HabitableHot: "15, 19"
+  HabitableTemperate: "20, 24"
+  HabitableCold: "25, 34"
+  OuterSystem: "35, 60"
   Description: "[c][ffff00]Cold system.[-][/c] A white dwarf, also called a degenerate dwarf, is a stellar core remnant composed mostly of electron-degenerate matter. A white dwarf is very dense: its mass is comparable to that of the Sun, while its volume is comparable to that of Earth."
 }
 
@@ -3715,37 +4129,37 @@
   GalaxySpawnAmount: 3
 }
 
-# Type Unknown
-{ GalaxyConfig, Name: Unknown Signal
-  StarClass: Unknown
-  SolarSystemConfigSuffix: _MainUnknownT1
-  # Model: SunRedDwarf
-  Model: SunGeneric
-  Probability: 0.002
-  SizeClass: 1
-  # Color: "0.9,0.05,0.9"
-  Color: "0.3,0.7,0.5"
-  LightColor: "0.00,0.00,0.00"
-  ModelColor: "0, 0, 0"
-  ModelBrightness: 0
-  ModelCoronaSpikesSize: 0
-  ModelPlasmaArcsSize: 0
-  ModelFlareBrightness: 0
-  SurfaceTemperature: "10, 20" 
-  Mass: 0.1
-  Radius: 0.1
-  # Luminosity: 0.002
-  Luminosity: 0.01
-  ColorName: Black
-  Age: 5
-  InnerSystem: "749, 799"
-  HabitableHot: "800, 849"
-  HabitableTemperate: "850, 899"
-  HabitableCold: "900, 949"
-  OuterSystem: "950, 1000"
-  Description: "[c][00ffff]Unknown system.[-][/c] An unknown signal. Special warp drive upgrades may be required to explore systems such as these."
-  # GalaxySpawnAmount: 0
-}
+# # Type Unknown
+# { GalaxyConfig, Name: Unknown Signal
+  # StarClass: Unknown
+  # SolarSystemConfigSuffix: _MainUnknownT1
+  # # Model: SunRedDwarf
+  # Model: SunGeneric
+  # Probability: 0.002
+  # SizeClass: 1
+  # # Color: "0.9,0.05,0.9"
+  # Color: "0.3,0.7,0.5"
+  # LightColor: "0.00,0.00,0.00"
+  # ModelColor: "0, 0, 0"
+  # ModelBrightness: 0
+  # ModelCoronaSpikesSize: 0
+  # ModelPlasmaArcsSize: 0
+  # ModelFlareBrightness: 0
+  # SurfaceTemperature: "10, 20" 
+  # Mass: 0.1
+  # Radius: 0.1
+  # # Luminosity: 0.002
+  # Luminosity: 0.01
+  # ColorName: Black
+  # Age: 5
+  # InnerSystem: "749, 799"
+  # HabitableHot: "800, 849"
+  # HabitableTemperate: "850, 899"
+  # HabitableCold: "900, 949"
+  # OuterSystem: "950, 1000"
+  # Description: "[c][00ffff]Unknown system.[-][/c] An unknown signal. Special warp drive upgrades may be required to explore systems such as these."
+  # # GalaxySpawnAmount: 0
+# }
 
 # Type K3
 { GalaxyConfig, Name: K3
@@ -3798,11 +4212,17 @@
   Luminosity: 4.9
   ColorName: Blue-White
   Age: 0.7
-  InnerSystem: "5, 29" 
-  HabitableHot: "30, 44" 
-  HabitableTemperate: "45, 69" 
-  HabitableCold: "70, 99" 
-  OuterSystem: "100, 149"
+  # InnerSystem: "5, 29" 
+  # HabitableHot: "30, 44" 
+  # HabitableTemperate: "45, 69" 
+  # HabitableCold: "70, 99" 
+  # OuterSystem: "100, 149"
+  # Size 10 Habitable
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 44"
+  HabitableCold: "45, 69"
+  OuterSystem: "70, 135"
   Description: "[c][ffff00]Cold system.[-][/c] An A-type main-sequence star is a main-sequence (hydrogen-burning) star of spectral type A and luminosity class V. They have masses from 1.4 to 2.1 times the mass of the Sun and surface temperatures between 7600 and 10,000  K"
 }
 
@@ -3811,10 +4231,114 @@
 # ===================================================== FACTION STARS ===============================================================================
 # ===================================================================================================================================================
 
+
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------  Jascha memorial.
+# Copy and paste this into your scenario's GalaxyConfig.ecf file under star definitions.
+# Don't forget to add the sector too.
+# These three stars make up the Jascha memorial system.
+# All three are required for the color combinations.
+# Don't use in random generation. Set it up in a sectors file with Tranquil2 and Tranquil3 "hiding" inside of Tranquil (don't use same coords, set them apart by 1).
+# Type Tranquil. Main star that will show in the game. The other two will be hidden from view if the sectors file is setup correctly.
+{ GalaxyConfig, Name: Tranquil type star
+  StarClass: Tranquil
+  Model: SunGeneric
+  Probability: 0 # No random spawn. Add to sectors file.
+  SizeClass: 11 # Primary star, will hide the models of the other two.
+  Color: "0.9,0.9,0.7"
+  LightColor: "0.9,0.9,0.7"
+  ModelColor: "0.9, 0.9, 0.7" # Yellow-white.
+
+# Alternative colors, kept here for backup. Feel free to delete.
+  # ModelColor: "0.03, 0.4, 0.7" # Nice looking light blue
+  # ModelColor: "0.03, 0.75, 0.9" # Kind of a nice cyan. Possible contendor.
+  # ModelColor: "0.3, 0.3, 0.2" # Yellow-white.
+  # ModelColor2: "0.03, 0.85, 0.8"
+  # ModelColor: "0.03, 0.75, 0.9" Another cyan color.
+#
+
+  ModelBrightness: 0.75 # (overall brightness)
+  ModelNoiseTiling: 180 # (default is 40, set to higher values for bigger stars)
+  ModelCoronaSpikesSize: 0.75 # (default is 0.75, values < 0.6 will hide the spikes completely)
+  ModelPlasmaArcsSize: 0.3 # (default is 0.5)
+  ModelFlareBrightness: 0.75 # (values < 1 will make the flare smaller)
+  SurfaceTemperature: "8000, 9500" 
+  Mass: 1.75
+  Radius: 1.55
+  Luminosity: 4.9
+  ColorName: Yellow-White
+  Age: 0.7
+  InnerSystem: "5, 29"
+  HabitableHot: "30, 44"
+  HabitableTemperate: "45, 69"
+  HabitableCold: "70, 99"
+  OuterSystem: "100, 149"
+  Description: "In memory of a shining member of the Empyrion community."
+  GalaxySpawnAmount: 0 # No random spawn. Add to sectors file.
+}
+
+# Type Tranquil2. For yellow "aurora".
+{ GalaxyConfig, Name: Tranquil2 type star
+  StarClass: Tranquil2
+  Model: SunGeneric
+  Probability: 0 # No random spawn
+  SizeClass: 10 # Make sure to set as size class 10 in sectors file too.
+  Color: "0.70,0.70,1"
+  LightColor: "0.5,0.65,0.75"
+  ModelColor: "0.3, 0.3, 0.2" # Yellow-white for aurora.
+  ModelBrightness: 0.45 # (overall brightness)
+  ModelNoiseTiling: 180 # (default is 40, set to higher values for bigger stars)
+  ModelCoronaSpikesSize: 15 # (default is 0.75, values < 0.6 will hide the spikes completely)
+  ModelPlasmaArcsSize: 0.3 # (default is 0.5)
+  ModelFlareBrightness: 0.75 # (values < 1 will make the flare smaller)
+  SurfaceTemperature: "8000, 9500" 
+  Mass: 1.75
+  Radius: 1.55
+  Luminosity: 4.9
+  ColorName: Yellow
+  Age: 0.7
+  InnerSystem: "5, 29" 
+  HabitableHot: "30, 44" 
+  HabitableTemperate: "45, 69" 
+  HabitableCold: "70, 99" 
+  OuterSystem: "100, 149"
+  Description: "In memory of a shining member of the Empyrion community."
+  GalaxySpawnAmount: 0 # No random spawn
+}
+
+# Type Tranquil. For blue "aurora".
+{ GalaxyConfig, Name: Tranquil3 type star
+  StarClass: Tranquil3
+  Model: SunGeneric
+  Probability: 0 # No random spawn
+  SizeClass: 10 # Make sure to set as size class 10 in sectors file too.
+  Color: "0.70,0.70,1"
+  LightColor: "0.5,0.65,0.75"
+  ModelColor: "0.1, 0.3, 0.45" # Yellow-white for aurora.
+  ModelBrightness: 0.45 # (overall brightness)
+  ModelNoiseTiling: 180 # (default is 40, set to higher values for bigger stars)
+  ModelCoronaSpikesSize: 15 # (default is 0.75, values < 0.6 will hide the spikes completely)
+  ModelPlasmaArcsSize: 0.3 # (default is 0.5)
+  ModelFlareBrightness: 0.75 # (values < 1 will make the flare smaller)
+  SurfaceTemperature: "8000, 9500" 
+  Mass: 1.75
+  Radius: 1.55
+  Luminosity: 4.9
+  ColorName: Blue
+  Age: 0.7
+  InnerSystem: "5, 29" 
+  HabitableHot: "30, 44" 
+  HabitableTemperate: "45, 69" 
+  HabitableCold: "70, 99" 
+  OuterSystem: "100, 149"
+  Description: "In memory of a shining member of the Empyrion community."
+  GalaxySpawnAmount: 0 # No random spawn
+}
+
 # ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------  Drone stars
-# Type M2
-{ GalaxyConfig, Name: M2 Type Star
-  StarClass: M2
+# Type M2-Drone
+{ GalaxyConfig, Name: M2-Drone Type Star
+  StarClass: M2-Drone
   SolarSystemConfigSuffix: _FactionDroneT1
   # Model: SunRedDwarf
   Model: SunGeneric
@@ -3836,18 +4360,24 @@
   Luminosity: 0.002
   ColorName: Red
   Age: 200
-  InnerSystem: "5, 29"
-  HabitableHot: "30, 39"
-  HabitableTemperate: "40, 59"
-  HabitableCold: "60, 69"
-  OuterSystem: "70, 95"
-  Description: "[c][ffff00]Cold system.[-][/c] Class M2 stars are by far the most common on the outer edge of the galaxy. Typically, an M-type star's surface temperature is under about 4,000 K. Active Drone Swarm detected."
+  # InnerSystem: "5, 29"
+  # HabitableHot: "30, 39"
+  # HabitableTemperate: "40, 59"
+  # HabitableCold: "60, 69"
+  # OuterSystem: "70, 95"
+  # Class M Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 34"
+  HabitableTemperate: "35, 49"
+  HabitableCold: "50, 69"
+  OuterSystem: "70, 150"
+  Description: "[c][ffff00]Cold system.[-][/c] Class M2-Drone stars are by far the most common on the outer edge of the galaxy. Typically, an M-type star's surface temperature is under about 4,000 K. Active Drone Swarm detected."
   GalaxySpawnAmount: 0
 }
 
 # Type D
 { GalaxyConfig, Name: D Type White Dwarf
-  StarClass: D4
+  StarClass: D4-Drone
   SolarSystemConfigSuffix: _FactionDroneT1
   # Model: SunWhiteDwarf
   Model: SunGeneric
@@ -3869,17 +4399,23 @@
   Luminosity: 0.1
   ColorName: White
   Age: 2.5
-  InnerSystem: "5, 11"
-  HabitableHot: "12, 19"
-  HabitableTemperate: "20, 34"
-  HabitableCold: "35, 49"
-  OuterSystem: "50, 74"
+  # InnerSystem: "5, 11"
+  # HabitableHot: "12, 19"
+  # HabitableTemperate: "20, 34"
+  # HabitableCold: "35, 49"
+  # OuterSystem: "50, 74"
+  # Class D Climate Ranges
+  InnerSystem: "10, 14"
+  HabitableHot: "15, 19"
+  HabitableTemperate: "20, 24"
+  HabitableCold: "25, 34"
+  OuterSystem: "35, 60"
   Description: "[c][ffff00]Cold system.[-][/c] A white dwarf, also called a degenerate dwarf, is a stellar core remnant composed mostly of electron-degenerate matter. A white dwarf is very dense: its mass is comparable to that of the Sun, while its volume is comparable to that of Earth. Active Drone Swarm detected."
 }
 
-# Type R
-{ GalaxyConfig, Name: Rogue Planet
-  StarClass: R
+# Type R-Drone
+{ GalaxyConfig, Name: Rogue Drone Planet
+  StarClass: R-Drone
   SolarSystemConfigSuffix: _FactionDroneT2Rogue
   # Model: SunRedDwarf
   Model: SunGeneric
@@ -3887,7 +4423,7 @@
   SizeClass: 1
   # Color: "0.9,0.05,0.9"
   Color: "0,-0.7,0"
-  LightColor: "0.00,0.00,0.00"
+  LightColor: "0.0,0.0,0.05"
   ModelColor: "0, 0, 0"
   ModelBrightness: 0
   ModelCoronaSpikesSize: 0
@@ -3909,8 +4445,8 @@
 }
 
 # Dark red brown dwarf.
-{ GalaxyConfig, Name: T Brown Dwarf
-  StarClass: T
+{ GalaxyConfig, Name: T-Drone Brown Dwarf
+  StarClass: T-Drone
   SolarSystemConfigSuffix: _FactionDroneT2
   Model: SunGeneric
   Probability: 0
@@ -3940,13 +4476,13 @@
 }
 
 { GalaxyConfig, Name: Black Hole
-  StarClass: BH4
+  StarClass: BH4-Drone
   SolarSystemConfigSuffix: _FactionDroneT2
   Model: SunGeneric
   Probability: 0.001
   SizeClass: 9
   Color: "0.20,0.20,0.20"
-  LightColor: "0,0,0"
+  LightColor: "0.05,0,0"
   ModelColor: "-25,-25,-25" # (can be used if you want a different color apart from Color or LightColor)
   # ModelColor2: "0.5,0.3,0" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
   ModelColor2: "0.2,0.1,0" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
@@ -4008,12 +4544,139 @@
   GalaxySpawnAmount: 0                   # Set to 0 and use in a Region = StarClass will ONLY spawn in that region!
 }
 
+# Type B
+{ GalaxyConfig, Name: B Type Star
+  StarClass: B-Legacy
+  SolarSystemConfigSuffix: _FactionLegacyT1
+  # Model: SunBlueGiant
+  Model: SunGeneric
+  Probability: 0
+  SizeClass: 12
+  Color: "0.1, 0.1, 0.8"
+  LightColor: "0.6, 0.6, 1"
+  # ModelColor: "0.0, 0.1, 0.4" # Backup
+  # ModelColor: "0.2, 0.4, 0.6" # Variation 1
+  ModelColor: "0.1, 0.3, 0.6" # Variation 3
+  # ModelColor: "0.2, 0.3, 0.5" # Variation 2
+  # ModelColor2: "0.8, 0.9, 1" # Variation 2
+  # ModelBrightness: 0.85 # (overall brightness)
+  ModelBrightness: 1 # (overall brightness)
+  ModelNoiseTiling: 120 # (default is 40, set to higher values for bigger stars)
+  ModelCoronaSpikesSize: 0.8 # (default is 0.75, values < 0.6 will hide the spikes completely)
+  ModelPlasmaArcsSize: 0.45 # (default is 0.5)
+  ModelFlareBrightness: 2 # (values < 1 will make the flare smaller)
+  SurfaceTemperature: "10000, 30000" 
+  Mass: 18
+  Radius: 8 
+  Luminosity: 800 
+  ColorName: Blue 
+  Age: 0.25
+  # InnerSystem: "8, 92"
+  # HabitableHot: "93, 102"
+  # HabitableTemperate: "103, 122"
+  # HabitableCold: "123, 142"
+  # OuterSystem: "143, 254"
+  # Class B Climate Ranges
+  # InnerSystem: "10, 59"
+  # HabitableHot: "60, 89"
+  # HabitableTemperate: "90, 119"
+  # HabitableCold: "120, 159"
+  # OuterSystem: "160, 250"
+  # Class B Climate Ranges
+  InnerSystem: "10, 59"
+  HabitableHot: "60, 89"
+  HabitableTemperate: "90, 119"
+  HabitableCold: "120, 159"
+  OuterSystem: "160, 250"
+  Description: "[c][ff0000]Hot system.[-][/c] A B-type main-sequence star (B V) is a main-sequence (hydrogen-burning) star of spectral type B and luminosity class V. These stars have from 2 to 16 times the mass of the Sun and surface temperatures between 10,000 and 30,000 K. B-type stars are extremely luminous and blue."
+  GalaxySpawnAmount: 0
+}
+
+# Type M
+{ GalaxyConfig, Name: M Type Star
+  StarClass: M-Legacy
+  SolarSystemConfigSuffix: _FactionLegacyT1
+  # Model: SunRedDwarf
+  Model: SunGeneric
+  Probability: 0
+  SizeClass: 9
+  Color: "0.97,0.64,0.19"
+  LightColor: "0.97,0.5,0.15"
+  # ModelColor: "1.3,0.05,0" # (can be used if you want a different color apart from Color or LightColor)
+  ModelColor: "1,0.045,0" # (can be used if you want a different color apart from Color or LightColor)
+  # ModelColor2: "0.97,0.64,0.19" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
+  ModelBrightness: 0.50 # (overall brightness)
+  ModelNoiseTiling: 40 # (default is 40, set to higher values for bigger stars)
+  ModelCoronaSpikesSize: 0.65 # (default is 0.75, values < 0.6 will hide the spikes completely)
+  ModelPlasmaArcsSize: 0.25 # (default is 0.5)
+  ModelFlareBrightness: 1 # (values < 1 will make the flare smaller)
+  SurfaceTemperature: "2500, 4000" 
+  Mass: 0.3
+  Radius: 0.4 
+  Luminosity: 0.002
+  ColorName: Red
+  Age: 200
+  # InnerSystem: "5, 29"
+  # HabitableHot: "30, 44"
+  # HabitableTemperate: "45, 50"
+  # HabitableCold: "51, 69"
+  # OuterSystem: "70, 149"
+  # Class M Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 34"
+  HabitableTemperate: "35, 49"
+  HabitableCold: "50, 69"
+  OuterSystem: "70, 150"
+  Description: "[c][ffff00]Cold system.[-][/c] Class M stars are by far the most common. About 76% of the main-sequence stars in the solar neighborhood are class M stars. However, class M main-sequence stars (red dwarfs) have such low luminosities that none are bright enough to be seen with the unaided eye, unless under exceptional conditions. Typically, an M-type star's surface temperature is under about 4,000 K."
+  GalaxySpawnAmount: 0
+}
+
+# Type D
+{ GalaxyConfig, Name: D Type White Dwarf
+  StarClass: D-Legacy
+  SolarSystemConfigSuffix: _FactionLegacyT1
+  # Model: SunWhiteDwarf
+  Model: SunGeneric
+  Probability: 0
+  SizeClass: 8
+  # Color: "0.9,0.9,0.93"
+  Color: "0.72,0.72,0.75"
+  LightColor: "0.7,0.7,.73"
+  # ModelColor: "1, 0.7, 0.7" # (can be used if you want a different color apart from Color or LightColor)
+  # ModelColor2: "1, 0.7, 0.7" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
+  ModelBrightness: 0.75 # (overall brightness)
+  ModelNoiseTiling: 80 # (default is 40, set to higher values for bigger stars)
+  ModelCoronaSpikesSize: 0.0 # (default is 0.75, values < 0.6 will hide the spikes completely)
+  ModelPlasmaArcsSize: 0.0 # (default is 0.5)
+  ModelFlareBrightness: 0.7 # (values < 1 will make the flare smaller)
+  SurfaceTemperature: "7500, 10000"
+  Mass: 1.1
+  Radius: 0.001
+  Luminosity: 0.1
+  ColorName: White
+  Age: 2.5
+  # InnerSystem: "5, 11"
+  # HabitableHot: "12, 19"
+  # HabitableTemperate: "20, 34"
+  # HabitableCold: "35, 49"
+  # OuterSystem: "50, 74"
+  # Class D Climate Ranges
+  InnerSystem: "10, 14"
+  HabitableHot: "15, 19"
+  HabitableTemperate: "20, 24"
+  HabitableCold: "25, 34"
+  OuterSystem: "35, 60"
+  Description: "[c][ffff00]Cold system.[-][/c] A white dwarf, also called a degenerate dwarf, is a stellar core remnant composed mostly of electron-degenerate matter. A white dwarf is very dense: its mass is comparable to that of the Sun, while its volume is comparable to that of Earth."
+  GalaxySpawnAmount: 0
+}
+
 # Type N
 { GalaxyConfig, Name: Small Neutron Star
-  StarClass: N1a
+  StarClass: N1a-Legacy
+  SolarSystemConfigSuffix: _FactionLegacyT1
   # Model: SunNeutron
   Model: SunGeneric
-  Probability: 0.00625
+  Probability: 0
   SizeClass: 7
   Color: "0.35,0.35,0.75"
   LightColor: "0.35,0.35,0.75"
@@ -4033,13 +4696,86 @@
   Description: "[c][ff00ff]Exotic system.[-][/c] A neutron star is the collapsed core of a giant star which before collapse had a total mass of between 10 and 29 solar masses. Neutron stars are the smallest and densest stars, excluding black holes, hypothetical white holes, quark stars and strange stars. Neutron stars have a radius on the order of 10 kilometres (6.2 mi) and a mass of about 1.4 solar masses. They result from the supernova explosion of a massive star, combined with gravitational collapse, that compresses the core past white dwarf star density to that of atomic nuclei."
   #Luminosity: 0.002
   Age: 400
-  InnerSystem: "5, 9" 
-  HabitableHot: "10, 15" 
-  HabitableTemperate: "16, 21" 
-  HabitableCold: "22, 30" 
-  OuterSystem: "31, 100"  
+  # InnerSystem: "5, 9" 
+  # HabitableHot: "10, 15" 
+  # HabitableTemperate: "16, 21" 
+  # HabitableCold: "22, 30" 
+  # OuterSystem: "31, 100"  
+  # Class M Climate Ranges
+  InnerSystem: "8, 11"
+  HabitableHot: "12, 15"
+  HabitableTemperate: "16, 20"
+  HabitableCold: "21, 24"
+  OuterSystem: "25, 69"
   GalaxySpawnAmount: 0
 }
+
+# Type S
+{ GalaxyConfig, Name: S Type Strange Star
+  StarClass: S-S-Legacy
+  SolarSystemConfigSuffix: _FactionLegacyT1
+  CompanionStarClass: S-S-Legacy
+  # Model: SunWhiteDwarf
+  Model: SunGeneric
+  Probability: 0
+  SizeClass: 8
+  # Color: "0.9,0.9,0.93"
+  Color: "0.72,1,0.75"
+  LightColor: "0.7,1,.73"
+  ModelColor: "0.7, 1, 0.7" # (can be used if you want a different color apart from Color or LightColor)
+  ModelColor2: "0.7, 0.7, 0.5" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
+  ModelBrightness: 0.75 # (overall brightness)
+  ModelNoiseTiling: 80 # (default is 40, set to higher values for bigger stars)
+  # ModelCoronaSpikesSize:
+  ModelCoronaSpikesSize: 0.4
+  ModelPlasmaArcsSize: 0 # (default is 0.5)
+  ModelFlareBrightness: 0.7 # (values < 1 will make the flare smaller)
+  SurfaceTemperature: "7500, 10000"
+  Mass: 1.1
+  Radius: 0.001
+  Luminosity: 0.1
+  ColorName: White
+  Age: 2.5
+  InnerSystem: "5, 11"
+  HabitableHot: "12, 19"
+  HabitableTemperate: "20, 34"
+  HabitableCold: "35, 49"
+  OuterSystem: "50, 74"
+  Description: "[c][ff00ff]Exotic system.[-][/c] Strange stars had until now had only been theorized. Thought to be made out of unstable exotic matter, these stars may behave in strange, unpredictable ways."
+  GalaxySpawnAmount: 0
+}
+
+# Type L3
+{ GalaxyConfig, Name: L Brown Dwarf
+  StarClass: L3-Legacy
+  SolarSystemConfigSuffix: _FactionLegacyT1
+  Model: SunGeneric
+  Probability: 0
+  SizeClass: 9
+  Color: "0.7,0.6,0.4"
+  LightColor: "0.4,0.3,0.2"
+  ModelColor: "1,0.9,0.4"
+  ModelBrightness: 0.25
+  ModelNoiseTiling: 5
+  ModelCoronaSpikesSize: 0
+  ModelPlasmaArcsSize: 0
+  ModelFlareBrightness: 0.5
+  SurfaceTemperature: "400, 800" 
+  Mass: 0.1
+  Radius: 0.3
+  Luminosity: 0.1
+  ColorName: Yellow
+  Age: 30
+  InnerSystem: "15, 19"
+  HabitableHot: "20, 39"
+  HabitableTemperate: "40, 69"
+  HabitableCold: "70, 99"
+  OuterSystem: "100, 150"
+  Description: "[c][ff00ff]Exotic system.[-][/c] Brown Dwarfs are failed stars that never grew massive enough to initiate fusion."
+  GalaxySpawnAmount: 0
+}
+
+# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- Legacy Stars
 
 # Type S
 { GalaxyConfig, Name: S Type Strange Star
@@ -4074,144 +4810,6 @@
   Description: "[c][ff00ff]Exotic system.[-][/c] Strange stars had until now had only been theorized. Thought to be made out of unstable exotic matter, these stars may behave in strange, unpredictable ways."
 }
 
-# Type S
-{ GalaxyConfig, Name: S Type Strange Star
-  StarClass: S-S
-  SolarSystemConfigSuffix: _MainExoticT2
-  CompanionStarClass: S-S
-  # Model: SunWhiteDwarf
-  Model: SunGeneric
-  Probability: 0
-  SizeClass: 8
-  # Color: "0.9,0.9,0.93"
-  Color: "0.72,1,0.75"
-  LightColor: "0.7,1,.73"
-  ModelColor: "0.7, 1, 0.7" # (can be used if you want a different color apart from Color or LightColor)
-  ModelColor2: "0.7, 0.7, 0.5" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
-  ModelBrightness: 0.75 # (overall brightness)
-  ModelNoiseTiling: 80 # (default is 40, set to higher values for bigger stars)
-  # ModelCoronaSpikesSize:
-  ModelCoronaSpikesSize: 0.4
-  ModelPlasmaArcsSize: 0 # (default is 0.5)
-  ModelFlareBrightness: 0.7 # (values < 1 will make the flare smaller)
-  SurfaceTemperature: "7500, 10000"
-  Mass: 1.1
-  Radius: 0.001
-  Luminosity: 0.1
-  ColorName: White
-  Age: 2.5
-  InnerSystem: "5, 11"
-  HabitableHot: "12, 19"
-  HabitableTemperate: "20, 34"
-  HabitableCold: "35, 49"
-  OuterSystem: "50, 74"
-  Description: "[c][ff00ff]Exotic system.[-][/c] Strange stars had until now had only been theorized. Thought to be made out of unstable exotic matter, these stars may behave in strange, unpredictable ways."
-}
-
-# Type L3
-{ GalaxyConfig, Name: L Brown Dwarf
-  StarClass: L3
-  SolarSystemConfigSuffix: _MainExoticT2
-  Model: SunGeneric
-  Probability: 0.002
-  SizeClass: 9
-  Color: "0.7,0.6,0.4"
-  LightColor: "0.4,0.3,0.2"
-  ModelColor: "1,0.9,0.4"
-  ModelBrightness: 0.25
-  ModelNoiseTiling: 5
-  ModelCoronaSpikesSize: 0
-  ModelPlasmaArcsSize: 0
-  ModelFlareBrightness: 0.5
-  SurfaceTemperature: "400, 800" 
-  Mass: 0.1
-  Radius: 0.3
-  Luminosity: 0.1
-  ColorName: Yellow
-  Age: 30
-  InnerSystem: "15, 19"
-  HabitableHot: "20, 39"
-  HabitableTemperate: "40, 69"
-  HabitableCold: "70, 99"
-  OuterSystem: "100, 150"
-  Description: "[c][ff00ff]Exotic system.[-][/c] Brown Dwarfs are failed stars that never grew massive enough to initiate fusion."
-  GalaxySpawnAmount: 10
-}
-
-
-# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ARC Stars
-# Type M
-{ GalaxyConfig, Name: ARC Homeworld
-  StarClass: ARCHomeSystem
-  SolarSystemConfigSuffix: _FactionARCHome
-  Model: SunGeneric
-  Probability: 1
-  SizeClass: 9
-  Color: "0.97,0.64,0.19"
-  ModelFlareBrightness: 2
-  SurfaceTemperature: "2500, 4000" 
-  Mass: 0.3
-  Radius: 0.4 
-  Luminosity: 0.002
-  ColorName: Red
-  Age: 200
-  InnerSystem: "5, 41" 
-  HabitableHot: "42, 45" 
-  HabitableTemperate: "46, 50" 
-  HabitableCold: "51, 54" 
-  OuterSystem: "55, 95"
-  Description: "The home system of the ARC faction."  
-  GalaxySpawnAmount: 0
-}
-
-# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- Polaris Stars
-# Type F
-{ GalaxyConfig, Name: Polaris Home System
-  StarClass: PolarisHomeSystem
-  SolarSystemConfigSuffix: _FactionPolarisHome
-  Model: SunGeneric
-  Probability: 1
-  SizeClass: 11
-  Color: "0.99,0.96,0.85"
-  ModelFlareBrightness: 2
-  SurfaceTemperature: "6000, 7500" 
-  Mass: 1.5
-  Radius: 1.8 
-  Luminosity: 4.4
-  ColorName: Yellow-White
-  Age: 1
-  InnerSystem: "5, 66" 
-  HabitableHot: "67, 74" 
-  HabitableTemperate: "75, 81" 
-  HabitableCold: "82, 88" 
-  OuterSystem: "89, 155"
-  GalaxySpawnAmount: 0
-  Description: "The home system of the Polaris Megacorp."
-}
-# ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- Trader Stars
-# Type A
-{ GalaxyConfig, Name: Traders Guild Home System
-  StarClass: TraderHomeSystem
-  SolarSystemConfigSuffix: _FactionTraderHome
-  Model: SunGeneric
-  Probability: 1 
-  SizeClass: 11
-  Color: "0.97,0.97,1"
-  ModelFlareBrightness: 2
-  SurfaceTemperature: "7500, 10000" 
-  Mass: 2.2
-  Radius: 2.4 
-  Luminosity: 25 
-  ColorName: White
-  Age: 0.5
-  InnerSystem: "5, 78" 
-  HabitableHot: "79, 87" 
-  HabitableTemperate: "88, 95" 
-  HabitableCold: "96, 104" 
-  OuterSystem: "105, 182"
-  Description: "It is not exactly the home system of all guilds, but an official center and pivot point of any of the Traders Guild ventures in the galaxy."
-  GalaxySpawnAmount: 0
-}
 # Type G
 { GalaxyConfig, Name: G2 Type Star
   StarClass: G2
@@ -4235,11 +4833,17 @@
   Luminosity: 1
   ColorName: Yellow
   Age: 10
-  InnerSystem: "5, 56" 
-  HabitableHot: "57, 63" 
-  HabitableTemperate: "64, 69" 
-  HabitableCold: "70, 75" 
-  OuterSystem: "76, 132"
+  # InnerSystem: "5, 56" 
+  # HabitableHot: "57, 63" 
+  # HabitableTemperate: "64, 69" 
+  # HabitableCold: "70, 75" 
+  # OuterSystem: "76, 132"
+  # Class G Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 44"
+  HabitableCold: "45, 69"
+  OuterSystem: "70, 135"
   Description: "[c][ffff00]Habitable system.[-][/c] G-type stars, including the Sun, have prominent spectral lines H and K of Ca II, which are most pronounced at G2. They have even weaker hydrogen lines than F, but along with the ionized metals, they have neutral metals. There is a prominent spike in the G band of CH molecules."
   GalaxySpawnAmount: 0
 }
@@ -4271,47 +4875,59 @@
   Luminosity: 4.9
   ColorName: Blue-White
   Age: 0.7
-  InnerSystem: "5, 29" 
-  HabitableHot: "30, 44" 
-  HabitableTemperate: "45, 69" 
-  HabitableCold: "70, 99" 
-  OuterSystem: "100, 149"
+  # InnerSystem: "5, 29" 
+  # HabitableHot: "30, 44" 
+  # HabitableTemperate: "45, 69" 
+  # HabitableCold: "70, 99" 
+  # OuterSystem: "100, 149"
+  # Size 10 Habitable
+  # InnerSystem: "10, 19"
+  # HabitableHot: "20, 29"
+  # HabitableTemperate: "30, 44"
+  # HabitableCold: "45, 69"
+  # OuterSystem: "70, 135"
+  # Custom Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 29"
+  HabitableTemperate: "30, 59"
+  HabitableCold: "50, 79"
+  OuterSystem: "80, 150"
   Description: "[c][ffff00]Habitable system.[-][/c] G-type stars, including the Sun, have prominent spectral lines H and K of Ca II, which are most pronounced at G2. They have even weaker hydrogen lines than F, but along with the ionized metals, they have neutral metals. There is a prominent spike in the G band of CH molecules."
   GalaxySpawnAmount: 0
 }
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- Kriel Stars
 # Kriel Home System
-{ GalaxyConfig, Name: Kriel Home System
-  StarClass: KrielHomeSystem
-  SolarSystemConfigSuffix: _FactionKrielHome
-  Model: SunGeneric
-  Probability: 0.8
-  SizeClass: 9
-  Color: "0.97,0.64,0.19"
-  LightColor: "0.97,0.5,0.15"
-  # ModelColor: "1.3,0.05,0" # (can be used if you want a different color apart from Color or LightColor)
-  ModelColor: "1,0.045,0" # (can be used if you want a different color apart from Color or LightColor)
-  # ModelColor2: "0.97,0.64,0.19" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
-  ModelBrightness: 0.50 # (overall brightness)
-  ModelNoiseTiling: 40 # (default is 40, set to higher values for bigger stars)
-  ModelCoronaSpikesSize: 0.65 # (default is 0.75, values < 0.6 will hide the spikes completely)
-  ModelPlasmaArcsSize: 0.25 # (default is 0.5)
-  ModelFlareBrightness: 0.9 # (values < 1 will make the flare smaller)
-  SurfaceTemperature: "2500, 4000" 
-  Mass: 0.3
-  Radius: 0.4 
-  Luminosity: 0.002
-  ColorName: Red
-  Age: 200
-  InnerSystem: "5, 41" 
-  HabitableHot: "42, 45" 
-  HabitableTemperate: "46, 50" 
-  HabitableCold: "51, 54" 
-  OuterSystem: "55, 95"
-  GalaxySpawnAmount: 0
-  Description: "[c][ff0000]Hot system.[-][/c] The said-to-be home system of the Kriel. It is not entirely sure if this is also the cradle of their civilization, because the Kriel do not leave a lot behind that can be studied. Planets stripped from any resource is what usually is left when the Kriel forces leave. Maybe it is only a place where they hide and protect something very important. Expect strong military presence."
-}
+# { GalaxyConfig, Name: Kriel Home System
+  # StarClass: KrielHomeSystem
+  # SolarSystemConfigSuffix: _FactionKrielHome
+  # Model: SunGeneric
+  # Probability: 0.8
+  # SizeClass: 9
+  # Color: "0.97,0.64,0.19"
+  # LightColor: "0.97,0.5,0.15"
+  # # ModelColor: "1.3,0.05,0" # (can be used if you want a different color apart from Color or LightColor)
+  # ModelColor: "1,0.045,0" # (can be used if you want a different color apart from Color or LightColor)
+  # # ModelColor2: "0.97,0.64,0.19" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
+  # ModelBrightness: 0.50 # (overall brightness)
+  # ModelNoiseTiling: 40 # (default is 40, set to higher values for bigger stars)
+  # ModelCoronaSpikesSize: 0.65 # (default is 0.75, values < 0.6 will hide the spikes completely)
+  # ModelPlasmaArcsSize: 0.25 # (default is 0.5)
+  # ModelFlareBrightness: 0.9 # (values < 1 will make the flare smaller)
+  # SurfaceTemperature: "2500, 4000" 
+  # Mass: 0.3
+  # Radius: 0.4 
+  # Luminosity: 0.002
+  # ColorName: Red
+  # Age: 200
+  # InnerSystem: "5, 41" 
+  # HabitableHot: "42, 45" 
+  # HabitableTemperate: "46, 50" 
+  # HabitableCold: "51, 54" 
+  # OuterSystem: "55, 95"
+  # GalaxySpawnAmount: 0
+  # Description: "[c][ff0000]Hot system.[-][/c] The said-to-be home system of the Kriel. It is not entirely sure if this is also the cradle of their civilization, because the Kriel do not leave a lot behind that can be studied. Planets stripped from any resource is what usually is left when the Kriel forces leave. Maybe it is only a place where they hide and protect something very important. Expect strong military presence."
+# }
 
 # Type O2
 { GalaxyConfig, Name: O2 Type Star
@@ -4335,12 +4951,18 @@
   Luminosity: 500000  # Trivia: multiples of the solar sun lumen; bolometric luminosities 
   ColorName: Blue-White # Trivia: customizable color name for the star  
   Age: 0.01 # Trivia: In Billion years
-  HabitableZone: "450, 900" # GENERATION; AU; Defines the Start-End RANGE of usual habitable zone, split in 3 sub-zones. Note: each playfield can be put in any zone of the system via setup in a random or unique solarsystemconfg!
-  InnerSystem: "8, 108"  # GENERATION: RANGE (start-end) for very hot playfields. Example: Lava planets
-  HabitableHot: "109, 120"  # GENERATION: RANGE (start-end) for warm/hot playfields. Example: Arid or deserts
-  HabitableTemperate: "121, 132"  # GENERATION:  RANGE (start-end) for temperate playfields (or those that are set to appear in the center hab zone)
-  HabitableCold: "133, 144"  # GENERATION: RANGE (start-end) for colder playfields. Example: ColdArid or ColdDesert or Snow
-  OuterSystem: "145, 252"  # GENERATION: RANGE (start-end) for very cold playfields. Snow, barren, GasPlanets
+  # HabitableZone: "450, 900" # GENERATION; AU; Defines the Start-End RANGE of usual habitable zone, split in 3 sub-zones. Note: each playfield can be put in any zone of the system via setup in a random or unique solarsystemconfg!
+  # InnerSystem: "8, 108"  # GENERATION: RANGE (start-end) for very hot playfields. Example: Lava planets
+  # HabitableHot: "109, 120"  # GENERATION: RANGE (start-end) for warm/hot playfields. Example: Arid or deserts
+  # HabitableTemperate: "121, 132"  # GENERATION:  RANGE (start-end) for temperate playfields (or those that are set to appear in the center hab zone)
+  # HabitableCold: "133, 144"  # GENERATION: RANGE (start-end) for colder playfields. Example: ColdArid or ColdDesert or Snow
+  # OuterSystem: "145, 252"  # GENERATION: RANGE (start-end) for very cold playfields. Snow, barren, GasPlanets
+  # Class O Climate Ranges
+  InnerSystem: "15, 79"
+  HabitableHot: "80, 119"
+  HabitableTemperate: "120, 159"
+  HabitableCold: "160, 189"
+  OuterSystem: "190, 350"
   Description: "[c][ff0000]Hot system.[-][/c] An O-type star is a hot, blue-white star of spectral type O in the Yerkes classification system employed by astronomers. They have temperatures in excess of 30,000 Kelvin (K)."
 }
 
@@ -4377,7 +4999,7 @@
 # Type Anomaly
 { GalaxyConfig, Name: Tesch Home System
   StarClass: TeschHomeSystem
-  SolarSystemConfigSuffix: _FactionTeschHome
+  # SolarSystemConfigSuffix: _FactionTeschHome
   Model: SunGeneric
   Probability: 0
   # SizeClass: 16
@@ -4408,7 +5030,7 @@
 
 { GalaxyConfig, Name: Tesch Home System B
   StarClass: TeschHomeSystemB
-  SolarSystemConfigSuffix: _FactionTeschHome
+  # SolarSystemConfigSuffix: _FactionTeschHome
   Model: SunGeneric
   Probability: 0
   # SizeClass: 16
@@ -4460,11 +5082,17 @@
   Luminosity: 0.1
   ColorName: White
   Age: 8
-  InnerSystem: "11, 14"
-  HabitableHot: "15, 20"
-  HabitableTemperate: "21, 27"
-  HabitableCold: "28, 35"
-  OuterSystem: "36, 75"
+  # InnerSystem: "11, 14"
+  # HabitableHot: "15, 20"
+  # HabitableTemperate: "21, 27"
+  # HabitableCold: "28, 35"
+  # OuterSystem: "36, 75"
+  # Class D Climate Ranges
+  InnerSystem: "10, 14"
+  HabitableHot: "15, 19"
+  HabitableTemperate: "20, 24"
+  HabitableCold: "25, 34"
+  OuterSystem: "35, 60"
   Description: "[c][ffff00]Cold system.[-][/c] A relatively dim white dwarf star in the Decay star cluster."
 }
 
@@ -4500,28 +5128,7 @@
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- Pirate Stars
-# Type N
-{ GalaxyConfig, Name: Pirates Home System
-  StarClass: PiratesHomeSystem
-  SolarSystemConfigSuffix: _FactionPiratesHome
-  Model: SunNeutron
-  Probability: 1
-  SizeClass: 7
-  Color: "0.35,0.35,0.75"
-  SurfaceTemperature: "4000, 4000"
-  ColorName: White
-  Mass: 2
-  Radius: 0.00004 
-  Description: "Pirates hiding in the space near a Neutron star"
-  #Luminosity: 0.002
-  Age: 400
-  InnerSystem: "1, 2" 
-  HabitableHot: "3, 120" 
-  HabitableTemperate: "121, 132" 
-  HabitableCold: "133, 144" 
-  OuterSystem: "145, 252"  
-  GalaxySpawnAmount: 0
-}
+
 
 # Type F2
 { GalaxyConfig, Name: F2 Type Star
@@ -4545,11 +5152,17 @@
   Luminosity: 4
   ColorName: Yellow-White
   Age: 1
-  InnerSystem: "5, 66" 
-  HabitableHot: "67, 79" 
-  HabitableTemperate: "80, 99" 
-  HabitableCold: "100, 109" 
-  OuterSystem: "110, 155"
+  # InnerSystem: "5, 66" 
+  # HabitableHot: "67, 79" 
+  # HabitableTemperate: "80, 99" 
+  # HabitableCold: "100, 109" 
+  # OuterSystem: "110, 155"
+  # Class F Climate Ranges
+  InnerSystem: "19, 29"
+  HabitableHot: "30, 39"
+  HabitableTemperate: "40, 69"
+  HabitableCold: "70, 109"
+  OuterSystem: "110, 150"
   Description: "[c][ffff00]Habitable system.[-][/c] F-type stars have strengthening spectral lines H and K of Ca II. Neutral metals (Fe I, Cr I) beginning to gain on ionized metal lines by late F. Their spectra are characterized by the weaker hydrogen lines and ionized metals. Their color is white."
 }
 
@@ -4575,48 +5188,22 @@
   Luminosity: 4
   ColorName: Yellow-White
   Age: 1
-  InnerSystem: "10, 66" 
-  HabitableHot: "67, 79" 
-  HabitableTemperate: "80, 99" 
-  HabitableCold: "100, 109" 
-  OuterSystem: "110, 155"
+  # InnerSystem: "10, 66" 
+  # HabitableHot: "67, 79" 
+  # HabitableTemperate: "80, 99" 
+  # HabitableCold: "100, 109" 
+  # OuterSystem: "110, 155"
+  # Class F Climate Ranges
+  InnerSystem: "19, 29"
+  HabitableHot: "30, 39"
+  HabitableTemperate: "40, 69"
+  HabitableCold: "70, 109"
+  OuterSystem: "110, 150"
   Description: "[c][ffff00]Habitable system.[-][/c] F-type stars have strengthening spectral lines H and K of Ca II. Neutral metals (Fe I, Cr I) beginning to gain on ionized metal lines by late F. Their spectra are characterized by the weaker hydrogen lines and ionized metals. Their color is white."
   GalaxySpawnAmount: 0
 }
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- Wastelander Stars
-# Type A
-{ GalaxyConfig, Name: Wastelanders Homeworld
-  StarClass: WastelandersHomeSystem
-  SolarSystemConfigSuffix: _FactionWastelandersHome
-  Model: SunGeneric
-  Probability: 0
-  SizeClass: 9
-  Color: "0.97,0.64,0.19"
-  
-  LightColor: "0.5,0.4,0.3"
-  ModelColor: "0.6,0.4,0.3" # (can be used if you want a different color apart from Color or LightColor)
-  # ModelColor2: "1, 0.7, 0.7" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
-  ModelBrightness: 0.7 # (overall brightness)
-  ModelNoiseTiling: 120 # (default is 40, set to higher values for bigger stars)
-  ModelCoronaSpikesSize: 0.75 # (default is 0.75, values < 0.6 will hide the spikes completely)
-  ModelPlasmaArcsSize: 0.5 # (default is 0.5)
-  ModelFlareBrightness: 1.4 # (values < 1 will make the flare smaller)
-  
-  SurfaceTemperature: "6000, 7500" 
-  Mass: 1.5
-  Radius: 1.8 
-  Luminosity: 11
-  ColorName: Yellow-White
-  Age: 1
-  InnerSystem: "5, 66"
-  HabitableHot: "67, 84"
-  HabitableTemperate: "85, 104"
-  HabitableCold: "105, 129"
-  OuterSystem: "130, 155"
-  Description: "The home system of the Wastelanders faction."  
-  GalaxySpawnAmount: 0
-}
 
 # Type F
 { GalaxyConfig, Name: F3
@@ -4640,39 +5227,23 @@
   Luminosity: 0.002
   ColorName: Yellow-White
   Age: 200
-  InnerSystem: "10, 39" 
-  HabitableHot: "40, 69" 
-  HabitableTemperate: "70, 89" 
-  HabitableCold: "99, 129" 
-  OuterSystem: "130, 159"
+  # InnerSystem: "10, 39" 
+  # HabitableHot: "40, 69" 
+  # HabitableTemperate: "70, 89" 
+  # HabitableCold: "99, 129" 
+  # OuterSystem: "130, 159"
+  # Class F Climate Ranges
+  InnerSystem: "19, 29"
+  HabitableHot: "30, 39"
+  HabitableTemperate: "40, 69"
+  HabitableCold: "70, 109"
+  OuterSystem: "110, 150"
   Description: "[c][00ff00]Habitable system.[-][/c] F-type stars have strengthening spectral lines H and K of Ca II. Neutral metals (Fe I, Cr I) beginning to gain on ionized metal lines by late F. Their spectra are characterized by the weaker hydrogen lines and ionized metals. Their color is white."
   # GalaxySpawnAmount: 0
 }
 
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- Ravagers Stars
-# Type M
-{ GalaxyConfig, Name: Ravagers Homeworld
-  StarClass: RavagersHomeSystem
-  SolarSystemConfigSuffix: _FactionRavagersHome
-  Model: SunGeneric
-  Probability: 1
-  SizeClass: 9
-  Color: "0.97,0.64,0.19"
-  ModelFlareBrightness: 2
-  SurfaceTemperature: "2500, 4000" 
-  Mass: 0.3
-  Radius: 0.4 
-  Luminosity: 0.002
-  ColorName: Red
-  Age: 200
-  InnerSystem: "5, 41" 
-  HabitableHot: "42, 45" 
-  HabitableTemperate: "46, 50" 
-  HabitableCold: "51, 54" 
-  OuterSystem: "55, 95"
-  Description: "The home system of the Ravagers faction."  
-  GalaxySpawnAmount: 0
-}
+
 # ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- Zirax Stars
 
 # Home
@@ -4837,69 +5408,6 @@
 }
 
 
-# Test star
-{ GalaxyConfig, Name: Test Star
-  StarClass: Test
-  SolarSystemConfigSuffix: _Test
-  # Model: SunRedGiant  # better: yellow orange?
-  Model: SunGeneric  # better: yellow orange?
-  Probability: 0
-  SizeClass: 12
-  Color: "1,0.85,0.44"
-  LightColor: "1,0.65,0.35"
-  ModelColor: "0.8,0.1,0.05" # (can be used if you want a different color apart from Color or LightColor)
-  ModelColor2: "1,0.6,0.1" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
-  ModelBrightness: 0.60 # (overall brightness)
-  ModelNoiseTiling: 25 # (default is 40, set to higher values for bigger stars)
-  ModelCoronaSpikesSize: 0.65 # (default is 0.75, values < 0.6 will hide the spikes completely)
-  ModelPlasmaArcsSize: 0.8 # (default is 0.5)
-  ModelFlareBrightness: 1.5 # (values < 1 will make the flare smaller)
-  SurfaceTemperature: "4000, 5500" 
-  Mass: 0.7
-  Radius: 0.8 
-  Luminosity: 0.3
-  ColorName: Yellow-Orange
-  Age: 30
-  InnerSystem: "5, 48"
-  HabitableHot: "49, 69"
-  HabitableTemperate: "70, 89"
-  HabitableCold: "90, 109"
-  OuterSystem: "110, 140"
-  Description: "K-type stars are orangish stars that are slightly cooler than a G-Type star. They make up about 12% of the main-sequence stars in the solar neighborhood."
-}
-
-# Test2 star
-{ GalaxyConfig, Name: Test2 Star
-  StarClass: Test2
-  # Model: SunRedGiant
-  Model: SunGeneric
-  # CompanionStarClass: FarrHomeC
-  Probability: 0
-  SizeClass: 10
-  Color: "0.4,0,0.8"
-  LightColor: "0.5,0.5,0.7"
-  # ModelColor: "2, 0, 0" # (can be used if you want a different color apart from Color or LightColor)
-  # ModelColor2: "0.2, 0.0, 0.3" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
-  # ModelBrightness: 0.5 # (overall brightness)
-  # ModelNoiseTiling: 80 # (default is 40, set to higher values for bigger stars)
-  ModelCoronaSpikesSize: 0.7
-  # ModelPlasmaArcsSize: 1
-  ModelFlareBrightness: 2 # (values < 1 will make the flare smaller)
-  SurfaceTemperature: "5500, 6000" 
-  Mass: 100
-  Radius: 100
-  Luminosity: 100000
-  ColorName: Red
-  Age: 10
-  InnerSystem: "4, 25"  # GENERATION: RANGE (start-end) for very hot playfields. Example: Lava planets
-  HabitableZone: "450, 900" # GENERATION; AU; Defines the Start-End RANGE of usual habitable zone, split in 3 sub-zones. Note: each playfield can be put in any zone of the system via setup in a random or unique solarsystemconfg!
-  HabitableHot: "26, 49"  # GENERATION: RANGE (start-end) for warm/hot playfields. Example: Arid or deserts
-  HabitableTemperate: "50, 99"  # GENERATION:  RANGE (start-end) for temperate playfields (or those that are set to appear in the center hab zone)
-  HabitableCold: "100, 189"  # GENERATION: RANGE (start-end) for colder playfields. Example: ColdArid or ColdDesert or Snow
-  OuterSystem: "190, 350"  # GENERATION: RANGE (start-end) for very cold playfields. Snow, barren, GasPlanets
-  Description: "G-type stars, including the Sun, have prominent spectral lines H and K of Ca II, which are most pronounced at G2. They have even weaker hydrogen lines than F, but along with the ionized metals, they have neutral metals. There is a prominent spike in the G band of CH molecules."
-}
-
 
 
 # ===================================================================================================================================================
@@ -4938,3 +5446,90 @@
   GalaxySpawnAmount: 0
 }
 
+# Expedition Dronelands
+{ GalaxyConfig, Name: M2-Mission Type Star
+  StarClass: M2-Mission
+  SolarSystemConfigSuffix: _FactionDroneT1
+  # Model: SunRedDwarf
+  Model: SunGeneric
+  Probability: 0.1
+  SizeClass: 9
+  Color: "0.9,0.3,0.09"
+  LightColor: "0.5,0.2,0.05"
+  # ModelColor: "1.3,0.05,0" # (can be used if you want a different color apart from Color or LightColor)
+  ModelColor: "0.7,0.02,0" # (can be used if you want a different color apart from Color or LightColor)
+  ModelColor2: "0.5,0.01,0" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
+  ModelBrightness: 1.2 # (overall brightness)
+  ModelNoiseTiling: 40 # (default is 40, set to higher values for bigger stars)
+  ModelCoronaSpikesSize: 0.65 # (default is 0.75, values < 0.6 will hide the spikes completely)
+  ModelPlasmaArcsSize: 0.15 # (default is 0.5)
+  ModelFlareBrightness: 0.7 # (values < 1 will make the flare smaller)
+  SurfaceTemperature: "2500, 4000" 
+  Mass: 0.3
+  Radius: 0.4 
+  Luminosity: 0.002
+  ColorName: Red
+  Age: 200
+  # InnerSystem: "5, 29"
+  # HabitableHot: "30, 39"
+  # HabitableTemperate: "40, 59"
+  # HabitableCold: "60, 69"
+  # OuterSystem: "70, 95"
+  # Class M Climate Ranges
+  InnerSystem: "10, 19"
+  HabitableHot: "20, 34"
+  HabitableTemperate: "35, 49"
+  HabitableCold: "50, 69"
+  OuterSystem: "70, 150"
+  Description: "[c][ffff00]Cold system.[-][/c] Class M2-Drone stars are by far the most common on the outer edge of the galaxy. Typically, an M-type star's surface temperature is under about 4,000 K. Active Drone Swarm detected."
+  GalaxySpawnAmount: 0
+}
+
+
+# Test star
+{ GalaxyConfig, Name: Test Star
+  StarClass: Test
+  SolarSystemConfigSuffix: _Test
+  # Model: SunYellow
+  Model: SunGeneric
+  Probability: 0
+  SizeClass: 11
+  Color: "1,0.95,0.63"
+  LightColor: "1,0.96,0.85"
+  ModelColor: "1,0.90,0.45" # (can be used if you want a different color apart from Color or LightColor)
+  ModelColor2: "1,0.8,0.4" # (use only if you want to switch to "two color" mode...I need to check out what areas this 2nd color affects)
+  ModelBrightness: 0.70 # (overall brightness)
+  ModelNoiseTiling: 140 # (default is 40, set to higher values for bigger stars)
+  ModelCoronaSpikesSize: 0.7 # (default is 0.75, values < 0.6 will hide the spikes completely)
+  ModelPlasmaArcsSize: 0.35 # (default is 0.5)
+  # ModelFlareBrightness: 0.8 # (values < 1 will make the flare smaller)
+  ModelFlareBrightness: 0.8 # (values < 1 will make the flare smaller)
+  SurfaceTemperature: "5500, 6000" 
+  Mass: 1
+  Radius: 1
+  Luminosity: 1
+  ColorName: Yellow
+  Age: 10
+  # InnerSystem: "5, 35"
+  # HabitableHot: "36, 63"
+  # HabitableTemperate: "64, 89"
+  # HabitableCold: "90, 104"
+  # OuterSystem: "105, 132"
+
+  # Size 10 Habitable
+  # InnerSystem: "10, 19"
+  # HabitableHot: "20, 29"
+  # HabitableTemperate: "30, 44"
+  # HabitableCold: "45, 69"
+  # OuterSystem: "70, 135"
+
+  # Size 12 Habitable
+  InnerSystem: "10, 24"
+  HabitableHot: "25, 34"
+  HabitableTemperate: "35, 59"
+  HabitableCold: "60, 79"
+  OuterSystem: "80, 150"
+
+  Description: "[c][00ff00]Habitable system.[-][/c] G-type stars, including the Sun, have prominent spectral lines H and K of Ca II, which are most pronounced at G2. They have even weaker hydrogen lines than F, but along with the ionized metals, they have neutral metals. There is a prominent spike in the G band of CH molecules."
+  GalaxySpawnAmount: 0
+}
