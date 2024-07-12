@@ -1,5 +1,6 @@
 ﻿using EgsLib.ConfigFiles.Ecf;
 using EgsLib.ConfigFiles.Ecf.Attributes;
+using EgsLib.Extensions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -171,7 +172,7 @@ namespace EgsLib.ConfigFiles
         private static bool SplitProperty(string input, out string name, out int index)
         {
             var parts = input.Split('_');
-            if(parts.Length == 2 && int.TryParse(parts[1], out index))
+            if (parts.Length == 2 && parts[1].ConvertType(out index))
             {
                 name = parts[0];
                 index -= 1; // Fix indexing to 0

@@ -114,7 +114,7 @@ namespace EgsLib.ConfigFiles
                 .ToDictionary(kvp =>
                 {
                     MarkAsParsed(kvp.Key);
-                    return int.Parse(kvp.Key.Substring("NebulaColors".Length));
+                    return kvp.Key.Substring("NebulaColors".Length).ConvertType<int>();
                 }, kvp => kvp.Value);
         }
 

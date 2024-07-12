@@ -52,7 +52,7 @@ namespace EgsLib.ConfigFiles
         public Template(IEcfObject obj) : base(obj)
         {
             Inputs = UnparsedChildren.FirstOrDefault(x => x.Name == "Inputs")?.Properties?
-                .ToDictionary(x => x.Key, x => int.Parse(x.Value)) ?? new Dictionary<string, int>();
+                .ToDictionary(x => x.Key, x => x.Value.ConvertType<int>()) ?? new Dictionary<string, int>();
         }
 
         public static IEnumerable<Template> ReadFile(string filePath)

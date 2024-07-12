@@ -23,6 +23,7 @@ namespace EgsLib.ConfigFiles.Ecf
                 throw new FileNotFoundException("ECF file not found", FilePath);
         }
 
+
         public IEnumerable<IEcfObject> ParseObjects()
         {
             var lines = ReadFile(FilePath);
@@ -96,9 +97,7 @@ namespace EgsLib.ConfigFiles.Ecf
             if (end == -1)
                 end = input.Length;
 
-            var line = input.Substring(0, end);
-
-            return line.Trim();
+            return input.SliceAndTrim(0, end);
         }
 
         /// <summary>
@@ -141,33 +140,22 @@ namespace EgsLib.ConfigFiles.Ecf
             return true;
         }
 
-        private static bool ReadFields(string text, out Dictionary<string, string> fields)
+        private static bool ReadFields(string line, out Dictionary<string, string> fields)
         {
             fields = new Dictionary<string, string>();
 
-            var entries = text.SplitWithQuotes(',');
+            var entries = line.SplitWithQuotes(',');
             foreach (var entry in entries)
             {
-                if (!SplitEntry(entry, out string key, out string value))
+                var index = entry.IndexOf(':');
+                if (index == -1)
                     return false;
+
+                var key = entry.SliceAndTrim(0, index);
+                var value = entry.SliceAndTrim(index + 1, entry.Length);
 
                 fields.Add(key, value);
             }
-
-            return true;
-        }
-
-        private static bool SplitEntry(string text, out string key, out string value)
-        {
-            key = null;
-            value = null;
-
-            var index = text.IndexOf(':');
-            if (index == -1)
-                return false;
-
-            key = text.Substring(0, index).Trim();
-            value = text.Substring(index + 1).Trim();
 
             return true;
         }
@@ -208,8 +196,12 @@ namespace EgsLib.ConfigFiles.Ecf
         /// <exception cref="FormatException">Thrown when the line is invalid</exception>
         private bool ReadProperty(string line)
         {
-            if(!SplitEntry(line, out string key, out string value))
+            var index = line.IndexOf(':');
+            if (index == -1)
                 return false;
+
+            var key = line.SliceAndTrim(0, index);
+            var value = line.SliceAndTrim(index + 1, line.Length);
 
             if (_currentChild != null)
                 _currentChild.AddProperty(key, value);

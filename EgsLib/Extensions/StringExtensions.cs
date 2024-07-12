@@ -2,14 +2,24 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using System.Linq;
+using System.Text;
 
 namespace EgsLib.Extensions
 {
     internal static class StringExtensions
     {
         private readonly static ConcurrentDictionary<Type, TypeConverter> ConverterCache = new ConcurrentDictionary<Type, TypeConverter>();
+
+        public static T ConvertType<T>(this string str)
+        {
+            if (ConvertType<T>(str, out var output))
+            {
+                return output;
+            }
+
+            throw new FormatException("Failed to convert type");
+        }
 
         public static bool ConvertType<T>(this string str, out T output)
         {
@@ -55,7 +65,7 @@ namespace EgsLib.Extensions
             if (separators.Contains('"'))
                 throw new ArgumentException("double quotes can't be a separator", nameof(separators));
 
-            var part = "";
+            var sb = new StringBuilder();
             var inQuotes = false;
 
             for (var i = 0; i < str.Length; i++)
@@ -65,24 +75,48 @@ namespace EgsLib.Extensions
                 if (c == '"')
                 {
                     inQuotes = !inQuotes;
+                    continue;
                 }
-                else if (separators.Contains(c) && !inQuotes)
+
+                if (separators.Contains(c) && !inQuotes)
                 {
-                    yield return part;
-                    part = "";
+                    yield return sb.ToString();
+
+                    sb.Clear();
+                    continue;
                 }
-                else
-                {
-                    part += c;
-                }
+
+                sb.Append(c);
             }
 
-            yield return part;
+            yield return sb.ToString();
         }
 
         public static string AsNullIfEmpty(this string str)
         {
             return !string.IsNullOrEmpty(str) ? str : null;
+        }
+
+        public static string SliceAndTrim(this string str, int start, int end)
+        {
+            for(; start < str.Length -  1; start++)
+            {
+                if (!char.IsWhiteSpace(str[start]))
+                    break;
+            }
+
+            for (; end - 1 >= start; end--)
+            {
+                if (!char.IsWhiteSpace(str[end - 1]))
+                    break;
+            }
+
+#if NETSTANDARD2_1_OR_GREATER
+            var span = str.AsSpan();
+            return span[start..end].ToString();
+#else
+            return str.Substring(start, end - start);
+#endif
         }
     }
 }

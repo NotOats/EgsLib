@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using EgsLib.ConfigFiles.Ecf;
 using EgsLib.ConfigFiles.Ecf.Attributes;
+using EgsLib.Extensions;
 
 namespace EgsLib.ConfigFiles
 {
@@ -154,12 +155,11 @@ namespace EgsLib.ConfigFiles
                 if (parts.Length != 2)
                 {
                     // Could be single value range
-                    if (float.TryParse(parts[0], out float val))
-                        return new Range<float>(val, val);
+                    if (parts[0].ConvertType(out float val))
+                            return new Range<float>(val, val);
                     else
                         throw new FormatException("Invalid item range");
                 }
-
 
                 if (parts[0].StartsWith("mf="))
                 {
@@ -167,8 +167,11 @@ namespace EgsLib.ConfigFiles
                     parts[0] = parts[0].Substring(3);
                 }
 
-                var min = float.Parse(parts[0]);
-                var max = float.Parse(parts[1]);
+                if (!parts[0].ConvertType(out float min))
+                    throw new FormatException("Failed to parse minimum value");
+
+                if (!parts[1].ConvertType(out float max))
+                    throw new FormatException("Failed to parse maximum value");
 
                 return new Range<float>(min, max);
             }
@@ -179,14 +182,17 @@ namespace EgsLib.ConfigFiles
                 if (parts.Length != 2)
                 {
                     // Could be single value range
-                    if (int.TryParse(parts[0], out int val))
+                    if (parts[0].ConvertType(out int val))
                         return new Range<int>(val, val);
                     else
                         throw new FormatException("Invalid item range");
                 }
 
-                var min = int.Parse(parts[0]);
-                var max = int.Parse(parts[1]);
+                if (!parts[0].ConvertType(out int min))
+                    throw new FormatException("Failed to parse minimum value");
+
+                if (!parts[1].ConvertType(out int max))
+                    throw new FormatException("Failed to parse maximum value");
 
                 return new Range<int>(min, max);
             }

@@ -131,7 +131,7 @@ namespace EgsLib.ConfigFiles
 
             var name = match.Groups[1].Value.Trim();
 
-            if (!float.TryParse(match.Groups[2].Value.Trim(), out var weight))
+            if (!match.Groups[2].Value.Trim().ConvertType(out float weight))
             {
                 throw new FormatException("Container item weight isn't a float");
             }
@@ -144,7 +144,7 @@ namespace EgsLib.ConfigFiles
             if (countRaw.Contains("meta"))
             {
                 var tokenRaw = countRaw.Replace("meta=", "");
-                if (!int.TryParse(tokenRaw, out int token))
+                if (!tokenRaw.ConvertType(out int token))
                 {
                     throw new FormatException("Container item meta arg isn't an int");
                 }
@@ -155,12 +155,12 @@ namespace EgsLib.ConfigFiles
             {
                 var countParts = countRaw.Split(',');
                 if (countParts.Length == 2
-                    && int.TryParse(countParts[0], out int min)
-                    && int.TryParse(countParts[1], out int max))
+                    && countParts[0].ConvertType(out int min)
+                    && countParts[1].ConvertType(out int max))
                 {
                     count = new Range<int>(min, max);
                 }
-                else if (int.TryParse(countRaw, out var parsedCount))
+                else if (countRaw.ConvertType(out int parsedCount))
                 {
                     // couldn't read a min/max, maybe it's a single value?
                     count = new Range<int>(parsedCount, parsedCount);
@@ -189,7 +189,7 @@ namespace EgsLib.ConfigFiles
             }
 
             var name = match.Groups[1].Value;
-            if (!float.TryParse(match.Groups[2].Value, out var weight))
+            if (match.Groups[2].Value.ConvertType(out float weight))
             {
                 throw new FormatException("Container group weight isn't a float");
             }

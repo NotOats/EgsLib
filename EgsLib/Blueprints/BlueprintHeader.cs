@@ -11,7 +11,7 @@ namespace EgsLib.Blueprints
         Voxel = 0,
         Base = 2,
         SmallVessel = 4,
-        CapticalVessel = 8,
+        CapitalVessel = 8,
         HoverVessel = 16
     }
 
@@ -48,7 +48,7 @@ namespace EgsLib.Blueprints
                     return displayName;
                 }
 
-                return _fileName;
+                return Path.GetFileNameWithoutExtension(_fileName);
             }
         }
 
@@ -100,10 +100,10 @@ namespace EgsLib.Blueprints
             if (!File.Exists(file))
                 throw new FileNotFoundException("Blueprint file does not exist");
 
-            _fileName = file.EndsWith(".epb") ? file.Substring(0, file.IndexOf(".epb")) : file;
+            _fileName = file;
 
             // File stream since we don't need to work with block data
-            using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (var fs = new FileStream(_fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (var reader = new BinaryReader(fs))
             {
                 Read(reader);
@@ -112,7 +112,7 @@ namespace EgsLib.Blueprints
 
         internal BlueprintHeader(string fileName, BinaryReader reader)
         {
-            _fileName = fileName.EndsWith(".epb") ? fileName.Substring(0, fileName.IndexOf(".epb")) : fileName;
+            _fileName = fileName;
 
             Read(reader);
         }
