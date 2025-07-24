@@ -1,5 +1,7 @@
-﻿using System;
+﻿using EgsLib.Extensions;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace EgsLib.Blueprints
 {
@@ -8,12 +10,18 @@ namespace EgsLib.Blueprints
         public PropertyName Name { get; }
         public PropertyType Type { get; }
         public object Value { get; }
+        /// <summary>
+        /// Metadata associated with this <see cref="PropertyDetails"/>. 
+        /// Unused but preserved for serialization operations.
+        /// </summary>
+        public string Metadata { get; }
 
-        public PropertyDetails(PropertyName name, PropertyType type, object value)
+        public PropertyDetails(PropertyName name, PropertyType type, object value, string metadata)
         {
             Name = name;
             Type = type;
             Value = value;
+            Metadata = metadata;
         }
 
         public override string ToString()
@@ -40,6 +48,38 @@ namespace EgsLib.Blueprints
             hashCode = hashCode * -1521134295 + Type.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<object>.Default.GetHashCode(Value);
             return hashCode;
+        }
+
+        public void Serialize(BinaryWriter writer)
+        {
+            writer.Write((Int32)Name);
+            writer.Write((Int32)Type << 24);
+            switch (Type)
+            {
+                case PropertyType.String:
+                    writer.Write((string)Value);
+                    break;
+                case PropertyType.Bool:
+                    writer.Write((bool)Value);
+                    writer.Write(Metadata);
+                    break;
+                case PropertyType.Int:
+                    writer.Write((int)Value);
+                    writer.Write(Metadata);
+                    break;
+                case PropertyType.Single:
+                    writer.Write((float)Value);
+                    writer.Write(Metadata);
+                    break;
+                case PropertyType.Vector3:
+                    writer.WriteSingleVector3((Vector3<float>)Value);
+                    writer.Write(Metadata);
+                    break;
+                case PropertyType.Long:
+                    writer.Write((long)Value);
+                    writer.Write(Metadata);
+                    break;
+            }
         }
 
         public static bool operator ==(PropertyDetails left, PropertyDetails right)

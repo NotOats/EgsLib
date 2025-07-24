@@ -70,7 +70,7 @@ namespace EgsLib.Tests.Blueprints
             yield return new object[]
                 {
                     new BlueprintDetails(
-                        BlueprintType.CapticalVessel,
+                        BlueprintType.CapitalVessel,
                         @"Resources\Blueprints\Cargo Box - M\Cargo Box - M.epb")
                     {
                         Size = new Vector3<int>(7, 6, 9),

@@ -1,4 +1,6 @@
 ﻿
+using System.IO;
+
 namespace EgsLib.Blueprints.NbtTags
 {
     public class NbtSingle : INbtTag
@@ -12,6 +14,12 @@ namespace EgsLib.Blueprints.NbtTags
         {
             Name = name;
             Value = value;
+        }
+        public void Serialize(BinaryWriter writer)
+        {
+            writer.Write((byte)NbtType.Single);
+            writer.Write(Name);
+            writer.Write(Value);
         }
     }
 }

@@ -60,8 +60,8 @@ namespace EgsLib.Blueprints.NbtTags
                     case NbtType.Single:
                         tag = new NbtSingle(name, reader.ReadSingle()); break;
                     case NbtType.Color:
-                        tag = new NbtColor(name, 
-                            reader.ReadByte(), reader.ReadByte(), 
+                        tag = new NbtColor(name,
+                            reader.ReadByte(), reader.ReadByte(),
                             reader.ReadByte(), reader.ReadByte());
                         break;
                 }
@@ -70,26 +70,25 @@ namespace EgsLib.Blueprints.NbtTags
             }
         }
 
+        public void Serialize(BinaryWriter writer)
+        {
+            writer.Write((byte)0);
+            writer.Write((UInt16)_size);
+            for (int i = 0; i < _size; i++)
+            {
+                _tags[i].Serialize(writer);
+            }
+        }
+
         public void Dispose()
         {
             ArrayPool<INbtTag>.Shared.Return(_tags, clearArray: true);
         }
 
-        public IEnumerator<INbtTag> GetEnumerator() => _tags == null ? 
-            Enumerable.Empty<INbtTag>().GetEnumerator() : 
+        public IEnumerator<INbtTag> GetEnumerator() => _tags == null ?
+            Enumerable.Empty<INbtTag>().GetEnumerator() :
             ((IEnumerable<INbtTag>)_tags).GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => _tags.GetEnumerator();
-
-        private enum NbtType : byte
-        {
-            Int32 = 0,
-            String = 1,
-            Bool = 2,
-            Single = 3,
-
-            Color = 5
-        }
-
     }
 }

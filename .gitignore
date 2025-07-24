@@ -365,3 +365,5 @@ FodyWeavers.xsd
 
 # Custom
 !*/ConfigFiles/ecf/
+/TestOutput
+/DecompiledOutput

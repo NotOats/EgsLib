@@ -16,12 +16,35 @@ namespace EgsLib.Blueprints
 
         public DeviceGroup(BinaryReader reader, int version)
         {
-            Name     = reader.ReadString();
+            Name = reader.ReadString();
             Unknown1 = reader.ReadBoolean();
             Unknown2 = version > 4 ? reader.ReadBoolean() : true;
             Unknown3 = version > 3 ? reader.ReadByte() : byte.MaxValue; // Shortcut? Labeled this on https://github.com/ApanLoon/EmpyrionStuff/
 
             Devices = ReadDevices(reader, version);
+        }
+
+        public void Serialize(BinaryWriter writer, int deviceGroupVersion)
+        {
+            writer.Write(Name);
+            writer.Write(Unknown1);
+            if (deviceGroupVersion > 4) writer.Write(Unknown2);
+            if (deviceGroupVersion > 3) writer.Write(Unknown3);
+            SerializeDevices(writer, deviceGroupVersion);
+        }
+
+        private void SerializeDevices(BinaryWriter writer, int deviceGroupVersion)
+        {
+            writer.Write((Int16)Devices.Count);
+            foreach (var device in Devices)
+            {
+                if (deviceGroupVersion > 3)
+                    writer.WriteIntVector3Packed(device.Location);
+                else
+                    writer.WriteIntVector3(device.Location);
+                if (deviceGroupVersion > 1)
+                    writer.Write(device.CustomName);
+            }
         }
 
         private static List<DeviceDetails> ReadDevices(BinaryReader reader, int version)
@@ -32,7 +55,7 @@ namespace EgsLib.Blueprints
             for (var i = 0; i < count; i++)
             {
                 var location = version > 3 ? reader.ReadIntVector3Packed() : reader.ReadIntVector3();
-                var name     = version > 1 ? reader.ReadString() : null;
+                var name = version > 1 ? reader.ReadString() : null;
 
                 list.Add(new DeviceDetails(location, name));
             }
